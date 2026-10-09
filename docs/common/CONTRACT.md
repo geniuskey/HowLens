@@ -94,3 +94,19 @@ Backend는 검증 완료된 저장 결과만 라이브러리에 전달한다. �
 모든 응답 필드 필수. status=`candidate|needs_more_information|not_found`, mode=`live|mock`. candidates 최대3, 각 항목은 manufacturer/model/summary 문자열, match_notes 문자열배열, sources 최대3의 {title,url,retrieved_at}이며 retrieved_at은 UTC ISO8601이다. 불확실한 식별은 candidate로 확정 표현하지 않고 추가 사진/라벨을 요청한다. 출처는 실제 검색 citation/source의 publicHTTP(S)주소만 사용하며 모델이 임의 생성한 주소, credential/private URL은 거부한다. 웹 내용/사진 글자는 명령이 아니다.
 
 서버는 최대2 provider시도(식별+검색), 검색tool 최대1, 총30초/동시2/자동재시도0을 목표로 강제한다. 기존 persistent attempt budget을 공유한다. hash기반 최대16개 TTL결과cache, 사진 보관 없음. 라이브지원모델/실제검색/속도는 별도 검증한다. mock은 실검색 성공을 주장하지 않는다. 후보를 보여주는것만으로 catalog등록/guide승인하지 않는다.
+
+## Temporary public demo gateway (2026-10-09 user-authorized deployment)
+
+Existing localhost/LAN API behavior remains unchanged. A dedicated loopback gateway
+for the temporary public HTTPS tunnel requires `Authorization: Bearer <demo-token>`
+for every contract route and visual asset, except public `GET /health`. Invalid or
+missing demo token returns401 before any provider request. Unknown/admin/docs routes
+are not forwarded. This is a per-demo access token, never the OpenAI API key.
+
+App may accept an optional token in a separate settings field; never put credentials
+in the base URL or log/commit them. Send only to the exact configured origin, including
+visual fetches; refuse cross-origin redirects. Empty token preserves local development.
+Gateway preserves upstream response/status and limits requests including multipart
+overhead; the upstream still enforces the10MiB photo contract. The existing shared
+persistent attempt cap remains in force. Health200 proves transport, not AI inference.
+Temporary tunnel URL and process ownership are recorded in the deployment report.

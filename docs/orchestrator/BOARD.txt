@@ -1,4 +1,4 @@
-HOWLENS | 2026-10-09 13:08 KST | SUBMIT 17:00 | LEFT ~3h52m
+HOWLENS | 2026-10-09 13:12 KST | SUBMIT 17:00 | LEFT ~3h48m
 
 OVERALL RELEASE READINESS
 [###########---------] ~55% (Coordinator estimate, not measured code completion)
@@ -11,7 +11,7 @@ M2 UI + input/guide      [################----] Components ready; integrating
 M3 Integrated/device QA [########------------] Three phones; live POST pending
 M4 Release/submission   [--------------------] Main review and package pending
 
-13:08 NOW -> 14:00 connected candidate -> 14:30 FEATURE FREEZE
+13:12 NOW -> 14:00 connected candidate -> 14:30 FEATURE FREEZE
 14:30-15:30 fixes + three-device regression
 15:30-16:00 package + demo -> 16:00 READY -> 17:00 DEADLINE
 Final1h buffer; timing is a target, not a completion claim.
@@ -22,7 +22,8 @@ Final1h buffer; timing is a target, not a completion claim.
 | App integration        | ASTRA HIGH | ctx_09c2cb6549f7; data/summary/journey |
 | Summary sheet          | DELIVERED  | 9fe2b0b;18 JVM tests + assemble PASS   |
 | Guide journey          | DELIVERED  | bb6eeb0;8 scoped tests + assemble PASS|
-| Backend discovery      | COMMITTING | 118 offline PASS; index slot granted |
+| Backend discovery      | DELIVERED  | eb838e3;118 offline PASS; not live   |
+| Public HTTPS tunnel    | DEPLOYING  | User approved; guarded gateway      |
 | Windows phone QA       | DELIVERED  | 3b9031f; denial/settings/gallery PASS|
 | Fold4 live QA          | RUNNING    | USB health200 live; APK POST pending |
 | Real photos + manuals  | RUNNING    | ctx_950b0c4b6142; source corpus       |

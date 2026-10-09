@@ -419,3 +419,18 @@ label downloaded/inspected; TPLinkPDF122pages REV1.0.0 verified; region-match
 pending, not runtime registered.
 
 13:09 Backend PDFs found at /Users/jymbook/HowLens/docs/assets/manuals/evaluation/: um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf, WHP-Robot-Application-Manual.pdf, 9b6e38.pdf, be94f9.pdf, slvub62b.pdf. Explicit read dependency granted to Backend discovery worker; preserve originals, 10min metadata/page evidence inventory, no runtime-ingestion claim.
+
+## 13:12 user-authorized public HTTPS deployment
+
+User explicitly approved immediate external tunnel deployment after being informed
+that backend is on 이준영 Mac and10.102.72.28:8000 is private. Backendctx34b6d97bd407
+prioritizes guardedloopbackgateway+cloudflared, keepsPID74518, target5min.
+AppAstractx09c2cb6549f7 prioritizes optional per-demo Bearer token field/header
+for same-origin API/assets. Publichealth only; paid routes require demo token.
+No account credential or OpenAI key sharing. Main product merge remains unapproved.
+Root verified internal health200 in53ms. Fold4 failure was intentionalreverse removal;
+QA confirms mapping restored and one authorizedAPKPOST running. An intermediate
+screenshot helper failed missingPIL before restore; now uses existingvenv.
+Official source https://developers.cloudflare.com/tunnel/get-started/quick-tunnels/
+read: temporaryURL, no account/domain, lifetime tied to process; email interactive
+auth unsuitable for nativeclient. Use installedCLIhelp andHTTP2 forUDP-blocked tether.
