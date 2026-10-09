@@ -62,7 +62,7 @@ class OpenAIResponsesProvider:
         self._transport = transport
         self.last_usage = None
         self.last_http_status = None
-        if type(max_calls) is not int or not 0 <= max_calls <= 20:
+        if type(max_calls) is not int or not 0 <= max_calls <= 50:
             raise ValueError('Invalid paid request limit')
         self.max_calls = max_calls
         self.ledger_path = Path(ledger_path) if ledger_path else None

@@ -65,9 +65,17 @@ def research_text(value):
 def completed_search(envelope):
     searches = [item for item in envelope.get('output', [])
                 if isinstance(item, dict) and item.get('type') == 'web_search_call']
-    return (len(searches) == 1 and searches[0].get('status') == 'completed'
-            and isinstance(searches[0].get('action'), dict)
-            and searches[0]['action'].get('type') == 'search')
+    # Live Responses output may contain a completed search plus an unfinished
+    # searching entry even with max_tool_calls=1. Only the completed item supplies
+    # consulted sources; an unfinished item is not a second completed search.
+    completed = [item for item in searches if item.get('status') == 'completed']
+    pending = [item for item in searches if item.get('status') in {'in_progress', 'searching'}]
+    LOGGER.info('discovery_search_calls completed=%s pending=%s total=%s',
+                len(completed), len(pending), len(searches))
+    return (len(completed) == 1 and len(pending) <= 1
+            and len(completed) + len(pending) == len(searches)
+            and all(isinstance(item.get('action'), dict) and item['action'].get('type') == 'search'
+                    for item in searches))
 
 
 def validate_public_url(value):
