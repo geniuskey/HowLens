@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-09T04:38:17.399837+00:00",
+  "source_commit": "d00384a81f7a0846b96cadfc9d825e648e1926ee",
+  "upstream_pid": 67997,
+  "upstream_terminal": "term_c9c3741c-b0d5-45d3-8fe5-f5f3d8b91e07",
+  "old_upstream_pid": 74518,
+  "old_upstream_stopped": true,
+  "gateway_pid": 46220,
+  "tunnel_pid": 46758,
+  "url": "https://premium-proceed-hartford-published.trycloudflare.com",
+  "checks": {
+    "local_health": 200,
+    "gateway_health": 200,
+    "public_health": 200,
+    "discovery_empty_authenticated": 422,
+    "discovery_public_unauthenticated": 401,
+    "discovery_schema_present": true
+  },
+  "schema_sha256": "10de4703ea47254f10e95367ff24a2cde016c7933eae488fb4bbff249713a513",
+  "ledger_attempts": 1,
+  "rollback_source_commit": "d977170",
+  "source_dirty": false
+}

@@ -1,0 +1,65 @@
+{
+  "at": "2026-10-09T05:07:56.459751+00:00",
+  "user_override_relay": "relay_a1f11148a1c0",
+  "demo_auth_disabled": true,
+  "explicit_runtime_config": "HOWLENS_DEMO_AUTH_DISABLED=true",
+  "gateway_pid": 99195,
+  "gateway_terminal": "term_48011114-e653-4ca3-900e-c4b9bc78b8ad",
+  "upstream_pid": 89580,
+  "tunnel_pid": 46758,
+  "url": "https://premium-proceed-hartford-published.trycloudflare.com",
+  "checks": [
+    {
+      "origin": "http://127.0.0.1:18080",
+      "method": "GET",
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "origin": "http://127.0.0.1:18080",
+      "method": "POST",
+      "path": "/analyses",
+      "status": 422
+    },
+    {
+      "origin": "http://127.0.0.1:18080",
+      "method": "POST",
+      "path": "/product-discoveries",
+      "status": 422
+    },
+    {
+      "origin": "http://127.0.0.1:18080",
+      "method": "GET",
+      "path": "/docs",
+      "status": 404
+    },
+    {
+      "origin": "https://premium-proceed-hartford-published.trycloudflare.com",
+      "method": "GET",
+      "path": "/health",
+      "status": 200
+    },
+    {
+      "origin": "https://premium-proceed-hartford-published.trycloudflare.com",
+      "method": "POST",
+      "path": "/analyses",
+      "status": 422
+    },
+    {
+      "origin": "https://premium-proceed-hartford-published.trycloudflare.com",
+      "method": "POST",
+      "path": "/product-discoveries",
+      "status": 422
+    },
+    {
+      "origin": "https://premium-proceed-hartford-published.trycloudflare.com",
+      "method": "GET",
+      "path": "/docs",
+      "status": 404
+    }
+  ],
+  "provider_attempts": 6,
+  "remaining_shared_attempts": 14,
+  "paid_calls_in_check": 0,
+  "route_allowlist_body_limits_safety_guide_validation_ledger_cancellation": "preserved"
+}

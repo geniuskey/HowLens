@@ -1,0 +1,30 @@
+{
+  "at": "2026-10-09T05:00:15.622348+00:00",
+  "source_commit": "c462a290d45e084b9b29a260d57891a71d022050",
+  "filename": "4015b4013bb71d9f.jpg",
+  "http_status": 200,
+  "latency_seconds": 8.49,
+  "usage_delta": {
+    "attempts": 2,
+    "completed": 2,
+    "input_tokens": 11106,
+    "output_tokens": 463,
+    "total_tokens": 11569,
+    "web_search_attempts": 1
+  },
+  "request_count": 1,
+  "automatic_retries": 0,
+  "same_generic_question": true,
+  "model_hint_empty": true,
+  "remaining_shared_attempts": 14,
+  "discovery_id": "2fad5cff-0b91-4297-b744-d6081abdea19",
+  "status": "needs_more_information",
+  "mode": "live",
+  "candidates": [],
+  "missing_information": [
+    "라벨의 전체 모델명과 일치하는 출처를 확인하지 못했습니다.",
+    "제조사와 전체 모델명이 선명하게 보이는 라벨 사진과 제품 전체 사진을 올려 주세요."
+  ],
+  "gate_reason_codes": "source_provenance",
+  "conservative_usage_plus_reserved_search_usd": 0.0183832
+}

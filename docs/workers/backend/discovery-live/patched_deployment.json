@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-09T04:58:58.062428+00:00",
+  "source_commit": "c462a290d45e084b9b29a260d57891a71d022050",
+  "source_snapshot": "/tmp/howlens-discovery-runtime-c462a29",
+  "upstream_pid": 89580,
+  "upstream_terminal": "term_4f01bd3a-800a-48c9-a774-91830d385164",
+  "previous_upstream_stopped": 67997,
+  "gateway_pid": 46220,
+  "tunnel_pid": 46758,
+  "url": "https://premium-proceed-hartford-published.trycloudflare.com",
+  "health": 200,
+  "public_health": 200,
+  "discovery_schema_present": true,
+  "empty_authenticated": 422,
+  "ledger_attempts": 4,
+  "remaining_shared_attempts": 16,
+  "schema_sha256": "10de4703ea47254f10e95367ff24a2cde016c7933eae488fb4bbff249713a513"
+}
