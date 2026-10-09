@@ -1,4 +1,4 @@
-HOWLENS | 2026-10-09 13:31 KST | SUBMIT 17:00 | LEFT ~3h29m
+HOWLENS | 2026-10-09 13:33 KST | SUBMIT 17:00 | LEFT ~3h27m
 
 OVERALL RELEASE READINESS
 [############--------] ~60% (Coordinator estimate, not measured code completion)
@@ -32,11 +32,11 @@ Final1h buffer; timing is a target, not a completion claim.
 | Image model comparison | RUNNING    | ctx_047d57e579b7; quality/cost/time   |
 | Backend uploaded PDFs  | INDEXED 5  | d00384a; runtime registration pending|
 | Runtime manual ingest  | PENDING    | asset architecture ready027ec4e      |
-| Main product merge     | PUSHED     | user approved;51f8a01 app/backend/vis|
+| Main product merge     | PUSHED     | user approved;9143485 incl evaluation|
 +------------------------+------------+---------------------------------------+
 
 PHYSICAL TESTING: available NOW in each local TEST worker conversation.
-Galaxy App: R5KL20H60TN; baseline57405bb camera/retake verified, integration next.
+Galaxy App: R5KL20H60TN; integratedab20cc3 INSTALLED, NEW HOME VISIBLE13:31.
 Windows: R3CY70W172M; baseline permission/settings/gallery verified.
 USER temporarily disconnecting Windows phone for real product photography.
 Do not schedule device control until user reports reconnection.
@@ -65,5 +65,8 @@ Authority and historical receipts: STATUS.md / HANDOFF.md.
 
 CURRENT: Astra only 김태완; 김의윤 Luna6 TEST ONLY.
 PUBLIC: https://premium-proceed-hartford-published.trycloudflare.com/health
-HTTPS server verified on PC and Galaxy5G; integrated APK built and downloaded on Galaxy PC; installation/new Home proof
-and authenticated HTTPS analysis pending. Original signing mismatch resolved.
+HTTPS server verified on PC and Galaxy5G; integrated APK installed, new Home screenshot2119ad57 verified by Galaxy QA.
+Authenticated HTTPS analysis remains pending; signing mismatch resolved.
+
+MAIN VALIDATION:153 backend+visual tests and14subtests PASS with TCP disabled;
+Evaluation20tests PASS. Protocol env required; prior missing-dependency/setup errors resolved.
