@@ -4,7 +4,7 @@ from contextlib import asynccontextmanager
 from io import BytesIO
 from uuid import uuid4
 import warnings
-from fastapi import FastAPI, File, Form, HTTPException, UploadFile
+from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
 from PIL import Image, UnidentifiedImageError
 from .models import Analysis, Device, Verification, VisualJob
 from .safety import Approval, ManualRegistry, sanitize
@@ -28,15 +28,22 @@ class BoundedRequest:
         if scope['type'] != 'http':
             return await self.app(scope, receive, send)
         total = 0
+        body_complete = False
         deadline = asyncio.get_running_loop().time() + 30
         async def bounded_receive():
-            nonlocal total
+            nonlocal total, body_complete
+            if body_complete:
+                # Post-upload disconnect monitoring is governed by the work deadline,
+                # not the upload deadline, and is cancelled when work settles.
+                return await receive()
             try:
                 remaining = deadline - asyncio.get_running_loop().time()
                 message = await asyncio.wait_for(receive(), timeout=min(15, remaining))
             except TimeoutError:
                 fail(504, 'upload_timeout', 'Upload timed out.', True)
             total += len(message.get('body', b''))
+            if message.get('type') == 'http.request' and not message.get('more_body', False):
+                body_complete = True
             if total > MAX_REQUEST:
                 fail(413, 'request_too_large', 'Upload exceeds request limit.')
             return message
@@ -152,7 +159,8 @@ def create_app(provider=None, registry=None, reviewer=None, timeout_seconds=30,
         return dict(status='ok', mode='live')
 
     @app.post('/analyses', response_model=Analysis)
-    async def analyses(device_id: Device = Form(...), question: str = Form(...),
+    async def analyses(request: Request, device_id: Device = Form(...),
+                       question: str = Form('사진 속 장비의 상태와 확인할 사항을 알려 주세요.'),
                        photo: UploadFile = File(...)):
         question = question.strip()
         if not 1 <= len(question) <= 2000:
@@ -169,8 +177,22 @@ def create_app(provider=None, registry=None, reviewer=None, timeout_seconds=30,
             result = Analysis.model_validate(sanitize(a, manuals, approval))
             store.put(StoredAnalysis(result.model_copy(deep=True), original, approval))
             return result, approval
-        a, approval = await upstream(analyze_and_review)
-        return a
+        async def watch_disconnect():
+            while (await request.receive()).get('type') != 'http.disconnect':
+                pass
+        work = asyncio.create_task(upstream(analyze_and_review))
+        disconnect = asyncio.create_task(watch_disconnect())
+        try:
+            done, _ = await asyncio.wait({work, disconnect}, return_when=asyncio.FIRST_COMPLETED)
+            if disconnect in done:
+                fail(499, 'request_cancelled', 'Analysis request was cancelled.')
+            a, approval = await work
+            return a
+        finally:
+            for task in (work, disconnect):
+                if not task.done():
+                    task.cancel()
+            await asyncio.gather(work, disconnect, return_exceptions=True)
 
     @app.post('/analyses/{analysis_id}/visual', response_model=VisualJob, status_code=202)
     async def visual(analysis_id: str):

@@ -1,7 +1,7 @@
 """Additive discovery DTOs. Discovery never carries executable guide steps."""
 from datetime import datetime
 from typing import Annotated, Literal
-from pydantic import BaseModel, ConfigDict, Field, StringConstraints, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StringConstraints, field_validator, model_validator
 
 Name = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=200)]
 Text = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=1000)]
@@ -38,12 +38,26 @@ class ProductCandidate(StrictModel):
     match_notes: list[Text] = Field(min_length=1, max_length=4)
 
 
+class ProductResearch(StrictModel):
+    category: Name
+    observations: list[Text] = Field(min_length=1, max_length=3)
+    summary: Text
+    sources: list[DiscoverySource] = Field(min_length=1, max_length=3)
+
+
 class ProductDiscovery(StrictModel):
     discovery_id: Name
     status: Literal['candidate', 'needs_more_information', 'not_found']
     candidates: list[ProductCandidate] = Field(max_length=3)
     missing_information: list[Text] = Field(max_length=5)
     mode: Literal['live', 'mock']
+    research: ProductResearch | None = None
+
+    @model_validator(mode='after')
+    def research_is_uncertain(self):
+        if self.research is not None and (self.status != 'needs_more_information' or self.candidates):
+            raise ValueError('Research must remain uncertain and separate from exact candidates')
+        return self
 
     @field_validator('candidates')
     @classmethod

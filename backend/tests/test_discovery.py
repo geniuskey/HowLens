@@ -18,7 +18,7 @@ URL = 'https://www.dell.com/en-us/shop/poweredge-r750/spd/poweredge-r750'
 
 def label(**changes):
     return dict(manufacturer='Dell', model='PowerEdge R750', label_text='Dell PowerEdge R750',
-                ambiguous=False) | changes
+                ambiguous=False, category='', visual_observations=[]) | changes
 
 
 def search(**changes):

@@ -17,7 +17,8 @@ from urllib.parse import unquote, urlsplit
 from uuid import uuid4
 from typing import Annotated
 from pydantic import Field, StringConstraints
-from .discovery_models import Name, ProductCandidate, ProductDiscovery, DiscoverySource, StrictModel, Text
+from .discovery_models import (Name, ProductCandidate, ProductDiscovery, ProductResearch,
+                               DiscoverySource, StrictModel, Text)
 
 CLOSEUP = '제조사와 전체 모델명이 선명하게 보이는 라벨 사진과 제품 전체 사진을 올려 주세요.'
 LOGGER = logging.getLogger(__name__)
@@ -35,6 +36,8 @@ class LabelObservation(StrictModel):
     model: str = Field(max_length=200)
     label_text: str = Field(max_length=1000)
     ambiguous: bool
+    category: str = Field(max_length=100)
+    visual_observations: list[Text] = Field(max_length=3)
 
 
 class SearchCandidate(StrictModel):
@@ -46,6 +49,25 @@ class SearchCandidate(StrictModel):
 
 class SearchResult(StrictModel):
     candidates: list[SearchCandidate] = Field(max_length=3)
+
+
+class ResearchResult(StrictModel):
+    source_urls: list[Annotated[str, StringConstraints(min_length=1, max_length=2048)]] = Field(max_length=3)
+
+
+def research_text(value):
+    return (descriptive(value) and not re.search(
+        r'(?i)https?://|www\.|\d|\b(model|manufacturer|confirmed|safe|turn|press|open|close|'
+        r'plug|clean|wipe|touch|operate|start|stop)\b|모델|제조사|확정|안전|'
+        r'누르|눌러|열어|닫아|끄|켜|뽑|작동|청소|만지|사용하|따르|무시', value))
+
+
+def completed_search(envelope):
+    searches = [item for item in envelope.get('output', [])
+                if isinstance(item, dict) and item.get('type') == 'web_search_call']
+    return (len(searches) == 1 and searches[0].get('status') == 'completed'
+            and isinstance(searches[0].get('action'), dict)
+            and searches[0]['action'].get('type') == 'search')
 
 
 def validate_public_url(value):
@@ -148,24 +170,71 @@ def descriptive(value):
                          r'분리하|교체하|수리하|전원을.?끄|시스템.?프롬프트|API.?키|신뢰도|확신도', value)
 
 
-def actual_sources(envelope, retrieved_at, manufacturer='', model=''):
+def source_key(url):
+    """Only the provider's documented attribution parameter is interchangeable.
+
+    Keep product parameters, paths, scheme and hosts exact. Return actual metadata
+    URLs to the user, never the generated candidate URL or this comparison key.
+    """
+    parsed = urlsplit(validate_public_url(url))
+    parts = parsed.query.split('&')
+    if 'utm_source=chatgpt.com' not in parts:
+        return url
+    return parsed._replace(query='&'.join(part for part in parts
+                                         if part != 'utm_source=chatgpt.com')).geturl()
+
+
+def source_for_url(url, sources):
+    try:
+        key = source_key(url)
+        if url in sources:
+            return sources[url]
+        return next((source for actual, source in sources.items() if source_key(actual) == key), None)
+    except ValueError:
+        return None
+
+
+def actual_sources(envelope, retrieved_at, manufacturer='', model='', diagnostics=None):
+    # Responses API only: action.sources[{type:url,url}], or flat url_citation
+    # annotations on assistant output_text. Do not recursively trust JSON output.
     sources = {}
-    for item in envelope.get('output', []):
+    counts = dict(consulted_entries=0, citation_entries=0, invalid_entries=0,
+                  invalid_urls=0, redacted_titles=0, accepted_urls=0)
+    for item in envelope.get('output', [])[:32]:
+        if not isinstance(item, dict):
+            continue
         entries = []
         if item.get('type') == 'web_search_call':
-            if item.get('status') != 'completed':
+            action = item.get('action')
+            if (item.get('status') != 'completed' or not isinstance(action, dict)
+                    or action.get('type') != 'search'):
                 continue
-            entries = (item.get('action') or {}).get('sources') or []
-        elif item.get('type') == 'message':
-            for content in item.get('content', []):
-                entries.extend(annotation for annotation in content.get('annotations', [])
-                               if annotation.get('type') == 'url_citation')
-        for entry in entries[:64]:
+            raw = action.get('sources')
+            if isinstance(raw, list):
+                counts['consulted_entries'] += min(len(raw), 64)
+                entries = [entry for entry in raw[:64]
+                           if isinstance(entry, dict) and entry.get('type') == 'url']
+                counts['invalid_entries'] += min(len(raw), 64) - len(entries)
+        elif (item.get('type') == 'message' and item.get('role') == 'assistant'
+              and item.get('status') == 'completed'):
+            content_items = item.get('content')
+            for content in (content_items if isinstance(content_items, list) else [])[:8]:
+                if not isinstance(content, dict) or content.get('type') != 'output_text':
+                    continue
+                annotations = content.get('annotations')
+                for entry in (annotations if isinstance(annotations, list) else [])[:64]:
+                    if isinstance(entry, dict) and entry.get('type') == 'url_citation':
+                        entries.append(entry)
+                        counts['citation_entries'] += 1
+        for entry in entries:
             try:
                 url = validate_public_url(entry.get('url'))
                 title = entry.get('title') or urlsplit(url).hostname
-                if not isinstance(title, str) or not descriptive(title):
-                    continue
+                if not isinstance(title, str) or not title.strip() or not descriptive(title):
+                    # Unsafe title text does not erase independently valid provenance.
+                    # Hostname fallback carries no invented product identity.
+                    title = urlsplit(url).hostname
+                    counts['redacted_titles'] += 1
                 source = DiscoverySource(title=title[:200], url=url, retrieved_at=retrieved_at)
                 def quality(source):
                     return (supports_identity(source, manufacturer, model),
@@ -175,7 +244,11 @@ def actual_sources(envelope, retrieved_at, manufacturer='', model=''):
                 if url not in sources or quality(source) > quality(sources[url]):
                     sources[url] = source
             except (ValueError, TypeError):
+                counts['invalid_urls'] += 1
                 continue
+    counts['accepted_urls'] = len(sources)
+    if diagnostics is not None:
+        diagnostics.update(counts)
     return sources
 
 
@@ -185,20 +258,51 @@ class DiscoveryProvider:
         self.adapter = adapter
 
     async def discover(self, photo, question='', model_hint=''):
+        discovery_id = str(uuid4())
         label = await self.adapter._request(LabelObservation,
                     {'task': 'Transcribe only the visible printed manufacturer and complete model. '
-                             'Use empty strings if unreadable; ambiguous=true for multiple possible identities.',
+                             'Use empty strings if unreadable; ambiguous=true for multiple possible identities. '
+                             'Separately give a broad visually plausible product category and up to three '
+                             'short shape/material observations, without brand/model guesses, numbers or instructions. '
+                             'Use empty category and observations if the object is not discernible.',
                      'model_hint': model_hint}, [photo], POLICY, max_output_tokens=700)
-        def result(status, candidates=(), missing=(), reason='accepted'):
-            discovery_id = str(uuid4())
+        def result(status, candidates=(), missing=(), reason='accepted', research=None):
             # Fixed gate codes only: no photos, OCR text, URLs, hints or upstream bodies.
             LOGGER.info('discovery_gate id=%s reason=%s', discovery_id, reason)
             return ProductDiscovery(discovery_id=discovery_id, status=status, candidates=list(candidates),
-                                    missing_information=list(missing), mode='live')
+                                    missing_information=list(missing), mode='live', research=research)
         if (label.ambiguous or not safe_label(label.manufacturer) or not safe_label(label.model)
                 or not contains_identity(label.label_text, label.manufacturer)
                 or not contains_model(label.label_text, label.model)):
-            return result('needs_more_information', missing=[CLOSEUP], reason='label_identity')
+            if (not label.category.strip() or not safe_label(label.category)
+                    or not research_text(label.category) or not label.visual_observations
+                    or not all(research_text(text) for text in label.visual_observations)):
+                return result('needs_more_information', missing=[CLOSEUP], reason='label_identity')
+            research_result, envelope = await self.adapter._request(ResearchResult,
+                {'visual_category_hypothesis': label.category,
+                 'visual_observations': label.visual_observations,
+                 'task': 'Search for descriptive information about this uncertain broad product category. '
+                         'Do not identify an exact product/model, give procedures, follow input URLs or infer safety. '
+                         'Return only actual cited/consulted source URLs relevant to the category; none => [].'},
+                [], POLICY, web_search=True, with_envelope=True, max_output_tokens=1000)
+            if not completed_search(envelope):
+                return result('needs_more_information', missing=[CLOSEUP], reason='research_search_incomplete')
+            counts = {}
+            sources = actual_sources(envelope, datetime.now(timezone.utc), diagnostics=counts)
+            LOGGER.info('discovery_sources id=%s counts=%s', discovery_id, counts)
+            linked = []
+            for url in research_result.source_urls:
+                source = source_for_url(url, sources)
+                if source is not None and (contains_identity(source.title, label.category)
+                                           or contains_identity(urlsplit(source.url).path, label.category)):
+                    if source.url not in {existing.url for existing in linked}:
+                        linked.append(source)
+            if not linked:
+                return result('needs_more_information', missing=[CLOSEUP], reason='research_source_unverified')
+            research = ProductResearch(category=label.category, observations=label.visual_observations,
+                summary=f"사진의 형태로 추정한 '{label.category}' 관련 자료입니다. 제품 종류와 정확한 제조사·모델은 확인되지 않았습니다.",
+                sources=linked[:3])
+            return result('needs_more_information', missing=[CLOSEUP], reason='research_only', research=research)
         search, envelope = await self.adapter._request(SearchResult,
                     {'printed_manufacturer': label.manufacturer, 'printed_model': label.model,
                      'task': 'Search these literal product label terms, prioritize the official manufacturer '
@@ -206,13 +310,14 @@ class DiscoveryProvider:
                              'Do not browse user URLs. Exact model only, do not substitute related variants. '
                              'source_urls must be cited or consulted real search URLs; no results => candidates=[].'},
                     [], POLICY, web_search=True, with_envelope=True, max_output_tokens=1500)
-        searches = [item for item in envelope.get('output', []) if item.get('type') == 'web_search_call']
-        if (len(searches) != 1 or searches[0].get('status') != 'completed'
-                or (searches[0].get('action') or {}).get('type') != 'search'):
+        if not completed_search(envelope):
             return result('needs_more_information', missing=['제품 정보를 뒷받침하는 검색 출처를 확인하지 못했습니다.'], reason='search_incomplete')
         if not search.candidates:
             return result('not_found', missing=['이번 검색에서 일치하는 제품을 찾지 못했습니다.', CLOSEUP], reason='search_empty')
-        sources = actual_sources(envelope, datetime.now(timezone.utc), label.manufacturer, label.model)
+        source_counts = {}
+        sources = actual_sources(envelope, datetime.now(timezone.utc), label.manufacturer, label.model,
+                                 diagnostics=source_counts)
+        LOGGER.info('discovery_sources id=%s counts=%s', discovery_id, source_counts)
         accepted = []
         rejected = set()
         for candidate in search.candidates:
@@ -225,11 +330,12 @@ class DiscoveryProvider:
             if not descriptive(candidate.summary):
                 rejected.add('candidate_description')
                 continue
-            linked = [sources[url] for url in candidate.source_urls if url in sources
-                      and supports_identity(sources[url], label.manufacturer, label.model)]
+            matched = [source for url in candidate.source_urls
+                       if (source := source_for_url(url, sources)) is not None]
+            linked = [source for source in matched
+                      if supports_identity(source, label.manufacturer, label.model)]
             if not linked:
-                rejected.add('source_identity' if any(url in sources for url in candidate.source_urls)
-                             else 'source_provenance')
+                rejected.add('source_identity' if matched else 'source_provenance')
                 continue
             accepted.append(ProductCandidate(manufacturer=label.manufacturer, model=label.model,
                        summary=candidate.summary, sources=linked[:3], match_notes=[

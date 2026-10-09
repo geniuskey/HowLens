@@ -41,7 +41,8 @@ def test_optional_fields_trimmed_mock_honest_and_analysis_store_untouched():
         response = client.post('/product-discoveries', data={'question': '  identify  ', 'model_hint': '  R750  '},
                                files={'photo': ('label.png', photo(), 'image/png')})
         assert response.status_code == 200 and response.json()['mode'] == 'mock'
-        assert set(response.json()) == {'discovery_id', 'status', 'candidates', 'missing_information', 'mode'}
+        assert set(response.json()) == {'discovery_id', 'status', 'candidates', 'missing_information', 'mode', 'research'}
+        assert response.json()['research'] is None
         assert provider.calls[0][1:] == ('identify', 'R750')
         assert app.state.store.analyses == {}
         existing = client.post('/analyses', data={'device_id': 'invented', 'question': 'identify'},
