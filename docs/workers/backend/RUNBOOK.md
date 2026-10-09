@@ -78,3 +78,36 @@ Read published Visual63dd0f8 public service/openai-provider/splitter plus its RU
 - https://developers.openai.com/api/docs/guides/structured-outputs?api-mode=responses
 - https://developers.openai.com/api/docs/guides/migrate-to-responses
 - https://developers.openai.com/api/docs/models/gpt-4.1-mini — image input, Responses, strict outputs, input/output rates.
+
+## W3 combined release packaging/discovery
+
+Fix commit76fa597 includes actual `visual*` packages present in the combined tree, excludes `visual.tests*`, and configures pytest importlib mode plus both test directories. Existing runtime Pillow/httpx pins satisfy Visual63dd0f8 ranges. The Backend-only checkout still has58tests; Visual code is supplied only in an authorized combined release, not merged by this Worker.
+
+Create a disposable release from repository root (public tracked paths only, no local .env):
+
+```sh
+RELEASE_FIX_DIR=$(mktemp -d /tmp/howlens-release-fix-XXXXXX)
+git archive 76fa5970a0b1609bb05c6530d7199bb87b4f3031 backend/howlens backend/tests backend/pyproject.toml | tar -x -C "$RELEASE_FIX_DIR"
+git archive 63dd0f80155b120fcd9bd07f7fb3bf6cf75773dc backend/visual | tar -x -C "$RELEASE_FIX_DIR"
+python3 -m venv "$RELEASE_FIX_DIR/testenv"
+"$RELEASE_FIX_DIR/testenv/bin/python" -m pip install -e "$RELEASE_FIX_DIR/backend[test]"
+cd "$RELEASE_FIX_DIR/backend"
+../testenv/bin/python -m pytest --collect-only -q
+../testenv/bin/python -m pytest -q
+```
+
+No custom CLI import-mode or explicit dual testpaths needed. Actual candidate run:75collected,75passed +14subtests,10deprecation warnings; standalone normal command58passed. For offline isolation, execute with a cleared credential/paid environment and TCP-blocking sitecustomize as used in the report; do not configure a key in snapshots. Package install may download dependencies, tests/probe use only offline doubles.
+
+Build/install and prove imports outside source tree using the durable probe:
+
+```sh
+"$RELEASE_FIX_DIR/testenv/bin/python" -m pip wheel --no-deps "$RELEASE_FIX_DIR/backend" -w "$RELEASE_FIX_DIR/wheel"
+python3 -m venv "$RELEASE_FIX_DIR/installed"
+"$RELEASE_FIX_DIR/installed/bin/python" -m pip install "$RELEASE_FIX_DIR/wheel/howlens_backend-0.1.0-py3-none-any.whl"
+mkdir -p "$RELEASE_FIX_DIR/outside"
+cd "$RELEASE_FIX_DIR/outside"
+env -u OPENAI_API_KEY -u HOWLENS_PAID_CALLS_ENABLED "$RELEASE_FIX_DIR/installed/bin/python" -I "$RELEASE_FIX_DIR/backend/tests/installed_wheel_probe.py" "$RELEASE_FIX_DIR/installed" "$RELEASE_FIX_DIR/wheel/howlens_backend-0.1.0-py3-none-any.whl"
+"$RELEASE_FIX_DIR/installed/bin/python" -m pip check
+```
+
+Probe checks installed module paths under the fresh venv, four Visual package members, catalog data and public9panel mapper/splitter integration with synthetic provider and reviewer; TCP blocked, paid_calls0. Actual wheel/install/probe all succeeded. No source path is used to resolve modules under -I, and tests/env files are not bundled with Visual. Packaging success does not activate HTTP generation/assets, approve physical conditions or establish image semantics. Existing server/key/.env remain untouched by W3.

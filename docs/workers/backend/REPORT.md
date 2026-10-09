@@ -1,3 +1,45 @@
+# W3 Backend release fix
+
+[DONE] Fixed setuptools discovery to include the public Visual package and pytest defaults to collect both suites using importlib mode. Disposable combined source now collects/passes75tests with normal documented pytest, and a freshly installed non-editable wheel imports Visual outside the source tree and passes the public startup/mapper/split boundary probe. Dedicated live server/key/env were untouched, no paid calls or main merge occurred, and guide/HTTP Visual readiness limits remain unchanged.
+
+## Input / ownership / commit
+
+- Worker branch: `ljyonefineday/feat-backend-foundation`, base `aba3e9e0fc81597228da3349511a16688a6de3ae`.
+- Fix code SHA: **76fa5970a0b1609bb05c6530d7199bb87b4f3031**; final docs/pushed SHA sent in worker_done.
+- Independent report read from `Runixs/eval-foundation` **e558424**, exact path docs/workers/evaluation/W4-RELEASE-AUDIT.md after explicit fetch.
+- Visual input **63dd0f80155b120fcd9bd07f7fb3bf6cf75773dc**, read-only public package extracted to disposable external snapshot.
+- Lifecycle task `task_4f2c7aa6aa8c`, dispatch `ctx_a78d1be91800`.
+- Only backend/pyproject.toml, backend/tests/installed_wheel_probe.py and own RUNBOOK/REPORT changed; no backend/visual modifications or root/common/Evaluation/App changes.
+
+## Changes
+
+Setuptools includes `howlens*` and `visual*` while excluding `visual.tests*`; existing Pillow12.3.0/httpx0.28.1 pins already satisfy the published Visual dependency ranges, confirmed by fresh installed-wheel pip check. Manual catalog remains package data. A combined source release thus bundles the actual Visual code; standalone Backend checkout remains usable and packages only what is present, with absent Visual still failing closed.
+
+Pytest testpaths are tests + visual/tests, configured importlib mode prevents duplicate test_openai_provider module names, and helper paths support existing Backend fixture imports. From backend cwd, normal `python -m pytest -q` collects combined75 without CLI import-mode/test-path workarounds; standalone still58. No other-owner tests were renamed or edited.
+
+New Backend-owned installed_wheel_probe.py runs under fresh installed python -I from external cwd, asserts all package imports resolve inside that venv, checks four Visual wheel modules/catalog and excludes Visual tests/env files, then tests real published startup/mapper/splitter through the Backend boundary with synthetic provider/reviewer. TCP is blocked and no credentials inherited; this proves packaging/public geometry wiring, not live generation or semantic safety approval.
+
+## Actual evidence
+
+Disposable snapshot `/var/folders/zb/_bbtpp4s4zb5_760tsn1y9dh0000gn/T/howlens-w3-release-fix-oqoswz4p`: Backendaba3e9e public howlens/tests/config plus candidate pyproject (identical configuration committed76fa597), Visual63dd0f8 package. Git archive selected tracked public paths only; no key/env copy. Subprocess env excluded OPENAI_API_KEY/paid flags; pytest TCP was blocked through external sitecustomize. Existing server PID74518 and terminal term_bde18df8-bc41-4a7f-bd14-2742207763a7 were not stopped/restarted/modified, and backend/.env was not accessed or changed in this Task.
+
+- Normal snapshot `python -m pytest --collect-only -q`, cwd snapshot/backend: **75 collected in0.26s**, exit0.
+- Normal snapshot `python -m pytest -q`, same cwd/config: **75 passed,14 subtests passed,10 warnings in0.62s**, exit0. Starlette TestClient1 + Pillow getdata9 deprecation warnings unsuppressed.
+- Standalone project-directory `.venv/bin/python -m pytest -q`: **58 passed,1 warning in0.54s**. Also explicit Backend paths passed58 in0.56s.
+- `python -m pip wheel --no-deps <snapshot>/backend -w <snapshot>/wheel`: built howlens_backend-0.1.0-py3-none-any.whl successfully, SHA256 **40d8b06b359d39ffade2627bea18930b95d162a2f1d7db4d6bf2edb0289bfcc4**.
+- Created separate snapshot/installed venv and actual `pip install <wheel>` (non-editable) succeeded. From snapshot/home, isolated `installed/bin/python -I <Backend owned installed_wheel_probe.py> <installed venv> <wheel>`: PASS wheel members, out-of-source installed imports, manual catalog, public startup/mapper/split boundary;9panels; paid_calls0.
+- Actual wheel members: visual/__init__.py, openai_provider.py, service.py, splitter.py; no visual/tests members. Fresh installed `pip check`: no broken requirements.
+- `git diff --check`: clean.
+- Initial test orchestration mistakenly resolved the venv interpreter symlink to base Python and failed No module named pytest; corrected to preserve the venv executable path before the successful runs above. That failed attempt is not PASS.
+
+Raw local transcripts: snapshot/{collection,tests,wheel-build,wheel-install,installed-probe}.txt. Reproduction and probe commands in RUNBOOK. Probe source is durable and Backend-owned; complete PDFs/private images/keys were never copied into the release snapshot.
+
+## Remaining limits
+
+Visual package must actually be supplied in the authorized combined source release: this worker branch intentionally does not merge/add/edit other-owner Visual files. Packaging fixes inclusion, not code acquisition or main merge approval. Existing runtime still returns failed HTTP Visual jobs and has no completed asset serving; guide/physical review remains unreachable without the previously proposed/approved session contract and actual equipment inputs. Wrapper30s vs image adapter120s policy and splitter worker/cancellation bounds await HTTP activation work; this Task does not certify them. No paid AI/real guide/image semantics/Android/public deployment tests were performed. Existing dedicated controlled LAN service is left running unchanged under prior Backend/Coordinator ownership.
+
+---
+
 # W2 Backend delivery
 
 [DONE] Implemented real server-side Responses analysis/verification, conservative physical/evidence gates, independently checked descriptive manual registry, prepared public Visual integration, controlled paid-call accounting and cancellation-safe bounded decoding. All58 offline tests pass, the independent cancellation probe passes, one authorized live synthetic analysis returned non-guide/steps0, and the controlled LAN server is running for App integration. Genuine guide/verification/Visual success remains pending actual equipment/operator approval and scoped contract decision; no fake physical approval or live image success is claimed.
