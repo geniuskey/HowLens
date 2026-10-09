@@ -1,20 +1,15 @@
 # Orchestration status
 
-2026-10-09 11:00 KST 기준. Run: `run_6351cb7363de`. 문서 기준 commit: `75c8eac` (main push 완료).
+2026-10-09 Coordinator handoff checkpoint. Run: `run_6351cb7363de`. main product merge 미실행.
 
 | Task | PC | 상태 | Dispatch / 브랜치 / 검증 |
 |---|---|---|---|
-| DOC-0 | 김의윤 Coordinator | 완료 | 22개 문서 링크 검사, missing 0; diff check 통과 |
-| W1-APP | 김의윤 | 실행 중 | `ctx_6459221af0a9`; `feat/ui-foundation`; 실제 완료 결과 대기 |
-| W1-BACKEND | 이준영 | 배포 수락 | `ctx_ae22fd3172c6`; `feat/backend-foundation`; 완료 결과 대기 |
-| W1-VISUAL | 이윤재 | 배포 수락 | `ctx_0f017aa04711`; `feat/visual-foundation`; 완료 결과 대기 |
-| W1-EVALUATION | 김태완 | 시작 차단 | `ctx_42c4431273d9`; `eval/foundation`; workspace trust 승인 필요 |
+| DOC-0 | 김의윤 → 김태완 | 문서 인계 중 | main 문서 push 후 새 Coordinator 시작 |
+| W1-APP | 김의윤 | succeeded, terminal released | `ctx_6459221af0a9`; `geniuskey/feat-ui-foundation`; `f4f0ab65797a345d9af4565df9bf035ba22e8681`; assembleDebug, JVM 5, emulator 4, lint errors 0/warnings 9; Worker 보고 |
+| W1-BACKEND | 이준영 | failed: 권한 전환 checkpoint, 파일 보존 | `ctx_ae22fd3172c6`; `ljyonefineday/feat-backend-foundation`; `b7844558b97813c004921c4ea8d1d6ba9d0e9338`; synthetic tests 21; push/최종 검증 남음 |
+| W1-VISUAL | 이윤재 | failed: Git author/auth blocker, staged 보존 | `ctx_0f017aa04711`; `feat-visual-foundation`; base `75c8eac`; standalone tests 8; commit/push 미실행 |
+| W1-EVALUATION | 김태완 | active YOLO | `ctx_acf34f2187a5`; Task `task_328754f0630e`; 기존 eval-foundation worktree |
 
-## 착수 이슈
-
-- 원격 clone 3개는 등록되어 있었으나 조회 가능한 main ref가 없었다. 별도 bootstrap shell에서 `git fetch origin main`으로 origin/main 확보. shell은 작업 완료 후 닫았다. 기존 파일은 수정하지 않았다.
-- Backend 첫 Dispatch `ctx_497cc41d5ed7`는 worktree_create 실패, 자원 생성 없음. 같은 Task `task_2f454c0c4e2c`를 `--retry-of`와 명시적 origin/main으로 재시도했다.
-- Evaluation Task `task_328754f0630e`는 `agent-trust-workspace`로 agent_readiness 실패. 작업 입력 전 실패이며 Worker 코드 실행으로 간주하지 않는다. 해당 PC 신뢰 승인 요청을 올렸다. 다른 세 작업은 진행한다.
-- 모델/effort override 없이 Worker별 PC 설정을 유지했다. Coordinator Medium은 사용자 요청 설정이다.
-
-제품 코드 통합, 실제 AI, 설치 가능한 APK, 실기기 E2E는 아직 검증하지 않았다. Worker 결과와 사람 리뷰를 별도로 기록한다.
+Backend/Visual release 결과는 retained, reason=user_takeover, processAction=none. 해당 기존 터미널을 임의 종료하거나 이중 편집자를 띄우지 않는다.
+완료 메시지 5개를 처리하고 `delivery_b2c5dc5008d8` ack 완료. 후속 메시지는 새 Coordinator가 계속 수신한다.
+App 실물 카메라/갤러리, live AI/API/Visual/Verification 통합은 아직 미검증. 초기 Evaluation trust 실패는 새 YOLO Dispatch로 복구되었다.

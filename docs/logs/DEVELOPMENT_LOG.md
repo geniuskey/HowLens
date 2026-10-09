@@ -15,3 +15,13 @@
 - App/Backend/Visual을 각 PC 별도 worktree에 배포. 원격 빈 refs는 git fetch로 복구.
 - Evaluation은 폴더 신뢰 gate로 시작 실패; 신뢰 승인 요청. 완료나 테스트 통과로 기록하지 않음.
 - 사람 제품 코드 리뷰·통합은 아직 없음. 결과는 역할 REPORT와 Coordinator 리뷰 자료에 기록 예정.
+
+## 2026-10-09 — Remote YOLO correction
+
+- 원격 Backend의 Git/네트워크/Orca 작업이 workspace-write 권한 승인을 요청하는 것을 실제 transcript로 확인.
+- 사용자 답변: 원격 Worker 3대 모두 YOLO 적용. 기존 실행 모드가 Coordinator에서 상속되지 않음을 확인하고 명시적 CLI 옵션으로 재실행.
+- Evaluation retry `ctx_acf34f2187a5`가 기존 eval/foundation worktree의 YOLO terminal을 재사용해 작업 수락.
+- Backend/Visual은 checkpoint 요청 후 전환 대기. Visual은 구현/8 tests 완료 보고, Git identity/auth blocker는 별도 해결 필요.
+- 근거: [Codex CLI reference](https://learn.chatgpt.com/docs/cli/reference)에서 bypass flag 확인. 옵션은 이번 Worker 실행에만 적용, 전역 계정 설정 수정 없음.
+
+- 사용자가 김태완 Pro x20 계정, GPT-6 Astra/Medium/YOLO, main clone으로 Coordinator 이전을 지시했다. App succeeded 및 Backend/Visual failed checkpoint를 처리하고 delivery_b2c5dc5008d8 ack 완료. 제품 merge 없이 docs/orchestrator/HANDOFF.md에 전체 실행 상태를 보존했다.
