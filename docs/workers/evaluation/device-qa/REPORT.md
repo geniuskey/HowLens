@@ -31,3 +31,11 @@
 ## Next dependency
 
 Coordinator was asked to provide an APK delivery path or restore `adb`/device access and share the App SHA if the baseline has finished. No Android SDK setup was attempted, in keeping with the task's 10-minute setup limit.
+
+## Updated device inventory
+
+- ADB source: official Android SDK Platform-Tools for Windows, downloaded to `%TEMP%\HowLens-W5-device-qa` (standalone; no PATH or global SDK changes)
+- Platform Tools: `adb` 37.0.1; downloaded ZIP SHA-256 `45F4D63113E895EBDE0C90F194099A4676B6AC653BD28D54314A9E022BBC1A99`
+- Authorized connected device: serial `R3CY70W172M`, model `SM-S938N`, Android 16 / API 36 (`samsung/pa3qksx/pa3q:16/BP4A.251205.006/S938NKSSCCZH2_OKRCCZH2:user/release-keys`)
+- Device access: `adb devices -l` reported state `device`; model/OS were read using read-only `getprop` queries. The temporary ADB server was stopped after inventory.
+- Baseline source App SHA supplied by coordinator: `0e2aa94a93db5f2ab2cfc8f7e1a834b4e69eb6e1`; APK delivery is pending, so package/build SHA is not yet observed and install/launch/UI checks remain pending.
