@@ -74,6 +74,27 @@ import kotlinx.serialization.Serializable
 
 /** Evidence-only user-reviewed handoff; arbitrary text from photos/models is omitted. */
 object SharePreview {
+    private val credentialKeys = setOf(
+        "token", "access_token", "auth", "authorization", "signature", "sig", "key", "password", "secret"
+    )
+
+    private fun containsCredentialParameter(raw: String?): Boolean {
+        if (raw.isNullOrEmpty()) return false
+        return raw.split('&', ';', '?').any { parameter ->
+            var key = parameter.substringBefore('=')
+            for (attempt in 0..8) {
+                if (key.lowercase(java.util.Locale.ROOT) in credentialKeys) return true
+                val decoded = runCatching {
+                    java.net.URLDecoder.decode(key, Charsets.UTF_8.name())
+                }.getOrNull() ?: return@any true
+                if (decoded == key) return@any false
+                if (attempt == 8) return@any true
+                key = decoded
+            }
+            false
+        }
+    }
+
     fun build(analysis: Analysis): String = buildString {
         appendLine("HowLens 장비 참고 요약")
         appendLine("장비: ${InputRules.devices[analysis.deviceId] ?: "알 수 없는 장비"}")
@@ -86,9 +107,7 @@ object SharePreview {
         val publicEvidence = analysis.evidence.filter { evidence ->
             runCatching { java.net.URI(evidence.sourceUrl).let { uri ->
                 uri.scheme == "https" && !uri.host.isNullOrBlank() && uri.userInfo == null &&
-                    uri.rawQuery.orEmpty().split('&').none { query ->
-                        query.substringBefore('=').lowercase() in setOf("token", "access_token", "auth", "authorization", "signature", "sig", "key", "password", "secret")
-                    }
+                    !containsCredentialParameter(uri.rawQuery) && !containsCredentialParameter(uri.rawFragment)
             } }.getOrDefault(false)
         }
         if (publicEvidence.isNotEmpty()) {
