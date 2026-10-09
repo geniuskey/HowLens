@@ -1,0 +1,62 @@
+{
+  "scope": "synthetic black-box contract smoke, not real equipment evaluation",
+  "paid_analysis_opt_in": false,
+  "cases": [
+    {
+      "case": "health",
+      "status": "passed",
+      "http": 200
+    },
+    {
+      "case": "unknown_visual_job",
+      "status": "passed",
+      "http": 404
+    },
+    {
+      "case": "invalid_format",
+      "status": "passed",
+      "http": 415
+    },
+    {
+      "case": "invalid_decode",
+      "status": "passed",
+      "http": 415
+    },
+    {
+      "case": "oversize",
+      "status": "passed",
+      "http": 413
+    },
+    {
+      "case": "invalid_device",
+      "status": "passed",
+      "http": 422
+    },
+    {
+      "case": "unknown_analysis_visual",
+      "status": "passed",
+      "http": 404
+    },
+    {
+      "case": "unknown_analysis_verification",
+      "status": "passed",
+      "http": 404
+    },
+    {
+      "case": "synthetic_analysis_upload",
+      "status": "passed",
+      "http": 200
+    },
+    {
+      "case": "non_guide_visual",
+      "status": "passed",
+      "http": 409
+    },
+    {
+      "case": "non_guide_verification",
+      "status": "passed",
+      "http": 409
+    }
+  ],
+  "status": "passed"
+}
