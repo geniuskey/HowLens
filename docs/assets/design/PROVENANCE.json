@@ -1,0 +1,43 @@
+{
+  "assets": [
+    {
+      "path": "docs/assets/design/reference/team-lead-howlens-original.png",
+      "sha256": "8f070daa62eeae8ec944c65a07594c10bba24520fd4269d44ebd97bf9248dc12",
+      "bytes": 1935790,
+      "width_px": 1448,
+      "height_px": 1086,
+      "origin": "user-supplied team-lead image; copied unchanged",
+      "date_kst": "2026-10-09"
+    },
+    {
+      "path": "docs/assets/design/howlens-input-concept.png",
+      "sha256": "35d76ec700e77d8adbcd28b00eeae7e4b634a57b7e77a4e982978316a02cee20",
+      "bytes": 1164131,
+      "width_px": 941,
+      "height_px": 1672,
+      "origin": "AI generated Android concept; not APK screenshot or verified equipment photo",
+      "date_kst": "2026-10-09"
+    },
+    {
+      "path": "docs/assets/design/howlens-result-concept.png",
+      "sha256": "44b264e9d457f88dce7726cf088dba2789772adcc3289bdd9172c566b4e1186e",
+      "bytes": 1501349,
+      "width_px": 941,
+      "height_px": 1672,
+      "origin": "AI generated Android concept; not APK screenshot or verified equipment photo",
+      "date_kst": "2026-10-09"
+    }
+  ],
+  "generator": "image_gen.imagegen",
+  "input_prompt": "howlens-input-concept.prompt.txt",
+  "input_parent_prompt": "howlens-input-concept.parent-prompt.txt",
+  "result_prompt": "howlens-result-concept.prompt.txt",
+  "reference": "reference/team-lead-howlens-original.png",
+  "notes": [
+    "Two final independent portrait images; no collage crops.",
+    "Initial teal concepts superseded after user reference; not committed.",
+    "Input corrected once for latest two tabs and minimal visible copy.",
+    "Generated hardware/details are synthetic and may be inaccurate; never use as manufacturer evidence.",
+    "Generated pictures are conceptual; dp/sp/contrast values come from DESIGN.md, not raster measurements."
+  ]
+}
