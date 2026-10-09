@@ -1,0 +1,271 @@
+{
+  "at": "2026-10-09T14:36:00+09:00",
+  "reason": "explicit user full HowLens session shutdown",
+  "active_dispatches": 0,
+  "services": {
+    "api_pid": 21375,
+    "gateway_pid": 99195,
+    "tunnel_pid": 46758,
+    "all_stopped": true,
+    "ports8000_18080_listening": false
+  },
+  "terminals": [
+    {
+      "environment": "김태완",
+      "handle": "term_1df910f5-d37f-42eb-bccb-c779b947a12f",
+      "path": "/Users/runixs/orca/workspaces/HowLens/hackathon-research",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "김태완",
+      "handle": "term_9402afd0-bdf5-421c-91d9-913a10e5a5b7",
+      "path": "/Users/runixs/orca/workspaces/HowLens/hackathon-research",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "김태완",
+      "handle": "term_e4888e3b-f417-410a-abcd-ee3dc236dd91",
+      "path": "/Users/runixs/orca/workspaces/HowLens/app-integration",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "김태완",
+      "handle": "term_021512c5-8061-4024-afbc-d3919bd40e35",
+      "path": "/Users/runixs/orca/workspaces/HowLens/eval-foundation",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "김태완",
+      "handle": "term_72c697c7-e372-4e9a-875d-ab01b1c5f314",
+      "path": "/Users/runixs/orca/workspaces/HowLens/app-integration",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "김태완",
+      "handle": "term_dd0afd47-8e07-41fb-9fbf-7be82598756f",
+      "path": "/Users/runixs/HowLens",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "김태완",
+      "handle": "term_b639194c-17ac-4df4-b237-4812c9a673e2",
+      "path": "/Users/runixs/HowLens",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "김태완",
+      "handle": "term_0165ec48-2a88-4a20-b2cd-c3722db4b58d",
+      "path": "/Users/runixs/HowLens",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "김태완",
+      "handle": "term_ac0fa95d-92f3-47a3-937a-d1d392ebcecf",
+      "path": "/Users/runixs/HowLens",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "김태완",
+      "handle": "term_293d84b7-0728-4a15-9c6c-935014c3903b",
+      "path": "/Users/runixs/orca/workspaces/HowLens/eval-foundation",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "김태완",
+      "handle": "term_0aa4d04a-9575-4763-acc7-71f848ae80bf",
+      "path": "/Users/runixs/orca/workspaces/HowLens/eval-foundation",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "김의윤님",
+      "handle": "term_a2af53bc-c006-454a-9387-8c65b43bed98",
+      "path": "/Users/edwin/orca/workspaces/HowLens/feat-ui-foundation",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "김의윤님",
+      "handle": "term_57f20e12-2475-4e38-8090-73c27c9279ff",
+      "path": "/Users/edwin/HowLens",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "김의윤님",
+      "handle": "term_bb2160a5-32f1-4da3-a9e3-5eddf9f4ae05",
+      "path": "/Users/edwin/orca/workspaces/HowLens/feat-ui-foundation",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "김의윤님",
+      "handle": "term_839d5e9e-d14b-43d2-ab53-08792255f4fb",
+      "path": "/Users/edwin/orca/workspaces/HowLens/feat-ui-foundation",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "김의윤님",
+      "handle": "term_c865d46b-6608-4b10-adfa-a3202908cb97",
+      "path": "/Users/edwin/orca/workspaces/HowLens/camera-preview",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "김의윤님",
+      "handle": "term_4d8d5398-b46d-4d39-a7d4-56ab9ae80c88",
+      "path": "/Users/edwin/orca/workspaces/HowLens/camera-preview",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "김의윤님",
+      "handle": "term_f2441ec9-004d-479a-8253-a774d4b896cf",
+      "path": "/Users/edwin/orca/workspaces/HowLens/app-data-hardening",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "김의윤님",
+      "handle": "term_a02178d9-b855-426b-a047-63ad96296843",
+      "path": "/Users/edwin/orca/workspaces/HowLens/app-data-hardening",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "이준영님",
+      "handle": "term_828d7807-0150-4c6e-ac6d-c642e9e8d0d3",
+      "path": "/Users/jymbook/orca/workspaces/HowLens/feat-backend-foundation",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "이준영님",
+      "handle": "term_0e1b8115-3b94-49b5-a6e5-2162805a7f01",
+      "path": "/Users/jymbook/orca/workspaces/HowLens/feat-backend-foundation",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "이준영님",
+      "handle": "term_10afc80c-e024-4d22-83a9-2574d6e448e5",
+      "path": "/Users/jymbook/HowLens",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "이준영님",
+      "handle": "term_57cb29b1-ba5c-4a9b-8762-5cfabcab59cc",
+      "path": "/Users/jymbook/HowLens",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "이준영님",
+      "handle": "term_f3ccb1d4-9a27-4141-85d9-21842424d4e3",
+      "path": "/Users/jymbook/orca/workspaces/HowLens/feat-backend-foundation",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "이준영님",
+      "handle": "term_bde18df8-bc41-4a7f-bd14-2742207763a7",
+      "path": "/Users/jymbook/orca/workspaces/HowLens/feat-backend-foundation",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "이준영님",
+      "handle": "term_37c61d32-c363-4869-8a1e-e340f87e043f",
+      "path": "/Users/jymbook/orca/workspaces/HowLens/feat-backend-foundation",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "이준영님",
+      "handle": "term_d4770fd0-03f6-415d-9238-71daae4ed799",
+      "path": "/Users/jymbook/orca/workspaces/HowLens/feat-backend-foundation",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "이준영님",
+      "handle": "term_e04dcfca-2a2e-4c6e-967d-3cac58e02664",
+      "path": "/Users/jymbook/orca/workspaces/HowLens/feat-backend-foundation",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "이준영님",
+      "handle": "term_48011114-e653-4ca3-900e-c4b9bc78b8ad",
+      "path": "/Users/jymbook/orca/workspaces/HowLens/feat-backend-foundation",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "이준영님",
+      "handle": "term_6f7c3dd8-c997-4a23-8d0e-59a473984556",
+      "path": "/Users/jymbook/orca/workspaces/HowLens/feat-backend-foundation",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "이윤재님",
+      "handle": "term_218aeb03-e3fd-4672-ac1c-a94c85418b18",
+      "path": "C:/Users/luj01/orca/workspaces/HowLens/feat-visual-foundation",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "이윤재님",
+      "handle": "term_a51f634a-bab5-4369-9a31-58eba289fea7",
+      "path": "C:/Users/luj01/orca/workspaces/HowLens/device-qa",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "이윤재님",
+      "handle": "term_ef044fc0-6439-499b-8545-bef461bb92b2",
+      "path": "C:/Users/luj01/orca/workspaces/HowLens/device-qa",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "이윤재님",
+      "handle": "term_36b531d8-2fb0-445d-8c4f-dc36290e39ec",
+      "path": "C:/Users/luj01/orca/workspaces/HowLens/feat-visual-foundation",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "이윤재님",
+      "handle": "term_df1f0b6e-8e70-499d-ba83-e6f71e1a9a5d",
+      "path": "C:/2026_DSDN/HowLens",
+      "closed": true,
+      "ptyKilled": true
+    },
+    {
+      "environment": "이윤재님",
+      "handle": "term_ce4a6060-5fcf-4c48-a8b7-5df0d1073c3f",
+      "path": "C:/Users/luj01/orca/workspaces/HowLens/feat-visual-foundation",
+      "closed": true,
+      "ptyKilled": true
+    }
+  ],
+  "consumer": "term_3d2273ec-18ec-4f05-a363-47a0d768c9e2 closed ptyKilled=true after inbox empty",
+  "coordinator": "Final self-close scheduled after push; local receipt in HowLens-session-artifacts/20261009-1433/coordinator-close.json",
+  "files_deleted": false,
+  "credentials_copied": false,
+  "host_verification": "All remote HowLens terminals closed; local only final Coordinator and one nonconnected restored tab (closed separately)"
+}

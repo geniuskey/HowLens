@@ -1,3 +1,5 @@
+> 2026-10-09 14:36: All HowLens sessions/services intentionally shut down by user. This historical handoff is superseded by [RESTART.md](RESTART.md).
+
 # Latest continuation — 2026-10-09 11:37 KST
 
 This checkpoint supersedes historical routing/permission/active-Dispatch assertions below.

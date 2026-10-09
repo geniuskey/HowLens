@@ -1,5 +1,7 @@
 # Coordinator start
 
+**Latest lifecycle: user-requested full shutdown. Read `docs/orchestrator/RESTART.md` before resuming the historical HANDOFF.**
+
 Read, in order:
 1. `docs/common/RULES.md`
 2. `docs/common/TEAM.md` and `docs/common/CONTRACT.md`

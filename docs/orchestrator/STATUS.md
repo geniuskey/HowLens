@@ -569,3 +569,7 @@ Searchgatecompleted1pending1 nowpasses; actualsourcecounts12consulted+1citation=
 Finalsource_identity stillrejectsexactcandidate; noverifiedmanualguideclaim. Corephoto
 analysis/livepipeline availableonR3all3 by14:29, withqualitylimitation reporteduser.
 Astra configuredconditionalbutactualinferenceunexercised. No imagegenerationupgradeclaim.
+
+## User requested shutdown 14:36
+
+All36 existing non-Coordinator/non-consumer HowLens terminals closed with ptyKilled=true, then Hubconsumerclosed. API21375/gateway99195/tunnel46758 absent; ports8000/18080 no listener. Allworktrees/userassets preserved. DurableAPK/runtime/benchmarkbackups in owner HowLens-session-artifacts/20261009-1433. RESTART.md supersedes oldhandoff; finalCoordinator selfclose aftercommitpush. NoRunreset or credentialcopy.

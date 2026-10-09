@@ -1,6 +1,6 @@
 {
   "round": "R3-equipment-9a2bfa9",
-  "mode": "HUMAN_TEST_OPEN",
+  "mode": "USER_REQUESTED_SHUTDOWN",
   "apk_source_commit": "9a2bfa9",
   "apk_sha256": "7edb4e6cc669ac1121a0d2a654ebe735699f393d5d952fd21dada3f8b9ba5f3b",
   "api_source_target": "dd7e4ae",
@@ -51,7 +51,7 @@
     "credentials_in_manifest": false
   },
   "api_upstream_pid_observed": 21375,
-  "api_health": "public200/live; actualanalysis20021.064s; actualdiscovery20014.984s/source_identity",
+  "api_health": "STOPPED; upstream/gateway/tunnel processes absent and ports8000/18080 closed",
   "apk_bytes": 13193414,
   "api_gateway_pid": 99195,
   "api_auth": "disabled_explicit_user_directive",
@@ -62,6 +62,6 @@
     "difficult_escalation": "gpt-6-astra",
     "status": "DEPLOYED dd7e4ae; Sol/Luna actual verified; Astra configured but not yet triggered"
   },
-  "provider_attempts": 22,
+  "provider_attempts": 23,
   "provider_attempt_cap": 40
 }
