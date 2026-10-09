@@ -280,3 +280,28 @@ observed, Java18present; relay_eda9b4b4f5db answered authorize official portable
 PlatformTools temporary install/inventory, no globalconfiguration/fullSDKneeded.
 APKdelivery/deviceauthorizationpending. Deliveries5ed430d46a40 and403e61c52ee5
 processed/acked; last inboxempty.
+
+## 12:35 three devices + parallel workers + shareable mockups
+
+User explicitly requests all3 USB-debug phones in parallel; third is 이준영PC.
+Windows authorized R3CY70W172M SM-S938N Android16/API36, portableadb37.0.1.
+Backend R3CT80CZ2MW detected unauthorized; async userRSAquestion pending.
+App retains exclusive R5KL20H60TN camera/Android17. Windows owns error/lifecycle,
+Backend owns network/one existing-budget synthetic analysis. No cross-devicecontrol.
+
+NewW6 tasks: APKdelivery task90c2202cb90c/ctx7f80f9bb1516; thirdphone
+task49156d49810e/ctx15c1e6bdf26a; Appdatafix task2c40c06c8751/ctxc80e9bd04607
+in new isolatedAppworker worktree app-data-hardening, terminala02178d9-b855-426b-a047-63ad96296843,
+base0e2aa94, branchgeniuskey/app-data-hardening, ownsRepo/Models/newtests only.
+NoCoordinatorworktreecreated. Mockupfiles task1829f2eaac8b/ctx3c6203dc9d97
+reuses settledLunaevalterminal. Existing Hubmain sessioneebe9bcd-146c-4ab0-a37e-5d4f1a2af40f
+user explicitly requestedutilization, observed6.1SolHighFast; assignedreadonly
+benchmarkboundaryreview task8b18d6653c43/ctx374b3b068958, no edits/no runinboxconsumption.
+
+Baseline APK disposablearchive assemblepass0e2aa94; size10341344, SHA256
+88eb7eac202b15a32baf1ee61490083c42c8fd776fb85dd3ff2de8d4410122e2.
+Private URL http://10.102.72.225:8765/howlens-baseline-0e2aa94-debug.apk sent
+toWindows/BackendQA. Correctedlive servicePID98131 (old95944stopped), owned
+byAPKhelper, onlyAPK/manifest, stopafter2completeGETs or20min. No publicpublishing.
+Mockup HTML/ZIP/3unchangedPNGs ready in eval-foundation/docs/assets/design-review;
+worker finishingchecks/push. Clearly markedconceptnotactualAPK.

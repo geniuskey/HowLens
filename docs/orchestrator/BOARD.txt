@@ -1,4 +1,4 @@
-HOWLENS | 2026-10-09 12:30 KST | SUBMIT 17:00 | LEFT ~4h30m
+HOWLENS | 2026-10-09 12:35 KST | SUBMIT 17:00 | LEFT ~4h25m
 
 OVERALL RELEASE READINESS (Coordinator estimate, not measured code completion)
 [###########---------] ~55%
@@ -29,8 +29,9 @@ NOW          Galaxy baseline installed/launched; user hands-on slot must be
 13:00-14:00  App -> live server -> real analysis round trip target.
              Previous phone health succeeded; actual APK analysis POST untested.
 14:30-15:30  Final two-device regression + demo rehearsal.
-Second phone Windows QA active, adb/SDK absent; portable official adb setup
-             instructed. Device identity/authorization and APK delivery pending.
+Second phone Windows SM-S938N Android16/API36 authorized; APK sent for download.
+Third phone  Backend PC serial R3CT80CZ2MW detected; USB RSA user approval pending.
+             Third-device network QA dispatched. Both receive same baseline SHA.
 Timing is a target, not confirmed availability. Actual equipment/operator evidence
 still required for validated guide E2E; synthetic tests do not satisfy that gate.
 
@@ -44,7 +45,7 @@ still required for validated guide E2E; synthetic tests do not satisfy that gate
 | QA / App audit      | READY     | d4cbc46; 4 findings routed to App       |
 | QA / Android17      | READY     | 979a109; Espresso3.7 candidate to test  |
 | OPS / App push      | RECOVERED | Exact0e2aa94 verified on origin         |
-| QA / Extra device   | SETUP     | Windows adb missing; portable setup next|
+| QA / Extra devices  | PREPARING | Windows authorized; Backend RSA pending |
 | GUIDE / Real E2E    | WAITING   | Actual equipment/operator evidence     |
 | RELEASE / main      | WAITING   | Concrete review + user approval        |
 +----------------------+-----------+-----------------------------------------+
@@ -85,7 +86,7 @@ No continuous video AI claimed. Paid image benchmark still not executed.
 
 NEXT
 1. App fixes generation/cancellation+poll bounds and verifies two-tab screenshots.
-2. App cleared Repository.kt/Models.kt at12:28; dispatch isolated fix helper next.
+2. Data fix helper ctx_c80e9bd04607 running in isolated app-data-hardening.
 3. Use second physical device on Visual PC when inventory/ADB authorization confirmed.
 4. Review delivered image benchmark runner; exact model fit remains unmeasured.
 5. Prepare main integration diff/test review; do not infer user merge approval.
@@ -94,3 +95,16 @@ UPDATE POLICY
 Coordinator updates file and prints ASCII changes in chat on material messages.
 Timestamped snapshot, not an autonomous live process. Heartbeat != progress.
 Detailed authority/receipts: STATUS.md and HANDOFF.md.
+
+12:35 PARALLEL WAVE (7 assigned active Tasks; not all executing device tests yet)
+App UI/camera       ctx_1b2d7e0b3529  existing primary, exclusive Galaxy
+App data fixes     ctx_c80e9bd04607  LunaHigh; isolated0e2base, Repo/Models only
+APK delivery       ctx_7f80f9bb1516  LunaHigh; immutable baseline ready
+Windows device QA  ctx_a3b6477cd484  LunaHigh; Android16 authorized
+Backend device QA  ctx_15c1e6bdf26a  Sol; thirdphone RSA pending
+Mockup files       ctx_3c6203dc9d97  LunaHigh; HTML/PNG/ZIP ready, validating
+Runner review      ctx_374b3b068958  SolHighFast; main read-only, no product edits
+
+Mockup viewer (local):
+/Users/runixs/orca/workspaces/HowLens/eval-foundation/docs/assets/design-review/index.html
+Share ZIP same directory: howlens-design-review.zip. CONCEPT, not actual APK.
