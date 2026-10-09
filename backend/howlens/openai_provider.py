@@ -32,6 +32,8 @@ class OpenAIResponsesProvider:
         self.calls_authorized = calls_authorized
         self.timeout_seconds, self.max_output_tokens = timeout_seconds, max_output_tokens
         self._transport = transport
+        self.last_usage = None
+        self.last_http_status = None
 
     @staticmethod
     def image(photo):
@@ -50,6 +52,8 @@ class OpenAIResponsesProvider:
         # A populated key never implies authorization to incur charges.
         if not self.calls_authorized or not self._api_key:
             raise RuntimeError('Paid API calls are not authorized/configured')
+        self.last_usage = None
+        self.last_http_status = None
         body = {'model':self.model, 'store':False, 'max_output_tokens':self.max_output_tokens,
                 'instructions':policy, 'input':[{'role':'user', 'content':[
                     {'type':'input_text', 'text':json.dumps(context, ensure_ascii=False)},
@@ -62,6 +66,7 @@ class OpenAIResponsesProvider:
                                              follow_redirects=False, trust_env=False) as client:
                     async with client.stream('POST', ENDPOINT, json=body,
                                              headers={'Authorization':f'Bearer {self._api_key}'}) as response:
+                        self.last_http_status = response.status_code
                         if response.status_code != 200:
                             raise RuntimeError('Provider HTTP failure')
                         data = bytearray()
@@ -70,6 +75,10 @@ class OpenAIResponsesProvider:
                                 raise ValueError('Provider response exceeds limit')
                             data.extend(chunk)
             envelope = json.loads(data)
+            usage = envelope.get('usage') or {}
+            counts = {name:usage.get(name) for name in ('input_tokens','output_tokens','total_tokens')}
+            if all(type(value) is int and 0 <= value <= 1_000_000_000 for value in counts.values()):
+                self.last_usage = counts
             if envelope.get('status') != 'completed' or envelope.get('error'):
                 raise ValueError('Provider response incomplete')
             texts = []

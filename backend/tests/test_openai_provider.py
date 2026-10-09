@@ -16,7 +16,8 @@ from test_api import candidate, photo, upload, registry, approve
 
 
 def envelope(value):
-    return {'status':'completed','output':[{'type':'message','role':'assistant','status':'completed',
+    return {'status':'completed','usage':{'input_tokens':100,'output_tokens':20,'total_tokens':120},
+            'output':[{'type':'message','role':'assistant','status':'completed',
              'content':[{'type':'output_text','text':json.dumps(value)}]}]}
 
 
@@ -144,3 +145,23 @@ def test_visual_public_boundary_prevents_unapproved_or_unbudgeted_call():
     result=asyncio.run(generate_reviewed_assets(saved,calls_authorized=True,quality_review=accept,
                       service=generate,splitter=lambda grid:[photo()]*9))
     assert len(result.panels)==9 and result.step_ids==('s1',)*9
+
+
+def test_registered_manufacturer_excerpts_are_descriptive_only():
+    from howlens.manual_catalog import load_registry
+    r=load_registry()
+    assert {device:len(r.excerpts(device)) for device in ('server','cobot','ups')} == {'server':2,'cobot':1,'ups':2}
+    for device in ('server','cobot','ups'):
+        for raw in r.excerpts(device):
+            e=Evidence.model_validate(raw)
+            assert r.actions(device,e)==frozenset()
+            assert r.actions(device,e.model_copy(update={'pdf_page':e.pdf_page+1})) is None
+            assert r.actions(device,e.model_copy(update={'document_version':'invented'})) is None
+
+
+def test_usage_diagnostics_are_numeric_only():
+    p=adapter(lambda r:httpx.Response(200,json=envelope(candidate())))
+    asyncio.run(p.analyze('server','test',photo()))
+    assert p.last_http_status==200
+    assert p.last_usage=={'input_tokens':100,'output_tokens':20,'total_tokens':120}
+    assert 'key' not in json.dumps(p.last_usage)

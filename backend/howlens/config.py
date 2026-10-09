@@ -2,7 +2,7 @@
 from pathlib import Path
 import os
 from dotenv import load_dotenv
-from .manual_catalog import build_registry
+from .manual_catalog import load_registry
 from .openai_provider import OpenAIResponsesProvider, conservative_review
 
 ENV_FILE = Path(__file__).resolve().parents[1] / '.env'
@@ -17,7 +17,7 @@ def readiness():
     return {'key_present':bool(os.environ.get('OPENAI_API_KEY','').strip()),
             'model_configured':bool(os.environ.get('OPENAI_MODEL','').strip()),
             'paid_calls_enabled':os.environ.get('HOWLENS_PAID_CALLS_ENABLED') == 'true',
-            'manual_entries':len(build_registry().excerpts('server')),
+            'manual_entries':sum(len(load_registry().excerpts(device)) for device in ('server','cobot','ups')),
             'independent_physical_review_ready':False,
             'visual_integrated':False}
 
@@ -25,7 +25,7 @@ def readiness():
 def configured_app():
     from .main import create_app
     load_local_env()
-    registry = build_registry()
+    registry = load_registry()
     key = os.environ.get('OPENAI_API_KEY','').strip()
     model = os.environ.get('OPENAI_MODEL','').strip()
     provider = None
