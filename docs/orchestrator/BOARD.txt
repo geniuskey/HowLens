@@ -1,10 +1,10 @@
-HOWLENS | 2026-10-09 13:51 KST | SUBMIT 17:00 | LEFT ~3h09m
+HOWLENS | 2026-10-09 13:56 KST | SUBMIT 17:00 | LEFT ~3h04m
 
 OVERALL RELEASE READINESS [############--------] ~60%
 Coordinator estimate, NOT measured code completion. No increase before device E2E.
 
 M1 Foundations/API    [####################] DONE main
-M2 Reference UI       [##################--] APK BUILT, three-phone install ongoing
+M2 Reference UI       [##################--] SAME APK INSTALLED on all3; real auth pending
 M3 Real device E2E    [########------------] camera baseline; new real auth pending
 M4 Submission        [--------------------] package/demo rehearsal pending
 
@@ -18,9 +18,9 @@ PRIORITY: USER real capture -> server -> actual response -> feedback -> fixes.
 | Reference HTML/native| PUSHED        | c503985; JVM36/build/lint pass            |
 | Discovery fix        | PUSHED        | c462a29;192tests+14subtests pass          |
 | Backend live rollout | PREPARING     | c462a29; short QA API hold requested      |
-| Galaxy new UI        | INSTALLING    | new app/test APK hashes verified         |
-| Fold4 new UI         | DOWNLOAD NEXT | prior ab20cc3 installed                  |
-| S25 Ultra new UI     | INSTALLING    | adb authorized; app/test hashes verified |
+| Galaxy new UI        | HOME VISIBLE  | 13:52:08; auth setup pending         |
+| Fold4 new UI         | HOME VISIBLE  | new reference APK install-r success                  |
+| S25 Ultra new UI     | CAMERA READY  | real preview verified; auth pending |
 | Image comparison     | SIX GENERATED | HTTP200;12.990-19.526s; quality unreviewed |
 | HTML independent QA  | RECHECK       | ctx_f7b466eb0711; prior4P1 worker-fixed   |
 | Real photos/manuals  | RECEIVED      |9privatephotos;5PDF main; runtime pending |
@@ -39,10 +39,14 @@ Current camera is preview + deliberate still capture; NO continuous video AI.
 
 PUBLIC:https://premium-proceed-hartford-published.trycloudflare.com
 Upstream67997 / gateway46220 / tunnel46758 (rollout may replace upstream).
-Temporary APK-only server8765:term_252ed996-e328-414e-9314-d84ea2980616
-Close after all3 download receipts. Preserve public runtime.
+Temporary APK-only server8765 CLOSED after all3 verified download receipts.
+All3 API idle ACK; c462a29 restart/replay GRANTED13:54. Preserve public runtime.
 
 ACTIVE: Backend ctx_e6f3dcf25970; Galaxy ctx_225d53638eeb;
 Fold4 ctx_15c1e6bdf26a; Visual/S25 ctx_216abb00c5de; audit ctx_f7b466eb0711.
 Settled/released-retained: referenceUI ctx_d2f3cc4ed9e4, debugger ctx_f8f2e2e33505.
 Astra only Kim Taewan; Kim Euiyun Luna6 TEST ONLY. Root owns main Git.
+
+USER POLICY13:55: no repeated passed tests; only changed-feature/bug checks.
+ONE Coordinator controls future3-device installs, humans own testing rounds.
+Hands-on real server target14:00-14:05; connection setup still pending.

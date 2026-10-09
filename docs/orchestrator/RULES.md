@@ -24,3 +24,9 @@ remote 시작 후 제어는 Dispatch ID로 한다. 실패한 launch는 receipt�
 사람이 승인한 통합은 Coordinator를 통해 수행할 수 있다. 미승인 main merge는 Worker에게 맡기지 않는다.
 이미 허용된 문서화·가역적 작업·검증은 진행한다. 기능 동결·범위 축소는 현재 사용자 지시와 실제 진행 상황을 따른다.
 원래 7시간 일정은 목표이며, 시각만 보고 완료를 선언하거나 실제 남은 작업을 숨기지 않는다.
+
+## 2026-10-09 13:55 user-directed testing and deployment loop
+
+Previously passed baseline unit/instrumentation/regression suites are not rerun by default. Test only new/changed functionality and exact affected behavior when a real bug justifies it; retain build and installation verification. Humans test core capture -> server analysis -> result/guide and report feedback to the sole Coordinator.
+
+After current setup handoff, individual AI device testers settle and stop touching phones. The Coordinator alone manages a synchronized three-phone release: one immutable APK/SHA, install on each assigned device, record success/version, then explicitly hand devices back to humans. Never run automated taps during a human test round. Feedback, priorities and rollout state live in this Coordinator conversation/BOARD. Product fixes stay with scoped Workers; do not create idle per-phone AI supervisors.
