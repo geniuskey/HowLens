@@ -1,5 +1,58 @@
 # Orchestration status
 
+2026-10-09 11:37 KST. Run `run_6351cb7363de`; Coordinator 김태완 main clone.
+17:00 submission; product main integration still awaits concrete review and approval.
+
+## Current routing and permissions
+
+Original Coordinator `term_be75fa04-a11b-405a-afce-de3b5623829a` was closed on the
+user's emergency instruction (ptyKilled=true, operator_close). User subsequently
+confirmed re-login. No former Coordinator agent is running.
+
+Hub home remains runtime `6f189372-0b29-4065-a2f2-cc27d192b26d`. Supported current
+`run-use` bound plain non-AI shell `term_3d2273ec-18ec-4f05-a363-47a0d768c9e2` on
+Hub main: consumer_generation=2, legacy=0, receipt
+`727c5445-ec83-48ef-a210-d58d6face489`. Successful consuming check proves this
+transport works without the old conversation/pane. 김태완 Coordinator controls it
+with --environment 김의윤님. It still depends on the Hub runtime and this new shell;
+local federated mirror alone is not the authoritative all-Worker inbox.
+
+Runixs repo push=true and ljyonefineday role=write independently verified via own
+account / owner-PC gh respectively. Pending invitations empty. Coordinator docs
+through `33da485` pushed to main. Workers instructed to push their own branches.
+No credentials were transferred and no main product merge performed.
+
+## Active W2
+
+| Task | PC / Dispatch | Scope |
+|---|---|---|
+| W2-APP `task_2b8f83fdee01` | 김의윤 / `ctx_6b1e3a72fcbf` | Live Visual + verification UI, bounded/cancellable HTTP; Galaxy baseline NOW |
+| W2-BACKEND `task_69c26e09a2dc` | 이준영 / `ctx_4fc700a02b03` | Responses adapter, strict evidence validation, config and Visual boundary |
+| W2-VISUAL `task_77bd347ac7ee` | 이윤재 / `ctx_3e01d615f3f3` | Image adapter, deterministic scene mapping, tests and timestamped mockup |
+| W2-E2E `task_15215775f6e9` | 김태완 / `ctx_98c4e2d3cca5` | API smoke, synthetic demo double, early device setup and final test checklist |
+| W2-RESEARCH `task_cd34651020f8` | 김태완 / `ctx_c1c5ea214ffa` | Official manuals and feasible extra feature research; separate owned docs |
+
+Each implementation task is <=45 minutes; research 15 minutes, E2E preparation 30.
+Existing active editors were reused or checked settled before launch. Product ownership
+is unchanged. W1 evidence below remains historical, not W2 live integration evidence.
+
+## Delivery targets and blockers
+
+- Now: Galaxy connected with USB debugging on App PC; adb authorization/install/camera
+  evidence awaited. Final regression at 15:30 does not delay this baseline.
+- 12:15 first W2 checkpoint; 13:00 integration candidate; 14:30 end-to-end target;
+  15:30 feature freeze; 15:30–16:30 final regression; 16:30 submission packaging.
+- Backend opened ignored mode0600 backend/.env for local human key entry. No paid
+  calls authorized/executed yet; API credits/key-ready/budget remain pending.
+- Actual equipment identity/photos and registered exact manual evidence remain pending.
+  Research found Dell R750 A11 page changes; never reuse older page numbers.
+- Extra feature candidate: evidence-text Android Sharesheet (20–30min), awaiting
+  source-linked report before assigning implementation to the existing App editor.
+- Main product merge needs consolidated actual diffs/tests and user approval.
+
+## Historical W1 checkpoint (superseded for routing and permissions)
+
+
 **11:26 KST 긴급 사용자 지시:** 김의윤 이전 Coordinator terminal 종료 확인
 (ptyKilled=true, operator_close). App Worker는 이미 completed/released/exited.
 김의윤 계정 재로그인 전 새 Worker 배포 금지. Hub runtime/Run/작업 파일 유지,

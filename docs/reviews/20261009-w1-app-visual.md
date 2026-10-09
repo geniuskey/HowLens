@@ -34,8 +34,9 @@ perform photo analysis. Visual/verification clients exist but their UI flows are
 wired. Real camera JPEG/rotation/process-death and real backend/AI integration are untested.
 
 The camera implementation uses ActivityResultContracts.TakePicture and an external
-camera app, while the common scope says CameraX. This deviation needs an explicit
-decision before integration; it is not silently treated as contract compliance.
+camera app. App TASK.md explicitly permits an initial camera intent when CameraX is
+excessive; this is an authorized implementation choice. Physical-device validation
+remains necessary, but no separate camera-choice approval is required.
 
 App cancel currently cancels the coroutine Job but the blocking OkHttp execute call
 has no explicit Call.cancel bridge. UI cancellation tests exercise the fake repository;
@@ -54,12 +55,12 @@ Accessed 2026-10-09:
 
 - [Android TakePicture contract](https://developer.android.com/reference/androidx/activity/result/contract/ActivityResultContracts.TakePicture)
   documents the Activity Result camera contract. This supports the mechanism, not
-  approval to replace this project's CameraX scope or proof on our devices.
+  proof on our devices; the project Task independently permits this mechanism.
 - [Android photo capture guide](https://developer.android.com/media/camera/camera-deprecated/photobasics)
   documents delegation to an external camera application and FileProvider URIs.
   The page is in deprecated-camera guidance and recommends CameraX/Camera2 for camera
   APIs. Our target is SDK 34/minSdk 26; no device execution was added by this research.
 
 Do not request a blanket main merge yet: Backend/Evaluation are still active and
-the camera deviation and live integration gaps must be included in the consolidated
+the remaining physical-device and live integration gaps must be included in the consolidated
 human review. No approval is inferred from Worker success or these documents.

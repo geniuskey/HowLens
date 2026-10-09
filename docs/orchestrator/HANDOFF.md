@@ -1,3 +1,35 @@
+# Latest continuation — 2026-10-09 11:37 KST
+
+This checkpoint supersedes historical routing/permission/active-Dispatch assertions below.
+Current STATUS is the fleet summary. Sole Coordinator remains 김태완 local main.
+
+- Old Coordinator conversation closed under explicit emergency user instruction;
+  re-login subsequently confirmed. Do not reopen it.
+- Hub Run preserved. New **plain shell, no AI** transport is
+  `term_3d2273ec-18ec-4f05-a363-47a0d768c9e2` on Hub main. Normal current run-use
+  succeeded, consumer_generation=2, legacy=0; request
+  `727c5445-ec83-48ef-a210-d58d6face489`. Repeated consuming checks and deliveries
+  succeeded without old terminal. Operate with --environment 김의윤님.
+- Both Runixs and ljyonefineday write restored externally and verified; docs push
+  through33da485 succeeded. Do not claim Coordinator granted these permissions.
+- W2 App terminal `term_8ad54a84-cf2f-498f-bc9c-464a6821d5e0`, same App worktree.
+  W2 Backend reuses `term_0e1b8115-3b94-49b5-a6e5-2162805a7f01`.
+  W2 Visual reuses `term_218aeb03-e3fd-4672-ac1c-a94c85418b18`.
+  W2 E2E reuses `term_293d84b7-0728-4a15-9c6c-935014c3903b`.
+  W2 Research uses `term_9402afd0-bdf5-421c-91d9-913a10e5a5b7`, separate
+  `/Users/runixs/orca/workspaces/HowLens/hackathon-research`, branch
+  Runixs/hackathon-research; only docs/workers/evaluation/research/.
+  No Coordinator worktree created. See STATUS for exact Task/Dispatch IDs.
+- Backend key entry path: /Users/jymbook/orca/workspaces/HowLens/feat-backend-foundation/backend/.env.
+  Worker reported ignored/0600 and editor open, key/model absent, paid switch disabled.
+  User informed; API balance, key-ready and cost limit still awaiting answer.
+- Galaxy supplied on 김의윤 PC. App instructed baseline now; final regression later.
+- delivery_4a54e69fbdaf processed/acked; follow-ups clarified early device timing,
+  mock-only double guards and source-linked Sharesheet report. Later deliveries must
+  be consumed/processed normally; do not rely on this checkpoint as inbox state.
+
+---
+
 # Coordinator ownership handoff
 
 ## Emergency account pause — 2026-10-09 11:26 KST
