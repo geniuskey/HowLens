@@ -1,15 +1,12 @@
-# 실기기 테스트 대화 규칙
+# Human test rounds
 
-2026-10-09 12:47 사용자 명시 지시. 앞선 Coordinator 단일 전달 방식보다 우선한다.
+User instruction 2026-10-09 13:54–13:55: one Coordinator, three synchronized phones, focused checks only. `DEVICE_ROUND.json` is the current synchronization record; do not put secrets in it.
 
-테스트 동작 요청과 사람 응답은 각 PC의 테스트 Worker 세션에서 직접 주고받는다. 같은 Task/Dispatch를 유지하며 사용자 답변을 새 작업·재시작으로 해석하지 않는다. Worker는 한 번에 한 동작, 예상 화면, 답변 선택(완료/다름/실패)을 한국어로 제시한다. 직접 사람 질문은 이 지시에 의해 허용되며 기술적 소유권·계약·통합 결정은 Coordinator에 ask한다.
+1. SETUP/UPDATE: Coordinator announces the brief device-control window. Prepare one immutable APK from an identified commit, record SHA256. Through each owner PC authenticated Orca/SSH transport, verify artifact SHA, exact adb serial/user and use install -r. No automatic uninstall or data clearing. APK signing is now from Kim Taewan for all three phones.
+2. Record actual install receipt for EACH device. A disconnected/failed device stays pending; do not claim all3 synchronized.
+3. App connection state currently lives in memory and is cleared by process replacement. Restore real mode, public base URL, and masked demo bearer after an update; never put the OpenAI key in an app or an APK. Demo bearer provisioning uses recipient-only encryption or same-owner local memory, no plaintext chat/log.
+4. TEST OPEN: announce APK/source and server version. All AI device controllers idle. People test capture -> preview -> actual server result, with registered device analysis or unregistered product discovery as appropriate. No background automation touches phones.
+5. Feedback here: person/device + action + observed result + expected result; screenshot optional. Coordinator records issue and gives scoped product Worker a reproduction.
+6. Run only new/changed behavior checks and build/install checks. Previously passed baseline suites are not repeated without a concrete affected failure. Prepare next immutable artifact, then announce UPDATE and repeat.
 
-| PC | 세션 표시 이름 | 전용 기기 / 테스트 |
-|---|---|---|
-| 김의윤 | TEST · 김의윤 · 카메라·앱 | R5KL20H60TN, 앱/카메라/권한 |
-| 이윤재 | TEST · 이윤재 · 오류·복구 | R3CY70W172M, Android16, 오류/복구/표시 |
-| 이준영 | TEST · 이준영 · 서버 연결 | R3CT80CZ2MW, 서버/실제 분석 연결 |
-
-Worker는 사용자 응답과 기기에서 확인한 결과를 구분해 기록한다. 결과·버그·차단 요인은 Coordinator에 전송하고 BOARD에 반영한다. 사람이 응답하지 않으면 대기중으로 기록하며 PASS를 추정하지 않는다. 해당 기기 조작은 한 Worker만 소유한다. 다른 Worker의 connected test를 전체 기기에 실행하지 않는다.
-
-현재 사용자 확인: 이준영 USB 재연결 후 RSA 허용 완료; 김의윤 카메라 권한 허용 후 미리보기 보임. Worker의 기기 확인은 별도로 이어간다.
+During SETUP, camera-only readiness and authenticated end-to-end readiness are separate. Health200, build success or an APK screenshot does not prove actual analysis success. Do not force unknown household products into a registered Dell/UR/APC workflow.

@@ -1,0 +1,44 @@
+{
+  "round": "R1-reference-c503985",
+  "mode": "SETUP",
+  "apk_source_commit": "c503985",
+  "apk_sha256": "3e8e61c0949c753b9d751c69b94d45549876093307ccd340c337c43b29958f4a",
+  "api_source_target": "c462a29",
+  "devices": [
+    {
+      "owner": "김의윤",
+      "environment": "김의윤님",
+      "serial": "R5KL20H60TN",
+      "model": "SM-S948N",
+      "apk": "installed",
+      "home": "visible13:52:08",
+      "auth": "pending"
+    },
+    {
+      "owner": "이준영",
+      "environment": "이준영님",
+      "serial": "R3CT80CZ2MW",
+      "model": "SM-F936N",
+      "apk": "installed",
+      "home": "visible",
+      "auth": "pending"
+    },
+    {
+      "owner": "이윤재",
+      "environment": "이윤재님",
+      "serial": "R3CY70W172M",
+      "model": "SM-S938N",
+      "apk": "installed",
+      "home": "visible13:52:57",
+      "camera": "preview_confirmed",
+      "auth": "pending"
+    }
+  ],
+  "policy": {
+    "single_coordinator": true,
+    "no_repeated_passed_tests": true,
+    "no_automated_taps_during_human_round": true,
+    "update_requires_all_device_receipts": true,
+    "credentials_in_manifest": false
+  }
+}
