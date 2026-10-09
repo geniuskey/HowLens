@@ -1,0 +1,22 @@
+{
+  "http_status": 200,
+  "elapsed_seconds": 21.064,
+  "provider_attempts_before": 8,
+  "provider_attempts_after": 9,
+  "actual_model_attempts": {
+    "gpt-6.1-sol": 1
+  },
+  "source_commit": "670dd10",
+  "upstream_pid": 10994,
+  "requested_model": "gpt-6.1-sol",
+  "returned_model": "gpt-6.1-sol",
+  "effort": "medium",
+  "provider_elapsed_ms": 18425,
+  "input_tokens": 2419,
+  "output_tokens": 782,
+  "decision": "needs_more_information",
+  "observed_identity": "CUCKOO AC-35U20FWS",
+  "guide_approved": false,
+  "reason": "Selected server differs from photographed air purifier",
+  "at": "2026-10-09T14:18:10+09:00"
+}

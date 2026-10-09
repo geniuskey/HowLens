@@ -43,3 +43,7 @@ Root owns Git, backend deployment, APK builds and synchronized device rollout. T
 ## Updating the inventory
 
 Update only public facts in ai-status-data.js after a new verified runtime/deployment receipt. Preserve the distinction among requested model, configured model, provider-returned model and benchmark model. Never put API keys, demo credentials, user photos or raw prompts in this document or the dashboard.
+
+## Coordinator update 14:30
+
+Data snapshot updated after R3 all-three-phone rollout and dd7e4ae server deployment. Sol analysis and Luna/Sol discovery inference are actually confirmed; exact CUCKOO source identity remains unverified. Runtime40 cumulative call cap preserves22 existing attempts. Original screenshots above are the earlier14:11 snapshot; live HTML reads the updated data file. No new screenshot claim.

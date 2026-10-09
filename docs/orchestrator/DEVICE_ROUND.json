@@ -1,19 +1,19 @@
 {
-  "round": "R2-live-319eda7",
+  "round": "R3-equipment-9a2bfa9",
   "mode": "HUMAN_TEST_OPEN",
-  "apk_source_commit": "319eda7",
-  "apk_sha256": "3a34683ced34174d576f38d7137c8d15d641cb2b14de3d5cdfd7ed7ec5f1cbd1",
-  "api_source_target": "c462a29",
+  "apk_source_commit": "9a2bfa9",
+  "apk_sha256": "7edb4e6cc669ac1121a0d2a654ebe735699f393d5d952fd21dada3f8b9ba5f3b",
+  "api_source_target": "dd7e4ae",
   "devices": [
     {
       "owner": "김의윤",
       "environment": "김의윤님",
       "serial": "R5KL20H60TN",
       "model": "SM-S948N",
-      "apk": "R2_hash_verified_install_r_SUCCESS",
-      "home": "visible13:52:08",
+      "apk": "R3_hash_verified_install_r_SUCCESS",
+      "home": "R3 launch verified; current visual feedback pending",
       "auth": "none_required",
-      "launch": "am_start_Status_ok",
+      "launch": "am_start_Status_ok_R3",
       "control_terminal": "term_839d5e9e-d14b-43d2-ab53-08792255f4fb",
       "human_controls": true
     },
@@ -22,10 +22,10 @@
       "environment": "이준영님",
       "serial": "R3CT80CZ2MW",
       "model": "SM-F936N",
-      "apk": "R2_hash_verified_install_r_SUCCESS",
-      "home": "earlier screenshot was Guide; correction pending",
+      "apk": "R3_hash_verified_install_r_SUCCESS",
+      "home": "R3 launch verified; current visual feedback pending",
       "auth": "none_required",
-      "launch": "am_start_Status_ok",
+      "launch": "am_start_Status_ok_R3",
       "control_terminal": "term_e04dcfca-2a2e-4c6e-967d-3cac58e02664",
       "human_controls": true
     },
@@ -34,11 +34,11 @@
       "environment": "이윤재님",
       "serial": "R3CY70W172M",
       "model": "SM-S938N",
-      "apk": "R2_hash_verified_install_r_SUCCESS",
-      "home": "visible13:52:57",
+      "apk": "R3_hash_verified_install_r_SUCCESS",
+      "home": "R3 launch verified; current visual feedback pending",
       "camera": "capture_preview_back_confirmed",
       "auth": "none_required",
-      "launch": "am_start_Status_ok",
+      "launch": "am_start_Status_ok_R3",
       "control_terminal": "term_ce4a6060-5fcf-4c48-a8b7-5df0d1073c3f",
       "human_controls": true
     }
@@ -50,16 +50,18 @@
     "update_requires_all_device_receipts": true,
     "credentials_in_manifest": false
   },
-  "api_upstream_pid_observed": 89580,
-  "api_health": "public200/live; unauthenticated emptyPOST analyses/discoveries422",
-  "apk_bytes": 13189265,
+  "api_upstream_pid_observed": 21375,
+  "api_health": "public200/live; actualanalysis20021.064s; actualdiscovery20014.984s/source_identity",
+  "apk_bytes": 13193414,
   "api_gateway_pid": 99195,
   "api_auth": "disabled_explicit_user_directive",
-  "provider_model_current": "gpt-4.1-mini",
+  "provider_model_current": "analysis gpt-6.1-sol medium; triage gpt-6-luna low; research gpt-6.1-sol medium",
   "provider_routing_next": {
     "triage": "gpt-6-luna",
     "analysis_research": "gpt-6.1-sol",
     "difficult_escalation": "gpt-6-astra",
-    "status": "implementing; model IDs in current account GET/models200; inference unverified"
-  }
+    "status": "DEPLOYED dd7e4ae; Sol/Luna actual verified; Astra configured but not yet triggered"
+  },
+  "provider_attempts": 22,
+  "provider_attempt_cap": 40
 }

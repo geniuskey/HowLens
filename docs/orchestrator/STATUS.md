@@ -518,3 +518,54 @@ New APK-only server term252ed996 on8765. Galaxy+Windows downloads hashverified; 
 All3 exactreference APK downloaded/hashverified/installed; temporaryAPKserver term252ed996 closedptyKilledtrue. GalaxyactualHome13:52:08, WindowsactualHome13:52:57 and camera/capture/preview/backPASS. Fold4corrected its first reference screenshot wasGuide ratherthanHome; actualHomeproofpending. All3 APIidle acknowledged; rootgrant relay4366 issued13:54 and reiteratedafter workerqueue delay. RootSSH read-only observed newupstreamPID89580 and publichealth200/live.
 
 User wants ONE Coordinator conversation, synchronous3phone update/test rounds, no repeatedpreviouspassedtests. Allactiveworkersinstructed finishsetup then settle/idle; humans ownTESTOPEN rounds. HANDSONtarget14:00–14:05 notyetclaimedready. DEMO appaccess provisioning: Galaxy/Windows generatedrecipientRSA2048 publickeys, privatekeyslocalrestricted/DPAPI. RootauthorizedSSH encrypted ONLY backend .demo-token in memory usingRSAOAEP-SHA256/MGF1SHA256; onlyrecipientciphertext returned/routed via msg93018/relay289077. No rawtoken/APIkey/accountcredentialexposure. Fold4same-ownerprivateinputpendingQAfieldhandoff.
+
+## 14:22 R3 synchronized update and latest-model server
+
+User-directed equipment Home committed9a2bfa9: logo returnsHome, separate topHome removed,
+PC hero wording equipment, registeredcatalogcards selecttarget+open camera. FocusedHTML
+3devicechoices/320/390PASS, nativebuild12sPASS; newinstrumentationtest notrun.
+RootsameR3APK SHA7edb4e6cc669ac1121a0d2a654ebe735699f393d5d952fd21dada3f8b9ba5f3b,
+13193414bytes installed-r andstartedStatusok all3. Exactreceipts Galaxy473ms/Fold992ms/
+S25436ms. No datawipe. APKtemporaryserverterm76481closedptyKilledtrue.
+
+Server670dd10 deployedimmutable /tmp/howlens-routing-runtime-670dd10 viaownercanonical.env,
+oldPID89580 gracefullystopped. InitialPID10994 thenruntimeLunatimeouttuningPID14726,
+plainterminalterm6f7c3dd8; gateway99195/tunnel46758 unchanged/noauth. Solmedium realCUCKOO
+label /analyses20021.064s, actualrequested/returnedgpt-6.1-sol18425ms2419in782out.
+CorrectlyobservedAC-35U20FWS andblockedmismatchedserverguide. Twolaterhumananalysislogs
+alsoSol20019070/18912ms. Thisdoesnotprove guideorimagegeneration.
+
+Luna8sectriagehitdeadline. RaisedruntimeonlyHOWLENS_TRIAGE_TIMEOUT_SECONDS=20, keeping
+30sdiscovery/40sanalysis37senrichment/callcaps. Nextsmoke503JSONin1.063s logged37msnoHTTP:
+read-onlycurlprovedapi.openai.comDNSfailure onBackendMac althoughpublichealth200.
+Wi-Fi usedDHCPDNS10.102.72.240; direct1.1.1.1queryworked. CoordinatorchangedONLYBackend
+Wi-Fi DNS to1.1.1.1,8.8.8.8; curlsubsequently4010.402sprovesDNS/TLStransportrecovered.
+OriginalmanualDNSwasempty; revertcommandafterdemo:
+`networksetup -setdnsservers Wi-Fi Empty` on이준영PC. No credentialsmodified.
+ControlledpostDNSdiscoverysmoke pending; ledgerpreserved13/20beforeit.
+
+GalaxyQAfinaltranscriptunableworker_donebecauseOrcasymlinkresolutionfailed;
+positivefinalturnw/o settlementjustifiedofficialworker-abandonctx225d processActionnone,
+filesandterminalretained. Allapp/backendtasksacceptedsettledandreleasedexternalretained.
+Timeoutinvestigation3focusedactualadaptertestsPASS JSON504; no productionpatchwarranted.
+
+14:25 actual source-gate cause captured: response has one completed web_search_call
+(actionsearch/sources12) plus one searching web_search_call withoutsources and completed
+assistantmessage. Current len(searches)==1 incorrectlyrejects it. Backendctx96043 authorized
+narrowcompleted-only gatefix, preservepending-sourceexclusion/exactidentity, target14:27.
+Provider calls actually returned Sol/Luna; webmax_tool_calls1 requested but2toolentries
+returned, oneunfinished. Do not report two completed searches or bill from eventcount.
+User supplied$50/APIaccount andrequestedcontinuoushumanuse; Coordinator expands earlier
+internaldevelopment20-call limit to40 for nexttestwindow, cumulativeledgerneverreset.
+Codeallowedupper50; configured40. This is a request cap, not measuredbilling or hardUSDcap.
+Official model prices checked2026-10-09: Sol2/10USDper1M input/output; Astra10/50.
+https://developers.openai.com/api/docs/models/gpt-6.1-sol
+https://developers.openai.com/api/docs/models/gpt-6-astra
+
+14:29 dd7e4ae deployedPID21375 in sameplainterminal, exactoldPID16829 gracefullystopped.
+Runtimecap40/triage20s, canonicalledger20->22 preserved (humanrequests alsooccurred).
+ActualCUCKOOdiscovery20014.984s; Luna3878ms1765in101out, Sol10145ms12748in283out.
+Searchgatecompleted1pending1 nowpasses; actualsourcecounts12consulted+1citation=13URLs.
+Finalsource_identity stillrejectsexactcandidate; noverifiedmanualguideclaim. Corephoto
+analysis/livepipeline availableonR3all3 by14:29, withqualitylimitation reporteduser.
+Astra configuredconditionalbutactualinferenceunexercised. No imagegenerationupgradeclaim.

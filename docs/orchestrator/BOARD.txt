@@ -1,7 +1,7 @@
-HOWLENS | 2026-10-09 14:10 KST | DEADLINE17:00 | HUMAN TEST OPEN
+HOWLENS | 2026-10-09 14:30 KST | DEADLINE17:00 | HUMAN TEST OPEN
 
-CURRENT ROUND R2 [####################] 3/3 INSTALLED + LAUNCHED
-APK source319eda7 SHA3a34683ced34174d576f38d7137c8d15d641cb2b14de3d5cdfd7ed7ec5f1cbd1
+CURRENT ROUND R3 [####################] 3/3 INSTALLED + LAUNCHED
+APK source9a2bfa9 SHA7edb4e6cc669ac1121a0d2a654ebe735699f393d5d952fd21dada3f8b9ba5f3b
 Kim Euiyun  [INSTALL OK][LAUNCH OK] Galaxy
 Lee Junyoung[INSTALL OK][LAUNCH OK] Fold4
 Lee Yunjae  [INSTALL OK][LAUNCH OK] S25 Ultra
@@ -10,31 +10,36 @@ Humans own phones now. Coordinator does not perform automated taps.
 Feedback HERE -> scopedfix -> oneAPK -> synchronized3phone update.
 No repeating passed baseline suites; new/changed behavior checks only.
 
-OVERALL RELEASE READINESS [############--------] ~60% estimate
+OVERALL RELEASE READINESS [############--------] ~70% estimate
 M1 foundations      DONE
-M2 reference UI     R2 DEPLOYED: bluehero/nav/centralcamera, URLpreset autoLIVE
+M2 reference UI     R3 DEPLOYED: equipmentcards->camera; logoHome; URLpreset autoLIVE
 M3 real device E2E  HUMAN TRIAL NOW; no realguide/imagequalityPASS yet
 M4 submission      pending; target16:00 package,17:00submit
 
-LIVE SERVER: c462a29 upstreamPID89580; noauthgatewayPID99195; tunnel46758.
+LIVE SERVER: dd7e4ae/PID21375 routed immutable runtime; noauthgatewayPID99195; tunnel46758.
 URL:https://premium-proceed-hartford-published.trycloudflare.com
 Rootverified publichealth200/live and noauth emptyPOSTanalyses/discoveries422.
 Token input REMOVED by latest explicituser; OpenAIkey SERVER ONLY.
-Actualanalysis model:gpt-4.1-mini. Sharedproviderledger6/20 atlastmeasurement.
-Latestreal CUCKOOlabel:8.49s HTTP200 needs_more_information/source_provenance.
+Actualanalysis model:gpt-6.1-sol medium20021.064s. Luna low triage2005.419s.
+Sharedledger22/40; cumulativehistory preserved.
+Latestreal CUCKOOlabel: modelAC-35U20FWS observed; wrongselecteddevice blocks guide.
+Research: search-shape FIX DEPLOYED;13sourceURLs accepted; exact source_identity unresolved.
+Backend DNS failure fixed: Wi-Fi1.1.1.1/8.8.8.8; rollback Empty afterdemo.
 This is NOT productidentificationPASS.
 
-NEXT SERVER (AstraHigh KimTaewan ctx0621): autonomous visualhypothesisresearch,
+LIVE ROUTER (Astra implementation delivered): autonomous visualhypothesisresearch,
 actualsource revalidation, bounded registeredmanualreanalysis, SERVER-onlyrouting:
 triage GPT6Luna -> main/research GPT6.1Sol -> difficultonly GPT6Astra.
-OfficialAPI IDs + currentaccount model-list200 confirmed; newinference unverified.
-Max4providerattempts;27sec enrichment/30sectotal, safety/STOPgates maintained.
+Actual Sol analysis/research + Luna triage models verified; Astra gated path unexercised.
+Max4providerattempts;40sroute/37senrichment; safety/STOPgates maintained.
 
 IMAGES:6pairedSunburstlow/medium generations HTTP20012.990-19.526s.
 Quality humanreview pending, actualbillingunknown; no winner claimed.
 Productionimage defaultgpt-image1.5 not upgraded yet.
 
-ACTIVE IMPLEMENTATION: serverAstra ctx0621; appdirect-user dashboardonly.
-DEVICE AI WORKERS: Windows/Fold4 settled; Galaxyhandoffpending, no further taps.
+IMPLEMENTATION delivered: R3app + latestserver. Humanfeedback round OPEN.
+R3: logo->Home; remove topHome; registered equipment list->capture; equipment wording.
+14:29 core capture->latestmodel response available; exactmanualguide stillunverified.
+DEVICE AI WORKERS: Windows/Fold4 settled; Galaxyfinalrecorded; lifecycleblockedbyremoteCLI symlink, no further taps.
 Root plainCLI channels recorded DEVICE_ROUND.json; no perphoneAIloop.
 R2 temporarydownloadserver CLOSED afterverified3downloads.

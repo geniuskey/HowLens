@@ -1,0 +1,21 @@
+{
+  "http_status": 200,
+  "elapsed_seconds": 14.984,
+  "provider_attempts_before": 20,
+  "provider_attempts_after": 22,
+  "actual_model_attempts": {
+    "gpt-6.1-sol": 8,
+    "gpt-6-luna": 6
+  },
+  "result": {
+    "discovery_id": "a38b73a5-f536-4745-9533-a0c48da63851",
+    "status": "needs_more_information",
+    "candidates": [],
+    "missing_information": [
+      "라벨의 전체 모델명과 일치하는 출처를 확인하지 못했습니다.",
+      "제조사와 전체 모델명이 선명하게 보이는 라벨 사진과 제품 전체 사진을 올려 주세요."
+    ],
+    "mode": "live",
+    "research": null
+  }
+}

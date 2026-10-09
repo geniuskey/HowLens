@@ -1,0 +1,5 @@
+2026-10-09 14:28:32,469 howlens.openai_provider provider_stage stage=label requested_model=gpt-6-luna returned_model=gpt-6-luna elapsed_ms=3878 http_status=200 usage={'input_tokens': 1765, 'output_tokens': 101, 'total_tokens': 1866}
+2026-10-09 14:28:42,616 howlens.openai_provider provider_stage stage=research requested_model=gpt-6.1-sol returned_model=gpt-6.1-sol elapsed_ms=10145 http_status=200 usage={'input_tokens': 12748, 'output_tokens': 283, 'total_tokens': 13031}
+2026-10-09 14:28:42,616 howlens.discovery discovery_search_calls completed=1 pending=1 total=2
+2026-10-09 14:28:42,617 howlens.discovery discovery_sources id=a38b73a5-f536-4745-9533-a0c48da63851 counts={'consulted_entries': 12, 'citation_entries': 1, 'invalid_entries': 0, 'invalid_urls': 0, 'redacted_titles': 0, 'accepted_urls': 13}
+2026-10-09 14:28:42,617 howlens.discovery discovery_gate id=a38b73a5-f536-4745-9533-a0c48da63851 reason=source_identity
