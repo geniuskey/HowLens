@@ -62,19 +62,21 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-private enum class InputTab { PHOTO, CAMERA }
+private enum class InputTab { HOME, PHOTO, CAMERA }
 
 @Composable
 fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
     val state by vm.state.collectAsStateWithLifecycle()
     val context = LocalContext.current
-    var tabName by rememberSaveable { mutableStateOf(InputTab.PHOTO.name) }
+    var tabName by rememberSaveable { mutableStateOf(if (state.photo != null) InputTab.PHOTO.name else InputTab.HOME.name) }
     var settings by rememberSaveable { mutableStateOf(false) }
     var deviceSheet by rememberSaveable { mutableStateOf(false) }
     val tab = InputTab.valueOf(tabName)
     val busy = state.phase == Phase.LOADING || state.photoLoading
     val compactViewport = LocalConfiguration.current.screenHeightDp < 500
-    val showingResult = state.phase == Phase.RESULT && state.analysis != null
+    val showingResult = state.phase == Phase.RESULT && (state.analysis != null || state.discovery != null)
+    val homeVisible = tab == InputTab.HOME
+    val submit: () -> Unit = if (state.discoveryMode) vm::discoverProducts else vm::analyze
     val journey = rememberGuideJourneyState()
     var guideOpen by rememberSaveable(state.analysis?.analysisId) { mutableStateOf(false) }
     var summaryOpen by rememberSaveable(state.analysis?.analysisId) { mutableStateOf(false) }
@@ -89,18 +91,22 @@ fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
         if (uri != null) vm.selectVerificationPhoto(context.contentResolver, uri)
     }
 
-    BackHandler(enabled = settings || showingResult || (tab == InputTab.CAMERA && !settings)) {
+    BackHandler(enabled = settings || showingResult || (tab != InputTab.HOME && !settings)) {
         when {
             settings -> settings = false
             showingResult && summaryOpen -> summaryOpen = false
             showingResult && guideOpen -> guideOpen = false
             showingResult -> vm.showInput()
-            tab == InputTab.CAMERA -> tabName = InputTab.PHOTO.name
+            tab != InputTab.HOME -> tabName = InputTab.HOME.name
         }
     }
 
     if (settings) {
         SettingsScreen(state = state, vm = vm, onBack = { settings = false })
+        return
+    }
+    if (showingResult && state.discovery != null) {
+        ProductDiscoveryPane(requireNotNull(state.discovery), onBack = vm::showInput)
         return
     }
     if (showingResult) {
@@ -136,9 +142,10 @@ fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
         topBar = {
             Column {
                 TopAppBar(
-                    title = { BrandWordmark() },
+                    title = { if (!homeVisible) BrandWordmark() },
+                    navigationIcon = { if (!homeVisible) TextButton(onClick = { tabName = InputTab.HOME.name }, enabled = !busy) { Text("홈") } },
                     actions = {
-                        if (state.analysis != null) TextButton(onClick = vm::showResult) { Text("최근 결과") }
+                        if (state.analysis != null || state.discovery != null) TextButton(onClick = vm::showResult) { Text("최근 결과") }
                         Text(if (state.offline) "데모" else "실제 분석", style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant)
                         IconButton(onClick = { settings = true }, enabled = !busy, modifier = Modifier.semantics { contentDescription = "설정" }) {
@@ -146,7 +153,7 @@ fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
                         }
                     },
                 )
-                TabRow(selectedTabIndex = if (tab == InputTab.PHOTO) 0 else 1) {
+                if (!homeVisible) TabRow(selectedTabIndex = if (tab == InputTab.PHOTO) 0 else 1) {
                     Tab(selected = tab == InputTab.PHOTO, onClick = { tabName = InputTab.PHOTO.name }, enabled = !busy,
                         modifier = Modifier.heightIn(min = 48.dp), text = { Text("사진 분석") })
                     Tab(selected = tab == InputTab.CAMERA, onClick = { tabName = InputTab.CAMERA.name }, enabled = !busy,
@@ -155,21 +162,34 @@ fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
             }
         },
         bottomBar = {
-            if (!noPhotoCamera && !compactViewport) {
+            if (!noPhotoCamera && !compactViewport && !homeVisible) {
                 InputActionBar(
                     state = state,
                     tab = tab,
                     onChoosePhoto = { gallery.launch(arrayOf("image/jpeg", "image/png")) },
-                    onAnalyze = vm::analyze,
+                    onAnalyze = submit,
                     onCancel = vm::cancel,
                 )
             }
         },
     ) { inset ->
-        if (noPhotoCamera) {
+        if (homeVisible) {
+            Column(Modifier.fillMaxSize().padding(inset)) {
+                state.error?.let { InlineError(it) }
+                HomeEntryPane(
+                    onOpenCamera = { vm.discoveryMode(false); vm.clearPhoto(); tabName = InputTab.CAMERA.name },
+                    onChoosePhoto = { vm.discoveryMode(false); tabName = InputTab.PHOTO.name; gallery.launch(arrayOf("image/jpeg", "image/png")) },
+                    onDiscoverProducts = { vm.discoveryMode(true); tabName = InputTab.PHOTO.name },
+                    onResumeLastResult = if (state.analysis != null || state.discovery != null) vm::showResult else null,
+                    lastResultTitle = if (state.discovery != null) "제품 정보" else state.analysis?.let { "분석 결과" },
+                    enabled = !busy,
+                )
+            }
+        } else if (noPhotoCamera) {
             Column(Modifier.fillMaxSize().padding(inset)) {
                 Spacer(Modifier.height(12.dp))
-                DeviceRow(state.deviceId, enabled = !busy, onClick = { deviceSheet = true }, modifier = Modifier.padding(horizontal = 16.dp))
+                if (state.discoveryMode) Text("제품 찾기", style = MaterialTheme.typography.titleLarge, modifier = Modifier.padding(horizontal = 16.dp))
+                else DeviceRow(state.deviceId, enabled = !busy, onClick = { deviceSheet = true }, modifier = Modifier.padding(horizontal = 16.dp))
                 state.error?.let { InlineError(it) }
                 Spacer(Modifier.height(8.dp))
                 CameraCapturePane(
@@ -188,7 +208,13 @@ fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
                 verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 Spacer(Modifier.height(2.dp))
-                DeviceRow(state.deviceId, enabled = !busy, onClick = { deviceSheet = true })
+                if (state.discoveryMode) {
+                    Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                        Text("제품 찾기", style = MaterialTheme.typography.titleLarge, modifier = Modifier.weight(1f))
+                        TextButton(onClick = { vm.discoveryMode(false) }, enabled = !busy) { Text("등록 장비") }
+                    }
+                    Text("사진에서 제품 후보와 웹 출처를 찾아요.", style = MaterialTheme.typography.bodyMedium)
+                } else DeviceRow(state.deviceId, enabled = !busy, onClick = { deviceSheet = true })
                 when {
                     state.photoLoading -> Box(Modifier.fillMaxWidth().aspectRatio(4f / 3f), Alignment.Center) {
                         CircularProgressIndicator()
@@ -202,7 +228,11 @@ fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
                             OutlinedButton(onClick = { gallery.launch(arrayOf("image/jpeg", "image/png")) },
                                 enabled = !busy, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)) { Text("사진 바꾸기") }
                         }
-                        QuestionField(state.question, enabled = !busy, error = if (state.error?.contains("질문") == true) state.error else null,
+                        if (state.discoveryMode) {
+                            OutlinedTextField(value = state.modelHint, onValueChange = vm::modelHint,
+                                label = { Text("모델명 힌트 (선택)") }, modifier = Modifier.fillMaxWidth(), enabled = !busy)
+                        }
+                        QuestionField(state.question, enabled = !busy, optional = state.discoveryMode, error = if (state.error?.contains("질문") == true) state.error else null,
                             onValueChange = vm::question)
                     }
                     else -> EmptyPhotoFrame()
@@ -214,7 +244,7 @@ fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
                 if (compactViewport) {
                     InputActionInline(state, tab,
                         onChoosePhoto = { gallery.launch(arrayOf("image/jpeg", "image/png")) },
-                        onAnalyze = vm::analyze, onCancel = vm::cancel)
+                        onAnalyze = submit, onCancel = vm::cancel)
                 }
                 Spacer(Modifier.height(12.dp))
             }
@@ -243,6 +273,7 @@ fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
 @Composable
 private fun InputActionInline(state: AnalysisUiState, tab: InputTab, onChoosePhoto: () -> Unit, onAnalyze: () -> Unit, onCancel: () -> Unit) {
     Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        state.error?.let { InlineError(it) }
         when {
             state.phase == Phase.LOADING -> Button(onClick = onCancel, modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp)) { Text("취소") }
             state.photo == null -> Button(onClick = onChoosePhoto, modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp)) { Text("사진 선택") }
@@ -272,7 +303,7 @@ private fun InputActionBar(
                     modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp)) { Text("사진 선택") }
                 if (state.error != null) InlineError(state.error)
             } else {
-                if (state.phase == Phase.ERROR && state.error != null) InlineError(state.error)
+                if (state.error != null && !state.error.contains("질문")) InlineError(state.error)
                 Button(onClick = onAnalyze, enabled = !state.photoLoading,
                     modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp)) {
                     Text(if (state.phase == Phase.ERROR && state.retryable) "다시 시도" else "확인하기")
@@ -322,7 +353,7 @@ private fun SettingsScreen(state: AnalysisUiState, vm: AnalysisViewModel, onBack
                     visualTransformation = androidx.compose.ui.text.input.PasswordVisualTransformation(),
                     keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(
                         keyboardType = androidx.compose.ui.text.input.KeyboardType.Password),
-                    supportingText = { Text("서버 주소를 먼저 입력하세요. 토큰은 앱을 닫으면 지워져요.") })
+                    supportingText = { Text("서버 주소를 먼저 입력하세요. 토큰은 이 기기에 저장하지 않아요.") })
             }
             if (compactViewport) Button(onClick = onBack, modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp)) { Text("완료") }
         }
@@ -547,11 +578,11 @@ private fun DeviceRow(deviceId: String, enabled: Boolean, onClick: () -> Unit, m
 }
 
 @Composable
-private fun QuestionField(value: String, enabled: Boolean, error: String?, onValueChange: (String) -> Unit) {
+private fun QuestionField(value: String, enabled: Boolean, error: String?, optional: Boolean = false, onValueChange: (String) -> Unit) {
     val requester = remember { BringIntoViewRequester() }
     val scope = rememberCoroutineScope()
     OutlinedTextField(value = value, onValueChange = onValueChange, enabled = enabled,
-        label = { Text("무엇을 확인할까요?") }, modifier = Modifier.fillMaxWidth()
+        label = { Text(if (optional) "무엇을 확인할까요? (선택)" else "무엇을 확인할까요?") }, modifier = Modifier.fillMaxWidth()
             .bringIntoViewRequester(requester).onFocusChanged { focus ->
                 if (focus.isFocused) scope.launch { delay(150); requester.bringIntoView() }
             }, minLines = 3, maxLines = 6,

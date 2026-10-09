@@ -55,6 +55,7 @@ class OfflineScreenTest {
         compose.setContent { HowLensTheme { HowLensScreen(vm) } }
         compose.onNodeWithText("확인하기").performClick()
         compose.waitUntil(5000) { vm.state.value.phase == Phase.RESULT }
+        compose.onNodeWithText("닫기").performClick()
         compose.onNodeWithText("추가 정보가 필요해요").assertExists()
         compose.onNodeWithText("데모").assertExists()
         compose.onNodeWithText("시각 안내 요청").assertDoesNotExist()
@@ -80,6 +81,7 @@ class OfflineScreenTest {
             emptyList(), emptyList(), emptyList(), listOf("추가 확인 필요"), Mode.MOCK)
         val vm = AnalysisViewModel(AnalysisUiState(phase = Phase.RESULT, analysis = fixture, offline = true))
         compose.setContent { HowLensTheme { HowLensScreen(vm) } }
+        compose.onNodeWithText("닫기").performClick()
         compose.onNodeWithText("추가 정보가 필요해요").assertExists()
         compose.onNodeWithText("관찰과 근거 자세히 보기").performClick()
         compose.onNodeWithText("synthetic-document · fixture-v1").assertExists()
@@ -96,6 +98,7 @@ class OfflineScreenTest {
             visualImages = (0..8).associateWith { photo().bytes })
         val vm = AnalysisViewModel(state)
         compose.setContent { HowLensTheme { HowLensScreen(vm) } }
+        compose.onNodeWithText("닫기").performClick()
         compose.onNodeWithText("승인된 단계").assertExists()
         compose.onNodeWithText("시각 안내는 단계와 별개인 9개 설명 패널이에요.").assertExists()
         (1..9).forEach { index -> compose.onNodeWithText("패널 $index · approved-s1").assertExists() }
@@ -108,6 +111,7 @@ class OfflineScreenTest {
             evidenceId = "bad-url", sourceUrl = "https://manual.example/doc?token=PRIVATE"))
         val vm = AnalysisViewModel(AnalysisUiState(phase = Phase.RESULT, analysis = fixture, offline = false))
         compose.setContent { HowLensTheme { HowLensScreen(vm) } }
+        compose.onNodeWithText("닫기").performClick()
         compose.onNodeWithText("근거 요약 공유").performScrollTo().performClick()
         compose.onNodeWithText("공유할 내용").assertExists()
         compose.onNodeWithText(SharePreview.build(fixture), substring = true).assertExists()

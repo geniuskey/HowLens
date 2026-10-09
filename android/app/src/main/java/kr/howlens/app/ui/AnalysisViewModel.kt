@@ -34,6 +34,8 @@ data class AnalysisUiState(
     val visualError: String? = null, val verificationPhoto: Photo? = null,
     val verificationPhotoLoading: Boolean = false, val verificationBusy: Boolean = false,
     val verification: Verification? = null, val verificationError: String? = null,
+    val discoveryMode: Boolean = false, val modelHint: String = "",
+    val discovery: ProductDiscovery? = null,
     val confirmation: String = ""
 )
 class AnalysisViewModel(
@@ -61,7 +63,7 @@ class AnalysisViewModel(
 
     private fun edit(change: (AnalysisUiState) -> AnalysisUiState) {
         invalidateWork()
-        mutable.update { change(it).copy(phase = Phase.INPUT, analysis = null, error = null, retryable = false,
+        mutable.update { change(it).copy(phase = Phase.INPUT, analysis = null, discovery = null, error = null, retryable = false,
             visualLoading = false, visualAttempts = 0, visualPanels = emptyList(), visualImages = emptyMap(),
             visualError = null, verificationPhoto = null, verificationPhotoLoading = false,
             verificationBusy = false, verification = null, verificationError = null) }
@@ -72,8 +74,35 @@ class AnalysisViewModel(
     fun scenario(value: FakeScenario) = edit { it.copy(scenario = value) }
     fun baseUrl(value: String) = edit { it.copy(baseUrl = value, demoToken = DemoToken()) }
     fun demoToken(value: String) = edit { it.copy(demoToken = DemoToken(value)) }
-    fun showInput() { mutable.update { if (it.analysis != null) it.copy(phase = Phase.INPUT) else it } }
-    fun showResult() { mutable.update { if (it.analysis != null) it.copy(phase = Phase.RESULT) else it } }
+    fun showInput() { mutable.update { if (it.analysis != null || it.discovery != null) it.copy(phase = Phase.INPUT) else it } }
+    fun showResult() { mutable.update { if (it.analysis != null || it.discovery != null) it.copy(phase = Phase.RESULT) else it } }
+    fun discoveryMode(value: Boolean) { if (value != state.value.discoveryMode) edit { it.copy(discoveryMode = value) } }
+    fun modelHint(value: String) = edit { it.copy(modelHint = value) }
+    fun discoverProducts() {
+        val input = state.value
+        if (input.phase == Phase.LOADING || input.photoLoading) return
+        val issue = InputRules.validate("server", "product discovery", input.photo)
+            ?: if (InputRules.questionLength(input.question) > 2000) "질문은 2,000자 이하여야 합니다." else null
+            ?: if (input.modelHint.trim().codePointCount(0, input.modelHint.trim().length) > 200) "모델명은 200자 이하여야 합니다." else null
+        if (issue != null) { mutable.update { it.copy(error = issue, retryable = false) }; return }
+        invalidateWork()
+        val generation = workGeneration
+        mutable.update { it.copy(phase = Phase.LOADING, error = null, retryable = false, analysis = null, discovery = null) }
+        analysisJob = viewModelScope.launch {
+            try {
+                val result = if (input.offline) ProductDiscovery("offline-discovery", DiscoveryStatus.NEEDS_MORE_INFORMATION,
+                    emptyList(), listOf("합성 화면이에요. 실제 제품 검색은 설정에서 서버를 연결해 주세요."), Mode.MOCK)
+                else repositoryFactory(input.baseUrl.trim(), input.demoToken.value)
+                    .discover(requireNotNull(input.photo), input.question, input.modelHint)
+                if (generation == workGeneration) mutable.update { it.copy(phase = Phase.RESULT, discovery = result) }
+            } catch (e: CancellationException) { throw e
+            } catch (e: Exception) {
+                if (generation == workGeneration) mutable.update { it.copy(phase = Phase.ERROR,
+                    error = (e as? ApiFailure)?.message ?: "제품 정보를 찾지 못했어요. 사진이나 설정을 확인해 주세요.",
+                    retryable = (e as? ApiFailure)?.retryable ?: false) }
+            }
+        }
+    }
     fun clearPhoto() = edit { it.copy(photo = null, photoLoading = false) }
     fun photoLoading() = edit { it.copy(photo = null, photoLoading = true) }
     fun photo(value: Photo) = edit { it.copy(photo = value, photoLoading = false) }

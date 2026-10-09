@@ -190,6 +190,22 @@ class HttpAnalysisRepository private constructor(
             if (it.deviceId != deviceId) throw ApiFailure("invalid_response", "요청 장비와 응답 장비가 다릅니다.", false)
         }
     }
+    suspend fun discover(photo: Photo, question: String = "", modelHint: String = ""): ProductDiscovery {
+        require(InputRules.validate("server", "product discovery", photo) == null)
+        require(InputRules.questionLength(question) <= 2000)
+        require(modelHint.trim().codePointCount(0, modelHint.trim().length) <= 200)
+        val body = MultipartBody.Builder().setType(MultipartBody.FORM)
+            .addFormDataPart("question", question.trim())
+            .addFormDataPart("model_hint", modelHint.trim())
+            .addFormDataPart("photo", if (photo.mime == "image/png") "photo.png" else "photo.jpg",
+                photo.bytes.toRequestBody(photo.mime.toMediaType())).build()
+        return request<ProductDiscovery>("/product-discoveries", body).also { result ->
+            try { result.requireValid() } catch (_: Exception) {
+                throw ApiFailure("invalid_response", "제품 후보와 공개 출처를 확인할 수 없어요.", false)
+            }
+        }
+    }
+
     suspend fun createVisual(analysis: Analysis): VisualJob {
         require(analysis.canRequestVisual) { "검증된 live guide만 이미지 요청 가능" }
         return request("/analyses/${safeId(analysis.analysisId)}/visual", ByteArray(0).toRequestBody())

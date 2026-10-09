@@ -140,7 +140,7 @@ class FoundationTest {
             repeat(9) { server.enqueue(MockResponse().setHeader("Content-Type", "image/png").setBody(okio.Buffer().write(png))) }
             val vm = AnalysisViewModel(repositoryFactory = { base, token ->
                 HttpAnalysisRepository(base, PngAssetDecoder { bytes ->
-                    check(javax.imageio.ImageIO.read(bytes.inputStream()) != null)
+                    assertArrayEquals(png, bytes) // Test-only decoder double; Android decoder remains the production default.
                 }, token)
             })
             vm.offline(false); vm.baseUrl(server.url("/").toString()); vm.photo(photo); vm.question("test")
