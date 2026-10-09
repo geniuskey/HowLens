@@ -111,3 +111,21 @@ count/product/version cannot be reported without an original; the coordinator wa
 notified and asked to relay the actual upload path if different. No PDF original was
 committed or transmitted. No user product photo has arrived in this dispatch, so
 the synthetic offline suite is not represented as user-photo evaluation.
+
+Coordinator relay `relay_3c7d967ae30d` then authorized path-only PDF inventory
+across the two complete repositories. That ignore-disabled search found five files
+under `/Users/jymbook/HowLens/docs/assets/manuals/evaluation/`:
+
+- `um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf`
+- `WHP-Robot-Application-Manual.pdf`
+- `9b6e38.pdf`
+- `be94f9.pdf`
+- `slvub62b.pdf`
+
+It also found the worktree's three existing `backend/.manual-cache/` PDFs:
+`ur5e-710-965-00-10.5.152.pdf`, `SPD_UM_SU-990-6411_EN.pdf`, and
+`dell-r750-ism-a11.pdf`. These locations were reported to the coordinator. The
+expanded check read file paths only; evaluation-owned contents were not inspected,
+and no newly discovered PDF was indexed, copied, committed or transmitted.
+Owner-upload classification and the still-unreceived actual photo remain with the
+coordinator; names do not establish printed product/version metadata.
