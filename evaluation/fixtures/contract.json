@@ -1,0 +1,251 @@
+{
+  "synthetic_only": true,
+  "notice": "OFFLINE SYNTHETIC/MOCK ONLY. TEST evidence and nonexistent asset URLs are fixture data, never live approval. No actual photos, manuals, equipment, model calls, or image generation.",
+  "analyses": [
+    {
+      "analysis_id": "TEST-server-guide",
+      "device_id": "server",
+      "decision": "guide",
+      "observations": [
+        "SYNTHETIC TEST ONLY: no actual equipment or photo inspected."
+      ],
+      "evidence": [
+        {
+          "evidence_id": "TEST-e1",
+          "document_id": "TEST-NOT-A-MANUAL",
+          "document_version": "TEST-v1",
+          "pdf_page": 1,
+          "printed_page": null,
+          "section": "Synthetic display test",
+          "quote": "TEST ONLY: Observe the fictional label; this is not an equipment procedure.",
+          "source_url": "https://example.invalid/TEST-NOT-A-MANUAL.pdf"
+        }
+      ],
+      "preconditions": [
+        {
+          "precondition_id": "TEST-p1",
+          "description": "TEST ONLY: fictional fixture prerequisite",
+          "status": "satisfied",
+          "required": true,
+          "evidence_ids": [
+            "TEST-e1"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "step_id": "TEST-s1",
+          "description": "TEST ONLY: View the fictional label in this offline UI fixture.",
+          "evidence_ids": [
+            "TEST-e1"
+          ],
+          "visual_hint": "TEST ONLY: fictional label, no equipment operation."
+        }
+      ],
+      "warnings": [
+        "TEST ONLY: fake evidence is not live approval."
+      ],
+      "missing_information": [],
+      "mode": "mock"
+    },
+    {
+      "analysis_id": "TEST-cobot-needs_more_information",
+      "device_id": "cobot",
+      "decision": "needs_more_information",
+      "observations": [
+        "SYNTHETIC TEST ONLY: no actual equipment or photo inspected."
+      ],
+      "evidence": [],
+      "preconditions": [
+        {
+          "precondition_id": "TEST-p1",
+          "description": "Equipment and supporting evidence not verified",
+          "status": "unknown",
+          "required": true,
+          "evidence_ids": []
+        }
+      ],
+      "steps": [],
+      "warnings": [
+        "TEST ONLY: fake evidence is not live approval."
+      ],
+      "missing_information": [
+        "Actual equipment identification, photos, and verified manual evidence are unavailable."
+      ],
+      "mode": "mock"
+    },
+    {
+      "analysis_id": "TEST-ups-stop",
+      "device_id": "ups",
+      "decision": "stop",
+      "observations": [
+        "SYNTHETIC TEST ONLY: no actual equipment or photo inspected."
+      ],
+      "evidence": [],
+      "preconditions": [
+        {
+          "precondition_id": "TEST-p1",
+          "description": "Equipment and supporting evidence not verified",
+          "status": "unknown",
+          "required": true,
+          "evidence_ids": []
+        }
+      ],
+      "steps": [],
+      "warnings": [
+        "TEST ONLY: fake evidence is not live approval.",
+        "SYNTHETIC danger scenario: stop and obtain qualified assistance."
+      ],
+      "missing_information": [
+        "Actual equipment identification, photos, and verified manual evidence are unavailable."
+      ],
+      "mode": "mock"
+    }
+  ],
+  "visual_jobs": [
+    {
+      "job_id": "TEST-visual-queued",
+      "analysis_id": "TEST-server-guide",
+      "status": "queued",
+      "image_url": null,
+      "panels": [],
+      "error": null,
+      "mode": "mock"
+    },
+    {
+      "job_id": "TEST-visual-running",
+      "analysis_id": "TEST-server-guide",
+      "status": "running",
+      "image_url": null,
+      "panels": [],
+      "error": null,
+      "mode": "mock"
+    },
+    {
+      "job_id": "TEST-visual-completed",
+      "analysis_id": "TEST-server-guide",
+      "status": "completed",
+      "image_url": "/visual-assets/TEST-grid.png",
+      "panels": [
+        {
+          "index": 0,
+          "step_id": "TEST-s1",
+          "image_url": "/visual-assets/TEST-panel-0.png"
+        },
+        {
+          "index": 1,
+          "step_id": "TEST-s1",
+          "image_url": "/visual-assets/TEST-panel-1.png"
+        },
+        {
+          "index": 2,
+          "step_id": "TEST-s1",
+          "image_url": "/visual-assets/TEST-panel-2.png"
+        },
+        {
+          "index": 3,
+          "step_id": "TEST-s1",
+          "image_url": "/visual-assets/TEST-panel-3.png"
+        },
+        {
+          "index": 4,
+          "step_id": "TEST-s1",
+          "image_url": "/visual-assets/TEST-panel-4.png"
+        },
+        {
+          "index": 5,
+          "step_id": "TEST-s1",
+          "image_url": "/visual-assets/TEST-panel-5.png"
+        },
+        {
+          "index": 6,
+          "step_id": "TEST-s1",
+          "image_url": "/visual-assets/TEST-panel-6.png"
+        },
+        {
+          "index": 7,
+          "step_id": "TEST-s1",
+          "image_url": "/visual-assets/TEST-panel-7.png"
+        },
+        {
+          "index": 8,
+          "step_id": "TEST-s1",
+          "image_url": "/visual-assets/TEST-panel-8.png"
+        }
+      ],
+      "error": null,
+      "mode": "mock"
+    },
+    {
+      "job_id": "TEST-visual-failed",
+      "analysis_id": "TEST-server-guide",
+      "status": "failed",
+      "image_url": null,
+      "panels": [],
+      "error": "TEST ONLY: renderer unavailable; retain original validated text.",
+      "mode": "mock"
+    },
+    {
+      "job_id": "TEST-visual-quality-failed",
+      "analysis_id": "TEST-server-guide",
+      "status": "failed",
+      "image_url": null,
+      "panels": [],
+      "error": "TEST ONLY: visual quality check failed; retain original validated text.",
+      "mode": "mock"
+    }
+  ],
+  "verifications": [
+    {
+      "analysis_id": "TEST-server-guide",
+      "result": "observed_change",
+      "observations": [
+        "TEST ONLY: simulated visual comparison."
+      ],
+      "evidence_ids": [
+        "TEST-e1"
+      ],
+      "missing_information": [
+        "Actual before/after photos and equipment are unavailable."
+      ],
+      "limitations": [
+        "TEST ONLY: photos cannot certify safety, successful repair, or normal operation."
+      ],
+      "mode": "mock"
+    },
+    {
+      "analysis_id": "TEST-server-guide",
+      "result": "issue_remaining",
+      "observations": [
+        "TEST ONLY: simulated visual comparison."
+      ],
+      "evidence_ids": [
+        "TEST-e1"
+      ],
+      "missing_information": [
+        "Actual before/after photos and equipment are unavailable."
+      ],
+      "limitations": [
+        "TEST ONLY: photos cannot certify safety, successful repair, or normal operation."
+      ],
+      "mode": "mock"
+    },
+    {
+      "analysis_id": "TEST-server-guide",
+      "result": "inconclusive",
+      "observations": [
+        "TEST ONLY: simulated visual comparison."
+      ],
+      "evidence_ids": [
+        "TEST-e1"
+      ],
+      "missing_information": [
+        "Actual before/after photos and equipment are unavailable."
+      ],
+      "limitations": [
+        "TEST ONLY: photos cannot certify safety, successful repair, or normal operation."
+      ],
+      "mode": "mock"
+    }
+  ]
+}

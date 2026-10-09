@@ -1,0 +1,16 @@
+Processing /tmp/howlens-w5-recheck-0HdjyM/backend
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: howlens-backend
+  Building wheel for howlens-backend (pyproject.toml): started
+  Building wheel for howlens-backend (pyproject.toml): finished with status 'done'
+  Created wheel for howlens-backend: filename=howlens_backend-0.1.0-py3-none-any.whl size=24125 sha256=1cd0b58c356aa854b26919ef893283913cc985287f6853950c537ea5232490ba
+  Stored in directory: /private/tmp/pip-ephem-wheel-cache-n1yxjghd/wheels/b8/27/e8/ad6bfe83e096685439ccb61fdd6c80f63ab757d3d318238272
+Successfully built howlens-backend
+
+[notice] A new release of pip is available: 25.3 -> 26.2.1
+[notice] To update, run: /private/tmp/howlens-w5-recheck-0HdjyM/venv/bin/python -m pip install --upgrade pip

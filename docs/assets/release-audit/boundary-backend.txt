@@ -1,0 +1,26 @@
+{
+  "launch": "backend",
+  "service_module": "visual.service",
+  "startup": "passed_fake_factory",
+  "public_mapper_and_prompt_ids": [
+    "TEST-s0",
+    "TEST-s0",
+    "TEST-s0",
+    "TEST-s1",
+    "TEST-s1",
+    "TEST-s1",
+    "TEST-s2",
+    "TEST-s2",
+    "TEST-s2"
+  ],
+  "panels": 9,
+  "guards": "passed_zero_additional_provider_calls",
+  "rejected_visual_text_preserved": true,
+  "provider_calls": 2,
+  "real_calls": 0,
+  "semantic_review": "synthetic_only"
+}
+/private/var/folders/69/r13269yn5wn5ydgqj5c6r0qh0000gn/T/howlens-release-pmaay3q4/venv/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+
+EXIT 0

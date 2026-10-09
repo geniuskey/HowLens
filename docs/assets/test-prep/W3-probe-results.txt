@@ -1,0 +1,51 @@
+{
+  "W2_synthetic_png": {
+    "status": 200,
+    "body": {
+      "analysis_id": "ee46ead3-3e75-4c5c-860b-04dfd6371259",
+      "device_id": "server",
+      "decision": "needs_more_information",
+      "observations": [],
+      "evidence": [],
+      "preconditions": [
+        {
+          "precondition_id": "p1",
+          "description": "No hazard",
+          "status": "satisfied",
+          "required": true,
+          "evidence_ids": []
+        }
+      ],
+      "steps": [],
+      "warnings": [],
+      "missing_information": [
+        "Independent equipment, manual, action and precondition validation is required."
+      ],
+      "mode": "live"
+    }
+  },
+  "visual_attempt_1": {
+    "status": 202,
+    "job": "310c0065-4d39-4529-a563-e664f11cdd54"
+  },
+  "visual_attempt_2": {
+    "status": 202,
+    "job": "15599847-6e6c-44bb-9c8e-2c156a414652"
+  },
+  "visual_attempt_3": {
+    "status": 202,
+    "job": "15599847-6e6c-44bb-9c8e-2c156a414652"
+  },
+  "verification": "schema passed",
+  "mock_gate": {
+    "decision": "needs_more_information",
+    "steps": [],
+    "visual": 409,
+    "verification": 409
+  },
+  "decode_cancel_peak": 4
+}
+/private/var/folders/69/r13269yn5wn5ydgqj5c6r0qh0000gn/T/howlens-w3-3hfsmgn7/venv314/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+
+EXIT 1

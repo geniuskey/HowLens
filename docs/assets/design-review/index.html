@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>HowLens · 디자인 콘셉트 검토</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172236;
+      --muted: #607087;
+      --line: #dbe3ef;
+      --blue: #1768e8;
+      --pale: #f3f7fd;
+      --warning: #8a3a13;
+      --warning-bg: #fff3e7;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #f6f8fb;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
+      line-height: 1.55;
+    }
+    .page { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 28px 0 56px; }
+    .topline { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
+    .brand { font-size: 14px; font-weight: 800; letter-spacing: .08em; color: var(--blue); }
+    .stamp { border: 2px solid #ba541d; color: #8a3a13; background: var(--warning-bg); border-radius: 999px; padding: 7px 13px; font-size: 12px; font-weight: 900; letter-spacing: .06em; }
+    h1 { margin: 0; font-size: clamp(30px, 5vw, 52px); line-height: 1.13; letter-spacing: -.045em; }
+    .dek { max-width: 720px; color: var(--muted); font-size: 16px; margin: 14px 0 22px; }
+    .notice { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; padding: 15px 17px; border: 1px solid #f0c89e; border-radius: 14px; background: var(--warning-bg); color: #70330d; margin: 22px 0 30px; }
+    .notice strong { display: block; font-size: 15px; }
+    .notice p { margin: 2px 0 0; font-size: 13px; }
+    .notice-mark { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; color: white; background: #b9541e; font-weight: 900; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin: 32px 0 13px; }
+    h2 { margin: 0; font-size: clamp(20px, 3vw, 26px); letter-spacing: -.025em; }
+    .section-head p { color: var(--muted); margin: 0; font-size: 13px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .card { overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: white; box-shadow: 0 8px 24px rgb(28 48 82 / 5%); }
+    .card-head { padding: 17px 18px 12px; }
+    .eyebrow { color: var(--blue); font-size: 11px; text-transform: uppercase; letter-spacing: .12em; font-weight: 900; }
+    h3 { margin: 4px 0 4px; font-size: 20px; }
+    .card-head p { margin: 0; color: var(--muted); font-size: 13px; }
+    figure { margin: 0; padding: 0 12px 12px; }
+    figure img { display: block; width: 100%; height: auto; border: 1px solid #e8edf5; border-radius: 12px; background: var(--pale); }
+    figcaption { padding: 10px 5px 2px; color: var(--muted); font-size: 12px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; padding: 0 17px 17px; }
+    .tag { padding: 5px 9px; border-radius: 999px; color: #36516f; background: #eef4fc; font-size: 11px; font-weight: 700; }
+    .reference { margin-top: 18px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(220px, .8fr); gap: 18px; align-items: start; }
+    .reference .card { display: grid; grid-template-columns: minmax(0, 1fr); }
+    .reference figure img { max-height: 520px; object-fit: contain; }
+    .notes { padding: 19px; border: 1px solid var(--line); border-radius: 18px; background: white; }
+    .notes h3 { margin-top: 0; }
+    .notes ul { margin: 10px 0 0; padding-left: 19px; color: var(--muted); font-size: 14px; }
+    .notes li + li { margin-top: 8px; }
+    footer { margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    @media (max-width: 700px) {
+      .page { width: min(100% - 22px, 520px); padding-top: 17px; }
+      .topline { align-items: start; flex-direction: column; }
+      .grid, .reference { grid-template-columns: 1fr; }
+      .section-head { align-items: start; flex-direction: column; gap: 4px; }
+      .card-head { padding: 14px 14px 10px; }
+      figure { padding: 0 9px 9px; }
+      .reference figure img { max-height: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topline">
+      <div class="brand">HOWLENS · TEAM DESIGN REVIEW</div>
+      <div class="stamp">CONCEPT · NOT ACTUAL APK</div>
+    </div>
+
+    <h1>사진 입력에서<br>문서 근거 안내까지</h1>
+    <p class="dek">팀 검토를 위한 앱 화면 콘셉트 모음입니다. 원본 보드를 그대로 보여주며, 실제 앱 빌드·동작·장비 검증을 뜻하지 않습니다.</p>
+
+    <aside class="notice" aria-label="콘셉트 안내">
+      <span class="notice-mark" aria-hidden="true">!</span>
+      <div>
+        <strong>디자인 콘셉트 · 실제 APK 스크린샷 아님</strong>
+        <p>화면 이미지와 설명은 검토용입니다. 제품 구현, 서버 응답, 안전성 또는 실제 작업 가능성을 증명하지 않습니다.</p>
+      </div>
+    </aside>
+
+    <section aria-labelledby="screens-title">
+      <div class="section-head">
+        <h2 id="screens-title">앱 화면 콘셉트</h2>
+        <p>입력은 사진/카메라 선택, 결과는 문서 근거와 현재 단계 중심</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <header class="card-head">
+            <div class="eyebrow">01 · Input</div>
+            <h3>사진 분석 시작</h3>
+            <p>장비를 고르고 사진을 선택하는 입력 화면 방향</p>
+          </header>
+          <figure>
+            <img src="assets/howlens-input-concept.png" alt="HowLens 사진 분석 탭, 장비 선택, 사진 자리와 사진 선택 버튼을 보여주는 입력 화면 콘셉트">
+            <figcaption>원본 콘셉트 이미지 · 사진 분석 탭</figcaption>
+          </figure>
+          <div class="tags"><span class="tag">사진 분석 / 카메라 탭</span><span class="tag">장비 선택</span><span class="tag">데모 표시</span></div>
+        </article>
+
+        <article class="card">
+          <header class="card-head">
+            <div class="eyebrow">02 · Result</div>
+            <h3>문서 근거 안내</h3>
+            <p>주의 문구, 단계 설명과 문서 근거를 함께 보여주는 결과 방향</p>
+          </header>
+          <figure>
+            <img src="assets/howlens-result-concept.png" alt="HowLens 문서 근거 안내, 실제 작업에 사용하지 말라는 경고, 예시 사진, 단계 설명과 근거 보기를 보여주는 결과 화면 콘셉트">
+            <figcaption>원본 콘셉트 이미지 · 문서 근거 단계</figcaption>
+          </figure>
+          <div class="tags"><span class="tag">주의 문구</span><span class="tag">단계별 안내</span><span class="tag">근거 보기</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="reference-title">
+      <div class="section-head">
+        <h2 id="reference-title">팀장 원본 참고</h2>
+        <p>참고 이미지이며 이번 화면의 구현본이 아닙니다.</p>
+      </div>
+      <div class="reference">
+        <article class="card">
+          <header class="card-head">
+            <div class="eyebrow">Reference · Original</div>
+            <h3>HowLens 전체 디자인 보드</h3>
+            <p>요청된 원본 파일을 수정 없이 포함했습니다.</p>
+          </header>
+          <figure>
+            <img src="assets/team-lead-howlens-original.png" alt="팀장 제공 HowLens 앱 및 디자인 시스템 전체 참고 보드 원본">
+            <figcaption>원본 참고 이미지 · 표시용 복사본, 변경 없음</figcaption>
+          </figure>
+        </article>
+        <aside class="notes">
+          <h3>검토 시 참고</h3>
+          <ul>
+            <li>입력 흐름과 결과 흐름을 나누어 살펴볼 수 있습니다.</li>
+            <li>실제 결과는 계약 상태와 검증된 근거에 따라 달라집니다.</li>
+            <li>실제 guide나 이미지 생성 성공으로 해석하지 마세요.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <footer>오프라인 열람용 · 외부 폰트, 스크립트, API 요청 없음 · 원본 이미지: ab527d2</footer>
+  </main>
+</body>
+</html>

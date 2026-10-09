@@ -1,0 +1,99 @@
+Obtaining file:///tmp/howlens-w5-recheck-0HdjyM/backend
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Collecting Pillow<13,>=11.0 (from -r /tmp/howlens-w5-recheck-0HdjyM/backend/visual/requirements.txt (line 1))
+  Downloading pillow-12.3.0-cp314-cp314-macosx_11_0_arm64.whl.metadata (9.1 kB)
+Collecting httpx<1,>=0.27 (from -r /tmp/howlens-w5-recheck-0HdjyM/backend/visual/requirements.txt (line 2))
+  Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting fastapi==0.143.0 (from howlens-backend==0.1.0)
+  Downloading fastapi-0.143.0-py3-none-any.whl.metadata (26 kB)
+Collecting starlette==1.7.0 (from howlens-backend==0.1.0)
+  Downloading starlette-1.7.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting pydantic==2.14.0 (from howlens-backend==0.1.0)
+  Downloading pydantic-2.14.0-py3-none-any.whl.metadata (131 kB)
+Collecting uvicorn==0.54.0 (from howlens-backend==0.1.0)
+  Downloading uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting python-multipart==0.0.32 (from howlens-backend==0.1.0)
+  Downloading python_multipart-0.0.32-py3-none-any.whl.metadata (2.1 kB)
+Collecting python-dotenv<2,>=1.0 (from howlens-backend==0.1.0)
+  Downloading python_dotenv-1.2.4-py3-none-any.whl.metadata (29 kB)
+Collecting pytest==9.1.1 (from howlens-backend==0.1.0)
+  Downloading pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
+Collecting anyio (from httpx<1,>=0.27->-r /tmp/howlens-w5-recheck-0HdjyM/backend/visual/requirements.txt (line 2))
+  Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+Collecting certifi (from httpx<1,>=0.27->-r /tmp/howlens-w5-recheck-0HdjyM/backend/visual/requirements.txt (line 2))
+  Downloading certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+Collecting httpcore==1.* (from httpx<1,>=0.27->-r /tmp/howlens-w5-recheck-0HdjyM/backend/visual/requirements.txt (line 2))
+  Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting idna (from httpx<1,>=0.27->-r /tmp/howlens-w5-recheck-0HdjyM/backend/visual/requirements.txt (line 2))
+  Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting typing-extensions>=4.8.0 (from fastapi==0.143.0->howlens-backend==0.1.0)
+  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting typing-inspection>=0.4.2 (from fastapi==0.143.0->howlens-backend==0.1.0)
+  Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+Collecting annotated-doc>=0.0.2 (from fastapi==0.143.0->howlens-backend==0.1.0)
+  Downloading annotated_doc-0.0.5-py3-none-any.whl.metadata (6.5 kB)
+Collecting opentelemetry-api>=1.44.0 (from fastapi==0.143.0->howlens-backend==0.1.0)
+  Downloading opentelemetry_api-1.45.1-py3-none-any.whl.metadata (1.4 kB)
+Collecting annotated-types>=0.6.0 (from pydantic==2.14.0->howlens-backend==0.1.0)
+  Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.50.0 (from pydantic==2.14.0->howlens-backend==0.1.0)
+  Downloading pydantic_core-2.50.0-cp314-cp314-macosx_11_0_arm64.whl.metadata (6.5 kB)
+Collecting iniconfig>=1.0.1 (from pytest==9.1.1->howlens-backend==0.1.0)
+  Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+Collecting packaging>=22 (from pytest==9.1.1->howlens-backend==0.1.0)
+  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pluggy<2,>=1.5 (from pytest==9.1.1->howlens-backend==0.1.0)
+  Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+Collecting pygments>=2.7.2 (from pytest==9.1.1->howlens-backend==0.1.0)
+  Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting click>=7.0 (from uvicorn==0.54.0->howlens-backend==0.1.0)
+  Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting h11>=0.8 (from uvicorn==0.54.0->howlens-backend==0.1.0)
+  Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Downloading pillow-12.3.0-cp314-cp314-macosx_11_0_arm64.whl (4.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.8/4.8 MB 3.3 MB/s  0:00:01
+Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+Downloading fastapi-0.143.0-py3-none-any.whl (144 kB)
+Downloading pydantic-2.14.0-py3-none-any.whl (487 kB)
+Downloading pydantic_core-2.50.0-cp314-cp314-macosx_11_0_arm64.whl (2.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 5.2 MB/s  0:00:00
+Downloading pytest-9.1.1-py3-none-any.whl (386 kB)
+Downloading python_multipart-0.0.32-py3-none-any.whl (30 kB)
+Downloading starlette-1.7.0-py3-none-any.whl (78 kB)
+Downloading uvicorn-0.54.0-py3-none-any.whl (87 kB)
+Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+Downloading python_dotenv-1.2.4-py3-none-any.whl (23 kB)
+Downloading annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Downloading click-8.5.0-py3-none-any.whl (125 kB)
+Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading idna-3.20-py3-none-any.whl (69 kB)
+Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+Downloading opentelemetry_api-1.45.1-py3-none-any.whl (60 kB)
+Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 5.2 MB/s  0:00:00
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+Downloading certifi-2026.7.22-py3-none-any.whl (136 kB)
+Building wheels for collected packages: howlens-backend
+  Building editable for howlens-backend (pyproject.toml): started
+  Building editable for howlens-backend (pyproject.toml): finished with status 'done'
+  Created wheel for howlens-backend: filename=howlens_backend-0.1.0-0.editable-py3-none-any.whl size=2942 sha256=0f2df113e9bf44de26da76d1ca24eedc852f649f4f3ac8aa82360ce25bfca733
+  Stored in directory: /private/tmp/pip-ephem-wheel-cache-gcx6hkhz/wheels/b8/27/e8/ad6bfe83e096685439ccb61fdd6c80f63ab757d3d318238272
+Successfully built howlens-backend
+Installing collected packages: typing-extensions, python-multipart, python-dotenv, pygments, pluggy, Pillow, packaging, iniconfig, idna, h11, click, certifi, annotated-types, annotated-doc, uvicorn, typing-inspection, pytest, pydantic-core, opentelemetry-api, httpcore, anyio, starlette, pydantic, httpx, fastapi, howlens-backend
+
+Successfully installed Pillow-12.3.0 annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 certifi-2026.7.22 click-8.5.0 fastapi-0.143.0 h11-0.16.0 howlens-backend-0.1.0 httpcore-1.0.9 httpx-0.28.1 idna-3.20 iniconfig-2.3.1 opentelemetry-api-1.45.1 packaging-26.3 pluggy-1.6.0 pydantic-2.14.0 pydantic-core-2.50.0 pygments-2.21.0 pytest-9.1.1 python-dotenv-1.2.4 python-multipart-0.0.32 starlette-1.7.0 typing-extensions-4.16.0 typing-inspection-0.4.4 uvicorn-0.54.0
+
+[notice] A new release of pip is available: 25.3 -> 26.2.1
+[notice] To update, run: /private/tmp/howlens-w5-recheck-0HdjyM/venv/bin/python -m pip install --upgrade pip

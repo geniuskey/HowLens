@@ -1,0 +1,13 @@
+{
+  "text_input": 5,
+  "cached_text_input": 1.25,
+  "image_input": 8,
+  "cached_image_input": 2,
+  "image_output": 30,
+  "text_output": null,
+  "output_image_proxy_usd": null,
+  "currency": "USD",
+  "checked_at": "2026-10-09",
+  "scope": "Standard; 1024 square low for GPT legacy proxies; 1K for Gemini; input token counts exclusive of cached counts",
+  "source": "https://developers.openai.com/api/docs/models/gpt-image-2.5-sunburst"
+}
