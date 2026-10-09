@@ -45,6 +45,9 @@ fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
     val gallery = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
         if (uri != null) load(uri)
     }
+    val verificationGallery = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+        if (uri != null) vm.selectVerificationPhoto(context.contentResolver, uri)
+    }
     val camera = rememberLauncherForActivityResult(ActivityResultContracts.TakePicture()) { success ->
         if (success) pendingCamera?.let { load(Uri.parse(it)) }
         pendingCamera = null
@@ -111,14 +114,18 @@ fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
                 OutlinedButton(onClick = vm::analyze) { Text("다시 시도") }
             }
         }
-        state.analysis?.let { AnalysisResult(it) }
+        state.analysis?.let { AnalysisResult(it, state, vm) { verificationGallery.launch(arrayOf("image/jpeg", "image/png")) } }
         Text("사진만으로 설비의 안전·정상 동작을 보증하지 않습니다.", style = MaterialTheme.typography.bodySmall)
     }
 }
 
 @Composable
-internal fun AnalysisResult(analysis: Analysis) {
+internal fun AnalysisResult(analysis: Analysis, state: AnalysisUiState, vm: AnalysisViewModel,
+    onSelectVerificationPhoto: () -> Unit) {
     val context = LocalContext.current
+    var sharePreviewVisible by rememberSaveable(analysis.analysisId) { mutableStateOf(false) }
+    var shareError by remember(analysis.analysisId) { mutableStateOf<String?>(null) }
+    val shareText = remember(analysis) { SharePreview.build(analysis) }
     HorizontalDivider()
     Text(when (analysis.decision) {
         Decision.GUIDE -> "문서 근거 안내"
@@ -156,7 +163,101 @@ internal fun AnalysisResult(analysis: Analysis) {
         analysis.visibleSteps.forEachIndexed { index, step ->
             Text("${index + 1}. ${step.description}\n근거: ${step.evidenceIds.joinToString()}")
         }
-        Text("설명 이미지 통합은 다음 단계에서 제공됩니다. 텍스트 안내는 유지됩니다.")
+        Text("설명 이미지는 시각 참고용입니다. 승인된 텍스트 단계와 근거를 먼저 확인하세요.")
+        if (state.offline || analysis.mode != Mode.LIVE) {
+            Text("MOCK/오프라인 결과에는 시각 이미지를 요청할 수 없습니다.", color = MaterialTheme.colorScheme.error)
+        } else if (state.visualLoading) {
+            LinearProgressIndicator(Modifier.fillMaxWidth())
+            Text("서버에서 단계별 시각 안내를 요청/확인 중…")
+            TextButton(onClick = vm::cancelVisual) { Text("시각 요청 취소") }
+        } else if (state.visualImages.isNotEmpty()) {
+            Text("시각 패널 · 순서대로 확인")
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                state.visualPanels.chunked(3).forEach { row ->
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth()) {
+                        row.forEach { panel ->
+                            Card(Modifier.weight(1f)) {
+                                Column(Modifier.padding(6.dp)) {
+                                    Text("${panel.index + 1} · 단계 ${analysis.steps.indexOfFirst { it.stepId == panel.stepId } + 1} (${panel.stepId})")
+                                    val bytes = state.visualImages[panel.index]
+                                    val bitmap = remember(bytes) { bytes?.let { BitmapFactory.decodeByteArray(it, 0, it.size) } }
+                                    bitmap?.let { Image(it.asImageBitmap(), "설명용 단계 ${panel.index + 1} 이미지", Modifier.fillMaxWidth().height(96.dp)) }
+                                    DisposableEffect(bitmap) { onDispose { bitmap?.recycle() } }
+                                }
+                            }
+                        }
+                        repeat(3 - row.size) { Spacer(Modifier.weight(1f)) }
+                    }
+                }
+            }
+        } else {
+            state.visualError?.let { Text(it, color = MaterialTheme.colorScheme.error) }
+            Button(onClick = vm::requestVisual, enabled = state.visualAttempts < 2, modifier = Modifier.fillMaxWidth()) {
+                Text(if (state.visualAttempts == 0) "단계 이미지 요청" else "사용자 재시도 (${state.visualAttempts}/2)")
+            }
+            if (state.visualAttempts >= 2) Text("시각 생성은 최대 두 번 요청했습니다. 문서 근거 텍스트를 계속 확인할 수 있습니다.")
+        }
+        HorizontalDivider()
+        Text("전후 사진 비교 · 관찰 참고만 제공", style = MaterialTheme.typography.titleMedium)
+        Text("처음 선택한 사진은 원본으로 보관됩니다. 비교할 작업 후 사진을 추가하세요.")
+        OutlinedButton(onClick = onSelectVerificationPhoto,
+            enabled = !state.verificationPhotoLoading && !state.verificationBusy) { Text("작업 후 사진 선택") }
+        if (state.verificationPhotoLoading) LinearProgressIndicator(Modifier.fillMaxWidth())
+        state.verificationPhoto?.let { photo ->
+            Text("작업 후 사진: ${photo.width} × ${photo.height}")
+            val bitmap = remember(photo) { BitmapFactory.decodeByteArray(photo.bytes, 0, photo.bytes.size,
+                BitmapFactory.Options().apply { inSampleSize = 8 }) }
+            bitmap?.let { Image(it.asImageBitmap(), "작업 후 사진", Modifier.fillMaxWidth().height(160.dp)) }
+            DisposableEffect(bitmap) { onDispose { bitmap?.recycle() } }
+        }
+        OutlinedTextField(value = state.confirmation, onValueChange = vm::confirmation,
+            label = { Text("비교에 참고할 사용자 관찰 (선택)") }, enabled = !state.verificationBusy,
+            supportingText = { Text("${state.confirmation.codePointCount(0, state.confirmation.length)} / 2,000자") },
+            modifier = Modifier.fillMaxWidth())
+        state.verificationError?.let { Text(it, color = MaterialTheme.colorScheme.error) }
+        if (state.verificationBusy) {
+            LinearProgressIndicator(Modifier.fillMaxWidth())
+            Text("사진의 시각적 변화만 확인 중…")
+            TextButton(onClick = vm::cancelVerification) { Text("비교 취소") }
+        } else {
+            Button(onClick = vm::verify, enabled = state.verificationPhoto != null && !state.offline,
+                modifier = Modifier.fillMaxWidth()) { Text("전후 사진 비교") }
+        }
+        state.verification?.let { result ->
+            Text("비교 결과 · ${if (result.mode == Mode.MOCK) "MOCK" else "LIVE"}", style = MaterialTheme.typography.titleMedium)
+            Text(when (result.result) {
+                VerificationResult.OBSERVED_CHANGE -> "관찰된 변화"
+                VerificationResult.ISSUE_REMAINING -> "문제가 남아 있는 것으로 관찰됨"
+                VerificationResult.INCONCLUSIVE -> "사진만으로 결론을 내릴 수 없음"
+            })
+            ResultLines("관찰", result.observations)
+            ResultLines("추가 확인 필요", result.missingInformation)
+            ResultLines("제한", result.limitations)
+        }
+        Text("전후 사진은 시각적 변화만 관찰합니다. 안전, 성공, 정상 동작을 보증하지 않으며 별도 기능 시험과 담당자 확인이 필요합니다.",
+            color = MaterialTheme.colorScheme.error)
+    shareError?.let { Text(it, color = MaterialTheme.colorScheme.error) }
+    OutlinedButton(onClick = { shareError = null; sharePreviewVisible = true }, modifier = Modifier.fillMaxWidth()) {
+        Text("근거 요약 공유 미리보기")
+    }
+    if (sharePreviewVisible) AlertDialog(
+        onDismissRequest = { sharePreviewVisible = false },
+        title = { Text("공유할 텍스트 확인") },
+        text = { Text(shareText, Modifier.heightIn(max = 360.dp).verticalScroll(rememberScrollState())) },
+        confirmButton = {
+            TextButton(onClick = {
+                try {
+                    val send = Intent(Intent.ACTION_SEND).setType("text/plain").putExtra(Intent.EXTRA_TEXT, shareText)
+                    context.startActivity(Intent.createChooser(send, "HowLens 요약 공유"))
+                    sharePreviewVisible = false
+                } catch (_: Exception) {
+                    shareError = "공유 앱을 열 수 없습니다. 현재 결과는 유지됩니다."
+                    sharePreviewVisible = false
+                }
+            }) { Text("공유 앱 선택") }
+        },
+        dismissButton = { TextButton(onClick = { sharePreviewVisible = false }) { Text("취소") } }
+    )
     } else {
         Text("실행 단계와 이미지가 차단되었습니다.", color = MaterialTheme.colorScheme.error)
     }

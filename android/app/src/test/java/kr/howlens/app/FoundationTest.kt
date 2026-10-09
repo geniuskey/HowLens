@@ -1,13 +1,18 @@
 package kr.howlens.app
 
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withTimeout
 import kotlinx.coroutines.test.*
 import kotlinx.serialization.json.Json
 import kr.howlens.app.data.*
 import kr.howlens.app.ui.*
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
+import okhttp3.mockwebserver.SocketPolicy
+import java.util.concurrent.TimeUnit
 import org.junit.Assert.*
 import org.junit.Test
 
@@ -57,6 +62,23 @@ class FoundationTest {
         assertTrue(ApiErrors.parse(504, "not json").retryable)
         assertFalse(ApiErrors.parse(415, "not json").retryable)
     }
+    @Test fun sharePreviewUsesOnlyAllowlistedEvidenceAndFixedLimitations() {
+        val source = guide().copy(
+            observations = listOf("SERIAL=SN-123 IP=10.0.0.1 token=secret do not share"),
+            steps = listOf(Step("s1", "raw work instruction", listOf("e1"), "visual")),
+            evidence = listOf(guide().evidence.single().copy(
+                quote = "private free-form quote", sourceUrl = "https://manual.example/public?doc=1"),
+                guide().evidence.single().copy(evidenceId = "e2", sourceUrl = "http://insecure.example/manual")))
+        val preview = SharePreview.build(source)
+        assertTrue(preview.contains("Dell PowerEdge R750"))
+        assertTrue(preview.contains("test-only")); assertTrue(preview.contains("PDF 1쪽"))
+        assertTrue(preview.contains("https://manual.example/public?doc=1"))
+        assertFalse(preview.contains("SERIAL")); assertFalse(preview.contains("10.0.0.1")); assertFalse(preview.contains("secret"))
+        assertFalse(preview.contains("raw work instruction")); assertFalse(preview.contains("private free-form quote"))
+        assertFalse(preview.contains("http://insecure.example")); assertFalse(preview.contains("test-analysis"))
+        assertTrue(preview.contains("안전, 작업 성공"))
+        assertTrue(SharePreview.build(source.copy(mode = Mode.MOCK)).contains("MOCK 합성 예시"))
+    }
     @Test fun multipartAndSnakeCaseRoundTrip() = runTest {
         val server = MockWebServer()
         server.start()
@@ -105,6 +127,110 @@ class FoundationTest {
             vm.analyze(); runCurrent(); vm.cancel(); advanceUntilIdle()
             assertEquals(Phase.INPUT, vm.state.value.phase); assertNull(vm.state.value.analysis)
         } finally { Dispatchers.resetMain() }
+    }
+    @Test fun liveGuideVisualRequestLoadsNineOrderedPanelsAndSameServerAssets() = runBlocking {
+        Dispatchers.setMain(Dispatchers.Unconfined)
+        val server = MockWebServer().apply { start() }
+        try {
+            server.enqueue(MockResponse().setBody(Json.encodeToString(Analysis.serializer(), guide())))
+            server.enqueue(MockResponse().setBody(Json.encodeToString(VisualJob.serializer(), VisualJob(
+                "visual-1", "test-analysis", VisualStatus.COMPLETED, null,
+                (0..8).map { Panel(it, "s1", "/visual-assets/p$it.png") }, null, Mode.LIVE))))
+            val png = java.util.Base64.getDecoder().decode("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/l0cAAAAASUVORK5CYII=")
+            repeat(9) { server.enqueue(MockResponse().setHeader("Content-Type", "image/png").setBody(okio.Buffer().write(png))) }
+            val vm = AnalysisViewModel()
+            vm.offline(false); vm.baseUrl(server.url("/").toString()); vm.photo(photo); vm.question("test")
+            vm.analyze(); awaitState(vm) { it.analysis != null }
+            vm.requestVisual(); awaitState(vm) { !it.visualLoading && it.visualImages.size == 9 }
+            assertEquals((0..8).toList(), vm.state.value.visualPanels.map { it.index })
+            assertTrue(vm.state.value.analysis!!.canShowSteps)
+            assertEquals(11, server.requestCount)
+            assertEquals("/analyses", server.takeRequest().path)
+            assertEquals("/analyses/test-analysis/visual", server.takeRequest().path)
+            assertEquals((0..8).map { "/visual-assets/p$it.png" }.toSet(),
+                (0..8).map { server.takeRequest().path }.toSet())
+        } finally { server.shutdown(); Dispatchers.resetMain() }
+    }
+    @Test fun verificationUploadsAfterPhotoAndLimitsEvidenceToOriginalGuide() = runBlocking {
+        val server = MockWebServer()
+        server.start()
+        try {
+            server.enqueue(MockResponse().setBody(Json.encodeToString(Verification.serializer(), Verification(
+                "test-analysis", VerificationResult.INCONCLUSIVE, listOf("Synthetic only"), listOf("e1"),
+                listOf("A clearer after photo is needed"), listOf("Does not establish safe or normal operation"), Mode.LIVE))))
+            val result = HttpAnalysisRepository(server.url("/").toString()).verify(guide(), photo, "operator note")
+            assertEquals(VerificationResult.INCONCLUSIVE, result.result)
+            val request = server.takeRequest()
+            assertEquals("POST", request.method); assertEquals("/analyses/test-analysis/verification", request.path)
+            val body = request.body.readUtf8()
+            assertTrue(body.contains("name=\"photo\"; filename=\"photo.png\""))
+            assertTrue(body.contains("name=\"user_confirmation\"")); assertTrue(body.contains("operator note"))
+            assertFails { HttpAnalysisRepository(server.url("/").toString()).verify(guide(), photo,
+                "x".repeat(2001)) }
+            server.enqueue(MockResponse().setBody(Json.encodeToString(Verification.serializer(), Verification(
+                "test-analysis", VerificationResult.INCONCLUSIVE, emptyList(), listOf("unregistered"), emptyList(), emptyList(), Mode.LIVE))))
+            try {
+                HttpAnalysisRepository(server.url("/").toString()).verify(guide(), photo)
+                fail("unregistered evidence must be rejected")
+            } catch (_: IllegalArgumentException) { }
+        } finally { server.shutdown() }
+    }
+    @Test fun visualFailureKeepsTextAndAllowsOnlyOneUserRetry() = runBlocking {
+        Dispatchers.setMain(Dispatchers.Unconfined)
+        val server = MockWebServer().apply { start() }
+        try {
+            server.enqueue(MockResponse().setBody(Json.encodeToString(Analysis.serializer(), guide())))
+            repeat(2) { server.enqueue(MockResponse().setBody(Json.encodeToString(VisualJob.serializer(), VisualJob(
+                "visual-$it", "test-analysis", VisualStatus.FAILED, null, emptyList(), "Synthetic failure", Mode.LIVE)))) }
+            val vm = AnalysisViewModel()
+            vm.offline(false); vm.baseUrl(server.url("/").toString()); vm.photo(photo); vm.question("test")
+            vm.analyze(); awaitState(vm) { it.analysis != null }
+            vm.requestVisual(); awaitState(vm) { !it.visualLoading && it.visualError != null }
+            assertEquals("test-analysis", vm.state.value.analysis?.analysisId)
+            assertTrue(vm.state.value.analysis!!.visibleSteps.isNotEmpty())
+            vm.requestVisual(); awaitState(vm) { !it.visualLoading && it.visualAttempts == 2 }
+            vm.requestVisual()
+            assertEquals(2, vm.state.value.visualAttempts)
+            assertEquals(3, server.requestCount)
+        } finally { server.shutdown(); Dispatchers.resetMain() }
+    }
+    @Test fun malformedPanelsAreRejectedAndVisualCancellationPreservesGuide() = runBlocking {
+        Dispatchers.setMain(Dispatchers.Unconfined)
+        val server = MockWebServer().apply { start() }
+        try {
+            server.enqueue(MockResponse().setBody(Json.encodeToString(Analysis.serializer(), guide())))
+            server.enqueue(MockResponse().setBody(Json.encodeToString(VisualJob.serializer(), VisualJob(
+                "visual-bad", "test-analysis", VisualStatus.COMPLETED, null,
+                (0..7).map { Panel(it, "s1", "/visual-assets/p$it.png") }, null, Mode.LIVE))))
+            val vm = AnalysisViewModel()
+            vm.offline(false); vm.baseUrl(server.url("/").toString()); vm.photo(photo); vm.question("test")
+            vm.analyze(); awaitState(vm) { it.analysis != null }
+            vm.requestVisual(); awaitState(vm) { !it.visualLoading && it.visualError != null }
+            assertTrue(vm.state.value.visualError!!.contains("패널 9개"))
+            assertEquals("test-analysis", vm.state.value.analysis?.analysisId)
+            assertTrue(vm.state.value.visualImages.isEmpty())
+        } finally { server.shutdown(); Dispatchers.resetMain() }
+    }
+    @Test fun cancellingHttpVisualCallCancelsOkHttpAndRetainsOriginalText() = runBlocking {
+        Dispatchers.setMain(Dispatchers.Unconfined)
+        val server = MockWebServer().apply { start() }
+        try {
+            server.enqueue(MockResponse().setBody(Json.encodeToString(Analysis.serializer(), guide())))
+            server.enqueue(MockResponse().setSocketPolicy(SocketPolicy.NO_RESPONSE))
+            val vm = AnalysisViewModel()
+            vm.offline(false); vm.baseUrl(server.url("/").toString()); vm.photo(photo); vm.question("test")
+            vm.analyze(); awaitState(vm) { it.analysis != null }
+            vm.requestVisual()
+            server.takeRequest(3, TimeUnit.SECONDS)
+            vm.cancelVisual()
+            awaitState(vm) { !it.visualLoading }
+            assertEquals("test-analysis", vm.state.value.analysis?.analysisId)
+            assertTrue(vm.state.value.analysis!!.canShowSteps)
+            assertTrue(vm.state.value.visualError!!.contains("취소"))
+        } finally { server.shutdown(); Dispatchers.resetMain() }
+    }
+    private suspend fun awaitState(vm: AnalysisViewModel, predicate: (AnalysisUiState) -> Boolean) {
+        withTimeout(5000) { while (!predicate(vm.state.value)) delay(10) }
     }
     private suspend fun assertFails(block: suspend () -> Unit) {
         try { block(); fail("Expected gate rejection") } catch (_: IllegalArgumentException) { }

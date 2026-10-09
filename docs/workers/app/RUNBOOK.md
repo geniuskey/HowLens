@@ -47,3 +47,32 @@ Health/Analysis/VisualJob/Verification의 snake_case DTO와 API client 메서드
 - [Compose compiler Gradle plugin 설정](https://developer.android.com/develop/ui/compose/setup-compose-dependencies-and-compiler): Kotlin 2의 Compose plugin 구성.
 - [Activity Result API](https://developer.android.com/training/basics/intents/result), [TakePicture 계약](https://developer.android.com/reference/androidx/activity/result/contract/ActivityResultContracts.TakePicture): 초기 카메라 intent 연결 근거.
 - Wrapper JAR/스크립트: 공식 [Gradle v8.9.0 저장소](https://github.com/gradle/gradle/tree/v8.9.0/gradle/wrapper). JAR SHA-256 `498495120a03b9a6ab5d155f5de3c8f0d986a449153702fb80fc80e134484f17`를 [공식 checksum](https://services.gradle.org/distributions/gradle-8.9-wrapper.jar.sha256)과 대조했다. 배포 ZIP도 wrapper properties의 공식 SHA-256으로 검증한다.
+
+## W2 live guide, visual panels, verification, and evidence-only sharing
+
+The analysis endpoint still accepts one selected JPEG/PNG photo per request (`POST /analyses` multipart). The camera button launches Android's camera app with `TakePicture`; this build does not stream video or contain CameraX. The visual flow is available only after a validated LIVE guide: the app creates one visual job, polls while queued/running, validates the returned analysis ID/mode, exact nine indices (0–8), and every panel's approved step reference, then fetches each `/visual-assets/...` path from the same API server. Failed/malformed visual responses retain the original text and allow one deliberate user retry (two total requests). Cancel stops the OkHttp call.
+
+Verification keeps the original selected photo as the before photo and opens a separate gallery action for the after photo. It sends only the after photo and optional user observation to the server. The UI reports observed change / issue remaining / inconclusive plus limitations and missing information; it never upgrades this to a safety, repair-success, or normal-operation guarantee.
+
+The optional share preview is assembled from an allowlist: fixed device label, decision, mode, public evidence document ID/version/PDF+printed page, public HTTPS source URL without credentials or secret query keys, and fixed limitations. It excludes free-form observations/questions/quotes/steps, photos, analysis IDs, and device identifiers. The user reviews the preview and then chooses a recipient in Android Sharesheet; tests inspect the text only and never send it. Android's official guidance uses `ACTION_SEND`, `text/plain`, `EXTRA_TEXT`, and `Intent.createChooser`: https://developer.android.com/develop/ui/compose/sharing/send
+
+### W2 build and API doubles
+
+```sh
+cd android
+JAVA_HOME='/Applications/Android Studio.app/Contents/jbr/Contents/Home' \
+ANDROID_HOME='/Users/edwin/Library/Android/sdk' \
+./gradlew assembleDebug assembleDebugAndroidTest testDebugUnitTest lintDebug --console=plain
+```
+
+The debug APK is `android/app/build/outputs/apk/debug/app-debug.apk`. JVM tests use local MockWebServer only and synthetic fixtures; they exercise nine-panel success/same-server assets, visual failure and one retry, cancellation, malformed panels, verification multipart/evidence guards, response contracts, and share allowlisting. Compose instrumentation tests use synthetic-only fixtures and cover non-guide/mock step blocking, panel order/step refs, share preview allowlist, and Android PNG loading. No AI API or real machine photo is used by these tests.
+
+### W2 physical Galaxy evidence
+
+On 2026-10-09 the connected Galaxy reported serial `R5KL20H60TN`, model `SM_S948N` (ADB product `m3qksx`). Final APK `adb install -r` succeeded; `MainActivity` was observed foregrounded. Gallery picker opened and selected only the public synthetic 68-byte asset at `/sdcard/Pictures/HowLens-TEST-only-upload.png`, which the app showed as 1×1; no personal image was opened and the asset was not submitted. Camera launched as `com.sec.android.app.camera/.Camera` and was closed without taking a photo. Back navigation from both external activities returned through the app/task. The offline MOCK label was visible on the actual phone screen. The app remained responsive after physical rotation to `ROTATION_270`.
+
+The API PC's GET `/health` returned HTTP 200, `{"status":"ok","mode":"live"}`. Direct Galaxy 5G access failed with Chrome `ERR_NETWORK_CHANGED`; no device network setting was changed. A temporary Python TCP relay owned by this task listened only on `127.0.0.1:18000` and forwarded to `10.102.72.28:8000`; `adb reverse tcp:18000 tcp:18000` let Chrome on the phone display the same health JSON. The relay process was stopped, `adb reverse --remove tcp:18000` was run, the reverse list was empty, and port 18000 was confirmed free. Relay PID was not retained in the task log. No analysis POST/paid API request was made; paid attempts: 0.
+
+The test runner on this Galaxy's Android 17 image fails before UI assertions because Espresso looks up missing `android.hardware.input.InputManager.getInstance`. This is recorded as a device test harness failure, not a passing physical UI suite. The API 34 Pixel 3a emulator ran all six Compose tests successfully. Its rotation was toggled to landscape with emulator-only `cmd window user-rotation lock 1`, app orientation was observed at ROTATION_90, and emulator rotation was released with `user-rotation free`. Separately, physical Galaxy rotation to ROTATION_270 was observed while the app remained responsive.
+
+Screenshots are in `docs/workers/app/screenshots/`: `w2-galaxy-input.png` is the physical phone input screen; `w2-galaxy-camera-launch.png` shows the external camera app launch; `w2-api34-synthetic-non-guide.png` is an API 34 Compose screenshot from synthetic offline `needs_more_information` state, showing MOCK labeling and blocked steps. The latter is test output, not a server or AI result.

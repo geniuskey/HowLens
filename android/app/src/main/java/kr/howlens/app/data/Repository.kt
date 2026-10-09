@@ -2,11 +2,13 @@ package kr.howlens.app.data
 
 import java.io.IOException
 import java.io.InterruptedIOException
-import java.net.SocketTimeoutException
+import java.io.ByteArrayOutputStream
 import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
+import kotlin.coroutines.resumeWithException
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.*
 import okhttp3.HttpUrl.Companion.toHttpUrl
@@ -16,6 +18,9 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.Response
 
 interface AnalysisRepository {
     suspend fun analyze(deviceId: String, question: String, photo: Photo): Analysis
@@ -51,26 +56,56 @@ class HttpAnalysisRepository(baseUrl: String, private val client: OkHttpClient =
         }
     }
     private val json = Json { ignoreUnknownKeys = true }
+    companion object { const val MAX_RESPONSE_BYTES = 2 * 1024 * 1024 }
 
     private suspend inline fun <reified T> request(path: String, body: RequestBody? = null): T = withContext(Dispatchers.IO) {
         val builder = Request.Builder().url(base.newBuilder().encodedPath(path).build())
         if (body != null) builder.post(body)
         try {
-            client.newCall(builder.build()).execute().use { response ->
-                val text = response.body?.string().orEmpty()
-                if (!response.isSuccessful) throw ApiErrors.parse(response.code, text)
-                json.decodeFromString<T>(text)
-            }
-        } catch (e: SocketTimeoutException) {
-            throw ApiFailure("timeout", "요청 시간이 초과되었습니다. 다시 시도할 수 있습니다.", true)
+            val text = cancellableTextCall(client.newCall(builder.build()))
+            json.decodeFromString<T>(text)
         } catch (e: InterruptedIOException) {
+            if (e is kotlinx.coroutines.CancellationException) throw e
             throw ApiFailure("timeout", "요청 시간이 초과되었습니다. 다시 시도할 수 있습니다.", true)
         } catch (e: SerializationException) {
             throw ApiFailure("invalid_response", "서버 응답 형식을 확인할 수 없습니다.", false)
+        } catch (e: ApiFailure) {
+            throw e
         } catch (e: IOException) {
-            if (e is ApiFailure) throw e
             throw ApiFailure("network", "서버에 연결할 수 없습니다. 주소와 연결을 확인하세요.", true)
         }
+    }
+    private suspend fun cancellableTextCall(call: Call): String = suspendCancellableCoroutine { continuation ->
+        continuation.invokeOnCancellation { call.cancel() }
+        call.enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                if (continuation.isActive) continuation.resumeWithException(e)
+            }
+            override fun onResponse(call: Call, response: Response) {
+                try {
+                    response.use {
+                        val bytes = readBounded(it.body?.source(), MAX_RESPONSE_BYTES, "서버 응답이 너무 큽니다. 요청을 줄이거나 서버 응답을 확인하세요.")
+                        val text = bytes.toString(Charsets.UTF_8)
+                        if (!it.isSuccessful) throw ApiErrors.parse(it.code, text)
+                        if (continuation.isActive) continuation.resumeWith(Result.success(text))
+                    }
+                } catch (e: Exception) {
+                    if (continuation.isActive) continuation.resumeWithException(e)
+                }
+            }
+        })
+    }
+    private fun readBounded(source: okio.BufferedSource?, limit: Int, error: String): ByteArray {
+        if (source == null) return byteArrayOf()
+        val output = ByteArrayOutputStream()
+        val chunk = ByteArray(8192)
+        while (true) {
+            val count = source.read(chunk)
+            if (count < 0) break
+            if (output.size() + count > limit) throw ApiFailure("response_too_large", error, false)
+            output.write(chunk, 0, count)
+        }
+        return output.toByteArray()
     }
     suspend fun health(): Health = request("/health")
     override suspend fun analyze(deviceId: String, question: String, photo: Photo): Analysis {
@@ -83,14 +118,48 @@ class HttpAnalysisRepository(baseUrl: String, private val client: OkHttpClient =
             if (it.deviceId != deviceId) throw ApiFailure("invalid_response", "요청 장비와 응답 장비가 다릅니다.", false)
         }
     }
-    // W1 has no visual-generation UI. These guarded contract methods are ready for integration.
     suspend fun createVisual(analysis: Analysis): VisualJob {
         require(analysis.canRequestVisual) { "검증된 live guide만 이미지 요청 가능" }
         return request("/analyses/${safeId(analysis.analysisId)}/visual", ByteArray(0).toRequestBody())
     }
     suspend fun visualJob(analysis: Analysis, jobId: String): VisualJob {
         require(analysis.canRequestVisual)
+        require(jobId.matches(Regex("[A-Za-z0-9_-]+")))
         return request("/visual-jobs/${safeId(jobId)}")
+    }
+    suspend fun visualAsset(analysis: Analysis, path: String): ByteArray {
+        require(analysis.canRequestVisual)
+        val url = assetUrl(path)
+        return withContext(Dispatchers.IO) {
+            try {
+                val call = client.newCall(Request.Builder().url(url).build())
+                val bytes = cancellableBytesCall(call)
+                bytes
+            } catch (e: InterruptedIOException) {
+                if (e is kotlinx.coroutines.CancellationException) throw e
+                throw ApiFailure("timeout", "이미지 다운로드 시간이 초과되었습니다.", true)
+            } catch (e: ApiFailure) { throw e
+            } catch (e: IOException) { throw ApiFailure("network", "서버 이미지에 연결할 수 없습니다.", true) }
+        }
+    }
+    private suspend fun cancellableBytesCall(call: Call): ByteArray = suspendCancellableCoroutine { continuation ->
+        continuation.invokeOnCancellation { call.cancel() }
+        call.enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) { if (continuation.isActive) continuation.resumeWithException(e) }
+            override fun onResponse(call: Call, response: Response) {
+                try { response.use {
+                    if (!it.isSuccessful) throw ApiErrors.parse(it.code, "")
+                    val contentType = it.body?.contentType()?.let { type -> "${type.type}/${type.subtype}" }
+                    if (contentType != "image/png") throw ApiFailure("invalid_image", "서버 패널은 PNG 이미지여야 합니다.", false)
+                    val bytes = readBounded(it.body?.source(), MAX_RESPONSE_BYTES, "서버 이미지가 너무 큽니다.")
+                    val pngSignature = byteArrayOf(0x89.toByte(), 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a)
+                    if (bytes.size < pngSignature.size || !pngSignature.indices.all { index -> bytes[index] == pngSignature[index] }) {
+                        throw ApiFailure("invalid_image", "서버 패널 응답이 유효한 PNG가 아닙니다. 텍스트 안내는 유지됩니다.", false)
+                    }
+                    if (continuation.isActive) continuation.resumeWith(Result.success(bytes))
+                } } catch (e: Exception) { if (continuation.isActive) continuation.resumeWithException(e) }
+            }
+        })
     }
     suspend fun verify(analysis: Analysis, photo: Photo, confirmation: String = ""): Verification {
         require(analysis.canRequestVisual)

@@ -72,6 +72,36 @@ import kotlinx.serialization.Serializable
     val limitations: List<String>, val mode: Mode
 )
 
+/** Evidence-only user-reviewed handoff; arbitrary text from photos/models is omitted. */
+object SharePreview {
+    fun build(analysis: Analysis): String = buildString {
+        appendLine("HowLens 장비 참고 요약")
+        appendLine("장비: ${InputRules.devices[analysis.deviceId] ?: "알 수 없는 장비"}")
+        appendLine("판정: ${when (analysis.decision) {
+            Decision.GUIDE -> "문서 근거 안내"
+            Decision.NEEDS_MORE_INFORMATION -> "추가 정보 필요"
+            Decision.STOP -> "작업 중단"
+        }}")
+        appendLine("모드: ${if (analysis.mode == Mode.LIVE) "LIVE 서버 응답" else "MOCK 합성 예시"}")
+        val publicEvidence = analysis.evidence.filter { evidence ->
+            runCatching { java.net.URI(evidence.sourceUrl).let { uri ->
+                uri.scheme == "https" && !uri.host.isNullOrBlank() && uri.userInfo == null &&
+                    uri.rawQuery.orEmpty().split('&').none { query ->
+                        query.substringBefore('=').lowercase() in setOf("token", "access_token", "auth", "authorization", "signature", "sig", "key", "password", "secret")
+                    }
+            } }.getOrDefault(false)
+        }
+        if (publicEvidence.isNotEmpty()) {
+            appendLine("공개 문서 출처")
+            publicEvidence.forEach { evidence ->
+                appendLine("• ${evidence.documentId} · 버전 ${evidence.documentVersion} · PDF ${evidence.pdfPage}쪽 · 인쇄 ${evidence.printedPage ?: "표기 없음"}")
+                appendLine(evidence.sourceUrl)
+            }
+        }
+        append("한계: 사진과 문서 참고만 제공하며 안전, 작업 성공, 정상 동작을 보증하지 않습니다. 별도 기능 시험과 담당자 확인이 필요합니다.")
+    }
+}
+
 data class Photo(val bytes: ByteArray, val mime: String, val width: Int, val height: Int)
 object InputRules {
     const val MAX_BYTES = 10 * 1024 * 1024

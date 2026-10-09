@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -31,6 +32,11 @@ class OfflineScreenTest {
         bitmap.recycle()
         return Photo(output.toByteArray(), "image/png", 32, 32)
     }
+    private fun liveGuide(): Analysis = Analysis("fixture-analysis-id", "server", Decision.GUIDE,
+        listOf("PRIVATE-SERIAL SN-123 and private free text"),
+        listOf(Evidence("public-e1", "manual-public-id", "v1", 4, "7", "section", "private quote", "https://manual.example/device.pdf")),
+        emptyList(), listOf(Step("approved-s1", "Synthetic step fixture", listOf("public-e1"), "fixture")),
+        emptyList(), emptyList(), Mode.LIVE)
     @Test fun offlineMoreInformationAndStopBlockStepsOnScreen() {
         val vm = AnalysisViewModel()
         compose.runOnUiThread { vm.photo(photo()); vm.question("합성 UI 테스트") }
@@ -41,6 +47,11 @@ class OfflineScreenTest {
         compose.onNodeWithText("추가 정보 필요").performScrollTo().assertIsDisplayed()
         compose.onNodeWithText("MOCK · 합성 예시 · 실제 작업에 사용 금지").assertExists()
         compose.onNodeWithText("실행 단계와 이미지가 차단되었습니다.").performScrollTo().assertIsDisplayed()
+        val resultCapture = compose.onRoot().captureToImage().asAndroidBitmap()
+        File(InstrumentationRegistry.getInstrumentation().targetContext.cacheDir, "w2-non-guide-result.png").outputStream().use {
+            resultCapture.compress(Bitmap.CompressFormat.PNG, 100, it)
+        }
+        resultCapture.recycle()
         compose.onNodeWithText("중단 예시").performScrollTo().performClick()
         compose.onNodeWithText("MOCK 화면 확인").performScrollTo().performClick()
         compose.waitUntil(5000) { vm.state.value.phase == Phase.RESULT }
@@ -60,13 +71,43 @@ class OfflineScreenTest {
             listOf(Evidence("synthetic-e1", "synthetic-document", "fixture-v1", 3, "ii", "합성 절", "합성 발췌", "https://example.org/fixture")),
             emptyList(), emptyList(), emptyList(), listOf("추가 확인 필요"), Mode.MOCK)
         compose.setContent { MaterialTheme {
-            Column(Modifier.verticalScroll(rememberScrollState())) { AnalysisResult(fixture) }
+            Column(Modifier.verticalScroll(rememberScrollState())) {
+                AnalysisResult(fixture, AnalysisUiState(phase = Phase.RESULT, analysis = fixture, offline = true),
+                    AnalysisViewModel()) { }
+            }
         } }
         compose.onNodeWithText("synthetic-e1 · synthetic-document · 버전 fixture-v1").assertExists()
         compose.onNodeWithText("PDF 3쪽 · 인쇄 ii · 합성 절").assertExists()
         compose.onNodeWithText("합성 발췌").assertExists()
         compose.onNodeWithText("https://example.org/fixture").assertExists()
         compose.onNodeWithText("실행 단계와 이미지가 차단되었습니다.").assertExists()
+    }
+    @Test fun livePanelsRenderInContractOrderAndKeepStepReferences() {
+        val fixture = liveGuide()
+        val state = AnalysisUiState(phase = Phase.RESULT, analysis = fixture, offline = false,
+            visualPanels = (0..8).map { Panel(it, "approved-s1", "/visual-assets/test-$it.png") },
+            visualImages = (0..8).associateWith { photo().bytes })
+        compose.setContent { MaterialTheme {
+            Column(Modifier.verticalScroll(rememberScrollState())) { AnalysisResult(fixture, state, AnalysisViewModel()) { } }
+        } }
+        (0..8).forEach { index ->
+            compose.onNodeWithText("${index + 1} · 단계 1 (approved-s1)").assertExists()
+        }
+        compose.onNodeWithText("설명 이미지는 시각 참고용입니다. 승인된 텍스트 단계와 근거를 먼저 확인하세요.").assertExists()
+    }
+    @Test fun sharePreviewShowsExactAllowlistAndOmitsFreeTextBeforeChooser() {
+        val fixture = liveGuide().copy(evidence = liveGuide().evidence + liveGuide().evidence.single().copy(
+            evidenceId = "bad-url", sourceUrl = "https://manual.example/doc?token=PRIVATE"))
+        compose.setContent { MaterialTheme {
+            Column(Modifier.verticalScroll(rememberScrollState())) {
+                AnalysisResult(fixture, AnalysisUiState(phase = Phase.RESULT, analysis = fixture, offline = false),
+                    AnalysisViewModel()) { }
+            }
+        } }
+        compose.onNodeWithText("근거 요약 공유 미리보기").performScrollTo().performClick()
+        compose.onNodeWithText("공유할 텍스트 확인").assertIsDisplayed()
+        compose.onNodeWithText(SharePreview.build(fixture), useUnmergedTree = true).assertExists()
+        compose.onNodeWithText("취소").performClick()
     }
     @Test fun decoderAcceptsPngAndRejectsCorruptContent() = runBlocking {
         val context = InstrumentationRegistry.getInstrumentation().targetContext

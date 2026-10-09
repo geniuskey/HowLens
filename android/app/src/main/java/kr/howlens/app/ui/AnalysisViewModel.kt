@@ -6,6 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -18,15 +22,26 @@ data class AnalysisUiState(
     val photoLoading: Boolean = false, val offline: Boolean = true,
     val scenario: FakeScenario = FakeScenario.MORE_INFORMATION,
     val baseUrl: String = "http://10.0.2.2:8000/", val phase: Phase = Phase.INPUT,
-    val analysis: Analysis? = null, val error: String? = null, val retryable: Boolean = false
+    val analysis: Analysis? = null, val error: String? = null, val retryable: Boolean = false,
+    val visualLoading: Boolean = false, val visualAttempts: Int = 0,
+    val visualPanels: List<Panel> = emptyList(), val visualImages: Map<Int, ByteArray> = emptyMap(),
+    val visualError: String? = null, val verificationPhoto: Photo? = null,
+    val verificationPhotoLoading: Boolean = false, val verificationBusy: Boolean = false,
+    val verification: Verification? = null, val verificationError: String? = null,
+    val confirmation: String = ""
 )
 class AnalysisViewModel : ViewModel() {
     private val mutable = MutableStateFlow(AnalysisUiState())
     val state = mutable.asStateFlow()
-    private var job: Job? = null
+    private var analysisJob: Job? = null
+    private var visualTask: Job? = null
+    private var verificationTask: Job? = null
     private fun edit(change: (AnalysisUiState) -> AnalysisUiState) {
-        job?.cancel()
-        mutable.update { change(it).copy(phase = Phase.INPUT, analysis = null, error = null, retryable = false) }
+        analysisJob?.cancel(); visualTask?.cancel(); verificationTask?.cancel()
+        mutable.update { change(it).copy(phase = Phase.INPUT, analysis = null, error = null, retryable = false,
+            visualLoading = false, visualAttempts = 0, visualPanels = emptyList(), visualImages = emptyMap(),
+            visualError = null, verificationPhoto = null, verificationPhotoLoading = false,
+            verificationBusy = false, verification = null, verificationError = null) }
     }
     fun device(value: String) = edit { it.copy(deviceId = value) }
     fun question(value: String) = edit { it.copy(question = value) }
@@ -40,7 +55,7 @@ class AnalysisViewModel : ViewModel() {
     }
     fun selectPhoto(resolver: ContentResolver, uri: Uri) {
         photoLoading()
-        job = viewModelScope.launch {
+        analysisJob = viewModelScope.launch {
             try {
                 val loaded = PhotoLoader.load(resolver, uri)
                 mutable.update { it.copy(photo = loaded, photoLoading = false) }
@@ -50,18 +65,35 @@ class AnalysisViewModel : ViewModel() {
             }
         }
     }
+    fun selectVerificationPhoto(resolver: ContentResolver, uri: Uri) {
+        verificationTask?.cancel()
+        mutable.update { it.copy(verificationPhoto = null, verificationPhotoLoading = true,
+            verification = null, verificationError = null) }
+        verificationTask = viewModelScope.launch {
+            try {
+                val loaded = PhotoLoader.load(resolver, uri)
+                mutable.update { it.copy(verificationPhoto = loaded, verificationPhotoLoading = false) }
+            } catch (e: CancellationException) { throw e
+            } catch (e: Exception) {
+                mutable.update { it.copy(verificationPhotoLoading = false, verificationError = e.message ?: "사진을 읽을 수 없습니다.") }
+            }
+        }
+    }
+    fun confirmation(value: String) { mutable.update { it.copy(confirmation = value.take(2000)) } }
     fun analyze() {
         if (state.value.phase == Phase.LOADING || state.value.photoLoading) return
         val input = state.value
         val invalid = InputRules.validate(input.deviceId, input.question, input.photo)
         if (invalid != null) { mutable.update { it.copy(error = invalid, retryable = false) }; return }
-        job = viewModelScope.launch {
+        analysisJob = viewModelScope.launch {
             mutable.update { it.copy(phase = Phase.LOADING, error = null, analysis = null, retryable = false) }
             try {
                 val repository: AnalysisRepository = if (input.offline) FakeAnalysisRepository(input.scenario)
                     else HttpAnalysisRepository(input.baseUrl.trim())
                 val result = repository.analyze(input.deviceId, input.question, requireNotNull(input.photo))
-                mutable.update { it.copy(phase = Phase.RESULT, analysis = result) }
+                mutable.update { it.copy(phase = Phase.RESULT, analysis = result, visualAttempts = 0,
+                    visualPanels = emptyList(), visualImages = emptyMap(), visualError = null,
+                    verificationPhoto = null, verification = null, verificationError = null) }
             } catch (e: CancellationException) { throw e
             } catch (e: Exception) {
                 mutable.update { it.copy(phase = Phase.ERROR,
@@ -70,5 +102,71 @@ class AnalysisViewModel : ViewModel() {
             }
         }
     }
+    fun requestVisual() {
+        val input = state.value
+        val analysis = input.analysis ?: return
+        if (!analysis.canRequestVisual || input.offline || input.visualLoading || input.visualAttempts >= 2) return
+        val attempt = input.visualAttempts + 1
+        visualTask?.cancel()
+        visualTask = viewModelScope.launch {
+            mutable.update { it.copy(visualLoading = true, visualAttempts = attempt, visualError = null,
+                visualPanels = emptyList(), visualImages = emptyMap()) }
+            try {
+                val repo = HttpAnalysisRepository(input.baseUrl.trim())
+                var visual = repo.createVisual(analysis)
+                require(visual.analysisId == analysis.analysisId && visual.mode == Mode.LIVE) {
+                    "서버 이미지 작업이 요청 분석과 일치하지 않습니다. 텍스트 안내는 유지됩니다."
+                }
+                while (visual.status == VisualStatus.QUEUED || visual.status == VisualStatus.RUNNING) {
+                    delay(1200)
+                    visual = repo.visualJob(analysis, visual.jobId)
+                    require(visual.analysisId == analysis.analysisId && visual.mode == Mode.LIVE) {
+                        "서버 이미지 작업 응답이 요청 분석과 일치하지 않습니다."
+                    }
+                }
+                if (visual.status == VisualStatus.FAILED) throw ApiFailure("visual_failed",
+                    visual.error ?: "이미지를 만들지 못했습니다. 문서 근거 텍스트를 확인하세요.", true)
+                val expected = analysis.visibleSteps.map { it.stepId }.toSet()
+                require(visual.status == VisualStatus.COMPLETED && visual.panels.size == 9 &&
+                    visual.panels.map { it.index } == (0..8).toList() && visual.panels.all { it.stepId in expected }) {
+                    "패널 9개 또는 단계 연결을 검증할 수 없습니다. 텍스트 안내는 유지됩니다."
+                }
+                mutable.update { it.copy(visualPanels = visual.panels) }
+                val images = coroutineScope {
+                    visual.panels.map { panel -> async { panel.index to repo.visualAsset(analysis, panel.imageUrl) } }.awaitAll().toMap()
+                }
+                mutable.update { it.copy(visualImages = images, visualLoading = false) }
+            } catch (e: CancellationException) { throw e
+            } catch (e: Exception) {
+                mutable.update { it.copy(visualLoading = false,
+                    visualPanels = emptyList(), visualImages = emptyMap(),
+                    visualError = if (e is ApiFailure) e.message else "시각 안내를 표시하지 못했습니다: ${e.message ?: "응답 확인 오류"}. 문서 근거 텍스트는 유지됩니다.") }
+            }
+        }
+    }
+    fun cancelVisual() { visualTask?.cancel(); mutable.update { it.copy(visualLoading = false, visualError = "시각 이미지 요청을 취소했습니다. 기존 텍스트 안내는 유지됩니다.") } }
+    fun verify() {
+        val input = state.value
+        val analysis = input.analysis ?: return
+        val photo = input.verificationPhoto ?: run { mutable.update { it.copy(verificationError = "비교할 전후 사진을 선택하세요.") }; return }
+        if (!analysis.canRequestVisual || input.offline || input.verificationBusy) return
+        val issue = InputRules.validate(analysis.deviceId, "verification", photo)
+        if (issue != null) { mutable.update { it.copy(verificationError = issue) }; return }
+        verificationTask?.cancel()
+        verificationTask = viewModelScope.launch {
+            mutable.update { it.copy(verificationBusy = true, verificationError = null, verification = null) }
+            try {
+                val result = HttpAnalysisRepository(input.baseUrl.trim()).verify(analysis, photo, input.confirmation)
+                require(result.mode == Mode.LIVE && result.analysisId == analysis.analysisId &&
+                    result.evidenceIds.all { id -> analysis.evidence.any { it.evidenceId == id } }) {
+                    "비교 응답을 원 분석 근거와 연결할 수 없습니다."
+                }
+                mutable.update { it.copy(verificationBusy = false, verification = result) }
+            } catch (e: CancellationException) { throw e
+            } catch (e: Exception) { mutable.update { it.copy(verificationBusy = false,
+                verificationError = if (e is ApiFailure) e.message else "전후 사진을 비교하지 못했습니다: ${e.message ?: "응답 확인 오류"}") } }
+        }
+    }
+    fun cancelVerification() { verificationTask?.cancel(); mutable.update { it.copy(verificationBusy = false, verificationError = "전후 사진 비교를 취소했습니다.") } }
     fun cancel() = edit { it }
 }

@@ -78,3 +78,37 @@ Lint는 0 errors/9 warnings이다. 8개는 설치된 SDK 34와 호환되는 고�
 4. Verification client/DTO는 있으나 전후 비교 UI는 다음 Task다. 관찰 변화만 판단해야 하며 안전/정상 동작 보증은 금지한다.
 
 Task `task_667825f4524d` / Dispatch `ctx_6459221af0a9`의 W1 구현 범위를 완료했다. 외부 채널에는 게시하지 않고 live Orca worker_done으로 보고한다.
+
+# W2-APP live guide integration — 2026-10-09
+
+[DONE] Wired the LIVE guide-only visual request/poll/cancel UI, nine ordered panel and approved-step validation, same-server image loading, explicit one-user-retry limit, separate after-photo verification, and observation-only limitations. Replaced blocking OkHttp `execute()` with a cancellation-aware `enqueue` bridge and capped JSON/image response bodies at 2 MiB with actionable too-large/malformed/network errors; added the evidence-only user-reviewed Sharesheet preview. No real analysis POST or paid API call was made by this App task.
+
+## Physical / emulator / double evidence
+
+- Physical Galaxy: serial `R5KL20H60TN`, model `SM_S948N` / product `m3qksx`; final APK `adb install -r` succeeded, and `MainActivity` was observed foregrounded. System Gallery picker and camera app both opened; only the public 68-byte synthetic PNG pushed to `/sdcard/Pictures/HowLens-TEST-only-upload.png` was selected and previewed (1×1), no personal image was opened, and no camera capture was saved. Back returned from camera/picker paths. The physical screen showed the visible offline MOCK label. The app remained responsive after rotation to `ROTATION_270`.
+- Physical backend health path: App PC GET `http://10.102.72.28:8000/health` was HTTP 200, mode live. Galaxy direct 5G browser access showed `ERR_NETWORK_CHANGED`. A task-owned temporary relay bound only to `127.0.0.1:18000`, forwarded to the backend PC, and with `adb reverse tcp:18000 tcp:18000` the Galaxy browser displayed `{"status":"ok","mode":"live"}`. Relay was stopped and reverse removed; listener and reverse checks were empty. No analysis POST was made; paid attempts: 0. Relay PID was not retained in the task log.
+- Physical instrumentation: `connectedDebugAndroidTest` on Galaxy Android 17 failed before UI assertions because Espresso's `InputManager.getInstance` lookup is unavailable. Do not report this as a pass.
+- Emulator: API 34 Pixel 3a ran all six Compose instrumentation tests successfully via `adb -s emulator-5554 shell am instrument -w kr.howlens.app.test/androidx.test.runner.AndroidJUnitRunner`. Tests include MOCK/non-guide blocking, nine panel display/order/ref, share allowlist preview, photo loader, and input validation. Emulator-only landscape rotation was observed and released; not physical evidence.
+- JVM/API doubles: `assembleDebug`, `testDebugUnitTest` (11 tests, synthetic/local MockWebServer only), `assembleDebugAndroidTest`, and `lintDebug` passed. Visual API doubles verified initial request, completed nine-panel response, relative same-server assets, failed status, one retry maximum, cancel, and malformed panel rejection while preserving the guide text. Verification and share allowlist doubles passed. All guide/document/photo fixtures are synthetic and never treated as real work authorization.
+- Screenshot artifacts: [Galaxy input](screenshots/w2-galaxy-input.png), [Galaxy camera launch](screenshots/w2-galaxy-camera-launch.png), [API 34 synthetic non-guide result](screenshots/w2-api34-synthetic-non-guide.png).
+
+## Changed files
+
+- `android/app/src/main/java/kr/howlens/app/MainActivity.kt`
+- `android/app/src/main/java/kr/howlens/app/data/Models.kt`
+- `android/app/src/main/java/kr/howlens/app/data/Repository.kt`
+- `android/app/src/main/java/kr/howlens/app/ui/AnalysisViewModel.kt`
+- `android/app/src/test/java/kr/howlens/app/FoundationTest.kt`
+- `android/app/src/androidTest/java/kr/howlens/app/OfflineScreenTest.kt`
+- `docs/workers/app/RUNBOOK.md`
+- `docs/workers/app/REPORT.md`
+- `docs/workers/app/screenshots/w2-galaxy-input.png`
+- `docs/workers/app/screenshots/w2-galaxy-camera-launch.png`
+- `docs/workers/app/screenshots/w2-api34-synthetic-non-guide.png`
+
+## Build output and remaining checks
+
+- APK: `android/app/build/outputs/apk/debug/app-debug.apk`; version `0.1`, package `kr.howlens.app`; SHA-256 `327ca37a04afc8cecf0b3fb0c12a6f63c5797311882b353da77d8491f99327da`.
+- Task branch is `geniuskey/feat-ui-foundation`, based on preserved W1 HEAD `f4f0ab6`. No main merge or other-role product code changes.
+- Actual backend analysis/visual/verification endpoints remain uncalled by this app task. The synthetic test PNG was selected in the Gallery picker and shown by the app but was not submitted. Physical camera capture was not verified; Galaxy instrumentation is blocked by the Android 17 Espresso reflection incompatibility. Mock results are synthetic and not evidence of actual guide generation.
+- Current camera path remains system camera intent; CameraX Preview + still ImageCapture feasibility was reported separately as 3–5 hours with no video streaming/API change. No `android/app/src/main/java/kr/howlens/app/camera/` path exists in this checkout.
