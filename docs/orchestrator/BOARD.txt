@@ -1,4 +1,4 @@
-HOWLENS | 2026-10-09 13:33 KST | SUBMIT 17:00 | LEFT ~3h27m
+HOWLENS | 2026-10-09 13:38 KST | SUBMIT 17:00 | LEFT ~3h22m
 
 OVERALL RELEASE READINESS
 [############--------] ~60% (Coordinator estimate, not measured code completion)
@@ -20,8 +20,8 @@ Final1h buffer; timing is a target, not a completion claim.
 +------------------------+------------+---------------------------------------+
 | WORK                   | STATE      | EVIDENCE / NEXT                       |
 +------------------------+------------+---------------------------------------+
-| App integration        | MAIN       | ab20cc3;36 JVM PASS; lint0errors      |
-| Home entry UI          | MAIN       | bd0d642; wired in integrated APK     |
+| App reference UI       | REWORK     | user rejected Home; HTML then native |
+| Home + bottom nav      | ASTRA HIGH | main ctx_d2f3cc4ed9e4; referencefixed |
 | Summary sheet          | DELIVERED  | 9fe2b0b;18 JVM tests + assemble PASS   |
 | Guide journey          | DELIVERED  | bb6eeb0;8 scoped tests + assemble PASS|
 | Backend discovery      | DELIVERED  | eb838e3;118 offline PASS; not live   |
@@ -70,3 +70,10 @@ Authenticated HTTPS analysis remains pending; signing mismatch resolved.
 
 MAIN VALIDATION:153 backend+visual tests and14subtests PASS with TCP disabled;
 Evaluation20tests PASS. Protocol env required; prior missing-dependency/setup errors resolved.
+
+USER13:37: currentHome rejected; content.png is exactvisualauthority.
+HTMLmockup -> Android onmain directly (explicituseroverride), no newworktree.
+NewmainWorker term_dd0afd47 / ctx_d2f3cc4ed9e4 soleAndroideditor.
+HTML docs/mockups/reference-ui/index.html target13:46; nativeAPK target14:03.
+Root Gitmutex; Worker ownsandroid +mockup only; no productmergewhileediting.
+OldAPKdelivery8765 closed afterbothdownloadconfirmed; publictunnel retained.
