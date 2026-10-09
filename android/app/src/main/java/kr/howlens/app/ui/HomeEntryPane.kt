@@ -29,6 +29,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kr.howlens.app.R
+import kr.howlens.app.data.InputRules
 
 internal val LensBlue = Color(0xFF0052FF)
 internal val LensPale = Color(0xFFEDF3FF)
@@ -38,7 +39,9 @@ fun HomeEntryPane(
     onOpenCamera: () -> Unit,
     onChoosePhoto: () -> Unit,
     onOpenGuides: (String) -> Unit,
-    onOpenGuide: (String) -> Unit,
+    onSelectEquipment: (String) -> Unit,
+    selectedDeviceId: String,
+    onHome: () -> Unit,
     onOpenProfile: () -> Unit,
     onOpenNotifications: () -> Unit,
     modifier: Modifier = Modifier,
@@ -48,11 +51,14 @@ fun HomeEntryPane(
     Column(modifier.fillMaxSize().background(Color.White).verticalScroll(rememberScrollState())
         .padding(horizontal = 18.dp), verticalArrangement = Arrangement.spacedBy(20.dp)) {
         Row(Modifier.fillMaxWidth().heightIn(min = 64.dp), verticalAlignment = Alignment.CenterVertically) {
-            Surface(color = LensBlue, shape = RoundedCornerShape(8.dp)) {
-                LensIcon("scan", Color.White, Modifier.padding(7.dp).size(22.dp))
-            }
-            Spacer(Modifier.width(7.dp))
-            Row(Modifier.weight(1f)) {
+            Row(Modifier.weight(1f).heightIn(min = 48.dp)
+                .clickable(enabled = enabled, onClick = onHome)
+                .semantics { contentDescription = "HowLens 홈으로 이동" },
+                verticalAlignment = Alignment.CenterVertically) {
+                Surface(color = LensBlue, shape = RoundedCornerShape(8.dp)) {
+                    LensIcon("scan", Color.White, Modifier.padding(7.dp).size(22.dp))
+                }
+                Spacer(Modifier.width(7.dp))
                 Text("How", fontSize = 20.sp, fontWeight = FontWeight.ExtraBold)
                 Text("Lens", color = LensBlue, fontSize = 20.sp, fontWeight = FontWeight.ExtraBold)
             }
@@ -62,11 +68,11 @@ fun HomeEntryPane(
         }
         Surface(shape = RoundedCornerShape(16.dp), color = LensBlue) {
             Box(Modifier.fillMaxWidth().heightIn(min = 250.dp)) {
-                Image(painterResource(R.drawable.reference_pc), "그래픽카드가 장착된 PC 내부 참고 사진",
+                Image(painterResource(R.drawable.reference_pc), "장비 내부 참고 사진",
                     Modifier.matchParentSize(), contentScale = ContentScale.Crop, alignment = Alignment.CenterEnd)
                 Column(Modifier.fillMaxWidth(.62f).background(LensBlue).padding(horizontal = 16.dp, vertical = 24.dp),
                     verticalArrangement = Arrangement.spacedBy(14.dp)) {
-                    Text("PC 문제,\n보면 바로\n알 수 있어요.", color = Color.White,
+                    Text("장비 문제,\n보면 바로\n알 수 있어요.", color = Color.White,
                         fontSize = 23.sp, lineHeight = 31.sp, fontWeight = FontWeight.Bold,
                         modifier = Modifier.semantics { heading() })
                     Text("사진으로 확인하고\n차근차근 따라가세요.", color = Color.White,
@@ -94,14 +100,29 @@ fun HomeEntryPane(
                 }
             }
         }
-        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                Text("추천 가이드", fontSize = 19.sp, fontWeight = FontWeight.Bold, modifier = Modifier.weight(1f))
-                TextButton(onClick = { onOpenGuides("전체") }, enabled = enabled) { Text("전체보기 ›", fontSize = 12.sp) }
-            }
-            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                ReferenceGuides.take(2).forEach { guide ->
-                    ReferenceGuideCard(guide, { onOpenGuide(guide.id) }, Modifier.weight(1f), enabled)
+        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            Text("등록 장비", fontSize = 19.sp, fontWeight = FontWeight.Bold,
+                modifier = Modifier.semantics { heading() })
+            Text("확인할 장비를 선택하면 바로 촬영해요.", fontSize = 13.sp,
+                color = MaterialTheme.colorScheme.onSurfaceVariant)
+            InputRules.devices.forEach { (id, name) ->
+                OutlinedCard(onClick = { onSelectEquipment(id) }, enabled = enabled,
+                    modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(13.dp)) {
+                    Row(Modifier.fillMaxWidth().heightIn(min = 76.dp).padding(14.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                        Surface(color = LensPale, shape = RoundedCornerShape(10.dp)) {
+                            LensIcon(when (id) { "cobot" -> "tool"; "ups" -> "up"; else -> "chip" },
+                                LensBlue, Modifier.padding(12.dp).size(23.dp))
+                        }
+                        Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(3.dp)) {
+                            Text(name, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
+                            Text(when (id) { "cobot" -> "협동로봇"; "ups" -> "무정전 전원장치"; else -> "서버" },
+                                fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            if (id == selectedDeviceId) Text("선택한 장비", fontSize = 11.sp, color = LensBlue)
+                        }
+                        LensIcon("camera", LensBlue, Modifier.size(23.dp))
+                    }
                 }
             }
         }

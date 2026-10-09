@@ -127,6 +127,7 @@ fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
         } else {
             ResultScreen(
                 state = state, vm = vm, onBack = vm::showInput,
+                onHome = { vm.showInput(); tabName = InputTab.HOME.name },
                 onOpenGuide = { guideOpen = true }, onOpenSummary = { summaryOpen = true },
                 userConfirmed = journey.value.forAnalysis(analysis).userConfirmed,
                 onSelectVerificationPhoto = { verificationGallery.launch(arrayOf("image/jpeg", "image/png")) },
@@ -151,6 +152,9 @@ fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
                     Text("사진 촬영", color = Color.White, modifier = Modifier.weight(1f), textAlign = androidx.compose.ui.text.style.TextAlign.Center)
                     Text("1×", color = Color.White, modifier = Modifier.padding(16.dp))
                 }
+                Text(InputRules.devices[state.deviceId] ?: "장비", color = Color.White,
+                    style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.align(Alignment.CenterHorizontally).padding(bottom = 6.dp))
                 state.error?.let { InlineError(it) }
                 CameraCapturePane(isActive = true,
                     onPhotoCaptured = { uri -> vm.selectPhoto(context.contentResolver, uri, deleteFileAfterRead = true) },
@@ -166,8 +170,7 @@ fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
         topBar = {
             if (!shellVisible) Column {
                 TopAppBar(
-                    title = { if (!homeVisible) BrandWordmark() },
-                    navigationIcon = { if (!homeVisible) TextButton(onClick = { tabName = InputTab.HOME.name }, enabled = !busy) { Text("홈") } },
+                    title = { HomeLogoButton(enabled = !busy, onHome = { tabName = InputTab.HOME.name }) },
                     actions = {
                         if (state.analysis != null || state.discovery != null) TextButton(onClick = vm::showResult) { Text("최근 결과") }
                         Text(if (state.offline) "데모" else "실제 분석", style = MaterialTheme.typography.bodySmall,
@@ -209,7 +212,9 @@ fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
                     onOpenCamera = openCamera,
                     onChoosePhoto = { vm.discoveryMode(false); tabName = InputTab.PHOTO.name; gallery.launch(arrayOf("image/jpeg", "image/png")) },
                     onOpenGuides = { category -> guideCategory = category; selectedReferenceGuide = null; tabName = InputTab.GUIDES.name },
-                    onOpenGuide = { id -> selectedReferenceGuide = id; tabName = InputTab.GUIDES.name },
+                    onSelectEquipment = { id -> vm.device(id); openCamera() },
+                    selectedDeviceId = state.deviceId,
+                    onHome = { tabName = InputTab.HOME.name },
                     onOpenProfile = { tabName = InputTab.PROFILE.name },
                     onOpenNotifications = { tabName = InputTab.NOTIFICATIONS.name },
                     onResumeLastResult = if (state.analysis != null || state.discovery != null) vm::showResult else null,
@@ -382,7 +387,7 @@ private fun SettingsScreen(state: AnalysisUiState, vm: AnalysisViewModel, onBack
 }
 
 @Composable
-private fun ResultScreen(state: AnalysisUiState, vm: AnalysisViewModel, onBack: () -> Unit,
+private fun ResultScreen(state: AnalysisUiState, vm: AnalysisViewModel, onBack: () -> Unit, onHome: () -> Unit,
     onOpenGuide: () -> Unit, onOpenSummary: () -> Unit, userConfirmed: Boolean,
     onSelectVerificationPhoto: () -> Unit) {
     val analysis = state.analysis ?: return
@@ -393,7 +398,7 @@ private fun ResultScreen(state: AnalysisUiState, vm: AnalysisViewModel, onBack: 
     val compactViewport = LocalConfiguration.current.screenHeightDp < 500
     val shareText = remember(analysis) { SharePreview.build(analysis) }
     Scaffold(
-        topBar = { TopAppBar(title = { BrandWordmark() }, navigationIcon = {
+        topBar = { TopAppBar(title = { HomeLogoButton(onHome = onHome) }, navigationIcon = {
             TextButton(onClick = onBack, modifier = Modifier.heightIn(min = 48.dp)) { Text("뒤로") }
         }) },
         bottomBar = {
@@ -667,6 +672,15 @@ private fun WarningCard(text: String, warning: Boolean = false) {
 @Composable
 private fun InlineError(text: String) {
     Text(text, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyMedium)
+}
+
+@Composable
+private fun HomeLogoButton(enabled: Boolean = true, onHome: () -> Unit) {
+    TextButton(onClick = onHome, enabled = enabled,
+        contentPadding = PaddingValues(horizontal = 0.dp, vertical = 6.dp),
+        modifier = Modifier.heightIn(min = 48.dp).semantics { contentDescription = "HowLens 홈으로 이동" }) {
+        BrandWordmark()
+    }
 }
 
 @Composable

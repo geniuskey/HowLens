@@ -43,7 +43,7 @@ class OfflineScreenTest {
         compose.onNodeWithText("촬영하기", useUnmergedTree = true).assertExists()
         compose.onNodeWithText("AI 도움", useUnmergedTree = true).assertExists()
         compose.onNodeWithText("내 정보", useUnmergedTree = true).assertExists()
-        compose.onNodeWithContentDescription("그래픽카드가 장착된 PC 내부 참고 사진").assertExists()
+        compose.onNodeWithContentDescription("장비 내부 참고 사진").assertExists()
         compose.onNodeWithText("가이드", useUnmergedTree = true).performClick()
         compose.onNodeWithText("가이드 검색").performTextInput("SSD")
         compose.onNodeWithText("SSD 교체하기").performScrollTo().performClick()
@@ -68,6 +68,24 @@ class OfflineScreenTest {
         compose.onNodeWithContentDescription("설정").assertDoesNotExist()
         assertNull(vm.state.value.photo)
         assertFalse(vm.state.value.phase == Phase.LOADING)
+    }
+
+    @Test fun equipmentSelectionEntersCameraAndLogoKeepsChosenDevice() {
+        val vm = AnalysisViewModel(AnalysisUiState(offline = true))
+        compose.setContent { HowLensTheme { HowLensScreen(vm) } }
+        compose.onNodeWithText("추천 가이드").assertDoesNotExist()
+        compose.onNodeWithText("UR5e").performScrollTo().performClick()
+        compose.onNodeWithContentDescription("CameraX 미리보기").assertExists()
+        compose.onNodeWithText("UR5e").assertExists()
+        assertEquals("cobot", vm.state.value.deviceId)
+        assertFalse(vm.state.value.discoveryMode)
+        compose.runOnUiThread { vm.photo(photo()) }
+        compose.onNodeWithContentDescription("HowLens 홈으로 이동").performClick()
+        compose.onNodeWithText("등록 장비").performScrollTo().assertExists()
+        assertEquals("cobot", vm.state.value.deviceId)
+        compose.onNodeWithText("APC Smart-UPS").performScrollTo().performClick()
+        compose.onNodeWithContentDescription("CameraX 미리보기").assertExists()
+        assertEquals("ups", vm.state.value.deviceId)
     }
 
     @Test fun photoFirstInputShowsTabsAndSettingsPreserveDraft() {
