@@ -1,5 +1,20 @@
 # Coordinator ownership handoff
 
+## Emergency account pause — 2026-10-09 11:26 KST
+
+사용자가 김의윤 계정의 5시간 한도/재로그인을 위해 이전 세션과 관련 작업의 즉시
+중지를 직접 지시했다. 이 최신 지시는 독립 routing 확인 후 종료라는 이전 순서보다
+우선한다. fleet 확인 결과 김의윤 PC의 App Dispatch는 이미 completed/released/exited,
+App worktree terminal 목록은 empty였다. main의 유일한 기존 Coordinator terminal
+`term_be75fa04-a11b-405a-afce-de3b5623829a`를 공식 terminal close로 종료했다.
+Receipt `2a68a10e-0dc9-4b94-a4fa-642ae9d781cb`: ptyKilled=true.
+후속 show: orphaned=true, connected=false, writable=false, exitCause=operator_close.
+원 agent가 다시 알림에 반응할 실행 터미널은 종료됐으나 Run의 수신 라우팅 변경을
+완료했다고 주장하지 않는다. Hub runtime은 ready/connected이며 Run/파일/커밋을
+삭제하거나 reset하지 않았다. 다른 PC의 terminal/작업은 중지하지 않았다.
+김의윤 PC/계정에는 재로그인 완료 전 새 Worker를 배포하지 않는다.
+기존 terminal을 transport로 재사용하지 않는다. 새 감독 경로는 공식 CLI로만 복구한다.
+
 ## Accepted receipt — 2026-10-09 11:18 KST
 
 김태완 PC의 새 Coordinator가 인계를 수신했다. 실행 화면은 GPT-6-Astra medium fast,

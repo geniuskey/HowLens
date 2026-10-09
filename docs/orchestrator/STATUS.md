@@ -1,5 +1,11 @@
 # Orchestration status
 
+**11:26 KST 긴급 사용자 지시:** 김의윤 이전 Coordinator terminal 종료 확인
+(ptyKilled=true, operator_close). App Worker는 이미 completed/released/exited.
+김의윤 계정 재로그인 전 새 Worker 배포 금지. Hub runtime/Run/작업 파일 유지,
+다른 PC 영향 없음. 아래 과거 '기존 terminal 보류' 기록은 이 최신 중지 지시로 대체된다.
+Run 독립 inbox routing 자체는 아직 해결되지 않았다.
+
 2026-10-09 11:21 KST Coordinator settlement checkpoint. Run: `run_6351cb7363de`. main product merge 미실행.
 
 김태완 main Coordinator 인계 수신. 독립 Hub inbox routing은 BLOCKED:
