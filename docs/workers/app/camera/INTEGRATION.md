@@ -17,15 +17,23 @@ Render the pane in the camera-preview tab and set `isActive` to `false` when
 that tab is hidden. The camera is lifecycle-bound while active and its owned
 Preview/ImageCapture use cases are unbound when inactive or disposed. Rotation
 recreates/rebinds the view through Compose and the current `LifecycleOwner`.
+Camera permission is checked into Compose state, refreshed after the system
+permission result and on each `ON_RESUME`, including a return from app Settings.
+Repeated denial exposes a button that opens this app's settings page. The pane
+uses short Korean permission, capture, and gallery labels; visible errors omit
+platform exception details.
 
 The capture callback receives a `file://` `Uri` to a JPEG saved in the app's
 cache directory. The caller can read it with `ContentResolver.openInputStream`
 or convert it to the application's upload representation; the camera module
 does not upload, transcode, or retain user gallery files. A stale capture that
 finishes after the pane is inactive is discarded and its temporary cache file
-is deleted. Captures are written directly to disk to avoid a full-image memory
-buffer. The existing image validation path must still enforce JPEG, 10 MiB,
-and 20 MP limits before upload.
+is deleted. Leaving the pane clears its pending indicator and invalidates that
+capture generation, so a late callback cannot change state after re-entry.
+Captures are written directly to disk to avoid a full-image memory buffer. The
+component bounds selected resolution to 20 MP and rejects an empty or larger
+than 10 MiB JPEG; the existing image validation path must still validate those
+limits before upload.
 
 ## App-level prerequisites
 

@@ -4,8 +4,10 @@ import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.provider.Settings
 import android.view.Surface
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -26,19 +28,20 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import java.io.File
 import java.util.concurrent.Executor
@@ -64,40 +67,51 @@ fun CameraCapturePane(
     val buttonColors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0052FF))
 
     var hasRequestedPermission by rememberSaveable { mutableStateOf(false) }
-    var permissionDenied by remember { mutableStateOf(false) }
-    var cameraBlocked by remember { mutableStateOf(false) }
+    var permissionUiState by remember(context) {
+        mutableStateOf(readCameraPermissionUiState(context, requestWasMade = false))
+    }
     var capturePending by remember { mutableStateOf(false) }
     var imageCapture by remember { mutableStateOf<ImageCapture?>(null) }
     var cameraError by remember { mutableStateOf<String?>(null) }
+    val captureGeneration = remember { CaptureGeneration() }
+
+    val refreshCameraPermission = remember(context) {
+        {
+            permissionUiState = readCameraPermissionUiState(
+                context = context,
+                requestWasMade = hasRequestedPermission,
+            )
+            if (permissionUiState.granted) cameraError = null
+        }
+    }
+
+    DisposableEffect(lifecycleOwner, refreshCameraPermission) {
+        val observer = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_RESUME) refreshCameraPermission()
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        if (lifecycleOwner.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED)) {
+            refreshCameraPermission()
+        }
+        onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
+    }
 
     val cameraPermissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission(),
     ) { granted ->
-        permissionDenied = !granted
-        cameraBlocked = !granted && hasRequestedPermission &&
-            findActivity(context)?.let {
-                !androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale(
-                    it,
-                    Manifest.permission.CAMERA,
-                )
-            } == true
         if (granted) {
-            cameraBlocked = false
+            permissionUiState = resolveCameraPermissionUiState(
+                granted = true,
+                requestWasMade = true,
+                shouldShowRationale = false,
+            )
             cameraError = null
+        } else {
+            refreshCameraPermission()
         }
     }
 
-    val cameraGranted = ContextCompat.checkSelfPermission(
-        context,
-        Manifest.permission.CAMERA,
-    ) == PackageManager.PERMISSION_GRANTED
-
-    LaunchedEffect(cameraGranted) {
-        if (cameraGranted) {
-            permissionDenied = false
-            cameraBlocked = false
-        }
-    }
+    val cameraGranted = permissionUiState.granted
 
     var previewView by remember { mutableStateOf<PreviewView?>(null) }
     Column(
@@ -161,7 +175,7 @@ fun CameraCapturePane(
                         imageCapture = capture
                     } catch (failure: Exception) {
                         if (!disposed) {
-                            val message = "Unable to start the camera: ${failure.localizedMessage ?: "unknown error"}"
+                            val message = "카메라를 시작할 수 없어요."
                             cameraError = message
                             currentOnError(message)
                         }
@@ -170,6 +184,8 @@ fun CameraCapturePane(
 
                 onDispose {
                     disposed = true
+                    captureGeneration.invalidate()
+                    capturePending = false
                     imageCapture = null
                     boundPreview?.let { preview ->
                         boundCapture?.let { capture ->
@@ -181,14 +197,28 @@ fun CameraCapturePane(
         }
 
         when {
-            !isActive -> Text("Camera paused")
-            !cameraGranted && cameraBlocked -> Text("Camera access is blocked. Enable it in Settings or choose a photo.")
-            !cameraGranted && permissionDenied -> Text("Camera permission is needed to take a photo.")
-            !cameraGranted -> Text("Allow camera access to take a photo.")
+            !isActive -> Text("카메라 일시정지")
+            !cameraGranted && permissionUiState.permanentlyDenied -> Text("카메라 권한이 필요해요. 설정에서 허용해 주세요.")
+            !cameraGranted && permissionUiState.denied -> Text("촬영하려면 카메라 권한이 필요해요.")
+            !cameraGranted -> Text("카메라 권한을 허용해 주세요.")
             cameraError != null -> Text(cameraError!!)
         }
 
-        if (isActive && !cameraGranted && !cameraBlocked) {
+        if (isActive && !cameraGranted && permissionUiState.permanentlyDenied) {
+            Button(
+                modifier = Modifier.fillMaxWidth(),
+                colors = buttonColors,
+                onClick = {
+                    val settingsIntent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                        data = Uri.fromParts("package", context.packageName, null)
+                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    }
+                    context.startActivity(settingsIntent)
+                },
+            ) { Text("설정 열기") }
+        }
+
+        if (isActive && !cameraGranted && !permissionUiState.permanentlyDenied) {
             Button(
                 modifier = Modifier.fillMaxWidth(),
                 colors = buttonColors,
@@ -196,7 +226,7 @@ fun CameraCapturePane(
                     hasRequestedPermission = true
                     cameraPermissionLauncher.launch(Manifest.permission.CAMERA)
                 },
-            ) { Text("Allow camera") }
+            ) { Text("권한 허용") }
         }
 
         if (isActive && cameraGranted) {
@@ -208,30 +238,31 @@ fun CameraCapturePane(
                     val capture = imageCapture ?: return@Button
                     if (capturePending) return@Button
                     capturePending = true
+                    val requestGeneration = captureGeneration.begin()
                     val outputFile = try {
                         File.createTempFile("howlens-camera-", ".jpg", context.cacheDir)
                     } catch (failure: Exception) {
                         capturePending = false
-                        currentOnError("Unable to prepare a photo: ${failure.localizedMessage ?: "storage unavailable"}")
+                        currentOnError("사진을 준비할 수 없어요.")
                         return@Button
                     }
                     val output = ImageCapture.OutputFileOptions.Builder(outputFile).build()
                     capture.takePicture(output, mainExecutor, object : ImageCapture.OnImageSavedCallback {
                         override fun onImageSaved(result: ImageCapture.OutputFileResults) {
-                            capturePending = false
-                            if (!isActive || imageCapture !== capture) {
+                            if (!captureGeneration.isCurrent(requestGeneration) || !isActive || imageCapture !== capture) {
                                 outputFile.delete()
                                 return
                             }
+                            capturePending = false
                             val jpegBytes = outputFile.length()
                             if (jpegBytes <= 0L) {
                                 outputFile.delete()
-                                currentOnError("The camera returned an empty photo.")
+                                currentOnError("사진을 촬영하지 못했어요.")
                                 return
                             }
                             if (!isJpegSizeWithinPhotoLimit(jpegBytes)) {
                                 outputFile.delete()
-                                currentOnError("The photo is larger than 10 MiB. Try again with less detail in the frame.")
+                                currentOnError("사진 용량이 10 MiB를 넘어요. 다시 촬영해 주세요.")
                                 return
                             }
                             currentOnPhotoCaptured(Uri.fromFile(outputFile))
@@ -239,21 +270,22 @@ fun CameraCapturePane(
 
                         override fun onError(exception: ImageCaptureException) {
                             outputFile.delete()
-                            capturePending = false
-                            if (isActive && imageCapture === capture) {
-                                currentOnError("Photo capture failed: ${exception.localizedMessage ?: exception.imageCaptureError}")
+                            if (!captureGeneration.isCurrent(requestGeneration) || !isActive || imageCapture !== capture) {
+                                return
                             }
+                            capturePending = false
+                            currentOnError("사진을 촬영하지 못했어요.")
                         }
                     })
                 },
-            ) { Text(if (capturePending) "Taking photo…" else "Take photo") }
+            ) { Text(if (capturePending) "촬영 중…" else "사진 촬영") }
         }
 
         Button(
             modifier = Modifier.fillMaxWidth(),
             colors = buttonColors,
             onClick = { currentOnChooseFromGallery() },
-        ) { Text("Choose photo") }
+        ) { Text("사진 선택") }
     }
 }
 
@@ -261,6 +293,23 @@ private tailrec fun findActivity(context: Context): Activity? = when (context) {
     is Activity -> context
     is ContextWrapper -> findActivity(context.baseContext)
     else -> null
+}
+
+private fun readCameraPermissionUiState(
+    context: Context,
+    requestWasMade: Boolean,
+): CameraPermissionUiState {
+    val granted = ContextCompat.checkSelfPermission(
+        context,
+        Manifest.permission.CAMERA,
+    ) == PackageManager.PERMISSION_GRANTED
+    val shouldShowRationale = findActivity(context)?.let {
+        androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale(
+            it,
+            Manifest.permission.CAMERA,
+        )
+    } ?: false
+    return resolveCameraPermissionUiState(granted, requestWasMade, shouldShowRationale)
 }
 
 private const val JPEG_QUALITY = 85

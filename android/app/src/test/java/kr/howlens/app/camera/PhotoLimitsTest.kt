@@ -19,4 +19,61 @@ class PhotoLimitsTest {
         assertTrue(isJpegSizeWithinPhotoLimit(10L * 1024L * 1024L))
         assertFalse(isJpegSizeWithinPhotoLimit(10L * 1024L * 1024L + 1L))
     }
+
+    @Test
+    fun permissionStateUpdatesOnFirstGrantDenialAndSettingsReturn() {
+        val initial = resolveCameraPermissionUiState(
+            granted = false,
+            requestWasMade = false,
+            shouldShowRationale = false,
+        )
+        assertFalse(initial.granted)
+        assertFalse(initial.denied)
+        assertFalse(initial.permanentlyDenied)
+
+        val firstGrant = resolveCameraPermissionUiState(
+            granted = true,
+            requestWasMade = true,
+            shouldShowRationale = false,
+        )
+        assertTrue(firstGrant.granted)
+        assertFalse(firstGrant.denied)
+        assertFalse(firstGrant.permanentlyDenied)
+
+        val deniedWithRationale = resolveCameraPermissionUiState(
+            granted = false,
+            requestWasMade = true,
+            shouldShowRationale = true,
+        )
+        assertTrue(deniedWithRationale.denied)
+        assertFalse(deniedWithRationale.permanentlyDenied)
+
+        val deniedWithoutRationale = resolveCameraPermissionUiState(
+            granted = false,
+            requestWasMade = true,
+            shouldShowRationale = false,
+        )
+        assertTrue(deniedWithoutRationale.permanentlyDenied)
+
+        val returnedFromSettings = resolveCameraPermissionUiState(
+            granted = true,
+            requestWasMade = true,
+            shouldShowRationale = false,
+        )
+        assertTrue(returnedFromSettings.granted)
+    }
+
+    @Test
+    fun captureDisposalInvalidatesOldCallbackAcrossReentry() {
+        val requests = CaptureGeneration()
+        val firstCapture = requests.begin()
+        assertTrue(requests.isCurrent(firstCapture))
+
+        requests.invalidate()
+        assertFalse(requests.isCurrent(firstCapture))
+
+        val reenteredCapture = requests.begin()
+        assertTrue(requests.isCurrent(reenteredCapture))
+        assertFalse(requests.isCurrent(firstCapture))
+    }
 }
