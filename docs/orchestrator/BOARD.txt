@@ -1,79 +1,48 @@
-HOWLENS | 2026-10-09 13:38 KST | SUBMIT 17:00 | LEFT ~3h22m
+HOWLENS | 2026-10-09 13:51 KST | SUBMIT 17:00 | LEFT ~3h09m
 
-OVERALL RELEASE READINESS
-[############--------] ~60% (Coordinator estimate, not measured code completion)
-Weights M1/M2/M3/M4 =20/30/25/25; estimates100/95/40/5; weighted59.75 rounded60.
-Components delivered; USB app response observed. Public HTTPS health verified
-on Galaxy5G without reverse; authenticated HTTPS app flow still pending.
+OVERALL RELEASE READINESS [############--------] ~60%
+Coordinator estimate, NOT measured code completion. No increase before device E2E.
 
-MILESTONES
-M1 Foundations/contracts [####################] DELIVERED on branches
-M2 UI + input/guide      [################----] Integrated APK ab20cc3 ready
-M3 Integrated/device QA [########------------] USB POST done; HTTPS app pending
-M4 Release/submission   [--------------------] Main merged51f8a01; package pending
+M1 Foundations/API    [####################] DONE main
+M2 Reference UI       [##################--] APK BUILT, three-phone install ongoing
+M3 Real device E2E    [########------------] camera baseline; new real auth pending
+M4 Submission        [--------------------] package/demo rehearsal pending
 
-13:31 NOW -> 14:00 connected candidate -> 14:30 FEATURE FREEZE
-14:30-15:30 fixes + three-device regression
-15:30-16:00 package + demo -> 16:00 READY -> 17:00 DEADLINE
-Final1h buffer; timing is a target, not a completion claim.
+TARGETS: 14:00 new UI hands-on ->14:30 feature freeze ->15:30 regression
+         ->16:00 package ready ->17:00 submission (1h buffer)
 
-+------------------------+------------+---------------------------------------+
-| WORK                   | STATE      | EVIDENCE / NEXT                       |
-+------------------------+------------+---------------------------------------+
-| App reference UI       | REWORK     | user rejected Home; HTML then native |
-| Home + bottom nav      | ASTRA HIGH | main ctx_d2f3cc4ed9e4; referencefixed |
-| Summary sheet          | DELIVERED  | 9fe2b0b;18 JVM tests + assemble PASS   |
-| Guide journey          | DELIVERED  | bb6eeb0;8 scoped tests + assemble PASS|
-| Backend discovery      | DELIVERED  | eb838e3;118 offline PASS; not live   |
-| Public HTTPS tunnel    | LIVE       | external200 / unauth401 / auth422   |
-| Windows phone QA       | DELIVERED  | 3b9031f; denial/settings/gallery PASS|
-| Fold4 live QA          | POST DONE  | needs-more-info UI; ~9.33s observed  |
-| Real photos + manuals  | RECEIVED 9 | ctx_0bef108f4793; exact-model manuals |
-| Image model comparison | RUNNING    | ctx_047d57e579b7; quality/cost/time   |
-| Backend uploaded PDFs  | INDEXED 5  | d00384a; runtime registration pending|
-| Runtime manual ingest  | PENDING    | asset architecture ready027ec4e      |
-| Main product merge     | PUSHED     | user approved;9143485 incl evaluation|
-+------------------------+------------+---------------------------------------+
+PRIORITY: USER real capture -> server -> actual response -> feedback -> fixes.
++----------------------+---------------+------------------------------------------+
+| WORK                 | STATUS        | EVIDENCE / NEXT                          |
++----------------------+---------------+------------------------------------------+
+| Reference HTML/native| PUSHED        | c503985; JVM36/build/lint pass            |
+| Discovery fix        | PUSHED        | c462a29;192tests+14subtests pass          |
+| Backend live rollout | PREPARING     | c462a29; short QA API hold requested      |
+| Galaxy new UI        | INSTALLING    | new app/test APK hashes verified         |
+| Fold4 new UI         | DOWNLOAD NEXT | prior ab20cc3 installed                  |
+| S25 Ultra new UI     | INSTALLING    | adb authorized; app/test hashes verified |
+| Image comparison     | SIX GENERATED | HTTP200;12.990-19.526s; quality unreviewed |
+| HTML independent QA  | RECHECK       | ctx_f7b466eb0711; prior4P1 worker-fixed   |
+| Real photos/manuals  | RECEIVED      |9privatephotos;5PDF main; runtime pending |
++----------------------+---------------+------------------------------------------+
 
-PHYSICAL TESTING: available NOW in each local TEST worker conversation.
-Galaxy App: R5KL20H60TN; integratedab20cc3 INSTALLED, NEW HOME VISIBLE13:31.
-Windows: R3CY70W172M; baseline permission/settings/gallery verified.
-USER temporarily disconnecting Windows phone for real product photography.
-Do not schedule device control until user reports reconnection.
-Backend Fold4: R3CT80CZ2MW; baseline57405bb; USB backend HTTP200 verified.
-APK57405bb SHA256 2b39251176178975fd0a9228da55a88903d879e7d2cc9fd4dcdb695d128abb25.
-Human answers go directly to each assigned test worker, technical results to root.
+MAIN: c462a29 pushed. HTML: docs/mockups/reference-ui/index.html
+APK: android/app/build/outputs/apk/reference-ui/howlens-reference-ui-20261009.apk
+SHA256:3e8e61c0949c753b9d751c69b94d45549876093307ccd340c337c43b29958f4a
 
-Current camera tab = preview -> deliberate still capture -> one-photo API.
-No continuous video AI claimed. Synthetic QA fixtures are NOT real photo validation.
-Image runner890abd4:30 offline PASS; paid quality comparison has not run.
-Internet photographs, official renders, manual figures and generated images are
-separate evidence types. Corpus preparation is not backend registration/approval.
+HUMAN TEST: each assigned local QA conversation gives one action at a time.
+Camera capture/preview can proceed; paid submits await short rollout hold release.
+Real-mode settings: Profile -> Settings -> Demo OFF -> API root + masked demo token.
+No OpenAI key in app. Never log/share credentials. Exact auth setup not yet confirmed.
+Unknown household product: Product finder route; do not force it into Dell guide.
+Current camera is preview + deliberate still capture; NO continuous video AI.
 
-SERVICES: Backend PID74518 retained, 10.102.72.28:8000.
-Hub transport term_3d2273ec; old Coordinator closed. No duplicate editor.
-ACTIVE: Backenddeploy ctx_e6f3dcf25970; Galaxy ctx_225d53638eeb;
-Fold4 ctx_15c1e6bdf26a; Realphoto ctx_0bef108f4793; Visual ctx_047d57e579b7.
-First real corpus evidence: Worker downloaded/inspected R750 front/rear and
-AX55(CA) Ver1.0 label; PDF122pages REV1.0.0 verified. Region matching pending.
+PUBLIC:https://premium-proceed-hartford-published.trycloudflare.com
+Upstream67997 / gateway46220 / tunnel46758 (rollout may replace upstream).
+Temporary APK-only server8765:term_252ed996-e328-414e-9314-d84ea2980616
+Close after all3 download receipts. Preserve public runtime.
 
-MOCKUP (concept, not APK screenshot):
-/Users/runixs/orca/workspaces/HowLens/eval-foundation/docs/assets/design-review/index.html
-
-Snapshot updated on material evidence; heartbeat never increases progress.
-Authority and historical receipts: STATUS.md / HANDOFF.md.
-
-CURRENT: Astra only 김태완; 김의윤 Luna6 TEST ONLY.
-PUBLIC: https://premium-proceed-hartford-published.trycloudflare.com/health
-HTTPS server verified on PC and Galaxy5G; integrated APK installed, new Home screenshot2119ad57 verified by Galaxy QA.
-Authenticated HTTPS analysis remains pending; signing mismatch resolved.
-
-MAIN VALIDATION:153 backend+visual tests and14subtests PASS with TCP disabled;
-Evaluation20tests PASS. Protocol env required; prior missing-dependency/setup errors resolved.
-
-USER13:37: currentHome rejected; content.png is exactvisualauthority.
-HTMLmockup -> Android onmain directly (explicituseroverride), no newworktree.
-NewmainWorker term_dd0afd47 / ctx_d2f3cc4ed9e4 soleAndroideditor.
-HTML docs/mockups/reference-ui/index.html target13:46; nativeAPK target14:03.
-Root Gitmutex; Worker ownsandroid +mockup only; no productmergewhileediting.
-OldAPKdelivery8765 closed afterbothdownloadconfirmed; publictunnel retained.
+ACTIVE: Backend ctx_e6f3dcf25970; Galaxy ctx_225d53638eeb;
+Fold4 ctx_15c1e6bdf26a; Visual/S25 ctx_216abb00c5de; audit ctx_f7b466eb0711.
+Settled/released-retained: referenceUI ctx_d2f3cc4ed9e4, debugger ctx_f8f2e2e33505.
+Astra only Kim Taewan; Kim Euiyun Luna6 TEST ONLY. Root owns main Git.
