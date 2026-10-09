@@ -16,6 +16,7 @@ class Approval:
 class ManualRegistry:
     def __init__(self):
         self._entries = {}
+        self._evidence = {}
 
     def register(self, device_id: str, evidence: dict, supported_actions: set[str]):
         """Trusted bootstrap API: quote, page, source/version and action mapping checked offline.
@@ -26,6 +27,11 @@ class ManualRegistry:
         e = Evidence.model_validate(evidence)
         self._entries[(device_id, e.document_id, e.document_version, e.pdf_page, e.section, e.quote,
                        e.source_url, e.printed_page)] = frozenset(supported_actions)
+        self._evidence[(device_id, e.document_id, e.document_version, e.pdf_page, e.section, e.quote,
+                        e.source_url, e.printed_page)] = e
+
+    def excerpts(self, device_id):
+        return [e.model_dump() for key, e in self._evidence.items() if key[0] == device_id]
 
     def actions(self, device_id, e):
         return self._entries.get((device_id, e.document_id, e.document_version, e.pdf_page, e.section,
