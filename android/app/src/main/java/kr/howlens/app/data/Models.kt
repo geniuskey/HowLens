@@ -100,7 +100,7 @@ object SharePreview {
         appendLine("장비: ${InputRules.devices[analysis.deviceId] ?: "알 수 없는 장비"}")
         appendLine("판정: ${when (analysis.decision) {
             Decision.GUIDE -> "문서 근거 안내"
-            Decision.NEEDS_MORE_INFORMATION -> "추가 정보 필요"
+            Decision.NEEDS_MORE_INFORMATION -> "확인 항목 안내"
             Decision.STOP -> "작업 중단"
         }}")
         appendLine("모드: ${if (analysis.mode == Mode.LIVE) "LIVE 서버 응답" else "MOCK 합성 예시"}")

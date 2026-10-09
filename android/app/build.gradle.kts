@@ -1,9 +1,18 @@
+import java.net.URI
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
     id("org.jetbrains.kotlin.plugin.serialization")
 }
+// The demo endpoint is public configuration, never an OpenAI API key.
+val demoApiUrl = providers.environmentVariable("HOWLENS_API_BASE_URL").orNull?.trim().orEmpty()
+require(demoApiUrl.isEmpty() || runCatching {
+    val uri = URI(demoApiUrl)
+    uri.scheme in setOf("http", "https") && !uri.host.isNullOrBlank() && uri.userInfo == null && uri.query == null && uri.fragment == null
+}.getOrDefault(false)) { "HOWLENS_API_BASE_URL must be a plain HTTP(S) origin without credentials" }
+fun javaLiteral(value: String): String = "\"" + value.replace("\\", "\\\\").replace("\"", "\\\"").replace("\n", "\\n").replace("\r", "\\r") + "\""
 android {
     namespace = "kr.howlens.app"
     compileSdk = 34
@@ -14,8 +23,9 @@ android {
         versionCode = 1
         versionName = "0.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "DEMO_API_BASE_URL", javaLiteral(demoApiUrl))
     }
-    buildFeatures { compose = true }
+    buildFeatures { compose = true; buildConfig = true }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17

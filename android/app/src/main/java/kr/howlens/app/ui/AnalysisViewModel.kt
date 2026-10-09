@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.io.File
 import kr.howlens.app.data.*
+import kr.howlens.app.BuildConfig
 
 class DemoToken(val value: String = "") {
     override fun toString(): String = "[redacted]"
@@ -24,10 +25,10 @@ class DemoToken(val value: String = "") {
 enum class Phase { INPUT, LOADING, RESULT, ERROR }
 data class AnalysisUiState(
     val deviceId: String = "server", val question: String = "", val photo: Photo? = null,
-    val photoLoading: Boolean = false, val offline: Boolean = true,
+    val photoLoading: Boolean = false, val offline: Boolean = BuildConfig.DEMO_API_BASE_URL.isBlank(),
     val scenario: FakeScenario = FakeScenario.MORE_INFORMATION,
     val demoToken: DemoToken = DemoToken(),
-    val baseUrl: String = "http://10.0.2.2:8000/", val phase: Phase = Phase.INPUT,
+    val baseUrl: String = BuildConfig.DEMO_API_BASE_URL.ifBlank { "http://10.0.2.2:8000/" }, val phase: Phase = Phase.INPUT,
     val analysis: Analysis? = null, val error: String? = null, val retryable: Boolean = false,
     val visualLoading: Boolean = false, val visualAttempts: Int = 0,
     val visualPanels: List<Panel> = emptyList(), val visualImages: Map<Int, ByteArray> = emptyMap(),
@@ -146,7 +147,8 @@ class AnalysisViewModel(
     fun analyze() {
         if (state.value.phase == Phase.LOADING || state.value.photoLoading) return
         val input = state.value
-        val invalid = InputRules.validate(input.deviceId, input.question, input.photo)
+        val requestQuestion = input.question.trim().ifBlank { DEFAULT_PHOTO_QUESTION }
+        val invalid = InputRules.validate(input.deviceId, requestQuestion, input.photo)
         if (invalid != null) { mutable.update { it.copy(error = invalid, retryable = false) }; return }
         invalidateWork()
         val generation = workGeneration
@@ -157,7 +159,7 @@ class AnalysisViewModel(
             try {
                 val repository: AnalysisRepository = if (input.offline) FakeAnalysisRepository(input.scenario)
                     else repositoryFactory(input.baseUrl.trim(), input.demoToken.value)
-                val result = repository.analyze(input.deviceId, input.question, requireNotNull(input.photo))
+                val result = repository.analyze(input.deviceId, requestQuestion, requireNotNull(input.photo))
                 if (generation == workGeneration) mutable.update { it.copy(phase = Phase.RESULT, analysis = result, visualAttempts = 0,
                     visualPanels = emptyList(), visualImages = emptyMap(), visualError = null,
                     verificationPhoto = null, verification = null, verificationError = null) }
@@ -262,5 +264,8 @@ class AnalysisViewModel(
     }
     fun cancel() = edit { it }
 
-    private companion object { const val MAX_VISUAL_POLLS = 60 }
+    private companion object {
+        const val MAX_VISUAL_POLLS = 60
+        const val DEFAULT_PHOTO_QUESTION = "사진 속 장비와 모델을 식별하고, 관련 제조사 문서를 찾아 확인 가능한 내용과 다음 행동을 안내해 주세요."
+    }
 }

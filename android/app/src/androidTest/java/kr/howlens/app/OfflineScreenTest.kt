@@ -91,7 +91,7 @@ class OfflineScreenTest {
         compose.onNodeWithText("확인하기").performClick()
         compose.waitUntil(5000) { vm.state.value.phase == Phase.RESULT }
         compose.onNodeWithText("닫기").performClick()
-        compose.onNodeWithText("추가 정보가 필요해요").assertExists()
+        compose.onNodeWithText("확인한 내용을 안내할게요").assertExists()
         compose.onNodeWithText("데모").assertExists()
         compose.onNodeWithText("시각 안내 요청").assertDoesNotExist()
         compose.onNodeWithText("승인된 단계").assertDoesNotExist()
@@ -106,7 +106,7 @@ class OfflineScreenTest {
         val vm = AnalysisViewModel()
         compose.setContent { HowLensTheme { HowLensScreen(vm) } }
         compose.runOnUiThread { vm.analyze() }
-        compose.onNodeWithText("질문은 공백 제거 후 1–2,000자여야 합니다.").assertExists()
+        compose.onNodeWithText("JPEG 또는 PNG 사진을 선택하세요.").assertExists()
     }
 
     @Test fun blockedResultKeepsSourceVersionPagesAndQuoteInDetails() {
@@ -117,7 +117,7 @@ class OfflineScreenTest {
         val vm = AnalysisViewModel(AnalysisUiState(phase = Phase.RESULT, analysis = fixture, offline = true))
         compose.setContent { HowLensTheme { HowLensScreen(vm) } }
         compose.onNodeWithText("닫기").performClick()
-        compose.onNodeWithText("추가 정보가 필요해요").assertExists()
+        compose.onNodeWithText("확인한 내용을 안내할게요").assertExists()
         compose.onNodeWithText("관찰과 근거 자세히 보기").performClick()
         compose.onNodeWithText("synthetic-document · fixture-v1").assertExists()
         compose.onNodeWithText("PDF 3쪽", substring = true).assertExists()

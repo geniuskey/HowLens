@@ -21,8 +21,8 @@ fun ProductDiscoveryPane(result: ProductDiscovery, onBack: () -> Unit) {
         TextButton(onClick = onBack, modifier = Modifier.heightIn(min = 48.dp)) { Text("사진·질문 수정") }
         Text(when (result.status) {
             DiscoveryStatus.CANDIDATE -> "제품 후보를 찾았어요"
-            DiscoveryStatus.NEEDS_MORE_INFORMATION -> "제품 정보가 더 필요해요"
-            DiscoveryStatus.NOT_FOUND -> "제품을 찾지 못했어요"
+            DiscoveryStatus.NEEDS_MORE_INFORMATION -> "사진에서 확인할 단서를 정리했어요"
+            DiscoveryStatus.NOT_FOUND -> "다음 탐색에 쓸 단서를 정리했어요"
         }, style = MaterialTheme.typography.headlineSmall)
         if (result.mode == Mode.MOCK) Text("데모 · 실제 검색 결과가 아니에요", color = MaterialTheme.colorScheme.primary)
         Text("사진과 일치할 수 있는 제품 정보예요. 작업 가이드나 안전 확인이 아니에요.",

@@ -136,7 +136,7 @@ fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
             AnalysisSummarySheet(analysis = analysis,
                 onDismissRequest = { summaryOpen = false },
                 onOpenGuide = { summaryOpen = false; guideOpen = true },
-                onRequestMoreInformation = { summaryOpen = false; vm.showInput() })
+                onRequestMoreInformation = { summaryOpen = false })
         }
         return
     }
@@ -258,7 +258,7 @@ fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
                             OutlinedTextField(value = state.modelHint, onValueChange = vm::modelHint,
                                 label = { Text("모델명 힌트 (선택)") }, modifier = Modifier.fillMaxWidth(), enabled = !busy)
                         }
-                        QuestionField(state.question, enabled = !busy, optional = state.discoveryMode, error = if (state.error?.contains("질문") == true) state.error else null,
+                        QuestionField(state.question, enabled = !busy, optional = true, error = if (state.error?.contains("질문") == true) state.error else null,
                             onValueChange = vm::question)
                     }
                     else -> EmptyPhotoFrame()
@@ -374,12 +374,7 @@ private fun SettingsScreen(state: AnalysisUiState, vm: AnalysisViewModel, onBack
             } else {
                 OutlinedTextField(value = state.baseUrl, onValueChange = vm::baseUrl,
                     label = { Text("API 서버 루트 주소") }, modifier = Modifier.fillMaxWidth(), singleLine = true)
-                OutlinedTextField(value = state.demoToken.value, onValueChange = vm::demoToken,
-                    label = { Text("데모 접속 토큰 (선택)") }, modifier = Modifier.fillMaxWidth(), singleLine = true,
-                    visualTransformation = androidx.compose.ui.text.input.PasswordVisualTransformation(),
-                    keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(
-                        keyboardType = androidx.compose.ui.text.input.KeyboardType.Password),
-                    supportingText = { Text("서버 주소를 먼저 입력하세요. 토큰은 이 기기에 저장하지 않아요.") })
+                Text("접속 키를 입력할 필요 없이 연결됩니다.", style = MaterialTheme.typography.bodySmall)
             }
             if (compactViewport) Button(onClick = onBack, modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp)) { Text("완료") }
         }
@@ -417,14 +412,17 @@ private fun ResultScreen(state: AnalysisUiState, vm: AnalysisViewModel, onBack: 
                 color = MaterialTheme.colorScheme.onSurfaceVariant)
             Text(when (analysis.decision) {
                 Decision.GUIDE -> "문서 근거 안내"
-                Decision.NEEDS_MORE_INFORMATION -> "추가 정보가 필요해요"
+                Decision.NEEDS_MORE_INFORMATION -> "확인한 내용을 안내할게요"
                 Decision.STOP -> "작업을 멈추고 확인해 주세요"
             }, style = MaterialTheme.typography.headlineLarge)
             if (analysis.mode == Mode.MOCK) WarningCard("합성 예시예요. 실제 작업에 사용하지 마세요.")
             if (state.photo != null) PhotoFrame(state.photo, "분석한 장비 사진", maxHeightFraction = 0.36f)
             OutlinedButton(onClick = onOpenSummary, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)) { Text("분석 요약") }
             if (userConfirmed) Text("단계 확인을 기록했어요. 안전이나 정상 동작을 보증하지 않아요.")
-            analysis.missingInformation.forEach { WarningCard("추가 정보: $it", warning = true) }
+            if (analysis.missingInformation.isNotEmpty()) {
+                Text("이어서 확인할 항목", style = MaterialTheme.typography.titleMedium)
+                analysis.missingInformation.forEach { Text("• $it") }
+            }
             analysis.warnings.forEach { WarningCard(it, warning = true) }
             val unsatisfiedRequired = analysis.preconditions.filter { it.required && it.status != ConditionStatus.SATISFIED }
             unsatisfiedRequired.forEach { WarningCard("필수 조건 미확인: ${it.description}", warning = true) }

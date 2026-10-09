@@ -121,7 +121,7 @@ fun AnalysisSummarySheet(
 
                 val missing = analysis.missingInformation.nonBlankItems()
                 if (missing.isNotEmpty()) {
-                    SummarySection(title = "필요한 정보") {
+                    SummarySection(title = "이어서 확인할 항목") {
                         missing.forEach { SummaryBullet(text = it) }
                     }
                 }
@@ -159,7 +159,7 @@ fun AnalysisSummarySheet(
                     .fillMaxWidth()
                     .heightIn(min = 48.dp),
             ) {
-                Text(if (analysis.canShowSteps) "문서 근거 단계 보기" else "사진·질문 수정")
+                Text(if (analysis.canShowSteps) "문서 근거 단계 보기" else "확인한 내용과 자료 보기")
             }
             Spacer(Modifier.height(8.dp))
         }
