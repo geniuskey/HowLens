@@ -21,8 +21,12 @@ class MemoryStore:
         self.attempts: dict[str, list[str]] = {}
 
     def put(self, stored):
+        def size(value):
+            return len(value.photo) + len(value.analysis.model_dump_json().encode('utf-8'))
+        if size(stored) > self.max_bytes:
+            raise ValueError('Analysis exceeds storage capacity')
         while self.analyses and (len(self.analyses) >= self.max_analyses or
-                                 sum(len(a.photo) for a in self.analyses.values()) + len(stored.photo) > self.max_bytes):
+                                 sum(size(a) for a in self.analyses.values()) + size(stored) > self.max_bytes):
             key, _ = self.analyses.popitem(last=False)
             for job in self.attempts.pop(key, []):
                 self.jobs.pop(job, None)

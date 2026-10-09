@@ -145,3 +145,105 @@ def test_bounded_store_evicts_analysis_and_related_jobs():
     upload(c)
     assert c.post(f'/analyses/{a}/visual').status_code==404
     assert c.get(f'/visual-jobs/{job}').status_code==404
+
+
+@pytest.mark.parametrize('mutation', ['string', 'array', 'aggregate', 'malformed'])
+def test_provider_output_bounds(mutation):
+    a = candidate()
+    if mutation == 'string': a['observations'] = ['x' * 4001]
+    if mutation == 'array': a['observations'] = ['x'] * 129
+    if mutation == 'aggregate': a['observations'] = ['한' * 4000] * 12
+    if mutation == 'malformed': del a['decision']
+    c = client(Provider(a))
+    r = upload(c)
+    assert r.status_code == 503
+    assert not c.app.state.store.analyses
+
+
+@pytest.mark.parametrize('mutation,status', [('error',503), ('timeout',504), ('foreign',503),
+                                             ('identity',503), ('mode',503), ('oversized',503)])
+def test_verification_provider_failures(mutation, status):
+    class BadVerification(Provider):
+        async def verify(self, analysis, original_photo, after, confirmation):
+            if mutation == 'error': raise RuntimeError('private upstream failure')
+            if mutation == 'timeout': await asyncio.sleep(.1)
+            result = (await super().verify(analysis, original_photo, after, confirmation)).model_dump()
+            if mutation == 'foreign': result['evidence_ids'] = ['foreign']
+            if mutation == 'identity': result['analysis_id'] = 'foreign'
+            if mutation == 'mode': result['mode'] = 'mock'
+            if mutation == 'oversized': result['observations'] = ['x' * 4001]
+            return result
+    c = client(BadVerification(), trusted=True, timeout_seconds=.01)
+    a = upload(c).json()['analysis_id']
+    r = c.post(f'/analyses/{a}/verification', files={'photo':('p.png',photo(),'image/png')})
+    assert r.status_code == status and r.json()['detail']['retryable']
+    assert 'private upstream' not in r.text
+    assert c.app.state.store.analyses[a].analysis.decision == 'guide'
+
+
+def test_verification_confirmation_bounds():
+    c = client(Provider(), trusted=True)
+    a = upload(c).json()['analysis_id']
+    assert c.post(f'/analyses/{a}/verification', data={'user_confirmation':'x'*2001},
+                  files={'photo':('p.png',photo(),'image/png')}).status_code == 422
+
+
+def test_streaming_request_overflow():
+    from howlens.main import MAX_REQUEST
+    r = client().post('/analyses', content=iter([b'x'*1024] * (MAX_REQUEST//1024+1)),
+                      headers={'Content-Type':'multipart/form-data; boundary=test'})
+    assert r.status_code == 413 and r.json()['detail']['code'] == 'request_too_large'
+
+
+def test_upload_receive_timeout(monkeypatch):
+    import howlens.main as main
+    real_wait = asyncio.wait_for
+    async def immediate_timeout(awaitable, timeout):
+        return await real_wait(awaitable, timeout=.001)
+    monkeypatch.setattr(main.asyncio, 'wait_for', immediate_timeout)
+    async def run():
+        messages = []
+        async def receive():
+            await asyncio.sleep(.05)
+            return {'type':'http.request', 'body':b'', 'more_body':False}
+        async def send(message): messages.append(message)
+        await create_app()({'type':'http', 'asgi':{'version':'3.0'}, 'method':'POST',
+                            'path':'/analyses', 'raw_path':b'/analyses', 'query_string':b'',
+                            'headers':[(b'content-type',b'multipart/form-data; boundary=test')],
+                            'scheme':'http', 'server':('test',80), 'client':('test',1)}, receive, send)
+        assert messages[0]['status'] == 504
+    asyncio.run(run())
+
+
+def test_question_limit_applies_after_trimming():
+    c = client()
+    r = c.post('/analyses', data={'device_id':'server', 'question':' '*2001+'x'+' '*2001},
+               files={'photo':('p.png',photo(),'image/png')})
+    assert r.status_code == 503 and r.json()['detail']['code'] == 'provider_unconfigured'
+
+
+def test_max_file_is_accepted_and_store_accounts_for_output():
+    from howlens.main import MAX_FILE
+    data = photo() + b'\0' * (MAX_FILE-len(photo()))
+    assert upload(client(), data=data).json()['detail']['code'] == 'provider_unconfigured'
+    c = client(Provider(), trusted=True, max_bytes=MAX_FILE)
+    assert upload(c, data=data).status_code == 503
+    assert not c.app.state.store.analyses
+
+
+def test_mutated_provider_dto_is_revalidated():
+    class Mutated(Provider):
+        async def analyze(self, *args):
+            a = Analysis.model_validate(candidate())
+            a.observations = ['x' * 4001]
+            return a
+    assert upload(client(Mutated())).status_code == 503
+
+
+def test_required_unsatisfied_and_unreviewed_step_are_blocked():
+    a = candidate()
+    a['preconditions'][0]['status'] = 'unsatisfied'
+    assert upload(client(Provider(a), trusted=True)).json()['steps'] == []
+    a = candidate()
+    a['steps'][0]['step_id'] = 'unreviewed'
+    assert upload(client(Provider(a), trusted=True)).json()['steps'] == []

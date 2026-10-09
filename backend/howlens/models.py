@@ -1,12 +1,32 @@
 from typing import Literal
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
+
+MAX_DTO_BYTES = 128 * 1024
 
 Mode = Literal['live', 'mock']
 Device = Literal['server', 'cobot', 'ups']
 
 
 class DTO(BaseModel):
-    model_config = ConfigDict(extra='forbid', strict=True)
+    model_config = ConfigDict(extra='forbid', strict=True, revalidate_instances='always')
+
+    @model_validator(mode='after')
+    def bounded_output(self):
+        def check(value):
+            if isinstance(value, str) and len(value) > 4000:
+                raise ValueError('Output string exceeds limit')
+            if isinstance(value, list):
+                if len(value) > 128:
+                    raise ValueError('Output array exceeds limit')
+                for item in value:
+                    check(item)
+            if isinstance(value, dict):
+                for item in value.values():
+                    check(item)
+        check(self.model_dump())
+        if len(self.model_dump_json().encode('utf-8')) > MAX_DTO_BYTES:
+            raise ValueError('Output exceeds byte limit')
+        return self
 
 
 class Evidence(DTO):
