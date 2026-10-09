@@ -1,4 +1,6 @@
 import asyncio
+from concurrent.futures import ThreadPoolExecutor
+from contextlib import asynccontextmanager
 from io import BytesIO
 from uuid import uuid4
 import warnings
@@ -60,7 +62,35 @@ def decode(data):
         fail(415, 'invalid_photo', 'A decodable JPEG or PNG photo is required.')
 
 
-async def read_photo(photo, decode_slots):
+class DecodePool:
+    """A request cancellation cannot free capacity occupied by a running decoder."""
+    def __init__(self):
+        self.slots = asyncio.Semaphore(2)
+        self.executor = ThreadPoolExecutor(max_workers=2, thread_name_prefix='howlens-decode')
+
+    async def run(self, data):
+        await self.slots.acquire()
+        loop = asyncio.get_running_loop()
+        try:
+            actual = self.executor.submit(decode, data)
+        except Exception:
+            self.slots.release()
+            raise
+        def completed(_):
+            try:
+                loop.call_soon_threadsafe(self.slots.release)
+            except RuntimeError:
+                pass  # Event loop shutdown: executor still bounds actual workers to two.
+        actual.add_done_callback(completed)
+        pending = asyncio.wrap_future(actual, loop=loop)
+        pending.add_done_callback(lambda finished: None if finished.cancelled() else finished.exception())
+        return await asyncio.shield(pending)
+
+    def close(self):
+        self.executor.shutdown(wait=True)
+
+
+async def read_photo(photo, decode_pool):
     try:
         if photo.content_type not in {'image/jpeg', 'image/png'}:
             fail(415, 'invalid_photo', 'JPEG or PNG is required.')
@@ -69,8 +99,7 @@ async def read_photo(photo, decode_slots):
                 data = await photo.read(MAX_FILE+1)
                 if len(data) > MAX_FILE:
                     fail(413, 'photo_too_large', 'Photo exceeds 10 MiB.')
-                async with decode_slots:
-                    fmt = await asyncio.to_thread(decode, data)
+                fmt = await decode_pool.run(data)
         except TimeoutError:
             fail(504, 'photo_timeout', 'Photo processing timed out.', True)
         if {'JPEG':'image/jpeg', 'PNG':'image/png'}[fmt] != photo.content_type:
@@ -82,13 +111,17 @@ async def read_photo(photo, decode_slots):
 
 def create_app(provider=None, registry=None, reviewer=None, timeout_seconds=30,
                max_analyses=16, max_bytes=64*1024*1024):
-    app = FastAPI(title='HowLens', version='0.1.0')
+    decode_pool = DecodePool()
+    @asynccontextmanager
+    async def lifespan(app):
+        yield
+        await asyncio.to_thread(decode_pool.close)
+    app = FastAPI(title='HowLens', version='0.1.0', lifespan=lifespan)
     app.add_middleware(BoundedRequest)
     store = MemoryStore(max_analyses, max_bytes)
     app.state.store = store
     manuals = registry if registry is not None else ManualRegistry()
     slots = asyncio.Semaphore(2)
-    decode_slots = asyncio.Semaphore(2)
     visual_lock = asyncio.Lock()
 
     async def upstream(call):
@@ -121,7 +154,7 @@ def create_app(provider=None, registry=None, reviewer=None, timeout_seconds=30,
         question = question.strip()
         if not 1 <= len(question) <= 2000:
             fail(422, 'invalid_question', 'Question must contain 1–2000 characters.')
-        original = await read_photo(photo, decode_slots)
+        original = await read_photo(photo, decode_pool)
         async def analyze_and_review():
             a = Analysis.model_validate(await provider.analyze(device_id, question, original)).model_copy(deep=True)
             if a.device_id != device_id:
@@ -165,7 +198,7 @@ def create_app(provider=None, registry=None, reviewer=None, timeout_seconds=30,
     async def verification(analysis_id: str, photo: UploadFile = File(...),
                            user_confirmation: str | None = Form(None, max_length=2000)):
         saved = stored_guide(analysis_id)
-        after = await read_photo(photo, decode_slots)
+        after = await read_photo(photo, decode_pool)
         async def verify():
             v = Verification.model_validate(await provider.verify(saved.analysis.model_copy(deep=True),
                                            saved.photo, after, user_confirmation)).model_copy(deep=True)

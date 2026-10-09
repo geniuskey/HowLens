@@ -2,6 +2,9 @@
 import asyncio
 import base64
 import json
+import os
+from pathlib import Path
+import tempfile
 import httpx
 from .models import Analysis, Verification
 from .safety import Approval
@@ -22,7 +25,8 @@ source, not task approval. analysis_id is pending and will be replaced by the se
 
 class OpenAIResponsesProvider:
     def __init__(self, *, api_key, model, registry, calls_authorized=False,
-                 timeout_seconds=25, max_output_tokens=3000, transport=None):
+                 timeout_seconds=25, max_output_tokens=3000, transport=None,
+                 max_calls=1, ledger_path=None):
         if not model or len(model) > 100 or not 1 <= max_output_tokens <= 8192:
             raise ValueError('Invalid provider configuration')
         if not 0 < timeout_seconds <= 120:
@@ -34,6 +38,31 @@ class OpenAIResponsesProvider:
         self._transport = transport
         self.last_usage = None
         self.last_http_status = None
+        if type(max_calls) is not int or not 0 <= max_calls <= 20:
+            raise ValueError('Invalid paid request limit')
+        self.max_calls = max_calls
+        self.ledger_path = Path(ledger_path) if ledger_path else None
+        self.ledger = {'model':model,'attempts':0,'completed':0,'input_tokens':0,
+                       'output_tokens':0,'total_tokens':0,'estimated_usd_upper':0.0}
+        if self.ledger_path and self.ledger_path.exists():
+            data = self.ledger_path.read_bytes()
+            if len(data) > 16*1024:
+                raise ValueError('Invalid usage ledger')
+            previous = json.loads(data)
+            if previous.get('model') != model or any(type(previous.get(name)) is not int or
+                    not 0 <= previous[name] <= 1_000_000_000 for name in
+                    ('attempts','completed','input_tokens','output_tokens','total_tokens')):
+                raise ValueError('Invalid usage ledger')
+            self.ledger.update(previous)
+
+    def _persist_usage(self):
+        if self.ledger_path:
+            # Only numeric usage/status and explicit model; never prompt/photo/key content.
+            with tempfile.NamedTemporaryFile(mode='w', dir=self.ledger_path.parent,
+                    prefix='.provider-usage-', delete=False) as output:
+                json.dump(self.ledger, output)
+                temporary = output.name
+            os.replace(temporary, self.ledger_path)
 
     @staticmethod
     def image(photo):
@@ -52,6 +81,10 @@ class OpenAIResponsesProvider:
         # A populated key never implies authorization to incur charges.
         if not self.calls_authorized or not self._api_key:
             raise RuntimeError('Paid API calls are not authorized/configured')
+        if self.ledger['attempts'] >= self.max_calls:
+            raise RuntimeError('Authorized paid request limit reached')
+        self.ledger['attempts'] += 1
+        self._persist_usage()  # Reserve before network I/O; failed attempts count, no retries.
         self.last_usage = None
         self.last_http_status = None
         body = {'model':self.model, 'store':False, 'max_output_tokens':self.max_output_tokens,
@@ -67,6 +100,8 @@ class OpenAIResponsesProvider:
                     async with client.stream('POST', ENDPOINT, json=body,
                                              headers={'Authorization':f'Bearer {self._api_key}'}) as response:
                         self.last_http_status = response.status_code
+                        self.ledger['last_http_status'] = response.status_code
+                        self._persist_usage()
                         if response.status_code != 200:
                             raise RuntimeError('Provider HTTP failure')
                         data = bytearray()
@@ -79,6 +114,15 @@ class OpenAIResponsesProvider:
             counts = {name:usage.get(name) for name in ('input_tokens','output_tokens','total_tokens')}
             if all(type(value) is int and 0 <= value <= 1_000_000_000 for value in counts.values()):
                 self.last_usage = counts
+                self.ledger['completed'] += 1
+                for name, value in counts.items():
+                    self.ledger[name] += value
+                if self.model == 'gpt-4.1-mini':
+                    self.ledger['estimated_usd_upper'] = round((self.ledger['input_tokens']*.4 +
+                        self.ledger['output_tokens']*1.6)/1_000_000,8)
+                else:
+                    self.ledger['estimated_usd_upper'] = None
+                self._persist_usage()
             if envelope.get('status') != 'completed' or envelope.get('error'):
                 raise ValueError('Provider response incomplete')
             texts = []

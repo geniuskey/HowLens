@@ -165,3 +165,20 @@ def test_usage_diagnostics_are_numeric_only():
     assert p.last_http_status==200
     assert p.last_usage=={'input_tokens':100,'output_tokens':20,'total_tokens':120}
     assert 'key' not in json.dumps(p.last_usage)
+
+
+def test_paid_attempt_cap_persists_without_retry(tmp_path):
+    calls=[]
+    path=tmp_path/'.provider-usage.json'
+    def handler(request):
+        calls.append(True)
+        return httpx.Response(200,json=envelope(candidate()))
+    def provider():
+        return OpenAIResponsesProvider(api_key='synthetic-offline',model='explicit-test-model',registry=registry(),
+                    calls_authorized=True,max_calls=1,ledger_path=path,transport=httpx.MockTransport(handler))
+    p=provider()
+    asyncio.run(p.analyze('server','test',photo()))
+    assert json.loads(path.read_text())['attempts']==1
+    assert 'synthetic-offline' not in path.read_text()
+    with pytest.raises(RuntimeError): asyncio.run(provider().analyze('server','test',photo()))
+    assert len(calls)==1

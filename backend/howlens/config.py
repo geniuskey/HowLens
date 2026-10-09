@@ -31,7 +31,9 @@ def configured_app():
     provider = None
     if key and model:
         provider = OpenAIResponsesProvider(api_key=key, model=model, registry=registry,
-                    calls_authorized=os.environ.get('HOWLENS_PAID_CALLS_ENABLED') == 'true')
+                    calls_authorized=os.environ.get('HOWLENS_PAID_CALLS_ENABLED') == 'true',
+                    max_calls=int(os.environ.get('HOWLENS_MAX_PROVIDER_CALLS','') or '0'),
+                    ledger_path=ENV_FILE.parent / '.provider-usage.json')
     return create_app(provider=provider, registry=registry, reviewer=conservative_review)
 
 

@@ -247,3 +247,47 @@ def test_required_unsatisfied_and_unreviewed_step_are_blocked():
     a = candidate()
     a['steps'][0]['step_id'] = 'unreviewed'
     assert upload(client(Provider(a), trusted=True)).json()['steps'] == []
+
+
+def test_cancelled_requests_do_not_release_running_decode_capacity(monkeypatch):
+    import threading
+    import howlens.main as main
+    release=threading.Event()
+    lock=threading.Lock()
+    active=0
+    peak=0
+    def slow_decode(data):
+        nonlocal active,peak
+        with lock:
+            active+=1
+            peak=max(peak,active)
+        try:
+            assert release.wait(3)
+            return 'PNG'
+        finally:
+            with lock: active-=1
+    monkeypatch.setattr(main,'decode',slow_decode)
+    class Upload:
+        content_type='image/png'
+        async def read(self,n): return photo()
+        async def close(self): pass
+    async def run():
+        gate=main.DecodePool() if hasattr(main,'DecodePool') else asyncio.Semaphore(2)
+        try:
+            first=[asyncio.create_task(main.read_photo(Upload(),gate)) for _ in range(2)]
+            for _ in range(100):
+                with lock: started=active==2
+                if started: break
+                await asyncio.sleep(.005)
+            assert started
+            for task in first: task.cancel()
+            await asyncio.gather(*first,return_exceptions=True)
+            second=[asyncio.create_task(main.read_photo(Upload(),gate)) for _ in range(2)]
+            await asyncio.sleep(.05)
+            for task in second: task.cancel()
+            await asyncio.gather(*second,return_exceptions=True)
+            assert peak<=2
+        finally:
+            release.set()
+            if hasattr(gate,'close'): await asyncio.to_thread(gate.close)
+    asyncio.run(run())
