@@ -12,11 +12,13 @@ dependencies = ["fastapi==0.143.0", "starlette==1.7.0", "pydantic==2.14.0", "uvi
 test = ["pytest==9.1.1", "httpx==0.28.1"]
 
 [tool.setuptools.packages.find]
-include = ["howlens*"]
+include = ["howlens*", "visual*"]
+exclude = ["visual.tests*"]
 
 [tool.setuptools.package-data]
 howlens = ["manual_sources.json"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
-pythonpath = ["."]
+testpaths = ["tests", "visual/tests"]
+pythonpath = [".", "tests", "visual/tests"]
+addopts = ["--import-mode=importlib"]
