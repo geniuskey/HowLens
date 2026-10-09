@@ -45,6 +45,18 @@ YOLO이며 Standard는 요청 기록이다. main 시작 SHA는 `717514da67555142
   과거 failed Dispatch를 성공으로 재작성하지 않는다. identity 질문 재요청 불필요.
   사용자 추가 요구: 매 visual 작업에 경량 목업과 `일시_목업내용` 제목.
 
+### Repository delivery blocker
+
+새 Coordinator 문서 commit `31c09ba`의 `git push origin main`은
+`Permission to geniuskey/HowLens.git denied to Runixs` / HTTP 403으로 실패했다.
+로컬 commit은 보존했다. 다른 PC의 credentials/account를 사용하지 않았다.
+Runixs 본인 계정의 저장소 write 권한 복구 전 원격 문서 반영은 미완료다.
+
+11:19 KST 사용자 요청으로 Evaluation 상태를 재확인했다. 새 attempt는 live이고
+실제 fixture/runner 작성 및 테스트 로그가 진행 중이다. 동일 terminal을
+`W1-EVAL · Evaluation YOLO`로 rename하고 switch receipt `navigated=true`로
+화면에 표시했다. 중복 실행이나 추가 restart는 하지 않았다.
+
 사용자 승인: 김태완 Pro x20, GPT-6 Astra, 기존 Medium, YOLO. Coordinator는 `/Users/runixs/HowLens` main clone에서 작업한다. 기존 김의윤 Coordinator는 인계 프롬프트 accepted 뒤 구현/감독을 중단한다. 제품 코드는 Workers만 수정한다.
 
 ## Authority
