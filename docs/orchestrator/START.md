@@ -11,3 +11,5 @@ Read, in order:
 진행 중 인계는 `docs/orchestrator/HANDOFF.md`부터 확인한다. 기존 Run home은 김의윤 Hub에 남아 있으므로 새 Run이나 중복 Worker를 만들지 않는다.
 구현 배포 때만 대상 Worker의 `TASK.md`를 읽는다. 모든 Worker 문서·로그를 통째로 읽지 않는다.
 Orca 실행 전 버전 일치 스킬 `orca skills get orchestration`을 따른다. 연결 PC는 TEAM의 실제 환경 이름으로 지정한다.
+
+사용자 요청 현황판: `docs/orchestrator/BOARD.txt`. Worker 메시지를 처리하여 상태가 바뀌면 현황판의 시각·근거를 갱신하고 대화에도 ASCII 표를 출력한다. heartbeat만으로 진척/완료를 추정하지 않는다.
