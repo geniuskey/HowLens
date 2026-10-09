@@ -38,3 +38,7 @@ Checkpoint introduced `backend/.gitignore`, `backend/pyproject.toml`, `backend/h
 ## Remaining dependencies and limits
 
 No public manufacturer PDF/source was acquired or registered; no live adapter/reviewer configured; actual equipment/task evidence must be verified before guides. Visual library/semantic panel review/asset storage need their own integration task and use only the public signatures. Threaded Pillow cancellation is cooperative: response timeout cannot terminate an active decode thread; production hard isolation and global concurrency controls are not established. Memory limit counts photo + serialized analysis, with bounded job/object overhead separately. Verification adds explicit limitations but a future adapter still needs conservative observation-language review. Starlette's httpx TestClient deprecation warning remains; no tests are skipped or suppressed. No token/key/private image content was logged or committed.
+
+## Push blocker
+
+`git push -u origin ljyonefineday/feat-backend-foundation` at documentation SHA `98419e36cffbf65aca017662d669b80d7baa4974` failed with HTTP 403: `Permission to geniuskey/HowLens.git denied to ljyonefineday`. No push success is claimed; all validated commits remain local with a clean working tree before this report update. Escalation and a blocking question were sent through the current Orca Dispatch requesting owner-account access or an authorized fork remote; no alternate account or token was used.
