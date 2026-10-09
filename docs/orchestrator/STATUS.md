@@ -417,3 +417,5 @@ Sol6.1 terminal218aeb03. Worker controls benchmark code only, no device.
 Corpus first status842b701263d0: real R750 front/rear and AX55(CA)Ver1.0
 label downloaded/inspected; TPLinkPDF122pages REV1.0.0 verified; region-match
 pending, not runtime registered.
+
+13:09 Backend PDFs found at /Users/jymbook/HowLens/docs/assets/manuals/evaluation/: um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf, WHP-Robot-Application-Manual.pdf, 9b6e38.pdf, be94f9.pdf, slvub62b.pdf. Explicit read dependency granted to Backend discovery worker; preserve originals, 10min metadata/page evidence inventory, no runtime-ingestion claim.

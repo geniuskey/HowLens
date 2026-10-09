@@ -27,7 +27,7 @@ Final1h buffer; timing is a target, not a completion claim.
 | Fold4 live QA          | RUNNING    | USB health200 live; APK POST pending |
 | Real photos + manuals  | RUNNING    | ctx_950b0c4b6142; source corpus       |
 | Image model comparison | RUNNING    | ctx_2f6d44a5ad63; quality/cost/time   |
-| Backend uploaded PDFs  | LOCATING   | two intake subfolders empty; recheck |
+| Backend uploaded PDFs  | FOUND 5    | manuals/evaluation; intake assigned |
 | Runtime manual ingest  | PENDING    | asset architecture ready027ec4e      |
 | Main product merge     | WAITING    | concrete review + user approval     |
 +------------------------+------------+---------------------------------------+
