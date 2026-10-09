@@ -1,6 +1,6 @@
 # Orchestration status
 
-2026-10-09 11:37 KST. Run `run_6351cb7363de`; Coordinator 김태완 main clone.
+2026-10-09 11:42 KST. Run `run_6351cb7363de`; Coordinator 김태완 main clone.
 17:00 submission; product main integration still awaits concrete review and approval.
 
 ## Current routing and permissions
@@ -26,15 +26,44 @@ No credentials were transferred and no main product merge performed.
 
 | Task | PC / Dispatch | Scope |
 |---|---|---|
-| W2-APP `task_2b8f83fdee01` | 김의윤 / `ctx_6b1e3a72fcbf` | Live Visual + verification UI, bounded/cancellable HTTP; Galaxy baseline NOW |
+| W2-APP `task_2b8f83fdee01` | 김의윤 / `ctx_9435010172c1` | Live Visual + verification UI, bounded/cancellable HTTP; Galaxy baseline NOW |
 | W2-BACKEND `task_69c26e09a2dc` | 이준영 / `ctx_4fc700a02b03` | Responses adapter, strict evidence validation, config and Visual boundary |
 | W2-VISUAL `task_77bd347ac7ee` | 이윤재 / `ctx_3e01d615f3f3` | Image adapter, deterministic scene mapping, tests and timestamped mockup |
-| W2-E2E `task_15215775f6e9` | 김태완 / `ctx_98c4e2d3cca5` | API smoke, synthetic demo double, early device setup and final test checklist |
-| W2-RESEARCH `task_cd34651020f8` | 김태완 / `ctx_c1c5ea214ffa` | Official manuals and feasible extra feature research; separate owned docs |
+| W2-E2E `task_15215775f6e9` | 김태완 / `ctx_98c4e2d3cca5` succeeded | d263f77 pushed; Coordinator independently reran20 tests PASS; physical pending |
+| W2-RESEARCH `task_cd34651020f8` | 김태완 / `ctx_c1c5ea214ffa` succeeded | 5c0b830 pushed;3 official manuals/pages/hashes; Sharesheet spec |
 
 Each implementation task is <=45 minutes; research 15 minutes, E2E preparation 30.
 Existing active editors were reused or checked settled before launch. Product ownership
 is unchanged. W1 evidence below remains historical, not W2 live integration evidence.
+
+## Runtime recovery checkpoint
+
+App initial W2 request failed before implementation: unsupported gpt-6.1-sol with
+ChatGPT account; official /model offered GPT-6-Luna and session choice applied.
+Next request had revoked refresh-token error. User confirmed re-login, but existing
+process still failed. /quit produced explicit shutdown+shell; worker-stop returned
+stop_unknown/external_terminal/processAction none, then worker-abandon fenced old
+ctx_6b1e3a72fcbf. Fresh YOLO Codex on same terminal started with supported Luna;
+same-Task --retry-of created ctx_9435010172c1. Initial receipt was turn_start_unobserved,
+but actual Worker status11:42 confirmed Galaxy SM_S948N device state, APK install
+Success and launch event. No RSA blocker. Camera/gallery/observed UI still pending. No files deleted or duplicate editor created.
+
+Visual W2 injection was accepted but never submitted to agent. Worker confirmed no
+live preamble; execution-host dispatch-show returned Task not found. Authoritative
+Hub dispatch-show --preamble returned exact Task text, forwarded without changes
+into existing Visual terminal. Bounded screen showed pasted draft; separate Enter
+submitted it. Actual documentation/tool progress and scene_step_ids signature received.
+Hub-generated literal sender worker failed stable_pane_required; documented own-pane
+sender correction relayed, accepted lifecycle receipt still to verify.
+
+Research/E2E accepted success settlements followed by worker-release: both retained
+external_terminal/processAction none. No forced closure. Research's suggested 17:00
+end-of-testing is superseded by Coordinator16:30 packaging/17:00 submission plan.
+
+W3-INTEGRATION-AUDIT `task_11354293a45c` / `ctx_dd872da5efc4` now reuses Evaluation
+terminal/worktree on 김태완 PC. Read-only pinned Backend1081de7 review and independent
+tests in disposable snapshot, no paid calls/product edits. Product dependency reads
+authorized; report will be docs/workers/evaluation/W3-INTEGRATION-AUDIT.md.
 
 ## Delivery targets and blockers
 
@@ -42,12 +71,14 @@ is unchanged. W1 evidence below remains historical, not W2 live integration evid
   evidence awaited. Final regression at 15:30 does not delay this baseline.
 - 12:15 first W2 checkpoint; 13:00 integration candidate; 14:30 end-to-end target;
   15:30 feature freeze; 15:30–16:30 final regression; 16:30 submission packaging.
-- Backend opened ignored mode0600 backend/.env for local human key entry. No paid
-  calls authorized/executed yet; API credits/key-ready/budget remain pending.
+- User clarified API USD50 per account, separate from development credits; current
+  Backend key saved and presence=true confirmed11:40. One bounded gpt-4.1-mini
+  live smoke authorized within current USD50 budget; actual result/usage pending.
+  Do not precollect four keys or share account credentials.
 - Actual equipment identity/photos and registered exact manual evidence remain pending.
   Research found Dell R750 A11 page changes; never reuse older page numbers.
-- Extra feature candidate: evidence-text Android Sharesheet (20–30min), awaiting
-  source-linked report before assigning implementation to the existing App editor.
+- Extra feature assigned to App after core flow: evidence-only Android Sharesheet
+  with preview and no free text/photos/steps/secrets; official-source research complete.
 - Main product merge needs consolidated actual diffs/tests and user approval.
 
 ## Historical W1 checkpoint (superseded for routing and permissions)
