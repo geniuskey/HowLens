@@ -257,3 +257,26 @@ Windowsuser'sdirectterminalmessage reportsadditionalAndroiddevice andnewtestsess
 authorized; needactualinventorybeforereportingtestcapacity.
 
 BOARD.txt user-facingASCIIstatus is updated/printed on materialchanges.
+
+## 12:30 milestone/readiness snapshot
+
+User requested overall progress bar, milestones and real-device test timing.
+BOARD.txt now uses coarse weighted release-readiness estimate~55%, not measured
+code completion: foundations20%, UX/integration30%, validation25%, release25%;
+phase estimates100/80/40/0 yield54 rounded55. First new-APK hands-on13:00 target,
+connected flow13:00-14:00, freeze14:30, regression15:30, package16:00, submit17:00.
+Baseline Galaxy installed/launched; actual APK analysisPOST remains untested.
+
+Packaging recheck ctx_9d81ce90889a succeeded c6b043f2a9b4c29b133f56e6aff24cb55d4d74c2:
+75 collection, noneditable installed Visual/9-panel probe/pipcheck passed.
+Visual runner ctx_337ee7164254 succeeded5dcf6f2b209f94920a23cd6993ece67d205d37ec:
+26tests Worker report,6dryrunrecords,0paidcalls. Both released retained/external/no
+process action. App confirms Repository.kt and Models.kt unchanged and clear for
+isolated helper; VM fixes retained byApp. Layout320/412dp+200% checked byWorker;
+landscape IME issue beingfixed, nofinalAPKdeliveryyet.
+
+Second-device QA ctx_a3b6477cd484 active onWindows device-qa worktree: noadb/SDK
+observed, Java18present; relay_eda9b4b4f5db answered authorize official portable
+PlatformTools temporary install/inventory, no globalconfiguration/fullSDKneeded.
+APKdelivery/deviceauthorizationpending. Deliveries5ed430d46a40 and403e61c52ee5
+processed/acked; last inboxempty.

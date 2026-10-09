@@ -1,15 +1,50 @@
-HOWLENS | 2026-10-09 12:20 KST | SUBMIT 17:00 | LEFT ~4h40m
+HOWLENS | 2026-10-09 12:30 KST | SUBMIT 17:00 | LEFT ~4h30m
+
+OVERALL RELEASE READINESS (Coordinator estimate, not measured code completion)
+[###########---------] ~55%
+
+Milestone                     Progress               State / target KST
+M1 Foundations & contracts    [####################] DONE: branch artifacts
+M2 Blue UI + photo/camera     [################----] BUILDING: first APK13:00
+M3 Integrated/device QA       [########------------] PARTIAL: candidate14:00
+M4 Release/demo/submission    [--------------------] PENDING: ready16:00
+
+Estimate method: weights M1/M2/M3/M4 =20/30/25/25; phase estimates100/80/40/0.
+Weighted54 rounded to nearest5 =55. These are coarse evidence-based judgments,
+not passing-test ratios, elapsed-time ratios, or a guarantee of on-time delivery.
+M1 done does not mean product merged to main. New findings can lower readiness.
+
+MILESTONE TIMELINE
+12:30 NOW -> 13:00 first hands-on -> 14:00 connected candidate
+          -> 14:30 FEATURE FREEZE -> 15:30 regression complete
+          -> 16:00 submission package READY -> 17:00 DEADLINE
+14:30-17:00 =2h30 reserved for fixes, packaging and submission; final1h buffer.
+
+WHEN CAN WE TEST ON REAL PHONES?
+NOW          Galaxy baseline installed/launched; user hands-on slot must be
+             coordinated with App worker currently using the same phone.
+13:00 TARGET Blue UI + photo/camera first hands-on (10-15min).
+             Try capture/retake, photo selection, question, keyboard, back,
+             permission denial/recovery and readability. APK delivery pending.
+13:00-14:00  App -> live server -> real analysis round trip target.
+             Previous phone health succeeded; actual APK analysis POST untested.
+14:30-15:30  Final two-device regression + demo rehearsal.
+Second phone Windows QA active, adb/SDK absent; portable official adb setup
+             instructed. Device identity/authorization and APK delivery pending.
+Timing is a target, not confirmed availability. Actual equipment/operator evidence
+still required for validated guide E2E; synthetic tests do not satisfy that gate.
+
 +----------------------+-----------+-----------------------------------------+
 | CATEGORY / WORK      | STATE     | EVIDENCE / NEXT                         |
 +----------------------+-----------+-----------------------------------------+
-| UX / App two tabs    | RUNNING   | Blue + camera wired; first compile PASS |
+| UX / App two tabs    | RUNNING   | Layout batch done; landscape IME fixing |
 | UX / App state fix   | FIXING    | Old result A can attach to analysis B   |
 | API / Backend wheel | READY     | d167c43; combined75 + wheel probe PASS  |
-| IMAGE / Eval runner | RUNNING   | Schema agreed; dry-run/live separation  |
+| IMAGE / Eval runner | READY     | 5dcf6f2; 26 tests; paid calls ZERO       |
 | QA / App audit      | READY     | d4cbc46; 4 findings routed to App       |
 | QA / Android17      | READY     | 979a109; Espresso3.7 candidate to test  |
 | OPS / App push      | RECOVERED | Exact0e2aa94 verified on origin         |
-| QA / Extra device   | PLANNED   | Visual PC device reported; inventory next|
+| QA / Extra device   | SETUP     | Windows adb missing; portable setup next|
 | GUIDE / Real E2E    | WAITING   | Actual equipment/operator evidence     |
 | RELEASE / main      | WAITING   | Concrete review + user approval        |
 +----------------------+-----------+-----------------------------------------+
@@ -29,7 +64,10 @@ Detailed routing + sources: MODEL_ROUTING.md.
 
 ACTIVE / SETTLED
 App: ctx_1b2d7e0b3529 / task_b55a09a0661b / Luna High Fast (observed).
-Visual runner: ctx_337ee7164254 / task_8e829c3c96b5 / Sol (observed).
+Visual runner: ctx_337ee7164254 succeeded/released; 5dcf6f2,26tests Worker report.
+Packaging recheck: ctx_9d81ce90889a succeeded/released; c6b043f independently
+collected75 tests and verified installed wheel/mapper9panels/pip check.
+Second-device QA: ctx_a3b6477cd484 active LunaHigh, portable adb setup instructed.
 Backend fix ctx_a78d1be91800 succeeded/released; dedicated server stays running.
 App audit ctx_0ad549b712d7 succeeded/released; no Android execution on review PC.
 Android17 research ctx_880ba619f987 succeeded/released; device fix unverified.
@@ -47,9 +85,9 @@ No continuous video AI claimed. Paid image benchmark still not executed.
 
 NEXT
 1. App fixes generation/cancellation+poll bounds and verifies two-tab screenshots.
-2. Split isolated repository defects after App confirms file ownership clearance.
+2. App cleared Repository.kt/Models.kt at12:28; dispatch isolated fix helper next.
 3. Use second physical device on Visual PC when inventory/ADB authorization confirmed.
-4. Finish image benchmark runner; exact model fit remains unmeasured.
+4. Review delivered image benchmark runner; exact model fit remains unmeasured.
 5. Prepare main integration diff/test review; do not infer user merge approval.
 
 UPDATE POLICY
