@@ -1,0 +1,139 @@
+{
+  "intake_at": "2026-10-09T04:12:45.106495+00:00",
+  "authorization_relay": "relay_aea122f0e0f3",
+  "source_kind": "user-uploaded PDFs; not synthetic device QA",
+  "physical_page_count_crosschecked_with": [
+    "PyMuPDF 1.28.2",
+    "pypdf 6.19.0"
+  ],
+  "documents": [
+    {
+      "filename": "um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf",
+      "path": "/Users/jymbook/HowLens/docs/assets/manuals/evaluation/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf",
+      "bytes": 3781926,
+      "sha256": "576d9bee3bc32c8ee70bf0d77cf9494cec06ea7c1d9ff98eebf2738cb9314a14",
+      "pages": 91,
+      "title": "STM32 Nucleo-64 boards (MB1136) - User manual",
+      "manufacturer": "STMicroelectronics",
+      "product": "STM32 Nucleo-64 boards; MB1136 family",
+      "revision": "UM1724 Rev 17; September 2025",
+      "identity_pdf_pages": [
+        1
+      ],
+      "printed_source_references": [
+        "www.st.com"
+      ],
+      "provenance": "User-uploaded manufacturer-branded PDF; public download and current revision not independently verified",
+      "limitations": [
+        "Family manual covers multiple NUCLEO variants; exact board label still required"
+      ],
+      "public_source_verified": false,
+      "runtime_registered": false,
+      "guide_approved": false
+    },
+    {
+      "filename": "WHP-Robot-Application-Manual.pdf",
+      "path": "/Users/jymbook/HowLens/docs/assets/manuals/evaluation/WHP-Robot-Application-Manual.pdf",
+      "bytes": 1712604,
+      "sha256": "48143f3145bd9ff60f67c5c34d810d162d19ced59027a2e61722b798978ea273",
+      "pages": 94,
+      "title": "LOGOSOL WAFER HANDLING PLATFORM ROBOT APPLICATION MANUAL",
+      "manufacturer": "Logosol, Inc.",
+      "product": "Wafer Handling Platform / wafer handling robots",
+      "revision": "Document 710010010; revision history 10.4 August 2021",
+      "identity_pdf_pages": [
+        1,
+        2
+      ],
+      "printed_source_references": [
+        "WWW.LOGOSOLINC.COM"
+      ],
+      "provenance": "User-uploaded manufacturer-branded PDF; public download not independently verified",
+      "limitations": [
+        "94 physical pages; body pagination uses /313; complete original scope is not verified",
+        "Manual covers robot variants; exact nameplate required"
+      ],
+      "public_source_verified": false,
+      "runtime_registered": false,
+      "guide_approved": false
+    },
+    {
+      "filename": "9b6e38.pdf",
+      "path": "/Users/jymbook/HowLens/docs/assets/manuals/evaluation/9b6e38.pdf",
+      "bytes": 5404569,
+      "sha256": "0170ebb4373b322fb5e7685f0ee27c31169d34f4da28542cf0cdf68226c63621",
+      "pages": 241,
+      "title": "Atmospheric Single-Arm Robot User’s Manual",
+      "manufacturer": "Brooks Automation",
+      "product": "ATM 100/200/300/400/500; ABM 100/200/400/500; FPD 400/500/700",
+      "revision": "Revision 1; September 12, 2005; Part Number 127206",
+      "identity_pdf_pages": [
+        10,
+        11
+      ],
+      "printed_source_references": [
+        "www.brooks.com",
+        "www.artisantg.com",
+        "https://www.manualslib.com/manual/2055085/Brooks-Atm-100.html"
+      ],
+      "provenance": "Third-party ManualsLib export with Artisan watermark; manufacturer authenticity and current revision not independently verified",
+      "limitations": [
+        "Filename and mirror title emphasize ATM100 but embedded manual covers multiple families",
+        "PDF physical pages differ from embedded printed pagination"
+      ],
+      "public_source_verified": false,
+      "runtime_registered": false,
+      "guide_approved": false
+    },
+    {
+      "filename": "be94f9.pdf",
+      "path": "/Users/jymbook/HowLens/docs/assets/manuals/evaluation/be94f9.pdf",
+      "bytes": 4767353,
+      "sha256": "cf26174e078d68a51613ddbe5f66f46302727e5982f89dc22d8357d69baf10a2",
+      "pages": 674,
+      "title": "MagnaTran 7.1 User’s Manual",
+      "manufacturer": "Brooks Automation",
+      "product": "MagnaTran 7.1 robot; hardware variants require actual label confirmation",
+      "revision": "MN-003-1600-00 Revision 2.2; May 17, 2001",
+      "identity_pdf_pages": [
+        17,
+        18
+      ],
+      "printed_source_references": [
+        "https://www.manualslib.com/manual/2871349/Brooks-Automation-Magnatran-7-1.html"
+      ],
+      "provenance": "Third-party ManualsLib export; manufacturer authenticity and current revision not independently verified",
+      "limitations": [
+        "PDF physical pages differ from printed chapter pagination",
+        "Page18 describes a generic manual when no robot serial number is recorded"
+      ],
+      "public_source_verified": false,
+      "runtime_registered": false,
+      "guide_approved": false
+    },
+    {
+      "filename": "slvub62b.pdf",
+      "path": "/Users/jymbook/HowLens/docs/assets/manuals/evaluation/slvub62b.pdf",
+      "bytes": 15163464,
+      "sha256": "fd06d82d3d5fee6c35407b3375abd816d35113e91940710e3e578a0819a7a90e",
+      "pages": 63,
+      "title": "TPS65988 Evaluation Module - User’s Guide",
+      "manufacturer": "Texas Instruments",
+      "product": "TPS65988EVM",
+      "revision": "SLVUB62B; June 2017; revised November 2020 (Rev B)",
+      "identity_pdf_pages": [
+        1
+      ],
+      "printed_source_references": [
+        "www.ti.com"
+      ],
+      "provenance": "User-uploaded manufacturer-branded PDF; public download not independently verified",
+      "limitations": [
+        "Board can emulate other TPS6598x configurations; appearance/configuration does not establish a different hardware model"
+      ],
+      "public_source_verified": false,
+      "runtime_registered": false,
+      "guide_approved": false
+    }
+  ]
+}
