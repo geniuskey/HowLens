@@ -1,6 +1,6 @@
 # Orchestration status
 
-2026-10-09 11:57 KST. Run `run_6351cb7363de`; Coordinator 김태완 main clone.
+2026-10-09 12:04 KST. Run `run_6351cb7363de`; Coordinator 김태완 main clone.
 17:00 submission; product main integration still awaits concrete review and approval.
 
 ## Current routing and permissions
@@ -188,3 +188,29 @@ exit0, decode_cancel_peak2, mock guide Visual/verification409; no external netwo
 calls. Worker58tests and packaging pass remain Worker-reported; old54tests were separately
 verified by Evaluation. Accepted Backend release retained external_terminal/no process
 action; dedicated server is separate and remains intentionally running.
+
+## 12:04 design/camera/evaluation checkpoint
+
+W3-DESIGN succeeded ab527d2 on Runixs/hackathon-research. Coordinator viewed both
+blue portrait concepts and read SCREENS; final paths forwarded to App. External
+terminal release retained/no process action. Original team-lead board preserved.
+
+W3-CAMERA succeeded 26837d6ec7d65ed31b965e10642c8e7cb67dd556, pushed
+geniuskey/camera-preview. Worker disposable CameraX1.4.2/compileSdk34 build and
+7 unit tests passed; physical camera untested. Coordinator source review found
+non-reactive permission-grant state and missing settings-return refresh. Follow-up
+task_a0feea19691f / ctx_f28fe73c9b8c reuses same Camera terminal/worktree, <=20min,
+camera/** ownership only, Korean concise labels and Settings action included.
+App was told to await corrected SHA; device slot remains exclusively W2-App.
+
+W4-IMAGE-EVAL-PREP succeeded 0234159c2a5b4cc9443e79de30e90ef5586661d2, pushed
+Runixs/eval-foundation. Three synthetic cases, neutral schema/scoring/cost protocol,
+official-source shortlist and six dry-run records delivered. Coordinator independently
+reran all8 offline tests PASS. No paid generation, live speed/cost, semantic winner,
+or hardware fidelity validation claimed. Team-lead criteria remain pending.
+External terminal release retained/no process action.
+
+Deliveries bef7c198dd31, cfc86cac0802, ffc1e4a33f09 processed and acked.
+W2-App still actively operates Galaxy file picker for one authorized synthetic
+APK request; bounded5min follow-up requested if interaction remains blocked, then
+checkpoint/push/settlement before fresh design-integration Task.
