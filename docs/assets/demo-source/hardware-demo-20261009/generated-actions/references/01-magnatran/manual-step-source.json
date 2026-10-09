@@ -1,0 +1,241 @@
+{
+  "id": "01-magnatran",
+  "title": "MagnaTran 손목 밴드 측정·조정",
+  "subtitle": "Wrist Band Adjustment · MN-003-1600-00 Rev 2.2 · 원문 Figure 9-4·9-5 기반",
+  "file": "be94f9.pdf",
+  "pages": [
+    63,
+    477,
+    515,
+    516
+  ],
+  "printed": [
+    "2-5",
+    "9-1",
+    "9-39",
+    "9-40"
+  ],
+  "scope": "Wrist Band Adjustment 섹션의 측정·조정·재측정 루프 전체. 시설 안전 절차는 발췌본만으로 대체하지 않음.",
+  "foot": "그림은 원문 기술 도면을 재사용했습니다. 동작은 절차를 세분화한 설명이며 실제 작업 사진이 아닙니다. 규격표 단위는 원문 표기를 유지했습니다.",
+  "cards": [
+    {
+      "title": "작업 조건 확인",
+      "subtitle": "교육·안전 절차",
+      "bullets": [
+        "교육받은 작업자만 정비 수행",
+        "시설 전원 차단·잠금 절차 확인"
+      ],
+      "asset_id": "side",
+      "image_original_pdf_page": 516,
+      "procedure_original_pdf_pages": [
+        63,
+        477
+      ],
+      "warning": true,
+      "visual_type": "unchanged_original_manual_crop",
+      "index": 1,
+      "step_id": "01-magnatran-1"
+    },
+    {
+      "title": "측정 도구 준비",
+      "subtitle": "도구 목록 확인",
+      "bullets": [
+        "소형 십자드라이버·힘 게이지 준비",
+        "캘리퍼 또는 작은 눈금자 준비"
+      ],
+      "asset_id": "side",
+      "image_original_pdf_page": 516,
+      "procedure_original_pdf_pages": [
+        515
+      ],
+      "warning": false,
+      "visual_type": "unchanged_original_manual_crop",
+      "index": 2,
+      "step_id": "01-magnatran-2"
+    },
+    {
+      "title": "밴드 두께 측정",
+      "subtitle": "Figure 9-4 측정 위치",
+      "bullets": [
+        "Wrist Band thickness 위치 측정",
+        "밴드에 흠집·찍힘을 내지 않기"
+      ],
+      "asset_id": "side",
+      "image_original_pdf_page": 516,
+      "procedure_original_pdf_pages": [
+        515
+      ],
+      "warning": true,
+      "visual_type": "unchanged_original_manual_crop",
+      "index": 3,
+      "step_id": "01-magnatran-3"
+    },
+    {
+      "title": "적용 규격 선택",
+      "subtitle": "Table 9-4 Band Size",
+      "bullets": [
+        "측정한 밴드 크기와 표를 대조",
+        "해당 크기의 허용 범위 선택"
+      ],
+      "asset_id": "table",
+      "image_original_pdf_page": 515,
+      "procedure_original_pdf_pages": [
+        515
+      ],
+      "warning": false,
+      "visual_type": "unchanged_original_manual_crop",
+      "index": 4,
+      "step_id": "01-magnatran-4"
+    },
+    {
+      "title": "힘 게이지 위치 맞추기",
+      "subtitle": "Figure 9-5 접촉 위치",
+      "bullets": [
+        "Spring Loaded Screw 옆 tab 식별",
+        "힘 게이지 plunger를 tab에 대기"
+      ],
+      "asset_id": "top",
+      "image_original_pdf_page": 516,
+      "procedure_original_pdf_pages": [
+        516
+      ],
+      "warning": false,
+      "visual_type": "unchanged_original_manual_crop",
+      "index": 5,
+      "step_id": "01-magnatran-5"
+    },
+    {
+      "title": "측정값 읽기",
+      "subtitle": "tab이 조금 안쪽으로 움직일 때",
+      "bullets": [
+        "tab을 누르며 게이지 값 관찰",
+        "측정값을 선택한 규격과 비교"
+      ],
+      "asset_id": "top",
+      "image_original_pdf_page": 516,
+      "procedure_original_pdf_pages": [
+        516
+      ],
+      "warning": false,
+      "visual_type": "unchanged_original_manual_crop",
+      "index": 6,
+      "step_id": "01-magnatran-6"
+    },
+    {
+      "title": "규격보다 작으면 조정",
+      "subtitle": "시계 방향 1/8–1/4회전",
+      "bullets": [
+        "Spring Loaded Screw를 시계 방향 조정",
+        "한 번에 1/8–1/4회전 후 다시 측정"
+      ],
+      "asset_id": "top",
+      "image_original_pdf_page": 516,
+      "procedure_original_pdf_pages": [
+        516
+      ],
+      "warning": false,
+      "visual_type": "unchanged_original_manual_crop",
+      "index": 7,
+      "step_id": "01-magnatran-7"
+    },
+    {
+      "title": "규격보다 크면 조정",
+      "subtitle": "반시계 방향 1/8–1/4회전",
+      "bullets": [
+        "Spring Loaded Screw를 반시계 방향 조정",
+        "한 번에 1/8–1/4회전 후 다시 측정"
+      ],
+      "asset_id": "top",
+      "image_original_pdf_page": 516,
+      "procedure_original_pdf_pages": [
+        516
+      ],
+      "warning": false,
+      "visual_type": "unchanged_original_manual_crop",
+      "index": 8,
+      "step_id": "01-magnatran-8"
+    },
+    {
+      "title": "재측정·규격 대조",
+      "subtitle": "5–6단계로 돌아가 반복",
+      "bullets": [
+        "힘 게이지로 다시 측정해 표와 비교",
+        "사진만으로 장력·조정 성공 확정 금지"
+      ],
+      "asset_id": "table",
+      "image_original_pdf_page": 515,
+      "procedure_original_pdf_pages": [
+        515,
+        516
+      ],
+      "warning": false,
+      "visual_type": "unchanged_original_manual_crop",
+      "index": 9,
+      "step_id": "01-magnatran-9"
+    }
+  ],
+  "schema": "howlens.storyboard-source.v1",
+  "source_file": "docs/assets/manuals/evaluation/be94f9.pdf",
+  "source_sha256": "cf26174e078d68a51613ddbe5f66f46302727e5982f89dc22d8357d69baf10a2",
+  "assets": {
+    "side": {
+      "asset": "assets/side.png",
+      "original_pdf_page": 516,
+      "clip_rect_pdf_points": [
+        145,
+        100,
+        470,
+        280
+      ],
+      "operation": "render_crop_only_no_shape_edit"
+    },
+    "top": {
+      "asset": "assets/top.png",
+      "original_pdf_page": 516,
+      "clip_rect_pdf_points": [
+        145,
+        480,
+        470,
+        720
+      ],
+      "operation": "render_crop_only_no_shape_edit"
+    },
+    "table": {
+      "asset": "assets/table.png",
+      "original_pdf_page": 515,
+      "clip_rect_pdf_points": [
+        195,
+        404,
+        462,
+        538
+      ],
+      "operation": "render_crop_only_no_shape_edit"
+    }
+  },
+  "page_map": [
+    {
+      "excerpt_page": 1,
+      "original_pdf_page": 63,
+      "printed_page": "2-5"
+    },
+    {
+      "excerpt_page": 2,
+      "original_pdf_page": 477,
+      "printed_page": "9-1"
+    },
+    {
+      "excerpt_page": 3,
+      "original_pdf_page": 515,
+      "printed_page": "9-39"
+    },
+    {
+      "excerpt_page": 4,
+      "original_pdf_page": 516,
+      "printed_page": "9-40"
+    }
+  ],
+  "images_generated_from_zero": false,
+  "synthetic_action_images": false,
+  "integration": "not_implemented",
+  "physical_tests": "not_run"
+}

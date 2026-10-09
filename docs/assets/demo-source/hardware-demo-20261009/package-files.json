@@ -1,0 +1,217 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 2514,
+    "sha256": "8835818e3a0abf5620f612176fc882cb36b486c0f9db32e084a2fb53c8a658f0"
+  },
+  {
+    "path": "generated-actions/01-magnatran-actions.png",
+    "bytes": 1972786,
+    "sha256": "369134d95b4a73f19f1277b6889e78f2abb57133cfa51160d0521887cbedb7ee"
+  },
+  {
+    "path": "generated-actions/02-logosol-actions.png",
+    "bytes": 2179505,
+    "sha256": "d275358f3cb73139c3dfcb7a667d23bfdcc1f6eacf5d534832e5bfea0dc979b7"
+  },
+  {
+    "path": "generated-actions/03-stm32-actions.png",
+    "bytes": 2111262,
+    "sha256": "c4f3eccb2a41712a126a617c839c6d6354b2ba1e178324e863870b7e833c817b"
+  },
+  {
+    "path": "generated-actions/README.md",
+    "bytes": 2022,
+    "sha256": "4b11162b2266e40407e5d67816694c86a635588053b7039d53ff8a2fef95d0e7"
+  },
+  {
+    "path": "generated-actions/manifest.json",
+    "bytes": 1904,
+    "sha256": "16e493be5b91b531075bda7f00e828ceaba032c5137b9b368520cd173b26576f"
+  },
+  {
+    "path": "generated-actions/references/01-magnatran/manual-step-source.json",
+    "bytes": 6615,
+    "sha256": "688487e108e5eb5f9d41a16d361878d88a0bc405e397e91602f4426b4dd62b4c"
+  },
+  {
+    "path": "generated-actions/references/01-magnatran/side.png",
+    "bytes": 28292,
+    "sha256": "3a1cd1c4e46d6de1dc798817982956de8ffab64e64eec1427a635511678adee9"
+  },
+  {
+    "path": "generated-actions/references/01-magnatran/table.png",
+    "bytes": 29902,
+    "sha256": "d52b7e3d92ac09a6517659bed9e19136e48730c3403d1598ad6c35d49d52a06f"
+  },
+  {
+    "path": "generated-actions/references/01-magnatran/top.png",
+    "bytes": 36050,
+    "sha256": "9302cd7c19055d13611f77ca91e903730592e22da32d6ab8fe6090108c9838e9"
+  },
+  {
+    "path": "generated-actions/references/02-logosol/dual.png",
+    "bytes": 611205,
+    "sha256": "ffff4116b5ee08db6151496455c8bc0b2b7e5ab61503a8e1a178b7253cdc0556"
+  },
+  {
+    "path": "generated-actions/references/02-logosol/manual-step-source.json",
+    "bytes": 6740,
+    "sha256": "6a9371cb449c6028060f4c06d1b6746aab74abddb0ecd4f9ca8ccd93f5c96fc4"
+  },
+  {
+    "path": "generated-actions/references/03-stm32/cn2.png",
+    "bytes": 458519,
+    "sha256": "09d4ef72a3e0d91abbcce1ab856831cfb674382419d2afb4c9bc743c4dad4e5e"
+  },
+  {
+    "path": "generated-actions/references/03-stm32/manual-step-source.json",
+    "bytes": 5023,
+    "sha256": "288415c1a2ac5a6d635845e41987a2aa6c0f6222f8b6d09988bc3d2dfe134014"
+  },
+  {
+    "path": "generated-actions/review.json",
+    "bytes": 1278,
+    "sha256": "e5bc5a7af7deefe5b62ba8cd0145d2c4b947f43b6b28566de05dc8a69d5040ee"
+  },
+  {
+    "path": "manual-storyboards/.DS_Store",
+    "bytes": 6148,
+    "sha256": "a75e95a3d3b3ca9dfa6ffa8212a454efb06d81efa6a2e738d9cf39cd7e8114ac"
+  },
+  {
+    "path": "manual-storyboards/01-magnatran/DEMO.md",
+    "bytes": 3232,
+    "sha256": "baf56f02e943770c2d7508b335426ce389261957474c4c7d36fcb356b440556a"
+  },
+  {
+    "path": "manual-storyboards/01-magnatran/assets/side.png",
+    "bytes": 28292,
+    "sha256": "3a1cd1c4e46d6de1dc798817982956de8ffab64e64eec1427a635511678adee9"
+  },
+  {
+    "path": "manual-storyboards/01-magnatran/assets/table.png",
+    "bytes": 29902,
+    "sha256": "d52b7e3d92ac09a6517659bed9e19136e48730c3403d1598ad6c35d49d52a06f"
+  },
+  {
+    "path": "manual-storyboards/01-magnatran/assets/top.png",
+    "bytes": 36050,
+    "sha256": "9302cd7c19055d13611f77ca91e903730592e22da32d6ab8fe6090108c9838e9"
+  },
+  {
+    "path": "manual-storyboards/01-magnatran/complete-section-excerpt.pdf",
+    "bytes": 42716,
+    "sha256": "43e34269f1cb4903cb0c00a1680b6f7bf7fd7e66996949239c3b4d012aa77bef"
+  },
+  {
+    "path": "manual-storyboards/01-magnatran/source-section-text.txt",
+    "bytes": 4250,
+    "sha256": "be86d8997714216a98cb18cc7dc287e058b968b70974580ff7124aec5912de3c"
+  },
+  {
+    "path": "manual-storyboards/01-magnatran/storyboard-source.json",
+    "bytes": 6615,
+    "sha256": "688487e108e5eb5f9d41a16d361878d88a0bc405e397e91602f4426b4dd62b4c"
+  },
+  {
+    "path": "manual-storyboards/01-magnatran/storyboard.pdf",
+    "bytes": 519243,
+    "sha256": "47622db8cefe47d418f73607564e6bf0436da3b753f19599fca1c7e633b3daf8"
+  },
+  {
+    "path": "manual-storyboards/01-magnatran/storyboard.png",
+    "bytes": 457887,
+    "sha256": "f4200428b3774940bfb7dfa32235f13f68240db636fd944428ac88b218893d9e"
+  },
+  {
+    "path": "manual-storyboards/02-logosol/DEMO.md",
+    "bytes": 3459,
+    "sha256": "b7740ad41b3eefca3ad6d0045e0f6319948009ec62a802b69ea86f7380c76b6a"
+  },
+  {
+    "path": "manual-storyboards/02-logosol/assets/dual.png",
+    "bytes": 611205,
+    "sha256": "ffff4116b5ee08db6151496455c8bc0b2b7e5ab61503a8e1a178b7253cdc0556"
+  },
+  {
+    "path": "manual-storyboards/02-logosol/assets/single.png",
+    "bytes": 709979,
+    "sha256": "a81060d242c81d973c0f49bf2c00b2386f841b24996ae83d9086ca970566c131"
+  },
+  {
+    "path": "manual-storyboards/02-logosol/complete-section-excerpt.pdf",
+    "bytes": 473011,
+    "sha256": "e6d8c3aff7d6772c2be25f0579ed2fed7f1de1a414593aa99c55ef1d72f5131c"
+  },
+  {
+    "path": "manual-storyboards/02-logosol/source-section-text.txt",
+    "bytes": 10076,
+    "sha256": "47539108633eb551043b3ac7dca370442ba910259e52de7fda5b2ce7820c67c8"
+  },
+  {
+    "path": "manual-storyboards/02-logosol/storyboard-source.json",
+    "bytes": 6740,
+    "sha256": "6a9371cb449c6028060f4c06d1b6746aab74abddb0ecd4f9ca8ccd93f5c96fc4"
+  },
+  {
+    "path": "manual-storyboards/02-logosol/storyboard.pdf",
+    "bytes": 1206491,
+    "sha256": "7e19394a670443eff305aebdb0a827fd33b4170112e9a35fb1fbcff7ffa13379"
+  },
+  {
+    "path": "manual-storyboards/02-logosol/storyboard.png",
+    "bytes": 797646,
+    "sha256": "8d8636f36370dbff515e718a61431a3c3d04c1841f92250e14458e5ff9a853f7"
+  },
+  {
+    "path": "manual-storyboards/03-stm32/DEMO.md",
+    "bytes": 2507,
+    "sha256": "bffb74fdbfc0694ee24839b6a6f92ea4249b64cdedb136d6c9a178e9c8f4ef42"
+  },
+  {
+    "path": "manual-storyboards/03-stm32/assets/board.png",
+    "bytes": 486289,
+    "sha256": "469abdf24f371d4bccc2a2666ba2af6603845cb9b0a9f1c0f8b232f2c625827d"
+  },
+  {
+    "path": "manual-storyboards/03-stm32/assets/cn2.png",
+    "bytes": 458519,
+    "sha256": "09d4ef72a3e0d91abbcce1ab856831cfb674382419d2afb4c9bc743c4dad4e5e"
+  },
+  {
+    "path": "manual-storyboards/03-stm32/complete-section-excerpt.pdf",
+    "bytes": 1057609,
+    "sha256": "46f3cf28edf37bfbf6bbe0097c442c146264284680af4fa7812194f507d1271b"
+  },
+  {
+    "path": "manual-storyboards/03-stm32/source-section-text.txt",
+    "bytes": 4513,
+    "sha256": "3cbea33151c3c19d7d5c9056b5d770288e7032071deafad4ee401e95e4060edc"
+  },
+  {
+    "path": "manual-storyboards/03-stm32/storyboard-source.json",
+    "bytes": 5023,
+    "sha256": "288415c1a2ac5a6d635845e41987a2aa6c0f6222f8b6d09988bc3d2dfe134014"
+  },
+  {
+    "path": "manual-storyboards/03-stm32/storyboard.pdf",
+    "bytes": 599890,
+    "sha256": "a481c62fa5731694c37e4281a945be0fca2740ecc2d608d758a5d9de25b38e60"
+  },
+  {
+    "path": "manual-storyboards/03-stm32/storyboard.png",
+    "bytes": 558876,
+    "sha256": "bc01a86be2233b381060eac33322303be833044947afc97921ac735cbdfe7472"
+  },
+  {
+    "path": "manual-storyboards/README.md",
+    "bytes": 2203,
+    "sha256": "e9352303308c97994f17c196363c8ad2f64b6925a5a87bfb1eafa3121fa9d8fc"
+  },
+  {
+    "path": "manual-storyboards/validation.json",
+    "bytes": 1110,
+    "sha256": "d37086a8d897cee4a3a78f0458770c7f3f2bbcfe93b3d9b02197167f97d9460a"
+  }
+]

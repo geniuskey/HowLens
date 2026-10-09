@@ -1,0 +1,112 @@
+=== Original PDF page 63 ===
+MagnaTran 7.1 User’s Manual
+Safety
+MN-003-1600-00
+Disconnect Devices and Interlocks
+Brooks Automation
+Revision 2.2
+2-5
+Disconnect Devices and Interlocks
+Disconnect Devices
+The facility is responsible for the robot’s main disconnect device ensuring it complies
+with the correct electric codes.
+Personnel servicing this equipment are responsible for the status of the robot’s main
+disconnect device as specified on the facilities’ lockout/tagout procedure.
+Lockout/Tagout
+The MagnaTran 7 utilizes an electrical power supply. Use of lockout/tagout
+procedures for the power supply when servicing the MagnaTran 7 is recom-
+mended by Brooks to ensure the safety of personnel servicing this robot.
+Interlocks
+WARNING
+The MagnaTran 7 does not provide any personal safety or obstruction
+interlocks as a stand-alone unit.
+However, safety interlocking capabilities exist for user safety. See Safety Interlock on
+page 5-17 for instructions on connecting the robot motion emergency off safety inter-
+lock.
+Operational interlocking capabilities exist through the discrete I/O. The flexibility of
+the interlocks is left up to the user to set up and manage. See Operational Interlocks
+on page 6-23 in Chapter 6 for instructions on setting up the interlocks. Also see the
+Brooks Automation Marathon Express™Cluster Tool Integration Platform User’s
+Manual for additional interlocks if purchased with the Brooks System of components.
+
+=== Original PDF page 477 ===
+MagnaTran 7.1 User’s Manual
+MN-003-1600-00
+Brooks Automation
+Revision 2.2
+9-1
+9
+Maintenance and Repair
+Overview
+This chapter provides complete maintenance schedules and procedures for the
+Brooks Automation MagnaTran 7 Robot. The first section of this chapter provides
+preventive maintenance schedules and procedures. The second section of this chap-
+ter provides repair procedures for subsystem repair and replacement.
+Brooks Automation offers training for troubleshooting and repair of the MagnaT-
+ran 7. Only qualified, properly trained persons should perform any maintenance or
+repair procedures.
+Chapter Contents
+Preventive Maintenance Schedule. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .9-2
+Repair Philosophy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .9-22
+Repair Procedures . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .9-24
+Crush points, pinch points, mechanical hazards, electrical hazards, shock
+hazards exist on the MagnaTran 7 robot. The procedures in this chapter
+should only be performed by qualified persons. Read and understand
+Chapter 2: Safety before performing any procedure.
+HEAVY LIFTING
+PINCH POINT
+ELECTRICAL HAZARD
+
+=== Original PDF page 515 ===
+MagnaTran 7.1 User’s Manual
+Maintenance and Repair
+MN-003-1600-00
+Wrist Band Adjustment
+Brooks Automation
+Revision 2.2
+9-39
+Wrist Band Adjustment
+TOOLS:
+•
+Small Phillips head screwdriver.
+•
+Force gauge (.5 in/lbs. resolution)
+•
+Dial Caliper or small 6” scale (1/16” resolution)
+PROCEDURE:
+1.
+Measure the wrist band thickness as shown in Figure 9-4. Use a small scale or
+dial caliper to determine the proper specification from Band Size Table.
+CAUTION
+While measuring the wrist bands, use caution so as not to nick or
+scratch the wrist bands.
+Table 9-4: Band Size
+Band Size
+Specification
+1/8”
+1.5-3.0 in/lbs.
+3/16”
+3.0-4.5 in/lbs.
+1/4”
+3.5-5.0 in/lbs.
+
+=== Original PDF page 516 ===
+Maintenance and Repair
+MagnaTran 7.1 User’s Manual
+Wrist Band Adjustment
+MN-003-1600-00
+Brooks Automation
+9-40
+Revision 2.2
+2.
+Apply the plunger extension of the force gauge onto the tab located next to the
+spring loaded screw as shown in Figure 9-5. As soon as the tab moves slightly
+inward observe the force gauge reading.
+If the force gauge reads less than specified in Table 9-4, adjust the spring
+loaded screw clockwise 1/8 to 1/4 turn at a time. Repeat step 2 of this proce-
+dure.
+If the force gauge reads greater than specified amount adjust the spring loaded screw
+counter clock-wise 1/8 to 1/4 turns at a time. Repeat step 2 of this procedure.
+Figure 9-4: Arm Assembly Side View
+Figure 9-5: Arm Assembly Top View
+Force Gauge

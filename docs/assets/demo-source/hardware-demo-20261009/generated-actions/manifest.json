@@ -1,0 +1,57 @@
+{
+  "schema": "howlens.generated-action-demo.v1",
+  "assets": [
+    {
+      "id": "01-magnatran",
+      "generated_asset": "01-magnatran-actions.png",
+      "reference_assets": [
+        "references/01-magnatran/side.png",
+        "references/01-magnatran/top.png",
+        "references/01-magnatran/table.png"
+      ],
+      "generation_method": "built_in_imagegen_with_local_manual_reference_images",
+      "generated_action_content": true,
+      "zero_base_generation": false,
+      "pixel_identical_to_original": false,
+      "physical_validation": "not_run",
+      "integration": "not_implemented"
+    },
+    {
+      "id": "02-logosol",
+      "generated_asset": "02-logosol-actions.png",
+      "reference_assets": [
+        "references/02-logosol/dual.png"
+      ],
+      "generation_method": "built_in_imagegen_with_local_manual_reference_images",
+      "generated_action_content": true,
+      "zero_base_generation": false,
+      "pixel_identical_to_original": false,
+      "physical_validation": "not_run",
+      "integration": "not_implemented"
+    },
+    {
+      "id": "03-stm32",
+      "generated_asset": "03-stm32-actions.png",
+      "reference_assets": [
+        "references/03-stm32/cn2.png"
+      ],
+      "generation_method": "built_in_imagegen_with_local_manual_reference_images",
+      "generated_action_content": true,
+      "zero_base_generation": false,
+      "pixel_identical_to_original": false,
+      "physical_validation": "not_run",
+      "integration": "not_implemented"
+    }
+  ],
+  "priority_order": [
+    "01-magnatran",
+    "02-logosol",
+    "03-stm32"
+  ],
+  "image_status": "reference_based_generated_explanatory_images",
+  "notes": [
+    "LOGOSOL LED A/B states are synthesized to illustrate procedure, not actual measurement evidence",
+    "MagnaTran cards 7 and 8 are alternative branches",
+    "STM32 two jumper insertion order is an illustrative decomposition"
+  ]
+}

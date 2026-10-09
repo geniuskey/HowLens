@@ -1,0 +1,146 @@
+=== Original PDF page 11 ===
+UM1724 Rev 17
+11/91
+UM1724
+Safety recommendations
+90
+5 
+Safety recommendations
+5.1 
+Targeted audience
+This product targets users with at least basic electronics or embedded software 
+development knowledge such as engineers, technicians, or students. This board is not a toy 
+and is not suited for use by children.
+5.2 
+Handling the board
+This product contains a bare printed circuit board and like all products of this type, the user 
+must be careful about the following points:
+•
+The connection pins on the board might be sharp. Be careful when handling the board 
+to avoid hurting yourself.
+•
+This board contains static-sensitive devices. To avoid damaging it, handle the board in 
+an ESD.proof environment.
+•
+While powered, do not touch the electric connections on the board with your fingers or 
+anything conductive. The board operates at a voltage level that is not dangerous, but 
+components might be damaged when shorted.
+•
+Do not put any liquid on the board and avoid operating the board close to water or at a 
+high humidity level.
+•
+Do not operate the board if it is dirty or dusty.
+
+=== Original PDF page 14 ===
+Hardware layout and configuration
+UM1724
+14/91
+UM1724 Rev 17
+Figure 3. Top layout
+1.
+Crystal might be present or not depending on the board version. Refer to Section 7.9.2.
+U5
+STM32
+microcontroller
+LD2
+(Green LED)
+SB2
+3.3 V regulator output
+CN10
+ST morpho connector 
+CN9
+ARDUINO® connector 
+CN5
+ARDUINO® connector 
+CN1
+ST-LINK USB  
+mini B connector
+LD1 
+(Red/Green LED) 
+COM
+B2 
+RESET button
+CN8 
+ARDUINO® 
+connector
+CN7 
+ST morpho 
+connector
+CN6
+ARDUINO®
+connector
+LD3 
+(Red LED)
+power
+JP6 IDD
+measurement
+B1 USER
+button
+CN4
+SWD connector
+CN2
+ST-LINK/Nucleo
+selector
+MS34376V3
+32 KHz 
+ crystal(1) 
+
+=== Original PDF page 18 ===
+Hardware layout and configuration
+UM1724
+18/91
+UM1724 Rev 17
+7.4.1 
+Driver
+Before connecting the Nucleo-64 board to a Windows® PC via USB, a driver for ST-
+LINK/V2-1 must be installed. It can be downloaded from the www.st.com website.
+In case the STM32 Nucleo-64 board is connected to the PC before installing the driver, the 
+PC device manager might report some Nucleo interfaces as “Unknown”. 
+To recover from this situation, after installing the dedicated driver, the association of 
+“Unknown” USB devices found on the STM32 Nucleo-64 board to this dedicated driver, 
+must be updated in the device manager manually.
+Note:
+It is recommended to proceed using a USB Composite Device, as shown in Figure 6.
+Figure 6. Updating the list of drivers in the Device Manager
+7.4.2 
+ST-LINK/V2-1 firmware upgrade
+The ST-LINK/V2-1 embeds a firmware upgrade mechanism for the in-situ upgrade through 
+the USB port. As the firmware might evolve during the lifetime of the ST-LINK/V2-1 product 
+(for example new functionality, bug fixes, support for new microcontroller families), it is 
+recommended to visit www.st.com website before starting to use the STM32 Nucleo board 
+and periodically, to stay updated with the latest firmware version.
+7.4.3 
+Mass storage interface
+The ST-LINK/V2-1 provides an optional mass storage interface, allowing the user to 
+program a target application (binary or hex file) through a virtual mass storage disk. The 
+availability of this interface can be selected during the firmware upgrade, as detailed in the 
+technical note Overview of ST-LINK derivatives (TN1235). Make sure that the host PC 
+system (including antivirus applications) allows the mass storage disk before activating the 
+interface.
+7.4.4 
+Using the ST-LINK/V2-1 to program and debug the STM32 on board 
+To program the STM32 on the board, plug in the two jumpers on CN2, as shown in red in 
+Figure 7. Do not use the CN4 connector as this could disturb communication with the 
+STM32 microcontroller of the STM32 Nucleo board. 
+
+=== Original PDF page 19 ===
+UM1724 Rev 17
+19/91
+UM1724
+Hardware layout and configuration
+90
+Figure 7. Connecting the STM32 Nucleo board to program the on-board STM32
+7.4.5 
+Using ST-LINK/V2-1 to program and debug an external 
+STM32 application
+It is very easy to use the ST-LINK/V2-1 to program the STM32 on an external application. 
+Simply remove the two jumpers from CN2 as illustrated in Figure 8: Using ST-LINK/V2-1 to 
+program the STM32 on an external application, and connect the application to the CN4 
+debug connector according to Table 5.
+Note:
+SB12 NRST (target STM32 RESET) must be OFF if CN4 pin 5 is used in the external 
+application.
+MS34378V2
+CN2 jumpers ON
+CN4 SWD
+connector

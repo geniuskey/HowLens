@@ -1,0 +1,36 @@
+{
+  "files": [
+    {
+      "file": "01-magnatran-actions.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1972786,
+      "sha256": "369134d95b4a73f19f1277b6889e78f2abb57133cfa51160d0521887cbedb7ee"
+    },
+    {
+      "file": "02-logosol-actions.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2179505,
+      "sha256": "d275358f3cb73139c3dfcb7a667d23bfdcc1f6eacf5d534832e5bfea0dc979b7"
+    },
+    {
+      "file": "03-stm32-actions.png",
+      "width": 1464,
+      "height": 1075,
+      "bytes": 2111262,
+      "sha256": "c4f3eccb2a41712a126a617c839c6d6354b2ba1e178324e863870b7e833c817b"
+    }
+  ],
+  "generation": "built_in_imagegen_reference_based",
+  "passes_per_example": 2,
+  "manual_reference_used": true,
+  "visual_review": "manual-comparison and targeted correction performed",
+  "remaining_review_points": [
+    "MagnaTran 캘리퍼 접촉면과 힘 게이지의 정확한 접촉 방향은 전문가 확인 필요",
+    "STM32 생성된 CN2 접점·핀 묘사는 실물과의 세부 일치 검증 미완료",
+    "LOGOSOL 도구 접근 장면은 실제 커버 분해 사진이 아닌 원문 내부 사진 기반 설명"
+  ],
+  "approval": "demo_illustration_draft_not_live_hardware_instruction",
+  "actual_physical_validation": "not_run"
+}

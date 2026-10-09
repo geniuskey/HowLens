@@ -1,0 +1,183 @@
+{
+  "id": "03-stm32",
+  "title": "STM32 Nucleo CN2 점퍼 설정",
+  "subtitle": "On-board STM32 programming · UM1724 Rev 17 §7.4.4 · 원문 Figure 7 기반 · 6단계 단위 작업",
+  "file": "um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf",
+  "pages": [
+    11,
+    14,
+    18,
+    19
+  ],
+  "printed": [
+    "11/91",
+    "14/91",
+    "18/91",
+    "19/91"
+  ],
+  "scope": "§7.4.4 본문 및 Figure 7 전체. CN2 점퍼 설정만이며 펌웨어 업로드·실제 프로그래밍 성공은 범위 밖.",
+  "foot": "그림은 원문 Figure 7 및 배치도를 그대로 사용했습니다. 점퍼 제거/장착 전후 이미지를 합성하지 않았습니다. 목표는 on-board STM32용 CN2 설정입니다.",
+  "cards": [
+    {
+      "title": "보드·목적 확인",
+      "subtitle": "MB1136 / on-board STM32",
+      "bullets": [
+        "보드 모델과 원문 배치도 일치 확인",
+        "외부 STM32 디버깅 목적과 구분"
+      ],
+      "asset_id": "board",
+      "image_original_pdf_page": 14,
+      "procedure_original_pdf_pages": [
+        14,
+        18,
+        19
+      ],
+      "warning": false,
+      "visual_type": "unchanged_original_manual_crop",
+      "index": 1,
+      "step_id": "03-stm32-1"
+    },
+    {
+      "title": "취급 조건 확인",
+      "subtitle": "전원 분리·ESD 보호",
+      "bullets": [
+        "전원이 연결된 상태에서 핀 접촉 금지",
+        "전원을 분리하고 ESD 보호 환경 준비"
+      ],
+      "asset_id": "board",
+      "image_original_pdf_page": 14,
+      "procedure_original_pdf_pages": [
+        11
+      ],
+      "warning": true,
+      "visual_type": "unchanged_original_manual_crop",
+      "index": 2,
+      "step_id": "03-stm32-2"
+    },
+    {
+      "title": "CN2 위치 식별",
+      "subtitle": "CN4 SWD와 구분",
+      "bullets": [
+        "Figure 7의 CN2 두 점퍼 위치 확인",
+        "CN4는 이 작업에 사용하지 않기"
+      ],
+      "asset_id": "cn2",
+      "image_original_pdf_page": 19,
+      "procedure_original_pdf_pages": [
+        18,
+        19
+      ],
+      "warning": false,
+      "visual_type": "unchanged_original_manual_crop",
+      "index": 3,
+      "step_id": "03-stm32-3"
+    },
+    {
+      "title": "첫 번째 점퍼 장착",
+      "subtitle": "원문 핀 쌍 기준",
+      "bullets": [
+        "Figure 7에 표시된 한 핀 쌍에 장착",
+        "그림의 핀 쌍·장착 방향 유지"
+      ],
+      "asset_id": "cn2",
+      "image_original_pdf_page": 19,
+      "procedure_original_pdf_pages": [
+        18,
+        19
+      ],
+      "warning": false,
+      "visual_type": "unchanged_original_manual_crop",
+      "index": 4,
+      "step_id": "03-stm32-4"
+    },
+    {
+      "title": "두 번째 점퍼 장착",
+      "subtitle": "두 점퍼 모두 ON",
+      "bullets": [
+        "남은 지정 핀 쌍에 두 번째 점퍼 장착",
+        "인접 핀을 잘못 연결하지 않았는지 확인"
+      ],
+      "asset_id": "cn2",
+      "image_original_pdf_page": 19,
+      "procedure_original_pdf_pages": [
+        18,
+        19
+      ],
+      "warning": false,
+      "visual_type": "unchanged_original_manual_crop",
+      "index": 5,
+      "step_id": "03-stm32-5"
+    },
+    {
+      "title": "도면과 대조·확인",
+      "subtitle": "단위 작업의 끝",
+      "bullets": [
+        "CN2 두 점퍼가 Figure 7과 일치하는지 확인",
+        "장착 확인과 프로그래밍 성공은 구분"
+      ],
+      "asset_id": "cn2",
+      "image_original_pdf_page": 19,
+      "procedure_original_pdf_pages": [
+        18,
+        19
+      ],
+      "warning": false,
+      "visual_type": "unchanged_original_manual_crop",
+      "index": 6,
+      "step_id": "03-stm32-6"
+    }
+  ],
+  "schema": "howlens.storyboard-source.v1",
+  "source_file": "docs/assets/manuals/evaluation/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf",
+  "source_sha256": "576d9bee3bc32c8ee70bf0d77cf9494cec06ea7c1d9ff98eebf2738cb9314a14",
+  "assets": {
+    "board": {
+      "asset": "assets/board.png",
+      "original_pdf_page": 14,
+      "clip_rect_pdf_points": [
+        67,
+        84,
+        530,
+        502
+      ],
+      "operation": "render_crop_only_no_shape_edit"
+    },
+    "cn2": {
+      "asset": "assets/cn2.png",
+      "original_pdf_page": 19,
+      "clip_rect_pdf_points": [
+        120,
+        84,
+        530,
+        412
+      ],
+      "operation": "render_crop_only_no_shape_edit"
+    }
+  },
+  "page_map": [
+    {
+      "excerpt_page": 1,
+      "original_pdf_page": 11,
+      "printed_page": "11/91"
+    },
+    {
+      "excerpt_page": 2,
+      "original_pdf_page": 14,
+      "printed_page": "14/91"
+    },
+    {
+      "excerpt_page": 3,
+      "original_pdf_page": 18,
+      "printed_page": "18/91"
+    },
+    {
+      "excerpt_page": 4,
+      "original_pdf_page": 19,
+      "printed_page": "19/91"
+    }
+  ],
+  "images_generated_from_zero": false,
+  "synthetic_action_images": false,
+  "integration": "not_implemented",
+  "physical_tests": "not_run"
+}

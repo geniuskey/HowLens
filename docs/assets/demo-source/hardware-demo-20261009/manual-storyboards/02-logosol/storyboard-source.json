@@ -1,0 +1,239 @@
+{
+  "id": "02-logosol",
+  "title": "LOGOSOL 진공 센서 감도 조정",
+  "subtitle": "End-Effector Vacuum Lines §3.2 · DOC #710010010 Rev 10.4 · 실제 사진 Figure 3-3·3-4 기반",
+  "file": "WHP-Robot-Application-Manual.pdf",
+  "pages": [
+    16,
+    17,
+    26,
+    27,
+    28
+  ],
+  "printed": [
+    "9/313",
+    "10/313",
+    "19/313",
+    "20/313",
+    "21/313"
+  ],
+  "scope": "§3.2 시작부터 센서 감도 조정·다른 센서 반복·커버 복구까지 포함. 이 보드는 dual-arm 분기를 예시로 사용.",
+  "foot": "그림은 원문 dual-arm 사진 한 장을 재사용했습니다. LED 상태·배선·부품 형상을 바꾸지 않았습니다. 그림은 각 단계 수행 후의 사진이 아닙니다.",
+  "cards": [
+    {
+      "title": "로봇 구성 확인",
+      "subtitle": "이 예제는 dual-arm 분기",
+      "bullets": [
+        "Figure 3-4: 각 arm의 single vacuum line",
+        "Single-arm은 Figure 3-3으로 별도 구성"
+      ],
+      "asset_id": "dual",
+      "image_original_pdf_page": 28,
+      "procedure_original_pdf_pages": [
+        27,
+        28
+      ],
+      "warning": false,
+      "visual_type": "unchanged_original_manual_crop",
+      "index": 1,
+      "step_id": "02-logosol-1"
+    },
+    {
+      "title": "작업자·안전 조건 확인",
+      "subtitle": "가동 상태 변경이 포함된 전문 작업",
+      "bullets": [
+        "교육받은 작업자가 시설 절차 확인",
+        "양압을 진공 포트에 공급하지 않기"
+      ],
+      "asset_id": "dual",
+      "image_original_pdf_page": 28,
+      "procedure_original_pdf_pages": [
+        16,
+        17,
+        27
+      ],
+      "warning": true,
+      "visual_type": "unchanged_original_manual_crop",
+      "index": 2,
+      "step_id": "02-logosol-2"
+    },
+    {
+      "title": "센서 접근 준비",
+      "subtitle": "dual-arm 원문 준비 절차",
+      "bullets": [
+        "Z축을 약 5인치 올림: MVA Z 5000",
+        "SOF 후 octa-box 아래 나사를 풀어 커버 제거"
+      ],
+      "asset_id": "dual",
+      "image_original_pdf_page": 28,
+      "procedure_original_pdf_pages": [
+        27
+      ],
+      "warning": true,
+      "visual_type": "unchanged_original_manual_crop",
+      "index": 3,
+      "step_id": "02-logosol-3"
+    },
+    {
+      "title": "진공 라인·패들 준비",
+      "subtitle": "원문 순서대로 연결·밸브 개방",
+      "bullets": [
+        "진공 라인 연결 및 end-effector paddle 설치",
+        "해당 밸브 개방: VON 0 또는 VON 1"
+      ],
+      "asset_id": "dual",
+      "image_original_pdf_page": 28,
+      "procedure_original_pdf_pages": [
+        26,
+        27
+      ],
+      "warning": false,
+      "visual_type": "unchanged_original_manual_crop",
+      "index": 4,
+      "step_id": "02-logosol-4"
+    },
+    {
+      "title": "웨이퍼 없이 A 찾기",
+      "subtitle": "LED가 켜지는 조정기 위치",
+      "bullets": [
+        "웨이퍼가 없는 상태에서 천천히 반시계 회전",
+        "해당 LED가 켜지는 위치를 A로 표시"
+      ],
+      "asset_id": "dual",
+      "image_original_pdf_page": 28,
+      "procedure_original_pdf_pages": [
+        27
+      ],
+      "warning": false,
+      "visual_type": "unchanged_original_manual_crop",
+      "index": 5,
+      "step_id": "02-logosol-5"
+    },
+    {
+      "title": "웨이퍼를 놓고 B 찾기",
+      "subtitle": "LED가 꺼지는 조정기 위치",
+      "bullets": [
+        "웨이퍼를 놓은 상태에서 시계 방향 회전",
+        "해당 LED가 꺼지는 위치를 B로 표시"
+      ],
+      "asset_id": "dual",
+      "image_original_pdf_page": 28,
+      "procedure_original_pdf_pages": [
+        27
+      ],
+      "warning": false,
+      "visual_type": "unchanged_original_manual_crop",
+      "index": 6,
+      "step_id": "02-logosol-6"
+    },
+    {
+      "title": "A와 B의 중간에 설정",
+      "subtitle": "조정기의 두 위치 사이",
+      "bullets": [
+        "Potentiometer를 A·B의 중간 위치로 설정",
+        "원문 사진은 위치 참고용; 상태 편집 없음"
+      ],
+      "asset_id": "dual",
+      "image_original_pdf_page": 28,
+      "procedure_original_pdf_pages": [
+        27
+      ],
+      "warning": false,
+      "visual_type": "unchanged_original_manual_crop",
+      "index": 7,
+      "step_id": "02-logosol-7"
+    },
+    {
+      "title": "다른 센서도 반복",
+      "subtitle": "다른 end-effector가 있으면",
+      "bullets": [
+        "다른 end-effector에 같은 절차 반복",
+        "각 센서의 A·B 위치는 별도로 확인"
+      ],
+      "asset_id": "dual",
+      "image_original_pdf_page": 28,
+      "procedure_original_pdf_pages": [
+        27
+      ],
+      "warning": false,
+      "visual_type": "unchanged_original_manual_crop",
+      "index": 8,
+      "step_id": "02-logosol-8"
+    },
+    {
+      "title": "커버 복구·기록",
+      "subtitle": "선택 절차의 마지막 단계",
+      "bullets": [
+        "제거한 커버를 다시 장착",
+        "사진만으로 진공 성능·안전 보증 금지"
+      ],
+      "asset_id": "dual",
+      "image_original_pdf_page": 28,
+      "procedure_original_pdf_pages": [
+        27
+      ],
+      "warning": false,
+      "visual_type": "unchanged_original_manual_crop",
+      "index": 9,
+      "step_id": "02-logosol-9"
+    }
+  ],
+  "schema": "howlens.storyboard-source.v1",
+  "source_file": "docs/assets/manuals/evaluation/WHP-Robot-Application-Manual.pdf",
+  "source_sha256": "48143f3145bd9ff60f67c5c34d810d162d19ced59027a2e61722b798978ea273",
+  "assets": {
+    "single": {
+      "asset": "assets/single.png",
+      "original_pdf_page": 28,
+      "clip_rect_pdf_points": [
+        125,
+        52,
+        495,
+        247
+      ],
+      "operation": "render_crop_only_no_shape_edit"
+    },
+    "dual": {
+      "asset": "assets/dual.png",
+      "original_pdf_page": 28,
+      "clip_rect_pdf_points": [
+        125,
+        258,
+        500,
+        468
+      ],
+      "operation": "render_crop_only_no_shape_edit"
+    }
+  },
+  "page_map": [
+    {
+      "excerpt_page": 1,
+      "original_pdf_page": 16,
+      "printed_page": "9/313"
+    },
+    {
+      "excerpt_page": 2,
+      "original_pdf_page": 17,
+      "printed_page": "10/313"
+    },
+    {
+      "excerpt_page": 3,
+      "original_pdf_page": 26,
+      "printed_page": "19/313"
+    },
+    {
+      "excerpt_page": 4,
+      "original_pdf_page": 27,
+      "printed_page": "20/313"
+    },
+    {
+      "excerpt_page": 5,
+      "original_pdf_page": 28,
+      "printed_page": "21/313"
+    }
+  ],
+  "images_generated_from_zero": false,
+  "synthetic_action_images": false,
+  "integration": "not_implemented",
+  "physical_tests": "not_run"
+}

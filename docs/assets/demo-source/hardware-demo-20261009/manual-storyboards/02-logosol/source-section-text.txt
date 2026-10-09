@@ -1,0 +1,316 @@
+=== Original PDF page 16 ===
+LOGOSOL WAFER HANDLING PLATFORM | ROBOT APPLICATION MANUAL 
+DOC #710010010 
+ 
+© 1991-2021 LOGOSOL, INC. 
+WWW.LOGOSOLINC.COM 
+9/313 
+• 
+Attaching tooling, utility boxes, solenoid packs, vacuum pumps, cameras, lighting, 
+etc., to the robot tool mount flange. 
+• 
+Attaching hoses, pneumatic lines, or cables to the robot. These should be designed 
+so they do not restrict joint motion or cause robot motion errors. 
+2.12.2 Unacceptable Modifications 
+The modifications listed below may damage the robot, reduce system safety and reliability, 
+or shorten the life span of the robot. The warranty of the entire robot or certain parts may 
+be voided. 
+ 
+CAUTION: Making any of the modifications outlined below voids the 
+warranty of any components that the manufacturer determines were 
+damaged due to the modification.  
+Contact your supplier if you are considering any of the following modifications: 
+• 
+Modifying any of the robot harnesses cables 
+• 
+Modifying any robot access covers or drive system components 
+• 
+Modifying (including drilling or cutting) any robot surface 
+• 
+Modifying any robot electrical component or printed-circuit board 
+• 
+Routing additional hoses, air lines, or wires through the inside of the robot 
+• 
+Making any modifications that compromise EMC performance, including shielding 
+2.12.3 Safety Requirements for Additional Equipment 
+Additional equipment used with the WHR (grippers, conveyor belts, etc.) must not reduce 
+the overall work cell safeguards. 
+Emergency stop switches must be accessible at all times. 
+If the robot is to be used in an EU or EEA member country, all components in the work 
+cell must comply with the safety requirements in the European Machine Directive 
+89/392/EEC (and subsequent amendments) and related harmonized European, 
+international, and national standards. For robot systems, these include: EN 775/ISO 
+10218, sections 5, 6; EN 292-2; and EN 60204. For safety fences, see EN 294. 
+In other countries, it is strongly recommended that a similar level of safety, and 
+compliance with applicable local and national regulations, including SEMI-S2, be 
+maintained. 
+2.13 QUALIFICATION OF PERSONNEL 
+This manual assumes that all personnel have attended a training course and have a working 
+knowledge of the system. The user must provide the necessary additional training for all 
+personnel who will be working with the system. 
+As noted in this handbook, certain procedures should be performed only by skilled or instructed 
+persons. The following standard terms are being used: 
+• 
+Skilled persons have technical knowledge or sufficient experience to enable them to avoid 
+relevant dangers, whether electrical and/or mechanical. 
+• 
+Instructed persons are adequately advised or supervised by skilled persons to enable them 
+to avoid relevant dangers, whether electrical or mechanical. 
+All personnel must observe industry-prescribed safety practices during the installation, operation, 
+and testing of any electrically powered equipment. To avoid injury or damage to equipment, 
+always remove power by disconnecting the AC power from the source before attempting any 
+
+=== Original PDF page 17 ===
+LOGOSOL WAFER HANDLING PLATFORM | ROBOT APPLICATION MANUAL 
+DOC #710010010 
+ 
+© 1991-2021 LOGOSOL, INC. 
+WWW.LOGOSOLINC.COM 
+10/313 
+repair or upgrade activity. Use appropriate lockout procedures to reduce the risk of power being 
+restored by another person while an operator is working on the system. 
+ 
+WARNING: The user must receive confirmation from every entrusted 
+individual before they do any work with the WHR that the person: 
+• 
+Has received the User Manual; 
+• 
+Has read the User Manual; 
+• 
+Understands the User Manual; 
+• 
+Will work in the manner specified by the User Manual. 
+2.14 SAFETY EQUIPMENT FOR OPERATORS 
+Operators must wear the following safety equipment while inside the device workcell: 
+• 
+Protective eyewear aka safety glasses; 
+• 
+Protective headgear (hard hats); 
+• 
+Safety shoes. 
+Warning signs should be clearly posted around the workcell to ensure that anyone working around 
+the system knows they must wear this safety equipment. 
+ 
+2.15 PROTECTION AGAINST UNAUTHORIZED OPERATION 
+The system must be protected against unauthorized use. The user or operator must restrict 
+access to the keyboard and Teach Pendant by placing them in secure/locked storage, or through 
+the use of another adequate method to prevent unauthorized access. 
+ 
+2.16 SAFETY ASPECTS WHILE PERFORMING MAINTENANCE 
+Only skilled persons with the necessary knowledge of the safety and operation of the equipment 
+are allowed to perform maintenance on the robot, controller, and power chassis. 
+ 
+CAUTION: During maintenance and repair, the power of the WHR must 
+be turned off. Lockout measures must be used to prevent unauthorized 
+personnel from turning on the power. 
+2.17 WHAT TO DO IN AN EMERGENCY SITUATION 
+Press any E-Stop button (a red push-button on a yellow background/field) and then follow the 
+appropriate internal emergency procedures of your company or organization. In case of fire, use 
+CO2 to extinguish. 
+ 
+2.18 ADDITIONAL SAFETY INFORMATION 
+The standards and regulations listed in this manual contain additional guidelines for wafer 
+systems installation, safeguarding, maintenance, testing, start-up, and operator training. The 
+following table lists some sources for various standards: 
+
+=== Original PDF page 26 ===
+LOGOSOL WAFER HANDLING PLATFORM | ROBOT APPLICATION MANUAL 
+DOC #710010010 
+ 
+© 1991-2021 LOGOSOL, INC. 
+WWW.LOGOSOLINC.COM 
+19/313 
+ 
+NOTE: Pins 12 and 25 can provide a total of 0.2A current. 
+3.1.9 Sensor Type Configuration 
+WHR controller provides two jumper blocks for selecting of sensor types (PNP or NPN) 
+connected to controller’ input lines, as follows: 
+Jumper Block J7 – Arm Sensors Configuration (next to Arm Interface Connector, CN16) 
+Sensor D 
+ON: Pull Up/NPN (default) 
+Off: Pull Down/PNP 
+Sensor C 
+ON: Pull Up/NPN (default) 
+Off: Pull Down/PNP 
+Sensor B 
+ON: Pull Up/NPN (default) 
+Off: Pull Down/PNP 
+Sensor A 
+ON: Pull Up/NPN (default) 
+Off: Pull Down/PNP 
+Home R 
+ON: Pull Up/NPN (default) 
+Off: Pull Down/PNP 
+ 
+Jumper Block J10 – Extended I/O Configuration (next to Extended Interface Connector, CN23) 
+Input E 
+ON: Pull Up/NPN 
+Off: Pull Down/PNP (default) 
+Input F 
+ON: Pull Up/NPN 
+Off: Pull Down/PNP (default) 
+Input G 
+ON: Pull Up/NPN 
+Off: Pull Down/PNP (default) 
+Input H 
+ON: Pull Up/NPN 
+Off: Pull Down/PNP (default) 
+Input J 
+ON: Pull Up/NPN 
+Off: Pull Down/PNP (default) 
+Input K 
+ON: Pull Up/NPN 
+Off: Pull Down/PNP (default) 
+Input L 
+ON: Pull Up/NPN 
+Off: Pull Down/PNP (default) 
+Input M 
+ON: Pull Up/NPN 
+Off: Pull Down/PNP (default) 
+Input N 
+ON: Pull Up/NPN 
+Off: Pull Down/PNP (default) 
+Input R 
+ON: Pull Up/NPN 
+Off: Pull Down/PNP (default) 
+3.2 END-EFFECTOR VACUUM LINES 
+The single-arm robot is delivered with a solenoid valve and internal vacuum sensor for a single 
+vacuum end effector. Two 3mm quick connect fittings are located on the robots interface panel. 
+For standard configurations use the top quick connect fitting. Insert a 3mm air line into the 
+vacuum fitting on the connector panel of the robot. 
+1 
+Ground 
+ 
+14 
+Ground 
+2 
+InputE 
+ 
+15 
+OutputE 
+3 
+InputF 
+ 
+16 
+OutputF 
+4 
+InputG 
+ 
+17 
+OutputG 
+5 
+InputH 
+ 
+18 
+OutputH 
+6 
+InputJ 
+ 
+19 
+OutputJ 
+7 
+InputK 
+ 
+20 
+OutputK 
+8 
+InputL 
+ 
+21 
+OutputL 
+9 
+InputM 
+ 
+22 
+OutputM 
+10 
+InputN 
+ 
+23 
+OutputN 
+11 
+InputR 
+ 
+24 
+Ground 
+12 
+PullUp/24VDC 
+ 
+25 
+PullUp/24VDC 
+13 
+Reserved 
+ 
+ 
+ 
+
+=== Original PDF page 27 ===
+LOGOSOL WAFER HANDLING PLATFORM | ROBOT APPLICATION MANUAL 
+DOC #710010010 
+ 
+© 1991-2021 LOGOSOL, INC. 
+WWW.LOGOSOLINC.COM 
+20/313 
+ 
+CAUTION: Do not apply a positive pressure to either of the vacuum ports. 
+This could cause damage to the robot. 
+A factory installed dual valve option is available. For the dual valve option the quick connect 
+fittings are used. The upper fitting is dedicated to the first end-effector and the lower fitting is 
+for the second end-effector. 
+The dual-arm robot is delivered as standard with dual solenoid valves and internal vacuum 
+sensors, one per each paddle. Two 3mm quick connect fittings are located on the robot interface 
+panel. For standard configurations use the top quick connect fitting. Insert a 3mm air line into 
+the vacuum fitting on the connector panel of the robot. 
+Vacuum sensors’ sensitivity can be adjusted by the following procedure: 
+• 
+On dual-arm robots, lift the Z axis by about 5" to facilitate access to retaining screws. 
+MVA Z 5000 
+• 
+Turn servo loop off: 
+SOF 
+• 
+On single-arm robot: Remove the cover of the lower arm link by removing the screws that 
+attach the cover to the arm. 
+• 
+On dual-arm robot: Remove the covers on the octa-box by removing the screw attaching the 
+covers from underneath. 
+• 
+Connect vacuum line(s) and install end effector paddle(s) 
+• 
+Open vacuum valve 1 or 2:  
+VON 0 
+or 
+VON 1 
+• 
+With no wafer placed on the end effector, turn the potentiometer located on the vacuum 
+sensor slowly counter-clockwise until the corresponding LED turns on. Mark this position as 
+A. 
+• 
+With a wafer placed on the end effector, turn the potentiometer clockwise until the 
+corresponding LED turns off. Mark this position as B. 
+• 
+Turn the potentiometer midway between positions A and B 
+• 
+Repeat the procedure for the other end effector, if such is installed. 
+• 
+Replace the cover(s). 
+By customer request, external flange-mounted vacuum sensors with indicators can be installed. 
+Please refer to sensor' documentation for details about setting up sensitivity. 
+ 
+
+=== Original PDF page 28 ===
+LOGOSOL WAFER HANDLING PLATFORM | ROBOT APPLICATION MANUAL 
+DOC #710010010 
+ 
+© 1991-2021 LOGOSOL, INC. 
+WWW.LOGOSOLINC.COM 
+21/313 
+ 
+Figure 3-3: Single-arm robot : Dual vacuum line control board in lower arm link 
+ 
+ 
+Figure 3-4: Dual-arm robot: Single vacuum line in octa-box, for each arm 
+ 
+Potentiometers 1 and 2 LEDs 1 and 2 
+Potentiometer 
+Sensor LED 

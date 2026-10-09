@@ -1,0 +1,40 @@
+{
+  "checks": [
+    {
+      "id": "01-magnatran",
+      "cards": 9,
+      "excerpt_pages": 4,
+      "source_text_identical": true,
+      "original_crop_pixels_identical": true,
+      "source_page_refs_valid": true,
+      "poster_pdf_pages": 1,
+      "visual_review": "layout and labels inspected",
+      "physical_tests": "not_run"
+    },
+    {
+      "id": "02-logosol",
+      "cards": 9,
+      "excerpt_pages": 5,
+      "source_text_identical": true,
+      "original_crop_pixels_identical": true,
+      "source_page_refs_valid": true,
+      "poster_pdf_pages": 1,
+      "visual_review": "layout and labels inspected",
+      "physical_tests": "not_run"
+    },
+    {
+      "id": "03-stm32",
+      "cards": 6,
+      "excerpt_pages": 4,
+      "source_text_identical": true,
+      "original_crop_pixels_identical": true,
+      "source_page_refs_valid": true,
+      "poster_pdf_pages": 1,
+      "visual_review": "layout and labels inspected",
+      "physical_tests": "not_run"
+    }
+  ],
+  "source_image_policy": "unchanged_original_manual_crops_only",
+  "synthetic_images": 0,
+  "integration": "not_implemented"
+}
