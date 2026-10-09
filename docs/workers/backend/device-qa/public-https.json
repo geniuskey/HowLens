@@ -1,0 +1,25 @@
+{
+  "transport": "phone active CELLULAR, systemcurl, no credentials/config",
+  "base_url": "https://premium-proceed-hartford-published.trycloudflare.com",
+  "checks": [
+    {
+      "path": "/health",
+      "http_status": "200",
+      "expected": 200,
+      "exit": 0,
+      "elapsed_ms": 1525,
+      "passed": true,
+      "error": null
+    },
+    {
+      "path": "/visual-jobs/device-qa-no-auth",
+      "http_status": "401",
+      "expected": 401,
+      "exit": 0,
+      "elapsed_ms": 650,
+      "passed": true,
+      "error": null
+    }
+  ],
+  "paid_calls": 0
+}

@@ -1,0 +1,29 @@
+{
+  "source_sha": "57405bb4811f67bb49ea779d883fd2937c98fd7d",
+  "serial": "R3CT80CZ2MW",
+  "action": "single 다시 시도 touch after USB recovery",
+  "start_kst": "2026-10-09T13:15:17.576658+09:00",
+  "question": "TEST-only 1x1 synthetic PNG. No procedures.",
+  "fixture_sha256": "431ced6916a2a21a156e38701afe55bbd7f88969fbbfc56d7fe099d47f265460",
+  "elapsed_observed_ms": 9330,
+  "ui_text": [
+    "실제 분석",
+    "추가 정보가 필요해요",
+    "!",
+    "추가 정보: Clarification of the specific procedure or task intended for the device.",
+    "!",
+    "추가 정보: Identification of any necessary safety or operational prerequisites for the intended task.",
+    "!",
+    "추가 정보: Details on what the 1x1 synthetic PNG image is meant to represent or convey in this context.",
+    "The inquiry is described as a TEST-only 1x1 synthetic PNG with no procedures.",
+    "관찰과 근거 자세히 보기",
+    "근거 요약 공유",
+    "뒤로",
+    "HowLens",
+    "입력으로 돌아가기"
+  ],
+  "mode_observation": "Actual-analysis UI badge (live); raw serialized mode not separately intercepted",
+  "decision_observation": "needs_more_information mapped from 추가 정보가 필요해요",
+  "steps_observation": "No execution-step UI; serialized steps not separately intercepted",
+  "http_status_observation": "Successful parsed result screen; HTTP status not independently captured"
+}

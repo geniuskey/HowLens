@@ -1,0 +1,26 @@
+{
+  "openai_dns": {
+    "status": "PASS",
+    "resolved_count": 2
+  },
+  "openai_no_key_tls_http": {
+    "http": 401,
+    "reachable": true
+  },
+  "outbound_probe_elapsed_ms": 466,
+  "host_default_route": {
+    "gateway": "10.102.72.240",
+    "interface": "en0",
+    "interface_ipv4": "10.102.72.28"
+  },
+  "phone_route_to_api": {
+    "interface": "rmnet_data9",
+    "gateway": "192.0.0.7",
+    "source_ip": "192.0.0.8"
+  },
+  "phone_active_network_id": "111",
+  "note": "No SSID, credentials, API key or HTTP response body recorded; HTTP401 is reachability, not billing/model readiness.",
+  "phone_active_transports": [
+    "CELLULAR"
+  ]
+}
