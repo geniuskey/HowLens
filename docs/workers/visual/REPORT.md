@@ -103,3 +103,55 @@ timestamped lightweight synthetic panel presentation. Actual offline validation:
 This report is delivered in the W2 commit; resolve its exact SHA with
 `git log -1 --format=%H -- docs/workers/visual/REPORT.md`. Coordinator receives the
 literal final branch/SHA, push receipt, changed paths and integration evidence.
+
+## W3-VISUAL-BENCHMARK-RUNNER (2026-10-09)
+
+[DONE] Added a product-independent opt-in sandbox runner, bounded direct HTTP client,
+schema-compatible results/sidecar, exact protocol preparation commands and a quick
+timestamped offline reviewer mockup. **Actual paid/AI calls on this PC: 0**.
+
+- Baseline `63dd0f8`, branch `feat-visual-foundation`; owned paths only, no main merge.
+- Read only the explicitly permitted Evaluation protocol/cases/schema/README at
+  `0234159c2a5b4cc9443e79de30e90ef5586661d2`, after Coordinator clarified
+  `Runixs/eval-foundation` is a branch of this repository, not another repository.
+  No Evaluation files or contracts were edited. Canonical protocol hashes are pinned.
+- CLI/schema were coordinated early; schema v1 disallows extra hash/budget fields,
+  so `results.jsonl` stays exact and deterministic `artifacts.json` carries them.
+- Models fixed to `gpt-image-1.5`, `gpt-image-1-mini`; identical three synthetic
+  prompts interleaved, 1024 square/low, concurrency 1/retry 0. Default dry-run
+  reads no key and performs no requests. Execute requires explicit flag, real
+  nonsecret approval ID, positive reservation budget and integer max_calls 1-6.
+- Raw provider bytes/hashes and separate 1023 normalized PNG/hashes are saved.
+  Monotonic latency, UTC start, usage, request/status/error/timeout/cancel metadata
+  retained; snapshot unknown null, actual cost/billing receipt null. No token+output
+  proxy double counting or unsupported price estimate; reservations are not billing.
+- Actual tests: Python 3.9, Pillow 11.3.0, httpx 0.28.1, jsonschema 4.25.1;
+  full suite **26 tests passed in 1.506s**, including the 17 W1/W2 regressions.
+  New fakeHTTP tests cover exact settings/raw/hash, zero-call/no-env dryrun, original
+  protocol.plan equality, JSON Schema validity, original protocol.score pending human
+  review, summary excluding offline, timeout/cancel/error/invalid outputs/no retries,
+  budget/call limits, arbitrary model rejection, changed protocol and overwrite guards.
+- Initial new test run: 24 passed/one error, caused by Windows cp949 default when
+  reading UTF-8 results in a test. Corrected the test to explicit UTF-8; final run
+  all passed. No product-provider test behavior changed.
+- Final rerun after preserving numeric usage on invalid-output failures:
+  **26 tests passed in 1.507s**; Windows protocol preparation script also executed
+  successfully and `git diff --check` passed.
+- Actual CLI: `python -m visual.benchmark --protocol-dir backend/visual/.venv/eval-protocol
+  --output-dir docs/workers/visual/benchmark-preview/w3-dry-run` with backend PYTHONPATH.
+  Output: six records, attempted_calls 0, source not_run, actual_cost null; committed
+  dry-run evidence is not measured latency or generated equipment imagery.
+- Mockup: `mockups/20261009_1222_image_model_reviewer_sheet.png`, visually inspected.
+  Synthetic nine-cell placeholders, cost unknown/latency NOT RUN, topology/step/grid/
+  arrows-labels/no-new-action and independent reviewer fields; no winner or score.
+- Changed files: `backend/visual/benchmark.py`, `benchmark_http.py`,
+  `requirements.txt`, `tests/test_benchmark.py`; Visual `RUNBOOK.md`, `REPORT.md`,
+  `prepare_benchmark_protocol.ps1`, `benchmark-preview/w3-dry-run/{results.jsonl,artifacts.json}`,
+  `mockups/README.md`, `mockups/make_benchmark_mockup.py`, timestamped PNG above.
+- Remaining: Backend owner runs only after explicit budget/key-ready authorization,
+  then Evaluation reviews actual images/usage/billing, semantics/topology and fit.
+  No credentials were requested/copied, no accounts switched, no paid execution here.
+
+Windows dry-run and future Backend-owner commands are in RUNBOOK. Final commit SHA
+is sent literally in the completion receipt and can be resolved from this report's
+commit (`git log -1 --format=%H -- docs/workers/visual/REPORT.md`).
