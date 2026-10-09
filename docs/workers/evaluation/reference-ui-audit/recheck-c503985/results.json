@@ -1,0 +1,297 @@
+{
+  "manifest": {
+    "at": "2026-10-09T04:51:22.711Z",
+    "files": [
+      {
+        "name": "index.html",
+        "sha256": "a4d7a150831b351665e51c28caec607c94037432304f04c263a3e16179662aa7"
+      },
+      {
+        "name": "app.js",
+        "sha256": "bc4a6f6e85de8b283f56c90b2551ea9ee0dd4140391c7d3ec41bd96f85fb4816"
+      },
+      {
+        "name": "style.css",
+        "sha256": "f3df6ca9bb2c4740c110ea236c48f6aa299a458d6fd3d5395205b4b287976303"
+      }
+    ]
+  },
+  "log": [
+    {
+      "width": 320,
+      "test": "header-targets",
+      "data": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "검색",
+            "w": 48,
+            "h": 49
+          },
+          {
+            "name": "알림",
+            "w": 48,
+            "h": 49
+          },
+          {
+            "name": "내 정보",
+            "w": 48,
+            "h": 49
+          }
+        ]
+      }
+    },
+    {
+      "width": 320,
+      "test": "corrupt-upload",
+      "data": {
+        "route": "#camera",
+        "status": "카메라를 사용할 수 없어요. 사진을 선택해 주세요.",
+        "analysisButton": false
+      }
+    },
+    {
+      "width": 320,
+      "test": "camera-keyboard",
+      "data": [
+        {
+          "tag": "BUTTON",
+          "label": null,
+          "id": "pick",
+          "inNav": false
+        },
+        {
+          "tag": "BUTTON",
+          "label": null,
+          "id": "sample",
+          "inNav": false
+        },
+        {
+          "tag": "BUTTON",
+          "label": "촬영 취소",
+          "id": "",
+          "inNav": false
+        },
+        {
+          "tag": "BUTTON",
+          "label": null,
+          "id": "pick",
+          "inNav": false
+        },
+        {
+          "tag": "BUTTON",
+          "label": null,
+          "id": "sample",
+          "inNav": false
+        },
+        {
+          "tag": "BODY",
+          "label": null,
+          "id": "",
+          "inNav": false
+        },
+        {
+          "tag": "BUTTON",
+          "label": "촬영 취소",
+          "id": "",
+          "inNav": false
+        },
+        {
+          "tag": "BUTTON",
+          "label": null,
+          "id": "pick",
+          "inNav": false
+        },
+        {
+          "tag": "BUTTON",
+          "label": null,
+          "id": "sample",
+          "inNav": false
+        },
+        {
+          "tag": "BODY",
+          "label": null,
+          "id": "",
+          "inNav": false
+        },
+        {
+          "tag": "BUTTON",
+          "label": "촬영 취소",
+          "id": "",
+          "inNav": false
+        },
+        {
+          "tag": "BUTTON",
+          "label": null,
+          "id": "pick",
+          "inNav": false
+        }
+      ],
+      "nav": {
+        "hidden": true,
+        "display": "none"
+      }
+    },
+    {
+      "width": 320,
+      "test": "new-guide-reset",
+      "data": {
+        "checked": false,
+        "disabled": true,
+        "title": "마지막으로 확인해 주세요."
+      }
+    },
+    {
+      "width": 320,
+      "test": "help-retention",
+      "data": "모델명과 문제 증상을 함께 알려주면 실제 분석에서 필요한 근거를 찾는 데 도움이 돼요.\n보존 검증 사진\n부품 전체와 모델명이 읽히는 사진을 준비해 주세요. 개인정보와 일련번호는 가려 주세요."
+    },
+    {
+      "width": 320,
+      "test": "cold-hash",
+      "data": {
+        "hash": "#guides",
+        "hasSearch": false,
+        "text": "PC 문제,\n보면 바로\n알 수 있어요.\n\n사진으로 확인하고\n차근차근 따라가세요.\n\n지금 촬영하기\n조립하기\n부품 교체\n문제 해결\n업그레이드\n추천 가이드\n전체보기 ›\n그래픽카드 장착하기\n장착 전 알아둘 것 · 예시\nSSD 교체하기\n규격 확인 · 보드 참고 사진 · 예시\n\n"
+      }
+    },
+    {
+      "width": 390,
+      "test": "header-targets",
+      "data": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "검색",
+            "w": 48,
+            "h": 49
+          },
+          {
+            "name": "알림",
+            "w": 48,
+            "h": 49
+          },
+          {
+            "name": "내 정보",
+            "w": 48,
+            "h": 49
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "test": "corrupt-upload",
+      "data": {
+        "route": "#camera",
+        "status": "사진을 열 수 없어요. 20MP 이하의 다른 JPEG 또는 PNG를 선택해 주세요.",
+        "analysisButton": false
+      }
+    },
+    {
+      "width": 390,
+      "test": "camera-keyboard",
+      "data": [
+        {
+          "tag": "BUTTON",
+          "label": null,
+          "id": "pick",
+          "inNav": false
+        },
+        {
+          "tag": "BUTTON",
+          "label": null,
+          "id": "sample",
+          "inNav": false
+        },
+        {
+          "tag": "BUTTON",
+          "label": "촬영 취소",
+          "id": "",
+          "inNav": false
+        },
+        {
+          "tag": "BUTTON",
+          "label": null,
+          "id": "pick",
+          "inNav": false
+        },
+        {
+          "tag": "BUTTON",
+          "label": null,
+          "id": "sample",
+          "inNav": false
+        },
+        {
+          "tag": "BODY",
+          "label": null,
+          "id": "",
+          "inNav": false
+        },
+        {
+          "tag": "BUTTON",
+          "label": "촬영 취소",
+          "id": "",
+          "inNav": false
+        },
+        {
+          "tag": "BUTTON",
+          "label": null,
+          "id": "pick",
+          "inNav": false
+        },
+        {
+          "tag": "BUTTON",
+          "label": null,
+          "id": "sample",
+          "inNav": false
+        },
+        {
+          "tag": "BODY",
+          "label": null,
+          "id": "",
+          "inNav": false
+        },
+        {
+          "tag": "BUTTON",
+          "label": "촬영 취소",
+          "id": "",
+          "inNav": false
+        },
+        {
+          "tag": "BUTTON",
+          "label": null,
+          "id": "pick",
+          "inNav": false
+        }
+      ],
+      "nav": {
+        "hidden": true,
+        "display": "none"
+      }
+    },
+    {
+      "width": 390,
+      "test": "new-guide-reset",
+      "data": {
+        "checked": false,
+        "disabled": true,
+        "title": "마지막으로 확인해 주세요."
+      }
+    },
+    {
+      "width": 390,
+      "test": "help-retention",
+      "data": "모델명과 문제 증상을 함께 알려주면 실제 분석에서 필요한 근거를 찾는 데 도움이 돼요.\n보존 검증 사진\n부품 전체와 모델명이 읽히는 사진을 준비해 주세요. 개인정보와 일련번호는 가려 주세요."
+    },
+    {
+      "width": 390,
+      "test": "cold-hash",
+      "data": {
+        "hash": "#guides",
+        "hasSearch": false,
+        "text": "PC 문제,\n보면 바로\n알 수 있어요.\n\n사진으로 확인하고\n차근차근 따라가세요.\n\n지금 촬영하기\n조립하기\n부품 교체\n문제 해결\n업그레이드\n추천 가이드\n전체보기 ›\n그래픽카드 장착하기\n장착 전 알아둘 것 · 예시\nSSD 교체하기\n규격 확인 · 보드 참고 사진 · 예시\n\n"
+      }
+    }
+  ]
+}

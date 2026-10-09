@@ -1,4 +1,6 @@
-# Reference UI 독립 감사 — 현재 HTML 판정
+# Reference UI 독립 감사 — 최초 HTML 판정
+
+후속 수정본 판정: [c503985 한정 재검증](recheck-c503985/REPORT.md). 아래는 최초 검사본의 역사적 결과이며 최신 결론으로 혼용하지 않는다.
 
 2026-10-09 KST. 사용자 승인된 시각 방향을 유지한다. 제품 수정 없음; 아래 결과는 Chrome headless 실제 렌더/DOM·클릭·키 입력 검사다. Android 신규 APK 판정은 **미검증**이며 HTML의 성공을 전용하지 않는다. 현재 확정 P0 없음, 기능/접근성 **P1 4건 미해결**. 전체 PASS 아님. 수정은 builder 한 번의 batch로 인계했으며 native 작업을 기다리게 할 이유는 없다.
 
