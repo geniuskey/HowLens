@@ -1,4 +1,8 @@
-"""Responses REST adapter; no SDK retries, tools, remote image URLs or secret logs."""
+"""Responses REST adapter; no SDK retries, remote image URLs or secret logs.
+
+Analysis/verification have no tools. Additive discovery can explicitly request one
+web search while sharing this adapter's authorization and paid-attempt ledger.
+"""
 import asyncio
 import base64
 import json
@@ -77,7 +81,8 @@ class OpenAIResponsesProvider:
         return {'type':'input_image', 'image_url':f'data:{mime};base64,' +
                 base64.b64encode(photo).decode('ascii'), 'detail':'auto'}
 
-    async def _request(self, dto, context, photos, policy=POLICY):
+    async def _request(self, dto, context, photos, policy=POLICY, *, web_search=False,
+                       with_envelope=False, max_output_tokens=None):
         # A populated key never implies authorization to incur charges.
         if not self.calls_authorized or not self._api_key:
             raise RuntimeError('Paid API calls are not authorized/configured')
@@ -87,12 +92,22 @@ class OpenAIResponsesProvider:
         self._persist_usage()  # Reserve before network I/O; failed attempts count, no retries.
         self.last_usage = None
         self.last_http_status = None
-        body = {'model':self.model, 'store':False, 'max_output_tokens':self.max_output_tokens,
+        token_limit = min(self.max_output_tokens, max_output_tokens or self.max_output_tokens)
+        body = {'model':self.model, 'store':False, 'max_output_tokens':token_limit,
                 'instructions':policy, 'input':[{'role':'user', 'content':[
                     {'type':'input_text', 'text':json.dumps(context, ensure_ascii=False)},
                     *[self.image(p) for p in photos]]}],
                 'text':{'format':{'type':'json_schema','name':dto.__name__.lower(),
                                   'strict':True,'schema':dto.model_json_schema()}}}
+        if web_search:
+            body.update(tools=[{'type':'web_search', 'search_context_size':'low',
+                               'external_web_access':True}],
+                        tool_choice='required', max_tool_calls=1,
+                        include=['web_search_call.action.sources'])
+            # Existing text-token estimate does not cover search fees. Do not understate it.
+            self.ledger['web_search_attempts'] = self.ledger.get('web_search_attempts', 0) + 1
+            self.ledger['estimated_usd_upper'] = None
+            self._persist_usage()
         try:
             async with asyncio.timeout(self.timeout_seconds):
                 async with httpx.AsyncClient(timeout=self.timeout_seconds, transport=self._transport,
@@ -117,7 +132,7 @@ class OpenAIResponsesProvider:
                 self.ledger['completed'] += 1
                 for name, value in counts.items():
                     self.ledger[name] += value
-                if self.model == 'gpt-4.1-mini':
+                if self.model == 'gpt-4.1-mini' and not self.ledger.get('web_search_attempts'):
                     self.ledger['estimated_usd_upper'] = round((self.ledger['input_tokens']*.4 +
                         self.ledger['output_tokens']*1.6)/1_000_000,8)
                 else:
@@ -137,7 +152,8 @@ class OpenAIResponsesProvider:
                     texts.append(content['text'])
             if len(texts) != 1:
                 raise ValueError('Expected one structured provider output')
-            return dto.model_validate_json(texts[0])
+            parsed = dto.model_validate_json(texts[0])
+            return (parsed, envelope) if with_envelope else parsed
         except httpx.TimeoutException:
             raise TimeoutError('Provider timed out') from None
         except (httpx.HTTPError, ValueError, TypeError, KeyError, AttributeError):

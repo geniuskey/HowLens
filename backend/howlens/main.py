@@ -110,7 +110,7 @@ async def read_photo(photo, decode_pool):
 
 
 def create_app(provider=None, registry=None, reviewer=None, timeout_seconds=30,
-               max_analyses=16, max_bytes=64*1024*1024):
+               max_analyses=16, max_bytes=64*1024*1024, discovery_service=None):
     decode_pool = DecodePool()
     @asynccontextmanager
     async def lifespan(app):
@@ -118,6 +118,9 @@ def create_app(provider=None, registry=None, reviewer=None, timeout_seconds=30,
         await asyncio.to_thread(decode_pool.close)
     app = FastAPI(title='HowLens', version='0.1.0', lifespan=lifespan)
     app.add_middleware(BoundedRequest)
+    from .discovery_router import discovery_router
+    app.include_router(discovery_router(discovery_service, decode_pool, read_photo, fail))
+    app.state.discovery_service = discovery_service
     store = MemoryStore(max_analyses, max_bytes)
     app.state.store = store
     manuals = registry if registry is not None else ManualRegistry()

@@ -24,6 +24,7 @@ def readiness():
 
 def configured_app():
     from .main import create_app
+    from .discovery import DiscoveryProvider, DiscoveryService
     load_local_env()
     registry = load_registry()
     key = os.environ.get('OPENAI_API_KEY','').strip()
@@ -34,7 +35,10 @@ def configured_app():
                     calls_authorized=os.environ.get('HOWLENS_PAID_CALLS_ENABLED') == 'true',
                     max_calls=int(os.environ.get('HOWLENS_MAX_PROVIDER_CALLS','') or '0'),
                     ledger_path=ENV_FILE.parent / '.provider-usage.json')
-    return create_app(provider=provider, registry=registry, reviewer=conservative_review)
+    discovery = (DiscoveryService(DiscoveryProvider(provider), config_version=f'discovery-v1:{model}')
+                 if provider is not None else None)
+    return create_app(provider=provider, registry=registry, reviewer=conservative_review,
+                      discovery_service=discovery)
 
 
 if __name__ == '__main__':
