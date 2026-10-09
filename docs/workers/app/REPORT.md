@@ -163,3 +163,90 @@ Implemented the approved Runixs/Team Lead blue photo-first direction across the 
 - `docs/workers/app/screenshots/w3-emulator-412-input.png`
 - `docs/workers/app/screenshots/w3-galaxy-camera-preview.png`
 - `docs/workers/app/screenshots/w3-galaxy-input.png`
+
+
+# W4 App implementation transfer — 2026-10-09
+
+Coordinator relay `relay_6720f53a2132` superseded the initial device-task placement:
+App implementation runs on the current 김태완 account in
+`/Users/runixs/orca/workspaces/HowLens/app-integration`, branch `Runixs/app-integration`.
+The 김의윤 lane owns device testing; this checkout has no attached ADB device.
+No physical-device PASS or screenshot is claimed by this implementation lane.
+
+Integrated immutable app base `57405bb4811f67bb49ea779d883fd2937c98fd7d` into the feature
+branch while preserving current documentation ancestry; no merge into main occurred.
+Applied routed data commits `2b01cb4`, `e0f0d20`, summary `9fe2b0b`, guide `017160a9`,
+and guide documentation/assets `bb6eeb0`. Missing data-helper documentation in the
+base caused only modify/delete documentation conflicts, resolved by retaining the
+routed helper documents. Product files applied without conflicts.
+
+Implementation commit `55a8583` adds optional masked, memory-only demo authentication,
+clears the token when the configured URL changes, sends it only to the configured
+origin including visual assets, and rejects redirects even for a supplied client.
+Default local behavior remains token-free. Tokens are redacted in state string output
+and never saved to preferences or URL parameters. Summary and gated guide navigation
+are connected, preserving local confirmation and return-to-result behavior.
+
+The existing FoundationTest fixture had an invalid PNG IDAT CRC and reached Android
+BitmapFactory on the JVM. Its PNG CRC is corrected and the visual test injects a
+per-ViewModel repository factory with a fixture-checking JVM decoder double; production still defaults
+to the bounded Android decoder. The original Foundation and PhotoLimits tests and the
+delayed prior-analysis regression remain present. Additional MockWebServer tests cover
+API/asset authorization, redirect rejection, empty-token compatibility, and redaction.
+
+Final validation and APK identities follow below.
+No provider calls, photo uploads, token retrieval, or public artifact uploads were made.
+
+
+## W4 final result and validation
+
+Product source: `ab20cc30221e40990e248d3b3de1bf34ef849019` on
+`Runixs/app-integration`. Home component `bd0d642` and evidence `e89465b` are integrated.
+The first auth artifact remains immutable; the final app additionally provides a Home
+entry with working camera/photo/discovery/result callbacks and explicit home return.
+The discovery flow uses the shared `/product-discoveries` contract with optional
+question/model hint, candidate cards, clickable public HTTP(S) citations and retrieval
+times. It stays separate from known device IDs and approved-guide state; mock mode
+returns an explicit synthetic information-needed screen without performing a search.
+Invalid citation structure/credentials/private literal or local hostnames are rejected
+before display. The backend remains responsible for real search provenance and public
+source validation; the app does not independently verify web content or DNS targets.
+
+The Summary sheet opens on a new analysis and links to the existing gated Guide pane.
+Guide checks survive back/revisit; the confirmation text remains a local user mark,
+not an AI verdict. Settings retain the draft during simple navigation, and prior
+results can be reopened until an input/settings edit invalidates them. Product
+questions are explicitly optional. Errors remain visible in compact viewports.
+
+| Check | Actual result |
+|---|---|
+| First cold build | App APK assembly PASS; JVM compilation initially failed because `javax.imageio` is unavailable in the Android test compile classpath |
+| Corrected auth test/lint rerun | PASS, 32 JVM tests, no failures/errors/skips; bounded production Android decoder unchanged |
+| Final `assembleDebug testDebugUnitTest lintDebug assembleDebugAndroidTest` | PASS in 11 seconds |
+| Final JVM suites | 36 tests, 0 failures/errors/skips: Foundation 12, PhotoLimits 4, GuideJourney 8, Summary 2, Share 3, Repository 1, DemoAuth 2, ProductDiscovery 4 |
+| Lint | 0 errors, 12 warnings, primarily fixed dependency update/metadata advisories plus existing Compose modifier ordering |
+| PNG fixture audit | Both embedded JVM PNG fixtures have valid chunk CRCs; Foundation no longer invokes BitmapFactory on the JVM |
+| APK signature | First auth APK passed `apksigner verify`; local debug certificate SHA-256 `4325b2fc6dfa58d31f5f650bba53987b6b8c62e4c38358a3f7bdbda223091e80` |
+| Physical/emulator UI execution | NOT RUN on this host; no attached devices, no new screenshots claimed |
+| Real gateway / product search / paid API | NOT RUN by this lane; all network tests use local MockWebServer and synthetic data |
+
+Full final build output: [integration/BUILD.txt](integration/BUILD.txt).
+Machine-readable source/bytes/SHA-256 and test counts: [integration/MANIFEST.json](integration/MANIFEST.json).
+
+Final app: `/Users/runixs/orca/workspaces/HowLens/app-integration/android/app/build/deliveries/howlens-integrated-ab20cc3.apk`,
+12,762,577 bytes, SHA-256 `72c8ddc53b8c9ffd40c460028d845aba9c454f6e57d2e7689e7c0ffd2a78998e`.
+Matching instrumentation APK: `android/app/build/deliveries/howlens-tests-ab20cc3.apk`,
+997,116 bytes, SHA-256 `aef00e965e8cbe1fa145ce814ff94bfddf40b762dffd1944e40b437dfffe5cb6`.
+Both are package version 0.1/debug outputs; instrumentation package is `kr.howlens.app.test`.
+
+First auth artifact: `android/app/build/deliveries/howlens-auth-55a8583.apk`,
+12,545,123 bytes, SHA-256 `fdbd71627523a0b5836803008c004b89ffcd9a423073967d2e2ad8c045ed7b0f`.
+It predates the Home/discovery addition. Neither APK is committed or publicly uploaded.
+Coordinator received both manifests through the active Orca Dispatch and owns private
+LAN delivery; the Galaxy and other-device testing lanes own installation and screenshots.
+
+Remaining external acceptance: install the final artifact, manually enter the demo
+token, run instrumented/visual navigation and permission checks on the assigned device,
+and distinguish a real provider response from health-only/mock evidence. Device
+installation may need to account for the new host's debug signing identity; this lane
+has not uninstalled or modified any device app. No human step is reported as passed.

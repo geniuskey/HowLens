@@ -95,3 +95,51 @@ The API PC's GET `/health` returned HTTP 200, `{"status":"ok","mode":"live"}`. D
 The test runner on this Galaxy's Android 17 image fails before UI assertions because Espresso looks up missing `android.hardware.input.InputManager.getInstance`. This is recorded as a device test harness failure, not a passing physical UI suite. The API 34 Pixel 3a emulator ran all six Compose tests successfully. Its rotation was toggled to landscape with emulator-only `cmd window user-rotation lock 1`, app orientation was observed at ROTATION_90, and emulator rotation was released with `user-rotation free`. Separately, physical Galaxy rotation to ROTATION_270 was observed while the app remained responsive.
 
 Screenshots are in `docs/workers/app/screenshots/`: `w2-galaxy-input.png` is the physical phone input screen; `w2-galaxy-camera-launch.png` shows the external camera app launch; `w2-api34-synthetic-non-guide.png` is an API 34 Compose screenshot from synthetic offline `needs_more_information` state, showing MOCK labeling and blocked steps. The latter is test output, not a server or AI result.
+
+
+## W4 local integration host
+
+The active implementation host uses JDK 21 to execute Gradle while compilation targets
+Java/Kotlin 17. The installed Android Studio contains an older JRE and is not used.
+The first Gradle run installed the standard Android 34 platform under the already
+accepted SDK license; the previous `android-34-ext11` installation is preserved.
+
+```sh
+cd android
+JAVA_HOME=/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home \
+ANDROID_HOME=/Users/runixs/Library/Android/sdk \
+./gradlew assembleDebug testDebugUnitTest lintDebug --console=plain
+```
+
+In Settings, switch out of offline demo, enter the server root first, then manually
+enter the separate demo token. The field is masked. Editing the server root clears
+that token; process death also clears it. It is not an OpenAI key and must not be
+placed in a URL, report, screenshot, or source file. Leave it empty for the existing
+local development path. Requests and panel downloads refuse HTTP redirects.
+
+Analysis results open a summary sheet. The guide CTA appears only for a model-gated
+live guide; other results offer photo/question correction. The guide keeps explicit
+local step checks across back/revisit, and confirmation is not server verification.
+
+
+Final integrated validation also builds instrumentation without running a device:
+
+```sh
+JAVA_HOME=/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home \
+ANDROID_HOME=/Users/runixs/Library/Android/sdk \
+./gradlew assembleDebug testDebugUnitTest lintDebug assembleDebugAndroidTest --console=plain
+```
+
+The Home screen offers camera capture, photo selection, product discovery, and the
+retained last result. Discovery needs one photo; question and model hint are optional.
+It never submits a catalog `device_id` or enables the analysis guide gate. Open a
+candidate source only with the visible citation button. Offline discovery makes no
+network call and explicitly requests a live server for actual search.
+
+For delegated QA, install the final app and the matching `howlens-tests-ab20cc3.apk`
+using the assigned serial only, then run the existing AndroidJUnitRunner. The updated
+UI tests dismiss the new summary sheet before exercising underlying result controls.
+Instrumentation assembly is not an execution pass. The first auth APK remains in
+`app/build/deliveries/howlens-auth-55a8583.apk`; final Home/discovery APK is
+`app/build/deliveries/howlens-integrated-ab20cc3.apk`. Compare SHA-256 with the manifest
+before private delivery. Do not expose the token in logs, URLs, screenshots, or reports.
