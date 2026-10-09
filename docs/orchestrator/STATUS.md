@@ -1,6 +1,6 @@
 # Orchestration status
 
-2026-10-09 11:42 KST. Run `run_6351cb7363de`; Coordinator 김태완 main clone.
+2026-10-09 11:48 KST. Run `run_6351cb7363de`; Coordinator 김태완 main clone.
 17:00 submission; product main integration still awaits concrete review and approval.
 
 ## Current routing and permissions
@@ -28,7 +28,7 @@ No credentials were transferred and no main product merge performed.
 |---|---|---|
 | W2-APP `task_2b8f83fdee01` | 김의윤 / `ctx_9435010172c1` | Live Visual + verification UI, bounded/cancellable HTTP; Galaxy baseline NOW |
 | W2-BACKEND `task_69c26e09a2dc` | 이준영 / `ctx_4fc700a02b03` | Responses adapter, strict evidence validation, config and Visual boundary |
-| W2-VISUAL `task_77bd347ac7ee` | 이윤재 / `ctx_3e01d615f3f3` | Image adapter, deterministic scene mapping, tests and timestamped mockup |
+| W2-VISUAL `task_77bd347ac7ee` | 이윤재 / `ctx_3e01d615f3f3` succeeded | 63dd0f8 pushed;17offline tests, provider+mapping+mockup; paid/semantic QA pending |
 | W2-E2E `task_15215775f6e9` | 김태완 / `ctx_98c4e2d3cca5` succeeded | d263f77 pushed; Coordinator independently reran20 tests PASS; physical pending |
 | W2-RESEARCH `task_cd34651020f8` | 김태완 / `ctx_c1c5ea214ffa` succeeded | 5c0b830 pushed;3 official manuals/pages/hashes; Sharesheet spec |
 
@@ -54,7 +54,7 @@ Hub dispatch-show --preamble returned exact Task text, forwarded without changes
 into existing Visual terminal. Bounded screen showed pasted draft; separate Enter
 submitted it. Actual documentation/tool progress and scene_step_ids signature received.
 Hub-generated literal sender worker failed stable_pane_required; documented own-pane
-sender correction relayed, accepted lifecycle receipt still to verify.
+sender correction relayed, heartbeat then accepted worker_done proved lifecycle routing. Release retained external terminal.
 
 Research/E2E accepted success settlements followed by worker-release: both retained
 external_terminal/processAction none. No forced closure. Research's suggested 17:00
@@ -62,8 +62,9 @@ end-of-testing is superseded by Coordinator16:30 packaging/17:00 submission plan
 
 W3-INTEGRATION-AUDIT `task_11354293a45c` / `ctx_dd872da5efc4` now reuses Evaluation
 terminal/worktree on 김태완 PC. Read-only pinned Backend1081de7 review and independent
-tests in disposable snapshot, no paid calls/product edits. Product dependency reads
-authorized; report will be docs/workers/evaluation/W3-INTEGRATION-AUDIT.md.
+tests in disposable snapshot, no paid calls/product edits. Completed and pushed8e69072:54 supplied tests PASS,
+additional slow-decode cancellation probe FAIL (peak4 workers despite limit2).
+Repro evaluation/w3_audit_probe.py routed to Backend for fix. Release retained.
 
 ## Delivery targets and blockers
 
@@ -73,7 +74,9 @@ authorized; report will be docs/workers/evaluation/W3-INTEGRATION-AUDIT.md.
   15:30 feature freeze; 15:30–16:30 final regression; 16:30 submission packaging.
 - User clarified API USD50 per account, separate from development credits; current
   Backend key saved and presence=true confirmed11:40. One bounded gpt-4.1-mini
-  live smoke authorized within current USD50 budget; actual result/usage pending.
+  live smoke completed upstream/backend200:live needs_more_information,steps0;
+  input963/output337 tokens, estimatedUSD0.0009244, not verified balance.
+  Next controlled integration cap20 bounded calls authorized; server-ready pending.
   Do not precollect four keys or share account credentials.
 - Actual equipment identity/photos and registered exact manual evidence remain pending.
   Research found Dell R750 A11 page changes; never reuse older page numbers.
@@ -125,3 +128,25 @@ getdata deprecation warning 1. 초기 시스템 Python 실행은 Pillow 부재�
 geniuskey/HowLens push에서 HTTP 403을 받았다. 본인 계정 write 권한 복구 필요.
 Coordinator 문서는 로컬 main commit으로만 보존되어 origin/main보다 앞서 있다.
 다른 계정 credentials 사용, 우회 fork 공개, 제품 main merge는 하지 않았다.
+
+## User design request — 11:46–11:48
+
+User rejected current design and explicitly requested Kim Taewan account + strong model,
+external reference research, a designer persona, and best-fit usability-first redesign.
+Additional constraint: eliminate cluttered labels/text, make small-screen actions visually
+intuitive with minimal reading. Short critical state labels and accessibility semantics
+remain; avoid decorative badges, microcopy, fake metrics/navigation, or hidden warnings.
+
+W3-DESIGN `task_7c6acdd942a5` / `ctx_a4e3fe9e0338` runs in existing research worktree
+on Kim Taewan, observed GPT-6-Astra Medium fast; terminal term_9402afd0-bdf5-421c-91d9-913a10e5a5b7.
+Ownership docs/workers/evaluation/research/design/ + docs/assets/design/. Persona:
+senior Android field-service product designer. Official Android/Material and real
+field-service references, tokens/state layouts and two portrait concept images targeted
+within20min. Existing App screenshots requested. Product code remains exclusively App;
+App asked to finish functional checkpoint, then apply designer handoff without overlap.
+User delegated best-fit selection, so no new discretionary design approval loop.
+
+Guide readiness is still blocked by absent physical review and zero approved actions.
+Backend proposed optional observation_session_id + scoped operator-reviewed TTL record;
+no contract field approved/added yet. Do not label grounded non-guide analysis as completed
+guide/Visual/verification end-to-end validation.
