@@ -356,3 +356,26 @@ User12:47 explicitly changes humanQAcommunications: directlocaltestsession
 questions/replies, results/technicalscope centrallyreported. HUMAN_TEST_LOOP.md
 records latestpolicy. Userconfirms BackendRSAapproved afterreplug and Appcamera
 permissionallowed/previewvisible. Instructions sentall3Dispatches.
+
+## 12:52 UI reference and asset architecture delivery
+
+UserrootUI_REQUIREMENTS.md read446lines, leftoriginaluntrackeduntouched; exactcopy
+committed051ffdc docs/orchestrator/references/UI_REQUIREMENTS.md andpushed.
+Existingstackclause=>nativeadaptation, preservepriorphoto/cameratwotabs/minimaltext.
+Appinformed, independentSolHighFast readonlygapreviewtask312e96c90586/ctx51ab3f483b42
+onHubmainterm_eebe9bcd, no productedits. Broadhome/chat/favorites requirements
+assessagainstfreeze andcurrentcontract, no blankbuttons/Reactrewrite inferred.
+
+WindowsQA was loopingunacked delivery7a4fd85c415d from12:32 so newerfollowups
+werehidden. Rootobserved transcript, sentone directterminalcorrection SAMEtask;
+workerprocessedACKs anddownloadedverified57405bb, installingassigneddeviceonly.
+BackendFold4SM-F936N Android16API36 authorizedandnewAPKhashverified.
+W7deliveryctxbd5d94e4bbe2 succeededc101f2754817c8dbd0795c80cadf2eafc915928e:
+2completeGETs, PID22008exited/port8765closed, released.
+
+Astraarchitecture ctxf430072fbe2e succeeded027ec4e Runixs/hackathon-research,
+released. RootreadARCHITECTURE: source109inventory/6PDFverified, privateignored
+originals, DellFigure212byteidentical. URI/manualversionsmismatchUR5.23vs5.17
+andAPC3534Hvs6411A mustnotmix. Recommendscuratedevidence+sourcecompositor
+first, nofinetuningtoday. IndependentApproval/action-figure/rightsgatesremain.
+Specimen/architecture delivered, productimplementationnotclaimed.
