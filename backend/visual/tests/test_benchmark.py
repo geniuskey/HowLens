@@ -190,3 +190,61 @@ class BenchmarkTests(unittest.IsolatedAsyncioTestCase):
             with self.assertRaises(ValueError):
                 await client.generate(model=model, prompt=prompt)
         self.assertEqual(calls, [])
+
+    async def test_subprecision_budget_rejected_before_env_or_call(self):
+        calls = []
+        client = self.client(lambda request: calls.append(request))
+        with patch("visual.benchmark.os.environ.get", side_effect=AssertionError("env read")):
+            for budget, reservation in [(1e-10, 1e-10), (1, 1e-10), (1e-10, 1)]:
+                with self.assertRaises(ValueError):
+                    await run_pilot(protocol_dir=PROTOCOL, output_dir=self.output,
+                        execute=True, max_calls=6, budget_usd=budget, reservation_usd=reservation,
+                        paid_authorization="TEST", client=client)
+        self.assertEqual(calls, [])
+        self.assertFalse(self.output.exists())
+
+    async def test_minimum_precision_budget_allows_exactly_one_call(self):
+        calls = []
+        def handler(request):
+            calls.append(request)
+            return httpx.Response(500)
+        rows, artifacts = await run_pilot(protocol_dir=PROTOCOL, output_dir=self.output,
+            execute=True, max_calls=6, budget_usd=1e-8, reservation_usd=1e-8,
+            paid_authorization="TEST", client=self.client(handler))
+        self.assertEqual(len(calls), 1)
+        self.assertEqual(artifacts["reserved_usd"], 1e-8)
+        self.assertTrue(all(r["error_code"] == "reservation_budget_limit" for r in rows[1:]))
+
+    async def test_fractional_budget_has_no_float_drift_or_tolerance(self):
+        calls = []
+        def handler(request):
+            calls.append(request)
+            return httpx.Response(500)
+        rows, artifacts = await run_pilot(protocol_dir=PROTOCOL, output_dir=self.output,
+            execute=True, budget_usd=.3, reservation_usd=.1,
+            paid_authorization="TEST", client=self.client(handler))
+        self.assertEqual(len(calls), 3)
+        self.assertEqual(artifacts["reserved_usd"], .3)
+        self.assertTrue(all(r["error_code"] == "reservation_budget_limit" for r in rows[3:]))
+
+    async def test_cancellation_during_body_preserves_observed_headers(self):
+        calls = []
+        class CancelledBody(httpx.AsyncByteStream):
+            async def __aiter__(self):
+                yield b'{"data":'
+                raise asyncio.CancelledError("private cancellation detail")
+        def handler(request):
+            calls.append(request)
+            return httpx.Response(200, headers={"x-request-id": "req_cancelled"}, stream=CancelledBody())
+        rows, artifacts = await self.run_case(handler)
+        self.assertEqual(len(calls), 1)
+        self.assertEqual(artifacts["attempted_calls"], 1)
+        self.assertEqual(rows[0]["status"], "cancelled")
+        self.assertEqual(rows[0]["http_status"], 200)
+        self.assertEqual(rows[0]["request_id"], "req_cancelled")
+        self.assertIsNone(rows[0]["usage"])
+        self.assertGreaterEqual(rows[0]["latency_ms"], 0)
+        self.assertTrue(all(r["request_id"] is None and r["http_status"] is None for r in rows[1:]))
+        self.assertNotIn("private cancellation detail", (self.output / "results.jsonl").read_text(encoding="utf-8"))
+        for row in rows:
+            jsonschema.validate(row, self.schema)

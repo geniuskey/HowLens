@@ -168,6 +168,14 @@ unattempted rows become `cancelled/not_run` with a stop reason. A timeout can
 still incur provider charges; there is no automatic retry. Reservation accounting
 cannot guarantee actual provider billing; independently enforce provider budgets.
 
+USD budget/reservation inputs support at most eight decimal places, with a minimum
+positive reservation of 0.00000001 USD. Smaller precision is rejected before any
+key read or request. Accounting uses exact integer units with no comparison epsilon
+or cumulative float rounding: budget 1.5/reservation 1 permits one call; 0.3/0.1
+permits exactly three. This precision is an accounting limit, not a price estimate.
+If cancellation occurs after response headers are received, the cancelled attempt
+retains the known sanitized request ID and HTTP status; unattempted rows remain null.
+
 Timeout range 1-300 seconds covers the total async request plus per-phase network
 timeouts. Input files cap 1 MiB each; prompt cap 32,000 characters; response cap
 15 MiB; raw PNG cap 10 MiB; source must be single-frame PNG of exactly 1024x1024.

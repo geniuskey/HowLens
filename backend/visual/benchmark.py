@@ -12,6 +12,7 @@ import time
 from datetime import datetime, timezone
 from io import BytesIO
 from pathlib import Path
+from fractions import Fraction
 
 import jsonschema
 from PIL import Image
@@ -23,6 +24,15 @@ CASES_DIGEST = "88437eba5d2ad085fe5f51c1cd8b71c5440e84e05337e354d2ab3ec20ee6f561
 SCHEMA_DIGEST = "bdfc79a1300b336b291f3aae45b637aa8b7cbb08a28bcb3016a76feff1bd2f50"
 SETTINGS = {"size": "1024x1024", "quality": "low", "format": "png", "concurrency": 1, "retries": 0}
 MAX_INPUT_BYTES = 1024 * 1024
+USD_UNITS = 100_000_000
+
+
+def usd_units(value):
+    """Exact integer accounting; reject amounts below supported 8-decimal precision."""
+    amount = Fraction(str(value)) * USD_UNITS
+    if amount.denominator != 1:
+        raise ValueError("USD amounts support at most eight decimal places")
+    return amount.numerator
 
 
 def digest(value):
@@ -92,6 +102,8 @@ def validate_options(*, max_calls, timeout_seconds, budget_usd, reservation_usd,
             raise ValueError("Budget/timeout settings must be finite nonnegative numbers")
     if not 1 <= timeout_seconds <= 300 or reservation_usd <= 0:
         raise ValueError("Timeout must be 1-300s and reservation must be positive")
+    usd_units(budget_usd)
+    usd_units(reservation_usd)
     if execute and (not isinstance(paid_authorization, str)
                     or not re.fullmatch(r"[A-Za-z0-9_.:/-]{1,120}", paid_authorization)
                     or paid_authorization.startswith("sk-") or budget_usd <= 0):
@@ -151,6 +163,8 @@ async def run_pilot(*, protocol_dir, output_dir, execute=False, max_calls=6,
     source = artifacts["measurement_source"]
     results_path = root / "results.jsonl"
     stop_reason = None
+    budget_units, reservation_units = usd_units(budget_usd), usd_units(reservation_usd)
+    reserved_units = 0
     with results_path.open("w", encoding="utf-8") as stream:
         for row in rows:
             sidecar = {"prompt_utf8_sha256": bytes_digest(row["prompt"].encode("utf-8")),
@@ -158,13 +172,14 @@ async def run_pilot(*, protocol_dir, output_dir, execute=False, max_calls=6,
             if execute:
                 if stop_reason is None and artifacts["attempted_calls"] >= max_calls:
                     stop_reason = "call_limit"
-                if stop_reason is None and artifacts["reserved_usd"] + reservation_usd > budget_usd + 1e-9:
+                if stop_reason is None and reserved_units + reservation_units > budget_units:
                     stop_reason = "reservation_budget_limit"
                 if stop_reason:
                     row.update(status="cancelled", error_code=stop_reason)
                 else:
                     artifacts["attempted_calls"] += 1
-                    artifacts["reserved_usd"] = round(artifacts["reserved_usd"] + reservation_usd, 8)
+                    reserved_units += reservation_units
+                    artifacts["reserved_usd"] = reserved_units / USD_UNITS
                     sidecar["attempted"] = True
                     row.update(paid_authorization=paid_authorization, measurement_source=source, provider="openai",
                                started_at_utc=datetime.now(timezone.utc).isoformat())
@@ -184,8 +199,11 @@ async def run_pilot(*, protocol_dir, output_dir, execute=False, max_calls=6,
                                    error_code=exc.code, request_id=exc.request_id, http_status=exc.http_status,
                                    usage=exc.usage,
                                    latency_ms=max(0, (clock() - started) * 1000))
-                    except asyncio.CancelledError:
+                    except asyncio.CancelledError as exc:
                         row.update(status="cancelled", error_code="cancelled",
+                                   request_id=getattr(exc, "request_id", None),
+                                   http_status=getattr(exc, "http_status", None),
+                                   usage=getattr(exc, "usage", None),
                                    latency_ms=max(0, (clock() - started) * 1000))
                         stop_reason = "cancelled"
                     except OSError:

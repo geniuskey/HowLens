@@ -24,6 +24,13 @@ class BenchmarkFailure(RuntimeError):
         self.usage = usage
 
 
+class BenchmarkCancellation(asyncio.CancelledError):
+    """Cancellation carrying only already-observed sanitized attempt metadata."""
+    def __init__(self, *, request_id=None, http_status=None, usage=None):
+        super().__init__("cancelled")
+        self.request_id, self.http_status, self.usage = request_id, http_status, usage
+
+
 def safe_request_id(value):
     return value if isinstance(value, str) and re.fullmatch(r"[A-Za-z0-9_-]{1,200}", value) else None
 
@@ -77,6 +84,8 @@ class SandboxImageClient:
         metadata = {"request_id": None, "http_status": None, "usage": None}
         try:
             return await asyncio.wait_for(self._request(model, prompt, metadata), self.timeout_seconds)
+        except asyncio.CancelledError:
+            raise BenchmarkCancellation(**metadata) from None
         except (asyncio.TimeoutError, httpx.TimeoutException):
             raise BenchmarkFailure("timeout", **metadata) from None
         except httpx.HTTPError:

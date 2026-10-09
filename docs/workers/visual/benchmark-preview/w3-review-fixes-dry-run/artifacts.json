@@ -1,0 +1,55 @@
+{
+  "schema_version": "visual-artifacts-1",
+  "evaluation_protocol_commit": "0234159c2a5b4cc9443e79de30e90ef5586661d2",
+  "protocol_cases_sha256": "88437eba5d2ad085fe5f51c1cd8b71c5440e84e05337e354d2ab3ec20ee6f561",
+  "protocol_schema_sha256": "bdfc79a1300b336b291f3aae45b637aa8b7cbb08a28bcb3016a76feff1bd2f50",
+  "endpoint": "https://api.openai.com/v1/images/generations",
+  "request_settings": {
+    "size": "1024x1024",
+    "quality": "low",
+    "n": 1,
+    "output_format": "png",
+    "background": "opaque",
+    "moderation": "auto"
+  },
+  "measurement_source": "not_run",
+  "timeout_seconds": 120,
+  "max_calls": 6,
+  "budget_reservation_cap_usd": 0,
+  "reservation_per_call_usd": 1,
+  "cost_policy": "reservation is a planning cap, not actual billing; no cost estimate summed with tokens",
+  "attempted_calls": 0,
+  "reserved_usd": 0,
+  "runs": {
+    "206006feafdfd577dfff": {
+      "prompt_utf8_sha256": "cc49c5547261db35fcefbc778bda3dc101576afa017ad7a2e883489b12e80dc8",
+      "settings_sha256": "d625d651ef30ee4616b1dc60e08132d1476a733133809b4e89950a1e3971dc90",
+      "attempted": false
+    },
+    "546fae48535b15c4cff9": {
+      "prompt_utf8_sha256": "cc49c5547261db35fcefbc778bda3dc101576afa017ad7a2e883489b12e80dc8",
+      "settings_sha256": "d625d651ef30ee4616b1dc60e08132d1476a733133809b4e89950a1e3971dc90",
+      "attempted": false
+    },
+    "68476b152b48614b5630": {
+      "prompt_utf8_sha256": "d6643cc36b8c2de6fedfcbf08187e0d2c0d7563004eaca9e42328c1721649314",
+      "settings_sha256": "d625d651ef30ee4616b1dc60e08132d1476a733133809b4e89950a1e3971dc90",
+      "attempted": false
+    },
+    "1537b7d64121753f0d24": {
+      "prompt_utf8_sha256": "d6643cc36b8c2de6fedfcbf08187e0d2c0d7563004eaca9e42328c1721649314",
+      "settings_sha256": "d625d651ef30ee4616b1dc60e08132d1476a733133809b4e89950a1e3971dc90",
+      "attempted": false
+    },
+    "02f1fb48156a34b896bc": {
+      "prompt_utf8_sha256": "5d6ed4c3dbd11c21a384e8293e85b631f8a3dcb90e9234dc33a9ee26d3e94424",
+      "settings_sha256": "d625d651ef30ee4616b1dc60e08132d1476a733133809b4e89950a1e3971dc90",
+      "attempted": false
+    },
+    "2b3745f164dbacdeea57": {
+      "prompt_utf8_sha256": "5d6ed4c3dbd11c21a384e8293e85b631f8a3dcb90e9234dc33a9ee26d3e94424",
+      "settings_sha256": "d625d651ef30ee4616b1dc60e08132d1476a733133809b4e89950a1e3971dc90",
+      "attempted": false
+    }
+  }
+}

@@ -155,3 +155,38 @@ timestamped offline reviewer mockup. **Actual paid/AI calls on this PC: 0**.
 Windows dry-run and future Backend-owner commands are in RUNBOOK. Final commit SHA
 is sent literally in the completion receipt and can be resolved from this report's
 commit (`git log -1 --format=%H -- docs/workers/visual/REPORT.md`).
+
+## W3 review fixes — budget precision and cancellation metadata
+
+[DONE] Addressed both independent-review P2 findings against immutable `5dcf6f2`.
+Budget/reservation values below supported eight-decimal precision now fail before
+environment access or HTTP; supported amounts are converted exactly to integer
+1e-8 USD units. Removed the absolute comparison epsilon and cumulative round8
+accounting, eliminating the subprecision six-attempt/zero-reservation bypass.
+Cancellation remains a cancellation, now carrying already-observed sanitized
+request ID/status/usage from the sandbox client into the attempted result.
+
+- Actual validation: **30 tests passed in 2.191s**, comprising all 26 previous
+  tests and four targeted regressions. Subprecision 1e-10 cases reject with zero
+  calls; minimum supported budget/reservation 1e-8 allows exactly one; 0.3/0.1
+  allows exactly three. Existing 1.5/1 budget regression still allows one call.
+- HTTP-double stream yields a partial body after HTTP 200 and `req_cancelled`,
+  then raises CancelledError: one attempt only, cancelled result retains both
+  known header fields, no private exception message saved, remaining rows have
+  null headers; every result remains schema-valid. No automatic retries.
+- Actual fresh CLI dry-run saved six schema-valid not_run records to
+  `benchmark-preview/w3-review-fixes-dry-run/`, attempted_calls 0, actual cost null.
+  No paid/network AI calls or environment-key reads were performed in this task.
+- Main product provider/service and their behavior/tests are unchanged.
+  Existing synthetic comparison mockup retained: reviewer-visible information
+  did not change, so no redundant image rendering or heavy generation occurred.
+- Changed owned files: `backend/visual/benchmark.py`, `benchmark_http.py`,
+  `tests/test_benchmark.py`; Visual `RUNBOOK.md`, `REPORT.md`, plus the two fresh
+  dry-run evidence files. `git diff --check` passed.
+- Coordinator's additional mkdir-only collection instruction completed:
+  `C:/2026_DSDN/HowLens/docs/assets/manuals/visual/` and active-worktree
+  `C:/Users/luj01/orca/workspaces/HowLens/feat-visual-foundation/docs/assets/manuals/visual/`.
+  No files overwritten, no checkout/merge/reset; collected PDFs/source.txt are
+  not automatically approved evidence. These empty directories add no tracked edits.
+- Branch preserved: `feat-visual-foundation`; completion receipt records exact
+  committed/pushed SHA. Real generation, billing and semantic review remain pending.
