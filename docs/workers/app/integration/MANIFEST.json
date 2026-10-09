@@ -1,0 +1,88 @@
+{
+  "branch": "Runixs/app-integration",
+  "product_sha": "ab20cc30221e40990e248d3b3de1bf34ef849019",
+  "artifacts": [
+    {
+      "path": "/Users/runixs/orca/workspaces/HowLens/app-integration/android/app/build/deliveries/howlens-auth-55a8583.apk",
+      "source_sha": "55a8583889ba4c488d9403a9089fb5ea21d3f699",
+      "bytes": 12545123,
+      "sha256": "fdbd71627523a0b5836803008c004b89ffcd9a423073967d2e2ad8c045ed7b0f"
+    },
+    {
+      "path": "/Users/runixs/orca/workspaces/HowLens/app-integration/android/app/build/deliveries/howlens-integrated-ab20cc3.apk",
+      "source_sha": "ab20cc30221e40990e248d3b3de1bf34ef849019",
+      "bytes": 12762577,
+      "sha256": "72c8ddc53b8c9ffd40c460028d845aba9c454f6e57d2e7689e7c0ffd2a78998e"
+    },
+    {
+      "path": "/Users/runixs/orca/workspaces/HowLens/app-integration/android/app/build/deliveries/howlens-tests-ab20cc3.apk",
+      "source_sha": "ab20cc30221e40990e248d3b3de1bf34ef849019",
+      "bytes": 997116,
+      "sha256": "aef00e965e8cbe1fa145ce814ff94bfddf40b762dffd1944e40b437dfffe5cb6"
+    }
+  ],
+  "jvm_tests": [
+    {
+      "name": "kr.howlens.app.FoundationTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "kr.howlens.app.camera.PhotoLimitsTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "kr.howlens.app.data.DemoAuthTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "kr.howlens.app.data.ProductDiscoveryTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "kr.howlens.app.data.RepositoryRegressionTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "kr.howlens.app.data.ShareRegressionTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "kr.howlens.app.ui.AnalysisSummarySheetTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "kr.howlens.app.ui.GuideJourneyStateTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "lint": {
+    "errors": 0,
+    "warnings": 12
+  },
+  "device_tests": "not run on this host",
+  "live_provider_calls": 0
+}
