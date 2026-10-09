@@ -1,0 +1,479 @@
+{
+  "schema_version": 1,
+  "checked_date": "2026-10-09",
+  "scope": "5 downloaded real photographs + 1 dependent crop; no runtime/paid calls",
+  "renderer_version": "1.28.2",
+  "photos": [
+    {
+      "photo_id": "t01",
+      "original_path": "docs/assets/real-photo-corpus/private/r750-front.jpg",
+      "original_sha256": "00d98cfa9ebe5bcac867fa51fdb6754fd55147364614c8d728ecf997f0c34b36",
+      "bytes": 54499,
+      "dimensions": [
+        1000,
+        692
+      ],
+      "asset_url": "https://www.storagereview.com/wp-content/uploads/2021/03/dell-emc-r750-label.jpg",
+      "source_page": "https://www.storagereview.com/review/dell-emc-poweredge-r750-hands-on",
+      "credit": "StorageReview / Brian Beeler",
+      "source_type": "firsthand reviewer product photograph",
+      "synthetic": false,
+      "classification_basis": "review attribution + visual inspection of photographed physical object",
+      "rights": "copyright retained; no open redistribution permission established; private local evaluation only; no external upload authorized by this manifest",
+      "heldout_path": "docs/assets/real-photo-corpus/private/heldout/t01.jpg",
+      "heldout_sha256": "00d98cfa9ebe5bcac867fa51fdb6754fd55147364614c8d728ecf997f0c34b36",
+      "transform": null,
+      "expected_visible_model": "Dell PowerEdge R750",
+      "hardware_revision_from_photo": null,
+      "manual_applicability": "pending region/revision/configuration check",
+      "expected_behavior": "R750 label readable; exact hardware revision not visible; review describes preproduction unit",
+      "split": "heldout_only_not_prompt_reference",
+      "correlation_group": "storagereview-r750-unit",
+      "manually_reviewed": true
+    },
+    {
+      "photo_id": "t02",
+      "original_path": "docs/assets/real-photo-corpus/private/r750-rear.jpg",
+      "original_sha256": "b99dc3558315e60562793ff484803c8fceb1a267e7008fc8530003110cfa6e45",
+      "bytes": 81020,
+      "dimensions": [
+        1000,
+        667
+      ],
+      "asset_url": "https://www.storagereview.com/wp-content/uploads/2021/03/r750-back.jpg",
+      "source_page": "https://www.storagereview.com/review/dell-emc-poweredge-r750-hands-on",
+      "credit": "StorageReview / Brian Beeler",
+      "source_type": "firsthand reviewer product photograph",
+      "synthetic": false,
+      "classification_basis": "review attribution + visual inspection of photographed physical object",
+      "rights": "copyright retained; no open redistribution permission established; private local evaluation only; no external upload authorized by this manifest",
+      "heldout_path": "docs/assets/real-photo-corpus/private/heldout/t02.jpg",
+      "heldout_sha256": "b99dc3558315e60562793ff484803c8fceb1a267e7008fc8530003110cfa6e45",
+      "transform": null,
+      "expected_visible_model": "candidate Dell PowerEdge R750",
+      "hardware_revision_from_photo": null,
+      "manual_applicability": "pending region/revision/configuration check",
+      "expected_behavior": "Rear ports visible; model and hardware revision not independently legible in this view",
+      "split": "heldout_only_not_prompt_reference",
+      "correlation_group": "storagereview-r750-unit",
+      "manually_reviewed": true
+    },
+    {
+      "photo_id": "t03",
+      "original_path": "docs/assets/real-photo-corpus/private/ax55-top-tg.jpg",
+      "original_sha256": "a6270cd17e7a1e388b36f9c4293f77b8ed3c99f96c79bd0b1b13573f2c7d1210",
+      "bytes": 387210,
+      "dimensions": [
+        2000,
+        1125
+      ],
+      "asset_url": "https://cdn.mos.cms.futurecdn.net/4d5NcMD9FPKkk7emM335nB.jpg",
+      "source_page": "https://www.tomsguide.com/computing/routers/tp-link-archer-ax55-review",
+      "credit": "Tom’s Guide (photo credit); Brian Nadel review",
+      "source_type": "firsthand reviewer product photograph",
+      "synthetic": false,
+      "classification_basis": "review attribution + visual inspection of photographed physical object",
+      "rights": "copyright retained; no open redistribution permission established; private local evaluation only; no external upload authorized by this manifest",
+      "heldout_path": "docs/assets/real-photo-corpus/private/heldout/t03.jpg",
+      "heldout_sha256": "a6270cd17e7a1e388b36f9c4293f77b8ed3c99f96c79bd0b1b13573f2c7d1210",
+      "transform": null,
+      "expected_visible_model": "candidate TP-Link Archer AX55",
+      "hardware_revision_from_photo": null,
+      "manual_applicability": "pending region/revision/configuration check",
+      "expected_behavior": "TP-Link logo and four antennas; no model/revision label; ask for existing label image or typed model/version",
+      "split": "heldout_only_not_prompt_reference",
+      "correlation_group": "tomsguide-ax55-unit",
+      "manually_reviewed": true
+    },
+    {
+      "photo_id": "t04",
+      "original_path": "docs/assets/real-photo-corpus/private/ax55-rear-tg.jpg",
+      "original_sha256": "024158b9a60fed92ec5c405a7ac58030c80462b7b289c2136e58a1d584c1e616",
+      "bytes": 283065,
+      "dimensions": [
+        2000,
+        1125
+      ],
+      "asset_url": "https://cdn.mos.cms.futurecdn.net/a6WNGFsNKTUC9sGbgivybB.jpg",
+      "source_page": "https://www.tomsguide.com/computing/routers/tp-link-archer-ax55-review",
+      "credit": "Tom’s Guide (photo credit); Brian Nadel review",
+      "source_type": "firsthand reviewer product photograph",
+      "synthetic": false,
+      "classification_basis": "review attribution + visual inspection of photographed physical object",
+      "rights": "copyright retained; no open redistribution permission established; private local evaluation only; no external upload authorized by this manifest",
+      "heldout_path": "docs/assets/real-photo-corpus/private/heldout/t04.jpg",
+      "heldout_sha256": "024158b9a60fed92ec5c405a7ac58030c80462b7b289c2136e58a1d584c1e616",
+      "transform": null,
+      "expected_visible_model": "candidate TP-Link Archer AX55",
+      "hardware_revision_from_photo": null,
+      "manual_applicability": "pending region/revision/configuration check",
+      "expected_behavior": "WAN and LAN1-LAN4 labels visible; hardware revision/region unknown; do not infer v1",
+      "split": "heldout_only_not_prompt_reference",
+      "correlation_group": "tomsguide-ax55-unit",
+      "manually_reviewed": true
+    },
+    {
+      "photo_id": "t05",
+      "original_path": "docs/assets/real-photo-corpus/private/ax55-label-rtings.jpg",
+      "original_sha256": "807c5f61fdba6a22abcb1232564e9a5289b5d67234117534ebb568ae61592669",
+      "bytes": 31477,
+      "dimensions": [
+        390,
+        219
+      ],
+      "asset_url": "https://www.rtings.com/assets/products/zmZPFAUB/tp-link-archer-ax55/label-small.jpg?format=auto",
+      "source_page": "https://www.rtings.com/router/reviews/tp-link/archer-ax55",
+      "credit": "RTINGS.com",
+      "source_type": "firsthand reviewer product photograph",
+      "synthetic": false,
+      "classification_basis": "review attribution + visual inspection of photographed physical object",
+      "rights": "copyright retained; no open redistribution permission established; private local evaluation only; no external upload authorized by this manifest",
+      "heldout_path": "docs/assets/real-photo-corpus/private/heldout/t05.png",
+      "heldout_sha256": "43d1c0dfe80866eb12a734796e6ac5c18f71b8e3f57985647343156bc72727fa",
+      "transform": {
+        "operation": "crop",
+        "xyxy": [
+          186,
+          71,
+          372,
+          85
+        ],
+        "resize": false
+      },
+      "expected_visible_model": "TP-Link Archer AX55(CA)",
+      "hardware_revision_from_photo": "1.0",
+      "manual_applicability": "pending region/revision/configuration check",
+      "expected_behavior": "Archer AX55(CA) Ver:1.0 directly legible; CANADA, not confirmed US; other unit photos cannot inherit identity",
+      "split": "heldout_only_not_prompt_reference",
+      "correlation_group": "rtings-ax55-unit",
+      "manually_reviewed": true
+    },
+    {
+      "photo_id": "t06",
+      "original_photo_id": "t02",
+      "original_sha256": "b99dc3558315e60562793ff484803c8fceb1a267e7008fc8530003110cfa6e45",
+      "heldout_path": "docs/assets/real-photo-corpus/private/heldout/t06.png",
+      "heldout_sha256": "8521cd5b6f8d8c216041e2835bbdbaa7928c4197a8fe0a6603a9e7857e2279d7",
+      "transform": {
+        "operation": "crop",
+        "xyxy": [
+          290,
+          285,
+          540,
+          375
+        ],
+        "resize": false
+      },
+      "synthetic": false,
+      "source_type": "derived crop of real photograph, not independent sample",
+      "rights": "copyright retained; no open redistribution permission established; private local evaluation only; no external upload authorized by this manifest",
+      "expected_visible_model": null,
+      "hardware_revision_from_photo": null,
+      "expected_behavior": "Partial rear connectors only; ask for existing uncropped/model-label image or typed model, no exact R750 claim",
+      "split": "heldout_only_not_prompt_reference",
+      "correlation_group": "storagereview-r750-unit",
+      "manually_reviewed": true
+    }
+  ],
+  "manuals": [
+    {
+      "document_id": "dell-r750-a11",
+      "path": "docs/assets/real-photo-corpus/private/reference/dell-r750-a11.pdf",
+      "bytes": 55547654,
+      "sha256": "1bdf0df910860207f11a27d9fb7ce6effcb70c0a324ed06e3579d1da6fe6b879",
+      "pdf_signature": true,
+      "page_count": 255,
+      "manufacturer": "Dell",
+      "model": "PowerEdge R750",
+      "document_version": "December 2024 Rev A11",
+      "hardware_region_scope": null,
+      "source_url": "https://dl.dell.com/topicspdf/poweredge-r750_Owners-Manual_en-us.pdf",
+      "support_document_url": null,
+      "support_page": null,
+      "rights": "manufacturer copyright; no full redistribution",
+      "pages": [
+        {
+          "document_id": "dell-r750-a11",
+          "document_sha256": "1bdf0df910860207f11a27d9fb7ce6effcb70c0a324ed06e3579d1da6fe6b879",
+          "pdf_page": 13,
+          "printed_page": "13",
+          "section": "Rear view of the system; Figure 8",
+          "page_rotation": 0,
+          "page_size_points": [
+            0.0,
+            0.0,
+            595.275634765625,
+            841.8897705078125
+          ],
+          "figures": [
+            {
+              "xref": 1729,
+              "path": "docs/assets/real-photo-corpus/private/reference/dell-r750-a11-p13-xref1729.png",
+              "sha256": "551ebc22b850e0195863d906d83032b0989051e4529f76a1e86a6abf9d55b002",
+              "dimensions": [
+                1,
+                1
+              ],
+              "bbox_points": [
+                [
+                  36.85040283203125,
+                  294.3143005371094,
+                  37.09040451049805,
+                  294.5542907714844
+                ]
+              ],
+              "coordinate_system": "unrotated PyMuPDF top-left x0,y0,x1,y1 points",
+              "source_type": "manufacturer diagram/render, NOT real photo"
+            },
+            {
+              "xref": 2169,
+              "path": "docs/assets/real-photo-corpus/private/reference/dell-r750-a11-p13-xref2169.jpeg",
+              "sha256": "d5ff988becadfeb1e2483afe56c5b655887e50c1d88d6c666ff7af5dfc8e309c",
+              "dimensions": [
+                29,
+                29
+              ],
+              "bbox_points": [
+                [
+                  206.40066528320312,
+                  488.70928955078125,
+                  220.32066345214844,
+                  502.6293029785156
+                ]
+              ],
+              "coordinate_system": "unrotated PyMuPDF top-left x0,y0,x1,y1 points",
+              "source_type": "manufacturer diagram/render, NOT real photo"
+            },
+            {
+              "xref": 2205,
+              "path": "docs/assets/real-photo-corpus/private/reference/dell-r750-a11-p13-xref2205.jpeg",
+              "sha256": "c014f25e8bf18c6edf59a67022ca98e26aeaf2ee4f96195b6108e2d266413284",
+              "dimensions": [
+                29,
+                29
+              ],
+              "bbox_points": [
+                [
+                  206.40066528320312,
+                  592.2093505859375,
+                  220.32066345214844,
+                  606.1293334960938
+                ]
+              ],
+              "coordinate_system": "unrotated PyMuPDF top-left x0,y0,x1,y1 points",
+              "source_type": "manufacturer diagram/render, NOT real photo"
+            },
+            {
+              "xref": 2264,
+              "path": "docs/assets/real-photo-corpus/private/reference/dell-r750-a11-p13-xref2264.jpeg",
+              "sha256": "4c660aca73c0b441242d72f2962251cfa85e720f82cf64d77ec022ce47e5ad5a",
+              "dimensions": [
+                1630,
+                508
+              ],
+              "bbox_points": [
+                [
+                  141.15780639648438,
+                  144.44332885742188,
+                  454.1178283691406,
+                  241.97933959960938
+                ]
+              ],
+              "coordinate_system": "unrotated PyMuPDF top-left x0,y0,x1,y1 points",
+              "source_type": "manufacturer diagram/render, NOT real photo"
+            },
+            {
+              "xref": 2403,
+              "path": "docs/assets/real-photo-corpus/private/reference/dell-r750-a11-p13-xref2403.png",
+              "sha256": "fbacab08b2d6c35817258bcefb7096ac82aa246276d4408e1285dea1dff7c44c",
+              "dimensions": [
+                68,
+                37
+              ],
+              "bbox_points": [
+                [
+                  206.40066528320312,
+                  552.809326171875,
+                  222.72071838378906,
+                  561.6893310546875
+                ]
+              ],
+              "coordinate_system": "unrotated PyMuPDF top-left x0,y0,x1,y1 points",
+              "source_type": "manufacturer diagram/render, NOT real photo"
+            },
+            {
+              "xref": 2441,
+              "path": "docs/assets/real-photo-corpus/private/reference/dell-r750-a11-p13-xref2441.jpeg",
+              "sha256": "595e341a429017ba9adfc0c97032325df1b823a9209fd36d1466b220ecacc45b",
+              "dimensions": [
+                29,
+                29
+              ],
+              "bbox_points": [
+                [
+                  206.40066528320312,
+                  620.809326171875,
+                  220.32066345214844,
+                  634.7293090820312
+                ]
+              ],
+              "coordinate_system": "unrotated PyMuPDF top-left x0,y0,x1,y1 points",
+              "source_type": "manufacturer diagram/render, NOT real photo"
+            },
+            {
+              "xref": 2456,
+              "path": "docs/assets/real-photo-corpus/private/reference/dell-r750-a11-p13-xref2456.jpeg",
+              "sha256": "506939d48cef630eb4bbf941f6687c5de3d596ffe70642a418ca0acd1c4c6f75",
+              "dimensions": [
+                40,
+                29
+              ],
+              "bbox_points": [
+                [
+                  206.40066528320312,
+                  645.5093383789062,
+                  225.6006622314453,
+                  659.4293212890625
+                ]
+              ],
+              "coordinate_system": "unrotated PyMuPDF top-left x0,y0,x1,y1 points",
+              "source_type": "manufacturer diagram/render, NOT real photo"
+            },
+            {
+              "xref": 2473,
+              "path": "docs/assets/real-photo-corpus/private/reference/dell-r750-a11-p13-xref2473.jpeg",
+              "sha256": "877655fc96d46dbde8d09fb437dea58d2e25c3f97d86d1ff4039fce68ff4efa4",
+              "dimensions": [
+                29,
+                29
+              ],
+              "bbox_points": [
+                [
+                  206.40066528320312,
+                  674.109375,
+                  220.32066345214844,
+                  688.0293579101562
+                ]
+              ],
+              "coordinate_system": "unrotated PyMuPDF top-left x0,y0,x1,y1 points",
+              "source_type": "manufacturer diagram/render, NOT real photo"
+            }
+          ]
+        }
+      ],
+      "ingestion_stages": {
+        "downloaded_or_archived": true,
+        "pdf_parsed": true,
+        "selected_pages_extracted": true,
+        "local_index_ready": true,
+        "backend_registered_by_this_task": false,
+        "runtime_ingestion_verified": false,
+        "guide_approved": false
+      }
+    },
+    {
+      "document_id": "tplink-ax55-us-v1-current",
+      "path": "docs/assets/real-photo-corpus/private/ax55-v1-current-support.pdf",
+      "bytes": 13329838,
+      "sha256": "bf98a8b821f81446c5afcf76c3793a380f717c366da635b07dbc96b539d21818",
+      "pdf_signature": true,
+      "page_count": 122,
+      "manufacturer": "TP-Link",
+      "model": "Archer AX55",
+      "document_version": "1910013020 REV1.0.0",
+      "hardware_region_scope": "US V1 support linkage; device match still required",
+      "source_url": "https://static.tp-link.com/upload/manual/2022/202203/20220321/1910013020_Archer%C2%A0AX55_UG_REV1.0.0.pdf",
+      "support_document_url": "https://www.tp-link.com/us/document/79681/",
+      "support_page": "https://www.tp-link.com/us/support/download/archer-ax55/v1/",
+      "rights": "manufacturer copyright; no full redistribution",
+      "pages": [
+        {
+          "document_id": "tplink-ax55-us-v1-current",
+          "document_sha256": "bf98a8b821f81446c5afcf76c3793a380f717c366da635b07dbc96b539d21818",
+          "pdf_page": 9,
+          "printed_page": "5",
+          "section": "1.2.2 Back Panel",
+          "page_rotation": 0,
+          "page_size_points": [
+            0.0,
+            0.0,
+            598.1099853515625,
+            790.8660278320312
+          ],
+          "figures": [
+            {
+              "xref": 209,
+              "path": "docs/assets/real-photo-corpus/private/reference/tplink-ax55-us-v1-current-p9-xref209.jpx",
+              "sha256": "6ef09532a6732c9a379624a27079498a42f72945fc4260f468caa647d41fbb2a",
+              "dimensions": [
+                1391,
+                1016
+              ],
+              "bbox_points": [
+                [
+                  132.19345092773438,
+                  403.2211608886719,
+                  465.9168395996094,
+                  646.8392333984375
+                ]
+              ],
+              "coordinate_system": "unrotated PyMuPDF top-left x0,y0,x1,y1 points",
+              "source_type": "manufacturer diagram/render, NOT real photo"
+            }
+          ]
+        },
+        {
+          "document_id": "tplink-ax55-us-v1-current",
+          "document_sha256": "bf98a8b821f81446c5afcf76c3793a380f717c366da635b07dbc96b539d21818",
+          "pdf_page": 10,
+          "printed_page": "6",
+          "section": "Button and Port Explanation",
+          "page_rotation": 0,
+          "page_size_points": [
+            0.0,
+            0.0,
+            598.1099853515625,
+            790.8660278320312
+          ],
+          "figures": []
+        }
+      ],
+      "ingestion_stages": {
+        "downloaded_or_archived": true,
+        "pdf_parsed": true,
+        "selected_pages_extracted": true,
+        "local_index_ready": true,
+        "backend_registered_by_this_task": false,
+        "runtime_ingestion_verified": false,
+        "guide_approved": false
+      }
+    },
+    {
+      "document_id": "tplink-ax55-seed-202112",
+      "path": "docs/assets/real-photo-corpus/private/ax55-v1.pdf",
+      "bytes": 13282972,
+      "sha256": "3ad5e85387a97fd6cb289893204809bec7476fde17f6e9a613fa4960653dac39",
+      "pdf_signature": true,
+      "page_count": 122,
+      "manufacturer": "TP-Link",
+      "model": "Archer AX55",
+      "document_version": "1910013020 REV1.0.0",
+      "hardware_region_scope": null,
+      "source_url": "https://static.tp-link.com/upload/manual/2021/202112/20211230/1910013020_Archer%20AX55_UG_REV1.0.0.pdf",
+      "support_document_url": null,
+      "support_page": "https://www.tp-link.com/us/support/download/archer-ax55/v1/",
+      "rights": "manufacturer copyright; no full redistribution",
+      "pages": [],
+      "ingestion_stages": {
+        "downloaded_or_archived": true,
+        "pdf_parsed": true,
+        "selected_pages_extracted": false,
+        "local_index_ready": false,
+        "backend_registered_by_this_task": false,
+        "runtime_ingestion_verified": false,
+        "guide_approved": false
+      }
+    }
+  ],
+  "split_policy": "heldout photographs and all their crops never enter reference index or prompts; review groups are correlated, not 6 independent devices"
+}

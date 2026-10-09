@@ -1,0 +1,54 @@
+[
+  {
+    "evidence_id": "dell-r750-a11-vga",
+    "document_id": "dell-r750-a11",
+    "document_version": "December 2024 Rev A11",
+    "pdf_page": 13,
+    "printed_page": "13",
+    "section": "Rear view of the system; Figure 8",
+    "quote": "VGA port",
+    "source_url": "https://dl.dell.com/topicspdf/poweredge-r750_Owners-Manual_en-us.pdf",
+    "document_sha256": "1bdf0df910860207f11a27d9fb7ce6effcb70c0a324ed06e3579d1da6fe6b879",
+    "supported_actions": [],
+    "review_status": "observation-only candidate; not runtime approved"
+  },
+  {
+    "evidence_id": "tplink-ax55-us-v1-current-rear",
+    "document_id": "tplink-ax55-us-v1-current",
+    "document_version": "1910013020 REV1.0.0",
+    "pdf_page": 9,
+    "printed_page": "5",
+    "section": "1.2.2 Back Panel",
+    "quote": "Back Panel",
+    "source_url": "https://static.tp-link.com/upload/manual/2022/202203/20220321/1910013020_Archer%C2%A0AX55_UG_REV1.0.0.pdf",
+    "document_sha256": "bf98a8b821f81446c5afcf76c3793a380f717c366da635b07dbc96b539d21818",
+    "supported_actions": [],
+    "review_status": "observation-only candidate; not runtime approved"
+  },
+  {
+    "evidence_id": "tplink-ax55-us-v1-current-wan",
+    "document_id": "tplink-ax55-us-v1-current",
+    "document_version": "1910013020 REV1.0.0",
+    "pdf_page": 10,
+    "printed_page": "6",
+    "section": "Button and Port Explanation",
+    "quote": "WAN Port",
+    "source_url": "https://static.tp-link.com/upload/manual/2022/202203/20220321/1910013020_Archer%C2%A0AX55_UG_REV1.0.0.pdf",
+    "document_sha256": "bf98a8b821f81446c5afcf76c3793a380f717c366da635b07dbc96b539d21818",
+    "supported_actions": [],
+    "review_status": "observation-only candidate; not runtime approved"
+  },
+  {
+    "evidence_id": "tplink-ax55-us-v1-current-lan",
+    "document_id": "tplink-ax55-us-v1-current",
+    "document_version": "1910013020 REV1.0.0",
+    "pdf_page": 10,
+    "printed_page": "6",
+    "section": "Button and Port Explanation",
+    "quote": "LAN Port (1-4)",
+    "source_url": "https://static.tp-link.com/upload/manual/2022/202203/20220321/1910013020_Archer%C2%A0AX55_UG_REV1.0.0.pdf",
+    "document_sha256": "bf98a8b821f81446c5afcf76c3793a380f717c366da635b07dbc96b539d21818",
+    "supported_actions": [],
+    "review_status": "observation-only candidate; not runtime approved"
+  }
+]
