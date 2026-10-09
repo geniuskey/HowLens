@@ -1,36 +1,36 @@
-# Baseline APK delivery recovery
+# Existing App APK delivery follow-up
 
-## Artifact
+## Artifact provenance
 
-- Source: immutable App commit `0e2aa94a93db5f2ab2cfc8f7e1a834b4e69eb6e1`
-  (`geniuskey/feat-ui-foundation`), extracted with `git archive` outside both
-  active worktrees.
-- Build: `./gradlew --no-daemon :app:assembleDebug` — **BUILD SUCCESSFUL**.
-- Size: `10,341,344` bytes.
-- SHA-256: `88eb7eac202b15a32baf1ee61490083c42c8fd776fb85dd3ff2de8d4410122e`.
-- Delivery stage contains only the APK and `manifest.txt`.
+- Source commit: immutable `57405bb4811f67bb49ea779d883fd2937c98fd7d`
+  (`geniuskey/feat-ui-foundation`).
+- Source APK: `/Users/edwin/orca/workspaces/HowLens/feat-ui-foundation/android/app/build/outputs/apk/debug/app-debug.apk`.
+- Method: copied the explicitly provided, pre-existing APK read-only; no rebuild or
+  access to other App outputs.
+- Staged filename: `howlens-app-57405bb-debug.apk`.
+- Size: `15,034,933` bytes.
+- SHA-256: `2b39251176178975fd0a9228da55a88903d879e7d2cc9fd4dcdb695d128abb25`.
+- The private stage contains only that APK and `manifest.txt`.
 
-## Private LAN service
+## Private LAN delivery
 
-- APK: `http://10.102.72.225:8765/howlens-baseline-0e2aa94-debug.apk`
+- APK: `http://10.102.72.225:8765/howlens-app-57405bb-debug.apk`
 - Manifest: `http://10.102.72.225:8765/manifest.txt`
-- Dedicated server PID: `98131` (exec session `87904`), bound only to private address `10.102.72.225`,
-  port `8765`.
-- Launch command: `python3 /tmp/howlens_delivery_server_task90.py
-  /var/folders/nq/_sblkr657y90dnzcs4c0w8qh0000gn/T/howlens-baseline-delivery-zio6jmlx
+- Stage: `/var/folders/nq/_sblkr657y90dnzcs4c0w8qh0000gn/T/howlens-app57405bb-delivery-mmnf_fga`.
+- Dedicated server PID: `22008`, bound only to private address `10.102.72.225`,
+  port `8765`; exec session `87763`.
+- Launch command: `python3 /tmp/howlens_delivery_server_57405bb.py
+  /var/folders/nq/_sblkr657y90dnzcs4c0w8qh0000gn/T/howlens-app57405bb-delivery-mmnf_fga
   10.102.72.225 8765 1200`.
-- The server serves only the staged APK and manifest, stops accepting requests
-  after two complete APK responses, and has a 20 minute hard timeout. Cleanup owner: this worker;
-  if required before auto-exit, stop only PID `98131`.
-- Receipt `1/2` completed at `2026-10-09T03:34:58Z`: HTTP 200 and all
-  `10,341,344` APK bytes sent; awaiting receipt `2/2` before service shutdown.
-- Receipt `2/2`: HTTP 200 and all `10,341,344` APK bytes sent. The server
-  printed `SERVER_STOPPED receipts=2`, then this worker sent `SIGTERM` to PID
-  `98131` to clear the still-pending 20 minute timer; process and listener are
-  confirmed stopped.
-- Backend independently confirmed receipt `1/2` had the expected SHA-256. No
-  hash confirmation was received for the second client.
+- The service permits only the named APK and manifest, shuts down after two
+  complete APK GET responses, and has a 20 minute timeout. Cleanup owner: this
+  worker, which will stop only PID `22008` after the second receipt or timeout.
+- Receipt 1/2 completed at `2026-10-09T03:49:06Z`: HTTP 200; all `15,034,933` APK bytes sent.
+- Receipt 2/2 completed at `2026-10-09T03:51:24Z`: HTTP 200; all `15,034,933` APK bytes sent.
+- Server printed `SERVER_STOPPED receipts=2`; process PID `22008` exited and port `8765` is confirmed closed. No recipient-side hash confirmations were provided.
 
-No physical device was controlled, no public upload was made, and no active
-App worktree outputs or credentials were accessed. The private server is now
-stopped after two complete downloads.
+## Scope and QA
+
+- No physical device was controlled. Three-device QA remains separate and is
+  still pending the local test workers.
+- No public upload, credential access, product edits, or rebuild was performed.
