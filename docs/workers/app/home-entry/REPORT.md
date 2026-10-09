@@ -37,6 +37,8 @@ actions were added. Product and documentation commits are separate.
   `/var/folders/69/r13269yn5wn5ydgqj5c6r0qh0000gn/T/howlens-home-entry-24x2nzfg`.
 - Exported only immutable baseline `android/`, then copied the new component;
   no active primary code was included.
+- Compared all 25 archived baseline files byte-for-byte after compilation:
+  all unchanged; the added component exactly matches the product commit.
 - Initial offline `:app:compileDebugKotlin` failed during project configuration
   because required Gradle artifacts were not cached. No Kotlin compilation ran.
 - Online retry resolved configuration dependencies but failed before Kotlin
@@ -47,7 +49,7 @@ actions were added. Product and documentation commits are separate.
   `:app:compileDebugKotlin` passed: **BUILD SUCCESSFUL in 27s**, exit code 0,
   14 executed tasks. The Kotlin daemon logged a startup termination on its first
   attempt, then the build completed successfully without source diagnostics.
-  The final build output is preserved in `compile.log` next to this report.
+  The final build output is preserved in `build-output.txt` next to this report.
 - No device/emulator commands, screenshots, instrumentation tests or live camera
   interaction were performed. Runtime accessibility remains unverified.
 - No unit tests were added: a callback-only UI has no new business logic, and
