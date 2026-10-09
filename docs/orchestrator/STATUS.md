@@ -478,3 +478,13 @@ Galaxy5G publicHTTPShealthdisplay while adb reverse listempty. Screenshot owned
 docs/workers/app/tunnel-qa/galaxy-public-health.png; no paidAPI. Externalphone
 transport now proven, newauthAPKphysicalanalysis stillpending. Homeproductonly
 bd0d642f3c6a019f335289f4f7dcf003949514ca routedApp, compilepending.
+
+## 13:31 user-authorized continuous main integration and photo intake
+
+User explicitly requested fast ongoing main merges and immediate visible update on Galaxy; this authorizes Coordinator integration without another approval question. Android c503674 (productab20cc3), Backendd00384a and Visual890abd4 merged conflict-free and pushed main51f8a01. Exact product-tree equality checked against the respective verified branch; Android36JVM/lint0errors12warnings, Backend123offline and Visual30tests are Worker evidence. Combined main test run is now being prepared. Two Markdown hard-break trailing spaces were observed in historical app report; no product diff issue.
+
+Integrated APKab20cc3 SHA25672c8ddc53b8c9ffd40c460028d845aba9c454f6e57d2e7689e7c0ffd2a78998e is available to both phone testers; Galaxy verified download. Newdebugsigner initially prevented update; exact QA-package reinstall completed with auth-only55a8583, integrated update can now install-r. User-visible Home proof is priority and pending. Temporary plain APK delivery terminalterm_aea709ea-00a7-4b49-acc6-999cd7562b7b must close after both testers download integrated app/testAPKs; root server8765 holds only APKs.
+
+User supplied9 real JPG originals in main docs; preserveuntracked originals and UI_REQUIREMENTS.md. SHA256/bytes manifest references/user-photo-intake-20261009.json. Private SSH copy /tmp/howlens-user-photos-20261009 onBackendhost hashverified9/9. No publicimageupload/Gitbinarycommit. Root visually read SamsungRF60A91C3AP, CUCKOOAC-35U20FWS, SKMagicWPU-B600F labels; coffeemachine exactmodelunknown. AppWorker decoded9/9, max12MP/7025339bytes, orientation1; actual inference notrun.
+
+New Astra김태완 research task_0ba5771151fe/ctx_0bef108f4793 uses existingresearchterminal9402afd0, official exact-KR manuals and independent wholephoto/label evaluation. Root opened SamsungKRsupport exactRF60A91C3AP, CUCKOOofficialproduct5241 andSKMagicmanualsearch; no exactPDF ingestion yet. Backendfollowup task_95b60ecd94f3/ctx_e6f3dcf25970 activatesdiscovery afterbothQAidle, preservesgateway/tunnel/key/attemptledger, then capped2CUCKOOrequests maxUSD1 (whole+label, no modelhint), actualmetrics required. Visual pairedSunburstlow/medium3cases selected,6attempt/$6 bound, executiononlyBackendownerkey afterrunnerdelivery.

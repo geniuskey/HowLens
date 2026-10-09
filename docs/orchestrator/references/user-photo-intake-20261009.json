@@ -1,0 +1,50 @@
+{
+  "source": "user-supplied real photos; originals remain docs/*.jpg",
+  "files": [
+    {
+      "file": "137681a773828da5.jpg",
+      "bytes": 820838,
+      "sha256": "eabcda5421dda9086a3cb354d234df34c40cc1b33038c82cfa5a869c92b62fcf"
+    },
+    {
+      "file": "16197495f93c0545.jpg",
+      "bytes": 5283395,
+      "sha256": "95eaa5086bb2590753bd1da12c28ec6f7f30f0d3b7d7f97543ab22c48e58e488"
+    },
+    {
+      "file": "2edbff3ad97392f2.jpg",
+      "bytes": 6022945,
+      "sha256": "f4ff4c15f0e99f2902099b2fafccc1f1cd2da0654bf7e9f7eedb97e52e854005"
+    },
+    {
+      "file": "37771b794b19699e.jpg",
+      "bytes": 5570650,
+      "sha256": "83c5c4c537322b357b4f6b4693bdf2de29d64a6d311c71a55f1bcbfde546c0f2"
+    },
+    {
+      "file": "4015b4013bb71d9f.jpg",
+      "bytes": 806584,
+      "sha256": "6e835d76cc825c9f8af372b45db24eecc003ff05134311dfd308fb259b2d3a37"
+    },
+    {
+      "file": "933cd59f8afc7f43.jpg",
+      "bytes": 3170334,
+      "sha256": "ec5439e1a3767945a6d125d643d8ea98fefba554bf80bc8a7e445a76a253b74c"
+    },
+    {
+      "file": "98ca76178e51d1f5.jpg",
+      "bytes": 7025339,
+      "sha256": "72cb51f8107543dfdeaeac37c87a13833ae178fbf6d2c3ac4e2e33eb90d48003"
+    },
+    {
+      "file": "c9a7bd3a11f4b154.jpg",
+      "bytes": 551007,
+      "sha256": "7dc8dda067a313de7e17eb1efef939584c0a96140e62e4b44699b4c493111d05"
+    },
+    {
+      "file": "ed979618bc94654a.jpg",
+      "bytes": 5329770,
+      "sha256": "e478cab5f7713b5e3b534efecf0c4af8b7163a292df7b15bfc590671a9a1c436"
+    }
+  ]
+}
