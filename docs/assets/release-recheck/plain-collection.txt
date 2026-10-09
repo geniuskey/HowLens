@@ -1,0 +1,6 @@
+Snapshot: /tmp/howlens-w5-recheck-0HdjyM/backend
+Command: env -i PATH=/opt/homebrew/bin:/usr/bin:/bin HOME=/tmp/howlens-w5-recheck-0HdjyM PYTHONDONTWRITEBYTECODE=1 /tmp/howlens-w5-recheck-0HdjyM/venv/bin/python -m pytest --collect-only -q
+Working directory: /tmp/howlens-w5-recheck-0HdjyM/backend
+Pytest options came only from backend/pyproject.toml; no CLI import-mode/path overrides.
+Result: 75 tests collected in 1.52s; exit 0. Collection only; runtime tests were not run.
+Warning: StarletteDeprecationWarning for httpx with starlette.testclient.
