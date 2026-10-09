@@ -31,7 +31,10 @@ data class AnalysisUiState(
     val verification: Verification? = null, val verificationError: String? = null,
     val confirmation: String = ""
 )
-class AnalysisViewModel(initialState: AnalysisUiState = AnalysisUiState()) : ViewModel() {
+class AnalysisViewModel(
+    initialState: AnalysisUiState = AnalysisUiState(),
+    private val repositoryFactory: (String) -> HttpAnalysisRepository = { url -> HttpAnalysisRepository(url) }
+) : ViewModel() {
     private val mutable = MutableStateFlow(initialState)
     val state = mutable.asStateFlow()
     private var analysisJob: Job? = null
@@ -116,7 +119,7 @@ class AnalysisViewModel(initialState: AnalysisUiState = AnalysisUiState()) : Vie
         analysisJob = viewModelScope.launch {
             try {
                 val repository: AnalysisRepository = if (input.offline) FakeAnalysisRepository(input.scenario)
-                    else HttpAnalysisRepository(input.baseUrl.trim())
+                    else repositoryFactory(input.baseUrl.trim())
                 val result = repository.analyze(input.deviceId, input.question, requireNotNull(input.photo))
                 if (generation == workGeneration) mutable.update { it.copy(phase = Phase.RESULT, analysis = result, visualAttempts = 0,
                     visualPanels = emptyList(), visualImages = emptyMap(), visualError = null,
@@ -142,7 +145,7 @@ class AnalysisViewModel(initialState: AnalysisUiState = AnalysisUiState()) : Vie
             updateVisual(work, request, analysisId) { it.copy(visualLoading = true, visualAttempts = attempt, visualError = null,
                 visualPanels = emptyList(), visualImages = emptyMap()) }
             try {
-                val repo = HttpAnalysisRepository(input.baseUrl.trim())
+                val repo = repositoryFactory(input.baseUrl.trim())
                 var visual = repo.createVisual(analysis)
                 require(visual.analysisId == analysis.analysisId && visual.mode == Mode.LIVE) {
                     "서버 이미지 작업이 요청 분석과 일치하지 않습니다. 텍스트 안내는 유지됩니다."
@@ -196,7 +199,7 @@ class AnalysisViewModel(initialState: AnalysisUiState = AnalysisUiState()) : Vie
         verificationTask = viewModelScope.launch {
             updateVerification(work, request, analysisId) { it.copy(verificationBusy = true, verificationError = null, verification = null) }
             try {
-                val result = HttpAnalysisRepository(input.baseUrl.trim()).verify(analysis, photo, input.confirmation)
+                val result = repositoryFactory(input.baseUrl.trim()).verify(analysis, photo, input.confirmation)
                 require(result.mode == Mode.LIVE && result.analysisId == analysis.analysisId &&
                     result.evidenceIds.all { id -> analysis.evidence.any { it.evidenceId == id } }) {
                     "비교 응답을 원 분석 근거와 연결할 수 없습니다."

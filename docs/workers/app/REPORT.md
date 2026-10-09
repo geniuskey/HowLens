@@ -155,6 +155,14 @@ Implemented the approved Runixs/Team Lead blue photo-first direction across the 
 - A prior W3 picker pass also selected the 68-byte synthetic decoder fixture; its review screen is retained at `screenshots/w3-galaxy-synthetic-gallery.png`.
 - Physical permission: CAMERA was granted before testing. App-level revoke exposed the first-grant Android prompt; afterward permission reported granted and CameraX preview was visible, but no human action confirmation was received. Denial/settings-return remain pending; the coordinator was asked to have Kim Euiyun tap **허용 안함** once on the Galaxy, with the expected result of CAMERA remaining denied and the app showing its photo fallback. This is not claimed as a human PASS.
 
+### W4 local follow-up (2026-10-09)
+
+- Integrated the data helper's instance-scoped PNG decoder seam through `AnalysisViewModel.repositoryFactory` and repaired only the owned `FoundationTest` fixture with a valid PNG plus injected decoder. Repository and model sources were not changed in this follow-up.
+- Verification on the current branch: `:app:testDebugUnitTest` passed 22/22; `:app:assembleDebug :app:lintDebug` completed successfully. The pre-fix run reproduced one five-second timeout in `liveGuideVisualRequestLoadsNineOrderedPanelsAndSameServerAssets`; the failure was the JVM Android `BitmapFactory` stub combined with the invalid IDAT CRC fixture documented in `data-hardening/REPORT.md`.
+- Built APK: `android/app/build/outputs/apk/debug/app-debug.apk`, 15,034,933 bytes, SHA-256 `e3bbedc6e1fe226259d3ce5541087c6e58ccb6f91e4bddb97d40f36cc480e6fb`. `adb install -r` succeeded on Galaxy serial `R5KL20H60TN`; a read-only pull of installed `base.apk` matched the same SHA-256. The device was locked immediately after install, so the new build's post-install UI launch was not verified and no unlock action was attempted.
+- Before this rebuild, the user-provided MacBook Pro and Logitech MX Anywhere 2S camera photos were selected separately through the exact-name DocumentsUI search and displayed in HowLens frozen review. The MacBook image includes a device serial, so neither image was copied into the repository, retained on this workstation, uploaded, analyzed, or included in screenshots. No backend request was made.
+- Remaining: unlock-dependent launch check for the new APK; gallery selection on the new build; three-device delivery confirmation; physical permission denial/settings-return action remains unconfirmed.
+
 ### W3 changed paths
 
 - `android/app/build.gradle.kts`
