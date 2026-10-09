@@ -1,0 +1,13 @@
+{
+  "text_input": 0.5,
+  "cached_text_input": null,
+  "image_input": 0.5,
+  "cached_image_input": null,
+  "image_output": 60,
+  "text_output": 3,
+  "output_image_proxy_usd": 0.0672,
+  "currency": "USD",
+  "checked_at": "2026-10-09",
+  "scope": "Standard; 1024 square low for GPT legacy proxies; 1K for Gemini; input token counts exclusive of cached counts",
+  "source": "https://ai.google.dev/gemini-api/docs/pricing"
+}

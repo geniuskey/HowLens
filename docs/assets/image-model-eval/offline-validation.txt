@@ -1,0 +1,36 @@
+COMMAND ['-m', 'unittest', 'evaluation.image_models.test_protocol', '-v']
+test_cost_proxy_and_tokens_not_double_counted (evaluation.image_models.test_protocol.ProtocolTests.test_cost_proxy_and_tokens_not_double_counted) ... ok
+test_exclude_offline_measurement (evaluation.image_models.test_protocol.ProtocolTests.test_exclude_offline_measurement) ... ok
+test_geometry_and_order (evaluation.image_models.test_protocol.ProtocolTests.test_geometry_and_order) ... ok
+test_latency_threshold_and_unknown_cost (evaluation.image_models.test_protocol.ProtocolTests.test_latency_threshold_and_unknown_cost) ... ok
+test_plan_no_measurement_or_approval (evaluation.image_models.test_protocol.ProtocolTests.test_plan_no_measurement_or_approval) ... ok
+test_reject_dry_run_latency (evaluation.image_models.test_protocol.ProtocolTests.test_reject_dry_run_latency) ... ok
+test_retry_error_and_config_separation (evaluation.image_models.test_protocol.ProtocolTests.test_retry_error_and_config_separation) ... ok
+test_scoring_requires_humans_and_preserves_text (evaluation.image_models.test_protocol.ProtocolTests.test_scoring_requires_humans_and_preserves_text) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.036s
+
+OK
+
+EXIT 0
+
+COMMAND ['-c', 'import json,jsonschema; s=json.load(open("evaluation/image_models/run-result.schema.json")); jsonschema.Draft202012Validator.check_schema(s); rows=[json.loads(x) for x in open("docs/assets/image-model-eval/dry-run.jsonl")]; [jsonschema.validate(r,s) for r in rows]; print("6 dry-run records schema-valid")']
+6 dry-run records schema-valid
+
+EXIT 0
+
+COMMAND ['-m', 'evaluation.image_models.protocol', 'estimate', '--rate', 'evaluation/image_models/gpt-image-1.5.rate.json', '--usage', 'evaluation/image_models/usage.example.json']
+{"estimated_usd": 0.0115, "actual_usd": null}
+
+EXIT 0
+
+COMMAND ['-m', 'evaluation.image_models.protocol', 'summary', '--results', 'docs/assets/image-model-eval/dry-run.jsonl']
+{
+  "live_groups": {},
+  "dry_run_count": 6,
+  "excluded_nonlive_count": 0,
+  "statistics_policy": "n<20: raw only; otherwise nearest-rank percentiles of successes, failures separate"
+}
+
+EXIT 0
