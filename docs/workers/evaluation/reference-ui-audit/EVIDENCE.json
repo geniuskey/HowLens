@@ -1,0 +1,174 @@
+{
+  "recorded_at": "2026-10-09T13:44:52.861481+09:00",
+  "sources": [
+    {
+      "path": "/Users/runixs/HowLens/docs/mockups/reference-ui/index.html",
+      "sha256": "a4d7a150831b351665e51c28caec607c94037432304f04c263a3e16179662aa7"
+    },
+    {
+      "path": "/Users/runixs/HowLens/docs/mockups/reference-ui/app.js",
+      "sha256": "be7d3b91b70ae75a6c90ba731014de5dfb2eb29abd405ec1ce29393f3da395f8"
+    },
+    {
+      "path": "/Users/runixs/HowLens/docs/mockups/reference-ui/style.css",
+      "sha256": "37028c0f05b5475e6fcc76d8238f21ed96ae0e5de98526c19fe1457e919ddf09"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/help-sent.png",
+      "sha256": "3109bbd20dc2f0ad049fe7855faac7fa2498f60e64e5271fb8e60123edae8c09",
+      "bytes": 50915
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/home-320.png",
+      "sha256": "128e650c787059af81c8821d366cad75b9f524bc516a8a61f267ba0a554c23dc",
+      "bytes": 177714
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/preview.png",
+      "sha256": "ede2c58b802acf03915d42e63093d5359955c6ed312aa7dd3a0bd1f1e74ce212",
+      "bytes": 188789
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/edge-cases.json",
+      "sha256": "ebbf7cb0a41c09f3569983dfb4ed9367a8da4c132d24a6e171c68e7c4df5bedf",
+      "bytes": 22364
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/camera-fallback-final.png",
+      "sha256": "da60673d11d0a834e0961859c103e44a6d4d07f450cd1952995633ebf44a4927",
+      "bytes": 17474
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/second-guide-confirmation.png",
+      "sha256": "171a80cd9163d092f9e754cac848d55a86c4401bda495025da8b24b8f11a4c04",
+      "bytes": 30054
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/direct-hash.png",
+      "sha256": "0cd31fce1f6f8ef60660d662f7795e1fcc0b819a2278a358c0ab677176ba0cf2",
+      "bytes": 216643
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/empty-search.png",
+      "sha256": "b79402e633902a10e33fd1e3cd6bc123142e736289922f166a6c0f75515db46e",
+      "bytes": 25506
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/large-text-320.png",
+      "sha256": "5fa7caa47bf7a4691018bf09a29d73c30954b79cca56ecd21835b17e9382f069",
+      "bytes": 186871
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/help-short-viewport.png",
+      "sha256": "3630eb732b30b244c5c7ad0eb67e5de001e761effbb4e9664d8abf455ca9ce51",
+      "bytes": 19898
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/confirmation-done.png",
+      "sha256": "1b2cd13fc0072072df7b50fc22865e2442b3b9cf5937a5e58f99f6cd676d317f",
+      "bytes": 197351
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/home-390.png",
+      "sha256": "c1ccb4378e32f0229e8d67d43a56568b53b57db68615d8cee34d2b6672ed3fca",
+      "bytes": 205151
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/search.png",
+      "sha256": "0cd31fce1f6f8ef60660d662f7795e1fcc0b819a2278a358c0ab677176ba0cf2",
+      "bytes": 216643
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/direct-hash-reload.png",
+      "sha256": "c1ccb4378e32f0229e8d67d43a56568b53b57db68615d8cee34d2b6672ed3fca",
+      "bytes": 205151
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/profile-saved.png",
+      "sha256": "fe1058b004902ddbf37f13868a8d326cc15c4076e0276738b5aa7f9544e6913a",
+      "bytes": 80470
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/interactions.json",
+      "sha256": "5d11260862589dad2b48fcdafc508f5a76499c7c23da6b605987e4281acd9c8b",
+      "bytes": 32679
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/notifications.png",
+      "sha256": "39bb32c9e02748d667369b8234e026d3add2fb72a7a676a6f09c922dbc4e4646",
+      "bytes": 21393
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/home-1280.png",
+      "sha256": "e84836f77b574ca22b0d29a98478db5f91701d53f3d56f649fb83ce112bb31df",
+      "bytes": 289632
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/camera-denied.png",
+      "sha256": "bf2fcedde1cc722a9dd16d6729f742be960f8a67eb616725d5fd2b876e28bb5c",
+      "bytes": 16120
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/invalid-image.png",
+      "sha256": "49a9dc3606dc25e7abd3187cc07526b5fa5a7c35137394badd04aa422ce35373",
+      "bytes": 21019
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/history-back.png",
+      "sha256": "72b3c03be5423fc37e88f0928c13a4a6b8180d491b408d7b64d1eae03d12e82d",
+      "bytes": 183359
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/home-dom.json",
+      "sha256": "0227d254942cbfa217589e12ee9e6bcaccf10ca2ea78c90356e86f25d281ad82",
+      "bytes": 12305
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/profile.png",
+      "sha256": "facd51e09129f72e4d586e915e02e6a39ab19074973b7ea6be2bda0fde32cba5",
+      "bytes": 32923
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/return-home.png",
+      "sha256": "c1ccb4378e32f0229e8d67d43a56568b53b57db68615d8cee34d2b6672ed3fca",
+      "bytes": 205151
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/analysis.png",
+      "sha256": "d73a77df4116ff403a9908ae69db185bb18f5a200c5bbac40632840e284b698e",
+      "bytes": 195529
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/central-camera.png",
+      "sha256": "da60673d11d0a834e0961859c103e44a6d4d07f450cd1952995633ebf44a4927",
+      "bytes": 17474
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/summary.png",
+      "sha256": "fe2d51a252591748912ea6aee8ff19453f58e87e91e4f62c3f26ee02d0c66a05",
+      "bytes": 164520
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/final-checks.json",
+      "sha256": "fa4b87a59946edfbb949a90f21b28fed3423794e6e4fa6ec90bee2fb60421948",
+      "bytes": 9141
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/guide1.png",
+      "sha256": "21325c23a01f28bc20a08f904480187c7b42b233bbf5213a8ffde4f5509765f7",
+      "bytes": 193492
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/confirmation-unchecked.png",
+      "sha256": "a69473294e66f7c3e94c823e969c89228afeca5a14b1f2b8ef29f15025aa139c",
+      "bytes": 197621
+    },
+    {
+      "path": "docs/workers/evaluation/reference-ui-audit/evidence/profile-cleared.png",
+      "sha256": "1f591a88d41a3d5b48fb1b88b83664449e878e226d3f323969f4f6bef926a7b5",
+      "bytes": 33247
+    }
+  ]
+}

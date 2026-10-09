@@ -1,0 +1,566 @@
+[
+  {
+    "width": 320,
+    "scrollWidth": 320,
+    "title": "HowLens · reference UI demo",
+    "text": "How\nLens\nPC 문제,\n보면 바로\n알 수 있어요.\n\n사진으로 확인하고\n차근차근 따라가세요.\n\n지금 촬영하기\n조립하기\n부품 교체\n문제 해결\n업그레이드\n추천 가이드\n전체보기 ›\n그래픽카드 장착하기\n장착 전 알아둘 것 · 예시\nSSD 교체하기\n모델과 규격 확인 · 예시\n\n인터랙션 데모 · 실제 AI 진단이 아닙니다.\n\n홈\n가이드\n촬영하기\nAI 도움\n내 정보",
+    "buttons": [
+      {
+        "tag": "BUTTON",
+        "text": "How\nLens",
+        "aria": "HowLens 홈",
+        "id": "",
+        "rect": {
+          "w": 114.859375,
+          "h": 48
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "",
+        "aria": "검색",
+        "id": "",
+        "rect": {
+          "w": 34,
+          "h": 48
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "",
+        "aria": "알림",
+        "id": "",
+        "rect": {
+          "w": 34,
+          "h": 48
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "",
+        "aria": "내 정보",
+        "id": "",
+        "rect": {
+          "w": 34,
+          "h": 48
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "지금 촬영하기",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 115.375,
+          "h": 48
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "조립하기",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 69.25,
+          "h": 75.59375
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "부품 교체",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 69.25,
+          "h": 75.59375
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "문제 해결",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 69.25,
+          "h": 75.59375
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "업그레이드",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 69.25,
+          "h": 75.59375
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "전체보기 ›",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 58.25,
+          "h": 48
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "그래픽카드 장착하기\n장착 전 알아둘 것 · 예시",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 142,
+          "h": 174.078125
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "SSD 교체하기\n모델과 규격 확인 · 예시",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 142,
+          "h": 174.078125
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "홈",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 60.796875,
+          "h": 52
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "가이드",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 60.796875,
+          "h": 52
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "촬영하기",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 60.796875,
+          "h": 56.046875
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "AI 도움",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 60.796875,
+          "h": 52
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "내 정보",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 60.796875,
+          "h": 52
+        }
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "aria": null,
+        "id": "upload",
+        "rect": {
+          "w": 0,
+          "h": 0
+        }
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "scrollWidth": 375,
+    "title": "HowLens · reference UI demo",
+    "text": "How\nLens\nPC 문제,\n보면 바로\n알 수 있어요.\n\n사진으로 확인하고\n차근차근 따라가세요.\n\n지금 촬영하기\n조립하기\n부품 교체\n문제 해결\n업그레이드\n추천 가이드\n전체보기 ›\n그래픽카드 장착하기\n장착 전 알아둘 것 · 예시\nSSD 교체하기\n모델과 규격 확인 · 예시\n\n인터랙션 데모 · 실제 AI 진단이 아닙니다.\n\n홈\n가이드\n촬영하기\nAI 도움\n내 정보",
+    "buttons": [
+      {
+        "tag": "BUTTON",
+        "text": "How\nLens",
+        "aria": "HowLens 홈",
+        "id": "",
+        "rect": {
+          "w": 133.21875,
+          "h": 48
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "",
+        "aria": "검색",
+        "id": "",
+        "rect": {
+          "w": 38,
+          "h": 48
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "",
+        "aria": "알림",
+        "id": "",
+        "rect": {
+          "w": 38,
+          "h": 48
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "",
+        "aria": "내 정보",
+        "id": "",
+        "rect": {
+          "w": 38,
+          "h": 48
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "지금 촬영하기",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 128.75,
+          "h": 48
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "조립하기",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 81,
+          "h": 75.59375
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "부품 교체",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 81,
+          "h": 75.59375
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "문제 해결",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 81,
+          "h": 75.59375
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "업그레이드",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 81,
+          "h": 75.59375
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "전체보기 ›",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 58.25,
+          "h": 48
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "그래픽카드 장착하기\n장착 전 알아둘 것 · 예시",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 163.5,
+          "h": 179.53125
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "SSD 교체하기\n모델과 규격 확인 · 예시",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 163.5,
+          "h": 179.53125
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "홈",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 71.796875,
+          "h": 52
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "가이드",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 71.796875,
+          "h": 52
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "촬영하기",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 71.796875,
+          "h": 56.046875
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "AI 도움",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 71.796875,
+          "h": 52
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "내 정보",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 71.8125,
+          "h": 52
+        }
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "aria": null,
+        "id": "upload",
+        "rect": {
+          "w": 0,
+          "h": 0
+        }
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "scrollWidth": 1265,
+    "title": "HowLens · reference UI demo",
+    "text": "HowLens\n보면,\n할 수 있어요.\n\n사진에서 시작해\n확인까지 이어지는 PC 가이드.\n\n촬영 또는 사진 선택\n사진 확인 · 데모 분석\n요약 · 가이드 · 직접 확인\n\n인터랙션 데모 · 실제 AI 진단 아님\n사진은 기기 안에서만 사용됩니다.\n\nHow\nLens\nPC 문제,\n보면 바로\n알 수 있어요.\n\n사진으로 확인하고\n차근차근 따라가세요.\n\n지금 촬영하기\n조립하기\n부품 교체\n문제 해결\n업그레이드\n추천 가이드\n전체보기 ›\n그래픽카드 장착하기\n장착 전 알아둘 것 · 예시\nSSD 교체하기\n모델과 규격 확인 · 예시\n\n인터랙션 데모 · 실제 AI 진단이 아닙니다.\n\n홈\n가이드\n촬영하기\nAI 도움\n내 정보",
+    "buttons": [
+      {
+        "tag": "BUTTON",
+        "text": "How\nLens",
+        "aria": "HowLens 홈",
+        "id": "",
+        "rect": {
+          "w": 133.21875,
+          "h": 48
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "",
+        "aria": "검색",
+        "id": "",
+        "rect": {
+          "w": 38,
+          "h": 48
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "",
+        "aria": "알림",
+        "id": "",
+        "rect": {
+          "w": 38,
+          "h": 48
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "",
+        "aria": "내 정보",
+        "id": "",
+        "rect": {
+          "w": 38,
+          "h": 48
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "지금 촬영하기",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 128.75,
+          "h": 48
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "조립하기",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 94.75,
+          "h": 75.59375
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "부품 교체",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 94.75,
+          "h": 75.59375
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "문제 해결",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 94.75,
+          "h": 75.59375
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "업그레이드",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 94.75,
+          "h": 75.59375
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "전체보기 ›",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 58.25,
+          "h": 48
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "그래픽카드 장착하기\n장착 전 알아둘 것 · 예시",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 191,
+          "h": 190.53125
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "SSD 교체하기\n모델과 규격 확인 · 예시",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 191,
+          "h": 190.53125
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "홈",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 82.796875,
+          "h": 52
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "가이드",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 82.796875,
+          "h": 52
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "촬영하기",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 82.796875,
+          "h": 56.046875
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "AI 도움",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 82.796875,
+          "h": 52
+        }
+      },
+      {
+        "tag": "BUTTON",
+        "text": "내 정보",
+        "aria": null,
+        "id": "",
+        "rect": {
+          "w": 82.8125,
+          "h": 52
+        }
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "aria": null,
+        "id": "upload",
+        "rect": {
+          "w": 0,
+          "h": 0
+        }
+      }
+    ]
+  }
+]
