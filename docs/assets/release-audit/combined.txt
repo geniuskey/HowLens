@@ -1,0 +1,23 @@
+.................................................................. [ 88%]
+.........                                                        [100%]
+=============================== warnings summary ===============================
+../venv/lib/python3.14/site-packages/fastapi/testclient.py:1
+  /private/var/folders/69/r13269yn5wn5ydgqj5c6r0qh0000gn/T/howlens-release-pmaay3q4/venv/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+visual/tests/test_visual.py::SplitTests::test_nine_colors_order_and_sizes
+visual/tests/test_visual.py::SplitTests::test_nine_colors_order_and_sizes
+visual/tests/test_visual.py::SplitTests::test_nine_colors_order_and_sizes
+visual/tests/test_visual.py::SplitTests::test_nine_colors_order_and_sizes
+visual/tests/test_visual.py::SplitTests::test_nine_colors_order_and_sizes
+visual/tests/test_visual.py::SplitTests::test_nine_colors_order_and_sizes
+visual/tests/test_visual.py::SplitTests::test_nine_colors_order_and_sizes
+visual/tests/test_visual.py::SplitTests::test_nine_colors_order_and_sizes
+visual/tests/test_visual.py::SplitTests::test_nine_colors_order_and_sizes
+  /private/var/folders/69/r13269yn5wn5ydgqj5c6r0qh0000gn/T/howlens-release-pmaay3q4/backend/visual/tests/test_visual.py:52: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+    self.assertEqual(set(image.getdata()), {COLORS[index]})
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+75 passed, 10 warnings, 14 subtests passed in 1.02s
+
+EXIT 0

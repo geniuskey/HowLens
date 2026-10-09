@@ -1,0 +1,10 @@
+{
+  "wheel": "howlens_backend-0.1.0-py3-none-any.whl",
+  "manual_catalog_packaged": true,
+  "visual_members": [],
+  "probe_stdout": "{\"howlens_path\": \"/tmp/howlens-wheel-audit-rt3ntf7h/howlens/__init__.py\", \"missing_module\": \"visual\"}",
+  "probe_stderr": "",
+  "import_exit": 1
+}
+
+EXIT 1
