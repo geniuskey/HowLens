@@ -1,0 +1,245 @@
+[
+  {
+    "id": "p01",
+    "path": "/Users/runixs/HowLens/docs/137681a773828da5.jpg",
+    "sha256": "eabcda5421dda9086a3cb354d234df34c40cc1b33038c82cfa5a869c92b62fcf",
+    "bytes": 820838,
+    "raw_dimensions": [
+      1298,
+      1022
+    ],
+    "exif_orientation": 1,
+    "display_dimensions": [
+      1298,
+      1022
+    ],
+    "preview": "docs/assets/user-real-photos/private/p01.jpg",
+    "input_kind": "label",
+    "visible_brand": "Samsung",
+    "visible_exact_model": "RF60A91C3AP",
+    "manual_observation": "모델 및 615L 표기가 읽힘; Rev.05는 라벨 인쇄 표기이며 매뉴얼 판본/HW revision으로 전용하지 않음",
+    "provisional_batch_group": "refrigerator",
+    "pairing_proof": "same-batch attribution only; not independently established",
+    "manually_reviewed": true,
+    "model_test_executed": false,
+    "rights": "user-supplied; private evaluation only; no public redistribution",
+    "exif_policy": "orientation only; no GPS/time/device identifiers copied",
+    "within_10MiB_20MP": true
+  },
+  {
+    "id": "p02",
+    "path": "/Users/runixs/HowLens/docs/16197495f93c0545.jpg",
+    "sha256": "95eaa5086bb2590753bd1da12c28ec6f7f30f0d3b7d7f97543ab22c48e58e488",
+    "bytes": 5283395,
+    "raw_dimensions": [
+      4000,
+      3000
+    ],
+    "exif_orientation": null,
+    "display_dimensions": [
+      4000,
+      3000
+    ],
+    "preview": "docs/assets/user-real-photos/private/p02.jpg",
+    "input_kind": "label",
+    "visible_brand": "SK magic",
+    "visible_exact_model": "WPU-B600F",
+    "manual_observation": "모델 표기가 읽힘; 인증 문자열 WPU-B610F와 모델명 필드를 혼동하지 않음",
+    "provisional_batch_group": "water-purifier",
+    "pairing_proof": "same-batch attribution only; not independently established",
+    "manually_reviewed": true,
+    "model_test_executed": false,
+    "rights": "user-supplied; private evaluation only; no public redistribution",
+    "exif_policy": "orientation only; no GPS/time/device identifiers copied",
+    "within_10MiB_20MP": true
+  },
+  {
+    "id": "p03",
+    "path": "/Users/runixs/HowLens/docs/2edbff3ad97392f2.jpg",
+    "sha256": "f4ff4c15f0e99f2902099b2fafccc1f1cd2da0654bf7e9f7eedb97e52e854005",
+    "bytes": 6022945,
+    "raw_dimensions": [
+      3000,
+      4000
+    ],
+    "exif_orientation": null,
+    "display_dimensions": [
+      3000,
+      4000
+    ],
+    "preview": "docs/assets/user-real-photos/private/p03.jpg",
+    "input_kind": "whole",
+    "visible_brand": "Nespresso",
+    "visible_exact_model": null,
+    "manual_observation": "Nespresso 브랜드·복수 추출구·컵과 버튼이 보임; 정확 모델 라벨 없음",
+    "provisional_batch_group": "coffee",
+    "pairing_proof": "same-batch attribution only; not independently established",
+    "manually_reviewed": true,
+    "model_test_executed": false,
+    "rights": "user-supplied; private evaluation only; no public redistribution",
+    "exif_policy": "orientation only; no GPS/time/device identifiers copied",
+    "within_10MiB_20MP": true
+  },
+  {
+    "id": "p04",
+    "path": "/Users/runixs/HowLens/docs/37771b794b19699e.jpg",
+    "sha256": "83c5c4c537322b357b4f6b4693bdf2de29d64a6d311c71a55f1bcbfde546c0f2",
+    "bytes": 5570650,
+    "raw_dimensions": [
+      3000,
+      4000
+    ],
+    "exif_orientation": null,
+    "display_dimensions": [
+      3000,
+      4000
+    ],
+    "preview": "docs/assets/user-real-photos/private/p04.jpg",
+    "input_kind": "whole",
+    "visible_brand": null,
+    "visible_exact_model": null,
+    "manual_observation": "4도어 냉장고 외관; 전체 사진만으로 정확 모델 확정하지 않음",
+    "provisional_batch_group": "refrigerator",
+    "pairing_proof": "same-batch attribution only; not independently established",
+    "manually_reviewed": true,
+    "model_test_executed": false,
+    "rights": "user-supplied; private evaluation only; no public redistribution",
+    "exif_policy": "orientation only; no GPS/time/device identifiers copied",
+    "within_10MiB_20MP": true
+  },
+  {
+    "id": "p05",
+    "path": "/Users/runixs/HowLens/docs/4015b4013bb71d9f.jpg",
+    "sha256": "6e835d76cc825c9f8af372b45db24eecc003ff05134311dfd308fb259b2d3a37",
+    "bytes": 806584,
+    "raw_dimensions": [
+      1548,
+      783
+    ],
+    "exif_orientation": 1,
+    "display_dimensions": [
+      1548,
+      783
+    ],
+    "preview": "docs/assets/user-real-photos/private/p05.jpg",
+    "input_kind": "label",
+    "visible_brand": "CUCKOO",
+    "visible_exact_model": "AC-35U20FWS",
+    "manual_observation": "모델 AC-35U20FWS 및 공기청정기 표기가 읽힘",
+    "provisional_batch_group": "air-cleaner",
+    "pairing_proof": "same-batch attribution only; not independently established",
+    "manually_reviewed": true,
+    "model_test_executed": false,
+    "rights": "user-supplied; private evaluation only; no public redistribution",
+    "exif_policy": "orientation only; no GPS/time/device identifiers copied",
+    "within_10MiB_20MP": true
+  },
+  {
+    "id": "p06",
+    "path": "/Users/runixs/HowLens/docs/933cd59f8afc7f43.jpg",
+    "sha256": "ec5439e1a3767945a6d125d643d8ea98fefba554bf80bc8a7e445a76a253b74c",
+    "bytes": 3170334,
+    "raw_dimensions": [
+      3000,
+      4000
+    ],
+    "exif_orientation": null,
+    "display_dimensions": [
+      3000,
+      4000
+    ],
+    "preview": "docs/assets/user-real-photos/private/p06.jpg",
+    "input_kind": "label-context",
+    "visible_brand": "Samsung",
+    "visible_exact_model": "RF60A91C3AP",
+    "manual_observation": "넓은 라벨 문맥 사진; 전체 외관 시험 입력으로 쓰면 정답 누출",
+    "provisional_batch_group": "refrigerator",
+    "pairing_proof": "same-batch attribution only; not independently established",
+    "manually_reviewed": true,
+    "model_test_executed": false,
+    "rights": "user-supplied; private evaluation only; no public redistribution",
+    "exif_policy": "orientation only; no GPS/time/device identifiers copied",
+    "within_10MiB_20MP": true
+  },
+  {
+    "id": "p07",
+    "path": "/Users/runixs/HowLens/docs/98ca76178e51d1f5.jpg",
+    "sha256": "72cb51f8107543dfdeaeac37c87a13833ae178fbf6d2c3ac4e2e33eb90d48003",
+    "bytes": 7025339,
+    "raw_dimensions": [
+      3000,
+      4000
+    ],
+    "exif_orientation": null,
+    "display_dimensions": [
+      3000,
+      4000
+    ],
+    "preview": "docs/assets/user-real-photos/private/p07.jpg",
+    "input_kind": "whole",
+    "visible_brand": "CUCKOO",
+    "visible_exact_model": null,
+    "manual_observation": "CUCKOO 로고·원통형 공기청정기·청색 계열 조명; 공기질/필터 상태 확정 불가",
+    "provisional_batch_group": "air-cleaner",
+    "pairing_proof": "same-batch attribution only; not independently established",
+    "manually_reviewed": true,
+    "model_test_executed": false,
+    "rights": "user-supplied; private evaluation only; no public redistribution",
+    "exif_policy": "orientation only; no GPS/time/device identifiers copied",
+    "within_10MiB_20MP": true
+  },
+  {
+    "id": "p08",
+    "path": "/Users/runixs/HowLens/docs/c9a7bd3a11f4b154.jpg",
+    "sha256": "7dc8dda067a313de7e17eb1efef939584c0a96140e62e4b44699b4c493111d05",
+    "bytes": 551007,
+    "raw_dimensions": [
+      1930,
+      1102
+    ],
+    "exif_orientation": 1,
+    "display_dimensions": [
+      1930,
+      1102
+    ],
+    "preview": "docs/assets/user-real-photos/private/p08.jpg",
+    "input_kind": "label",
+    "visible_brand": "CUCKOO",
+    "visible_exact_model": "AC-35U20FWS",
+    "manual_observation": "모델명 읽힘; 전자파 등록 모델 AC-34U20을 제품명과 혼동하지 않음",
+    "provisional_batch_group": "air-cleaner",
+    "pairing_proof": "same-batch attribution only; not independently established",
+    "manually_reviewed": true,
+    "model_test_executed": false,
+    "rights": "user-supplied; private evaluation only; no public redistribution",
+    "exif_policy": "orientation only; no GPS/time/device identifiers copied",
+    "within_10MiB_20MP": true
+  },
+  {
+    "id": "p09",
+    "path": "/Users/runixs/HowLens/docs/ed979618bc94654a.jpg",
+    "sha256": "e478cab5f7713b5e3b534efecf0c4af8b7163a292df7b15bfc590671a9a1c436",
+    "bytes": 5329770,
+    "raw_dimensions": [
+      3000,
+      4000
+    ],
+    "exif_orientation": null,
+    "display_dimensions": [
+      3000,
+      4000
+    ],
+    "preview": "docs/assets/user-real-photos/private/p09.jpg",
+    "input_kind": "whole",
+    "visible_brand": null,
+    "visible_exact_model": null,
+    "manual_observation": "스탠드형 정수기·두 출수부·표시등; 사진만으로 온도/수질/정상 여부 확인 불가",
+    "provisional_batch_group": "water-purifier",
+    "pairing_proof": "same-batch attribution only; not independently established",
+    "manually_reviewed": true,
+    "model_test_executed": false,
+    "rights": "user-supplied; private evaluation only; no public redistribution",
+    "exif_policy": "orientation only; no GPS/time/device identifiers copied",
+    "within_10MiB_20MP": true
+  }
+]

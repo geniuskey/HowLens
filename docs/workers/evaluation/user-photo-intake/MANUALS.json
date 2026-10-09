@@ -1,0 +1,1560 @@
+{
+  "checked_date": "2026-10-09",
+  "renderer_version": "1.28.2",
+  "manuals": [
+    {
+      "document_id": "samsung-kr",
+      "path": "docs/assets/user-real-photos/private/samsung-kr.pdf",
+      "sha256": "be4221520ef42364dc251805cb0efa95244f50384e87ba18a778d783d2b90041",
+      "bytes": 15281768,
+      "pdf_signature": true,
+      "page_count": 92,
+      "version": "support version 4.0; 2023-03-20; filename KO_230310",
+      "source_url": "https://downloadcenter.samsung.com/content/UM/202303/20230320135004710/RF9000A_AC_2020_UM_RK0001_KO_230310.pdf",
+      "applicability": "Exact KR RF60A91C3AP support association; family cover RF60/85A*, RF84C*; options conditional",
+      "pages": [
+        {
+          "pdf_page": 1,
+          "printed_page": null,
+          "page_size_points": [
+            0.0,
+            0.0,
+            515.906005859375,
+            728.5040283203125
+          ],
+          "rotation": 0,
+          "embedded_figures": [
+            {
+              "path": "docs/assets/user-real-photos/private/samsung-kr-p1-xref7705.jpeg",
+              "sha256": "5a05848f6f79f4ff61161f886587a8cb01c154281c2f1fd6f0359425d9d2a97c",
+              "xref": 7705,
+              "bbox_points": [
+                [
+                  315.1654052734375,
+                  -9.170013427734375,
+                  529.1494140625,
+                  194.9739990234375
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/samsung-kr-p1-xref7706.jpeg",
+              "sha256": "c3a0fbc9cef0fc79c82740399e2384181dd9e1c463f42bcfc5d058e026af45f8",
+              "xref": 7706,
+              "bbox_points": [
+                [
+                  101.80546569824219,
+                  -9.170013427734375,
+                  315.7894592285156,
+                  194.9739990234375
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/samsung-kr-p1-xref7707.jpeg",
+              "sha256": "1b675fb39a28e499350c6adfd326a64c5a8e3ee60305f44ebfde29ecae18c417",
+              "xref": 7707,
+              "bbox_points": [
+                [
+                  -4.754570007324219,
+                  -9.169952392578125,
+                  102.429443359375,
+                  398.37408447265625
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/samsung-kr-p1-xref7708.jpeg",
+              "sha256": "144de3c7eef6404ea254fc5fd046a2173c938d53941f004de8b8789665f7c09b",
+              "xref": 7708,
+              "bbox_points": [
+                [
+                  315.1654052734375,
+                  194.35000610351562,
+                  529.1494140625,
+                  398.3740234375
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/samsung-kr-p1-xref7709.jpeg",
+              "sha256": "a6d5157b21be7abef847a878c78a4bb50e575261b5df3388b3c56e77d3782e96",
+              "xref": 7709,
+              "bbox_points": [
+                [
+                  101.80546569824219,
+                  194.35000610351562,
+                  315.7894592285156,
+                  398.3740234375
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/samsung-kr-p1-xref7710.jpeg",
+              "sha256": "f6df551f633265bb75e721361f30fddceb3f9480c4460b7729c5ed06e37768e1",
+              "xref": 7710,
+              "bbox_points": [
+                [
+                  315.1654052734375,
+                  397.8700866699219,
+                  529.1494140625,
+                  601.8941040039062
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/samsung-kr-p1-xref7711.jpeg",
+              "sha256": "598bd4cd8cf62935e34f46696f1b9b3f481c5d92426f7f2a6be8167e31657bf0",
+              "xref": 7711,
+              "bbox_points": [
+                [
+                  101.80546569824219,
+                  397.8700866699219,
+                  315.7894592285156,
+                  601.8941040039062
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/samsung-kr-p1-xref7712.jpeg",
+              "sha256": "f90520e61180ce9bebcba0c86d4b516a603fce6e68cadf74929cd010c3b73bfc",
+              "xref": 7712,
+              "bbox_points": [
+                [
+                  -4.754570007324219,
+                  397.87005615234375,
+                  102.429443359375,
+                  737.4940795898438
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/samsung-kr-p1-xref7713.jpeg",
+              "sha256": "fe18dc9e555585ff28740a37c1a1047c3d2acda4f61fe6289fcb020058e74bee",
+              "xref": 7713,
+              "bbox_points": [
+                [
+                  208.48541259765625,
+                  601.27001953125,
+                  529.1494140625,
+                  737.4940795898438
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/samsung-kr-p1-xref7714.jpeg",
+              "sha256": "a2d43a01c5ddd84aa03c63d833c3093201fa476e1a3627b2fbafb6b019fd0ee8",
+              "xref": 7714,
+              "bbox_points": [
+                [
+                  101.8054428100586,
+                  601.2700805664062,
+                  209.10943603515625,
+                  737.4940795898438
+                ]
+              ]
+            }
+          ],
+          "coordinate_system": "PyMuPDF top-left points; original PDF retains vector figures",
+          "reviewed": true
+        },
+        {
+          "pdf_page": 19,
+          "printed_page": "19",
+          "page_size_points": [
+            0.0,
+            0.0,
+            515.906005859375,
+            728.5040283203125
+          ],
+          "rotation": 0,
+          "embedded_figures": [],
+          "coordinate_system": "PyMuPDF top-left points; original PDF retains vector figures",
+          "reviewed": true
+        },
+        {
+          "pdf_page": 92,
+          "printed_page": null,
+          "page_size_points": [
+            0.0,
+            0.0,
+            515.906005859375,
+            728.5040283203125
+          ],
+          "rotation": 0,
+          "embedded_figures": [],
+          "coordinate_system": "PyMuPDF top-left points; original PDF retains vector figures",
+          "reviewed": true
+        }
+      ],
+      "downloaded": true,
+      "backend_registered": false,
+      "guide_approved": false
+    },
+    {
+      "document_id": "cuckoo-fwgh-family",
+      "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family.pdf",
+      "sha256": "4c062c0de40b7e8d43116afbfd9d425ddd5c7b8e128f85f91c6c11f2974edb24",
+      "bytes": 3948369,
+      "pdf_signature": true,
+      "page_count": 36,
+      "version": "10383-0016P0 Rev.1 (PDF36 visual); official listing 1777",
+      "source_url": "https://cdn.cuckoo.co.kr/upload_cuckoo/_bo_rep/manual/file_718aeeb2-2a7c-4d79-a1af-b55fd9604915.pdf",
+      "applicability": "REJECT for AC-35U20FWS: PDF identifies AC-35U20FWGH",
+      "pages": [
+        {
+          "pdf_page": 1,
+          "printed_page": null,
+          "page_size_points": [
+            0.0,
+            0.0,
+            595.0,
+            842.0
+          ],
+          "rotation": 0,
+          "embedded_figures": [
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p1-xref76.png",
+              "sha256": "83a77f40f9f7f9e60a46c2a2d801de291a87a20752235706bc6d36d14e6a6aa0",
+              "xref": 76,
+              "bbox_points": [
+                [
+                  482.8800048828125,
+                  639.6800537109375,
+                  487.20001220703125,
+                  683.8399658203125
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p1-xref78.png",
+              "sha256": "9325073328be3097933a1d4b403934de079d215b4de232293707245a904ae793",
+              "xref": 78,
+              "bbox_points": [
+                [
+                  113.04000091552734,
+                  252.80001831054688,
+                  197.27999877929688,
+                  262.6400146484375
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p1-xref80.png",
+              "sha256": "8cbe28037a1d7ba3f54031988f3f1dcf5adebee2821f9e3e609136ca8c94ce6f",
+              "xref": 80,
+              "bbox_points": [
+                [
+                  113.04000091552734,
+                  186.08009338378906,
+                  190.55999755859375,
+                  197.1199951171875
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p1-xref82.jpeg",
+              "sha256": "3206a20f73f78c5841ada700be12f214d1d313dea66d3eca9aa43d5f90681b47",
+              "xref": 82,
+              "bbox_points": [
+                [
+                  216.72000122070312,
+                  322.6400146484375,
+                  381.8399963378906,
+                  444.55999755859375
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p1-xref83.jpeg",
+              "sha256": "e53545322c65b3c50d5e59538301fa9caaf1eb57da76b879135fd04397bcb783",
+              "xref": 83,
+              "bbox_points": [
+                [
+                  216.72000122070312,
+                  444.32000732421875,
+                  381.8399963378906,
+                  463.0400085449219
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p1-xref84.jpeg",
+              "sha256": "442624c8a6cd8d4f4840be1204807c81077b9529ff4ad182d47980bdedd7425b",
+              "xref": 84,
+              "bbox_points": [
+                [
+                  216.72000122070312,
+                  462.55999755859375,
+                  381.8399963378906,
+                  584.47998046875
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p1-xref85.jpeg",
+              "sha256": "15cadf091782ba69bb48a92a9c053e5817ce1a0023827e236f71c1ae71ceac0b",
+              "xref": 85,
+              "bbox_points": [
+                [
+                  216.72000122070312,
+                  584.239990234375,
+                  381.8399963378906,
+                  602.719970703125
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p1-xref86.jpeg",
+              "sha256": "b0f5a939cc66a12d3aaf188b6d547c159b066f8d40f780485206baf366af0dce",
+              "xref": 86,
+              "bbox_points": [
+                [
+                  216.72000122070312,
+                  602.2401123046875,
+                  381.8399963378906,
+                  672.5599975585938
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p1-xref87.jpeg",
+              "sha256": "6132460b5b972ecc6b5e2bdf5f9d679d350f484b7b727bb9ab292e18c0673795",
+              "xref": 87,
+              "bbox_points": [
+                [
+                  250.32000732421875,
+                  671.6000366210938,
+                  265.44000244140625,
+                  672.3200073242188
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p1-xref88.jpeg",
+              "sha256": "e8779d0c053edd11192b2ea2fe3db15efbaa5868b729c5e9b69a5dc610f5926d",
+              "xref": 88,
+              "bbox_points": [
+                [
+                  228.47999572753906,
+                  671.6000366210938,
+                  243.36000061035156,
+                  672.3200073242188
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p1-xref89.jpeg",
+              "sha256": "10ea891b8094e6002089822512eeacbcba173f31c9a35d8cfb4968a0275c97d9",
+              "xref": 89,
+              "bbox_points": [
+                [
+                  272.6400146484375,
+                  670.4000244140625,
+                  289.6800231933594,
+                  672.3200073242188
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p1-xref90.jpeg",
+              "sha256": "4c6ae829310e8f1840352d1c21490a3cebf80c20e984a364d55cee58b41aa080",
+              "xref": 90,
+              "bbox_points": [
+                [
+                  308.8800048828125,
+                  671.6000366210938,
+                  311.52001953125,
+                  672.3200073242188
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p1-xref91.jpeg",
+              "sha256": "400e29f14ccf9644b53ffa73e65f7725a3ba646c905dae030d0101ac5509848d",
+              "xref": 91,
+              "bbox_points": [
+                [
+                  298.0799865722656,
+                  672.0800170898438,
+                  300.7200012207031,
+                  672.3200073242188
+                ],
+                [
+                  322.55999755859375,
+                  672.0800170898438,
+                  325.20001220703125,
+                  672.3200073242188
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p1-xref92.jpeg",
+              "sha256": "a09d157691f215661e20ac4420239ede488ee6a3237dc3de1728628554e61c9a",
+              "xref": 92,
+              "bbox_points": [
+                [
+                  344.6400146484375,
+                  671.8400268554688,
+                  360.71990966796875,
+                  672.3200073242188
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p1-xref93.jpeg",
+              "sha256": "7d21c7f0d45805b42500654f3e065b8bb3dfad0e82cf2e9e59b23557557bbe05",
+              "xref": 93,
+              "bbox_points": [
+                [
+                  338.3999938964844,
+                  670.8800048828125,
+                  339.3599853515625,
+                  672.3200073242188
+                ],
+                [
+                  366.0,
+                  670.8800048828125,
+                  366.9599914550781,
+                  672.3200073242188
+                ]
+              ]
+            }
+          ],
+          "coordinate_system": "PyMuPDF top-left points; original PDF retains vector figures",
+          "reviewed": true
+        },
+        {
+          "pdf_page": 35,
+          "printed_page": "35",
+          "page_size_points": [
+            0.0,
+            0.0,
+            595.0,
+            842.0
+          ],
+          "rotation": 0,
+          "embedded_figures": [
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4257.png",
+              "sha256": "8068827861a0909c1ee8d1ee9e04a6961f2cf2921e3038275e25a47d8c1103a8",
+              "xref": 4257,
+              "bbox_points": [
+                [
+                  481.9200134277344,
+                  690.3199462890625,
+                  487.4399108886719,
+                  695.5999755859375
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4259.png",
+              "sha256": "a566d5a23ccc15953c9aeb3a5d3d0f6d78eb237ee7f8f8c8d0639126f6d18a3f",
+              "xref": 4259,
+              "bbox_points": [
+                [
+                  143.27999877929688,
+                  388.3999938964844,
+                  277.44000244140625,
+                  394.8800048828125
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4261.png",
+              "sha256": "dedb409b8c344961ae122d72de101d7c14943903f0e518949c78ec5553d82400",
+              "xref": 4261,
+              "bbox_points": [
+                [
+                  143.27999877929688,
+                  397.0400085449219,
+                  390.47998046875,
+                  404.4800109863281
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4263.png",
+              "sha256": "7bd78b1b09a18cd7854013f60b22aa9a0636d7a108f670d9be120f36e685b0d1",
+              "xref": 4263,
+              "bbox_points": [
+                [
+                  143.27999877929688,
+                  405.91998291015625,
+                  422.8800048828125,
+                  413.3599853515625
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4265.png",
+              "sha256": "831319c554a56b2e098260827ce22b5ab8b037875325e526b70dc229454bb0a9",
+              "xref": 4265,
+              "bbox_points": [
+                [
+                  160.55999755859375,
+                  213.4400177001953,
+                  208.55999755859375,
+                  220.4000244140625
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4267.png",
+              "sha256": "2c4ea4710d825521844552cb09798e7e6ab01cd5a05575b1237145d1a729c6a8",
+              "xref": 4267,
+              "bbox_points": [
+                [
+                  325.67999267578125,
+                  213.4400177001953,
+                  354.7200012207031,
+                  220.4000244140625
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4269.png",
+              "sha256": "8f88fc727fa3c145d4b152b5029978f4a7942563d6fd60315d6b1f3cda24b35e",
+              "xref": 4269,
+              "bbox_points": [
+                [
+                  160.55999755859375,
+                  229.5199737548828,
+                  208.0800018310547,
+                  236.47998046875
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4271.png",
+              "sha256": "f7603255e80cbba6d0213eb81c82edb90478965c1a76e8643ae9939567dfb39d",
+              "xref": 4271,
+              "bbox_points": [
+                [
+                  317.2799072265625,
+                  229.75999450683594,
+                  363.1199035644531,
+                  236.0
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4273.png",
+              "sha256": "5edf8d6fcd7d4183a06663193673c47858df3bb05a56e172de3d2e76a1ffe24c",
+              "xref": 4273,
+              "bbox_points": [
+                [
+                  159.1199951171875,
+                  245.1199951171875,
+                  210.0,
+                  252.55999755859375
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4275.png",
+              "sha256": "4825b1c0fc43f2a5498812c2153a6558c16d1394c7a4df362bd60dcdee2fd662",
+              "xref": 4275,
+              "bbox_points": [
+                [
+                  323.2799072265625,
+                  245.84002685546875,
+                  357.35992431640625,
+                  251.84002685546875
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4277.png",
+              "sha256": "05b795e06e3470c5be03ce0682df7f3b92bcb01a0a0b34a2f4dc618f46924aff",
+              "xref": 4277,
+              "bbox_points": [
+                [
+                  159.1199951171875,
+                  261.4400329589844,
+                  209.51998901367188,
+                  268.4000244140625
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4279.png",
+              "sha256": "653e4538d9ac176e9fe595824b04731856d0198e98055eaaf5ecc391f3279cee",
+              "xref": 4279,
+              "bbox_points": [
+                [
+                  334.79998779296875,
+                  261.67999267578125,
+                  346.3199768066406,
+                  267.91998291015625
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4281.png",
+              "sha256": "56301786fbc02f380d5bd8e11833bef9c433ca702e272a4c0aade4deb4e7b275",
+              "xref": 4281,
+              "bbox_points": [
+                [
+                  159.1199951171875,
+                  277.5199890136719,
+                  210.0,
+                  284.47998046875
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4283.png",
+              "sha256": "3024221facd8114f78adc7d8c5feca8ad7ccc0d59a12244fb9af142f09acb5d9",
+              "xref": 4283,
+              "bbox_points": [
+                [
+                  330.239990234375,
+                  277.5199890136719,
+                  350.1600036621094,
+                  284.47998046875
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4285.png",
+              "sha256": "8fefff6882d0047c3cdbcfe24c960828cbb7dce4edc0446bac2f3254fda54b21",
+              "xref": 4285,
+              "bbox_points": [
+                [
+                  160.32000732421875,
+                  293.3599853515625,
+                  208.5600128173828,
+                  300.55999755859375
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4287.png",
+              "sha256": "758237efcd146aed499feb316b001d1412f4d53d8cdc143ccc1d586c02b2e7ff",
+              "xref": 4287,
+              "bbox_points": [
+                [
+                  319.20001220703125,
+                  293.3599853515625,
+                  361.44000244140625,
+                  300.55999755859375
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4289.png",
+              "sha256": "b91f5476df3cd561816809ab59e095e587c33616712c28d938ba2b929af96926",
+              "xref": 4289,
+              "bbox_points": [
+                [
+                  160.55999755859375,
+                  309.4400329589844,
+                  208.55999755859375,
+                  316.4000244140625
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4291.png",
+              "sha256": "7f43359871f5371bc41ef5dad8ef4b2b5e1a7a8d29beeb2fac0e87ae23f61c99",
+              "xref": 4291,
+              "bbox_points": [
+                [
+                  312.239990234375,
+                  309.4400329589844,
+                  368.6399841308594,
+                  316.4000244140625
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4293.png",
+              "sha256": "3a5e1b6f04d9ce48387d35d6dc2fd643046afaf66385ae7a3301652228628877",
+              "xref": 4293,
+              "bbox_points": [
+                [
+                  160.0800018310547,
+                  325.2799987792969,
+                  209.04000854492188,
+                  332.4800109863281
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4295.png",
+              "sha256": "4f5f5d4fd48669f8308544462f4eba085519076e0aa9519cbd0c454737d9cddb",
+              "xref": 4295,
+              "bbox_points": [
+                [
+                  331.67999267578125,
+                  325.52001953125,
+                  349.1999816894531,
+                  332.4800109863281
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4297.png",
+              "sha256": "4d79f586066a99602494606143df8710be3fe82359a1a1a93f36dbaac6f32550",
+              "xref": 4297,
+              "bbox_points": [
+                [
+                  168.9600067138672,
+                  341.3599853515625,
+                  199.92001342773438,
+                  348.55999755859375
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4299.png",
+              "sha256": "5982f1b2951e0d6a9f2ff78d872981f2a38ab1e6cebdf0c7c9142979e692cc0c",
+              "xref": 4299,
+              "bbox_points": [
+                [
+                  331.20001220703125,
+                  341.8399963378906,
+                  349.6800231933594,
+                  348.0799865722656
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4301.png",
+              "sha256": "c955417bf4fdc524b1b6424470a39d539aed92b6f9f2f33bb86e2328027353e5",
+              "xref": 4301,
+              "bbox_points": [
+                [
+                  160.0800018310547,
+                  357.44000244140625,
+                  208.55990600585938,
+                  364.3999938964844
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4303.png",
+              "sha256": "9a8af0bb6458e13034685065b28257d72f59433a3764722756612c72289667a2",
+              "xref": 4303,
+              "bbox_points": [
+                [
+                  281.2799072265625,
+                  356.96002197265625,
+                  399.35992431640625,
+                  364.6400146484375
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4305.png",
+              "sha256": "410077f422cd48d75b77f8fdd3b5173f9f7ee8a5480169f72ae9300685345e9e",
+              "xref": 4305,
+              "bbox_points": [
+                [
+                  160.0800018310547,
+                  373.52001953125,
+                  209.04000854492188,
+                  380.4800109863281
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4307.png",
+              "sha256": "744ef6d5548391a16839584b7790725eba5cc6bd6d318d0ad6eeaa116385cf50",
+              "xref": 4307,
+              "bbox_points": [
+                [
+                  330.7200012207031,
+                  373.5199890136719,
+                  350.1600036621094,
+                  381.44000244140625
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4309.png",
+              "sha256": "3e383d0dd2b8359f06b71cd2f02298df7fba7ef26633144fa72ebd0a2dcaef97",
+              "xref": 4309,
+              "bbox_points": [
+                [
+                  147.36000061035156,
+                  435.44000244140625,
+                  185.04000854492188,
+                  445.760009765625
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4311.png",
+              "sha256": "a939ea5b4daac1d4c9d522f837cdc1d62e5cd946c0e9b1b324384157414210f9",
+              "xref": 4311,
+              "bbox_points": [
+                [
+                  147.36000061035156,
+                  578.239990234375,
+                  210.0,
+                  588.3200073242188
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4313.png",
+              "sha256": "d1aac0403a18860db58788962b9a7dcf591b808af7ac9f2f0c6b764902fb3b97",
+              "xref": 4313,
+              "bbox_points": [
+                [
+                  213.60000610351562,
+                  436.3999938964844,
+                  436.55999755859375,
+                  444.32000732421875
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4315.png",
+              "sha256": "2288e9679b3814aff4f6a67672b7ac5773a40402c3e2733ed00313d7a13050f8",
+              "xref": 4315,
+              "bbox_points": [
+                [
+                  214.0800018310547,
+                  445.760009765625,
+                  289.91998291015625,
+                  453.20001220703125
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4317.png",
+              "sha256": "82c9469b2f5326745a587dc3f6c0a80b6e72474af8f4fec7db1baf1f5e8369f5",
+              "xref": 4317,
+              "bbox_points": [
+                [
+                  157.91990661621094,
+                  464.9599914550781,
+                  254.159912109375,
+                  473.3599853515625
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4319.png",
+              "sha256": "2b77326ddfc45f9c8b94ba675f7518db779aaa4ffb93a7afc08dbd39e1a1c9a6",
+              "xref": 4319,
+              "bbox_points": [
+                [
+                  157.1999969482422,
+                  480.55999755859375,
+                  163.44000244140625,
+                  487.760009765625
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4321.png",
+              "sha256": "6f5aaed5217dbaaa0676f7018c186fd8a67f5c62ac4b45bbca1bbbe76472bbf2",
+              "xref": 4321,
+              "bbox_points": [
+                [
+                  167.0399932861328,
+                  480.55999755859375,
+                  357.1199951171875,
+                  487.760009765625
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4323.png",
+              "sha256": "f4838e30a438449f96c72906fa71b211bf2b91468fead0b90b8007c1250c0203",
+              "xref": 4323,
+              "bbox_points": [
+                [
+                  157.1999969482422,
+                  490.8799743652344,
+                  163.44000244140625,
+                  498.0799865722656
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4325.png",
+              "sha256": "fe1225c9038c44837f5d8b3f24f40cd3069a6e1079d9e878ed9ed30003115387",
+              "xref": 4325,
+              "bbox_points": [
+                [
+                  166.55999755859375,
+                  491.3599853515625,
+                  268.55999755859375,
+                  497.8399963378906
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4327.png",
+              "sha256": "9274c16de8ed3dbe70cc5b3a9e089a86c8c61bb4e87a4f8bcd8b1075677145eb",
+              "xref": 4327,
+              "bbox_points": [
+                [
+                  157.1999969482422,
+                  501.44000244140625,
+                  163.44000244140625,
+                  508.3999938964844
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4329.png",
+              "sha256": "cb00454555d2763d3613b70d22f5acbbe7c03cfc10f5caf8afc68e77bbefb5e0",
+              "xref": 4329,
+              "bbox_points": [
+                [
+                  166.55999755859375,
+                  501.67999267578125,
+                  267.3599853515625,
+                  508.3999938964844
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4331.png",
+              "sha256": "ba75d4df36cbab12e8c59914f37ae771ebb8972f952b8b1dc92492cb18321498",
+              "xref": 4331,
+              "bbox_points": [
+                [
+                  273.6000061035156,
+                  490.8799743652344,
+                  279.6000061035156,
+                  498.0799865722656
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4333.png",
+              "sha256": "6e55c967af1619c1446aebf6a02dee81c4bba376813426909454823ffc979909",
+              "xref": 4333,
+              "bbox_points": [
+                [
+                  282.9599914550781,
+                  491.3599853515625,
+                  389.03997802734375,
+                  497.8399963378906
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4335.png",
+              "sha256": "092816413715f605000aeb3c1cd20e323bf1b8d66d77791a49667c1027f03d10",
+              "xref": 4335,
+              "bbox_points": [
+                [
+                  157.91990661621094,
+                  600.3200073242188,
+                  278.639892578125,
+                  608.47998046875
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4337.png",
+              "sha256": "bda81fcf1c0026f2b666a03764458dc5a0a5ee074af1ff8d74df28fad457cc46",
+              "xref": 4337,
+              "bbox_points": [
+                [
+                  157.1999969482422,
+                  615.6799926757812,
+                  163.44000244140625,
+                  622.6400146484375
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4339.png",
+              "sha256": "61407837d16627283ea64696d34607f22b1203316de2165a011b168e415bec4c",
+              "xref": 4339,
+              "bbox_points": [
+                [
+                  166.8000030517578,
+                  615.4400024414062,
+                  208.0800018310547,
+                  623.1199951171875
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4341.png",
+              "sha256": "508c72df9658ad0addbd92340a9d2980a7a6bf7a249a604cef60f0ea2d6c7bf0",
+              "xref": 4341,
+              "bbox_points": [
+                [
+                  213.36000061035156,
+                  615.6799926757812,
+                  219.60000610351562,
+                  622.6400146484375
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4343.png",
+              "sha256": "483766caddd87ca978cd341d7c3f213b2a07a229a9db58333db053813e21de76",
+              "xref": 4343,
+              "bbox_points": [
+                [
+                  223.44000244140625,
+                  615.4400024414062,
+                  290.6400146484375,
+                  623.1199951171875
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4345.png",
+              "sha256": "6bc71b289b15e8fc5e02d4fe34704de28e11d608300355d8c0cd72d1737f90d8",
+              "xref": 4345,
+              "bbox_points": [
+                [
+                  157.1999969482422,
+                  626.0,
+                  163.44000244140625,
+                  632.9600219726562
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4347.png",
+              "sha256": "2692d7ea9a6d04a0addbaf64e02910c2fc23aac9e741eaa56309febce3cbfa76",
+              "xref": 4347,
+              "bbox_points": [
+                [
+                  166.8000030517578,
+                  626.2400512695312,
+                  356.1600036621094,
+                  632.9600219726562
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4349.png",
+              "sha256": "804c6828b67a9e6cf8812395d7758a85500968ef28c90741ec8268abb1201ada",
+              "xref": 4349,
+              "bbox_points": [
+                [
+                  157.1999969482422,
+                  519.9199829101562,
+                  238.07998657226562,
+                  528.3200073242188
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4351.png",
+              "sha256": "8dabc9c5844e8f76a8613c59e585ce4decd80b59e640240f48d79ff8445c3af6",
+              "xref": 4351,
+              "bbox_points": [
+                [
+                  157.1999969482422,
+                  535.760009765625,
+                  364.08001708984375,
+                  543.2000122070312
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4353.png",
+              "sha256": "712cea4a6319e1550b9a768a476992baa79b0ea2ca15fb31215f01ba8c24f5af",
+              "xref": 4353,
+              "bbox_points": [
+                [
+                  247.9199981689453,
+                  553.760009765625,
+                  252.95999145507812,
+                  557.1199951171875
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4355.png",
+              "sha256": "38c2fd5bd593b4fa9e93de579c72c8f215fdb51d317a2887868926b342bfc655",
+              "xref": 4355,
+              "bbox_points": [
+                [
+                  253.1999969482422,
+                  554.0,
+                  270.4800109863281,
+                  557.5999755859375
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4357.png",
+              "sha256": "673521dbb140313261abbe31f943dd9b61485ec09b7890f01dcc1b0ddd186d6e",
+              "xref": 4357,
+              "bbox_points": [
+                [
+                  270.9599914550781,
+                  553.9999389648438,
+                  337.1999816894531,
+                  557.8399658203125
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4359.png",
+              "sha256": "0f30fcb17479a92162400c8c3f06fa443fe225116386dfabfe18cb9941a3c8ea",
+              "xref": 4359,
+              "bbox_points": [
+                [
+                  247.9199981689453,
+                  559.0399780273438,
+                  250.3199920654297,
+                  561.6799926757812
+                ],
+                [
+                  246.9600067138672,
+                  655.0399780273438,
+                  249.36000061035156,
+                  657.6799926757812
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4361.png",
+              "sha256": "6b359cf335b1c5b55bceaea3f588d056cea8f5b450ae43774dda87109a077dce",
+              "xref": 4361,
+              "bbox_points": [
+                [
+                  252.72000122070312,
+                  558.5599975585938,
+                  334.32000732421875,
+                  562.8800048828125
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4363.png",
+              "sha256": "e1e5d2ce80341fedea08febc3047a8d6326a5137849079c9cf2105c240f901df",
+              "xref": 4363,
+              "bbox_points": [
+                [
+                  335.2799072265625,
+                  558.5599975585938,
+                  388.7998962402344,
+                  562.4000244140625
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4365.png",
+              "sha256": "1d87af6d024f3bcae5e8d1bd1f38ebd3e0f32223cfe03a27094c3d74d1c4c771",
+              "xref": 4365,
+              "bbox_points": [
+                [
+                  158.16000366210938,
+                  549.9199829101562,
+                  162.24000549316406,
+                  555.2000122070312
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4367.png",
+              "sha256": "5d0ee615c229a2b3cb408c1d2cc6ae771e6ebe62340a6294c1940c6373b82bcf",
+              "xref": 4367,
+              "bbox_points": [
+                [
+                  164.16000366210938,
+                  549.9199829101562,
+                  173.760009765625,
+                  555.2000122070312
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4369.png",
+              "sha256": "8cd6ee80577e448a4e7bbbaa4230d88d81e9dcb4a2214fe05eac8a23c78b2c07",
+              "xref": 4369,
+              "bbox_points": [
+                [
+                  158.39999389648438,
+                  556.6400146484375,
+                  162.95989990234375,
+                  561.6799926757812
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4371.png",
+              "sha256": "40a1e050dd2094bc2932cd2ebec015d672767a4fe344c9c1721167e29933ad0a",
+              "xref": 4371,
+              "bbox_points": [
+                [
+                  169.44000244140625,
+                  556.6400146484375,
+                  173.52000427246094,
+                  561.9200439453125
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4373.png",
+              "sha256": "d759ccdfe8007c6805e436b4593a0aac40fb3fb13935561655734cb03b32fe93",
+              "xref": 4373,
+              "bbox_points": [
+                [
+                  180.47999572753906,
+                  548.9600219726562,
+                  184.0800018310547,
+                  561.6799926757812
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4375.png",
+              "sha256": "b9ac2a3207133ba68405b4d50a34ae0beedce6b53ac73bf605222299dabd12f3",
+              "xref": 4375,
+              "bbox_points": [
+                [
+                  186.0,
+                  548.9600219726562,
+                  207.1199951171875,
+                  561.9200439453125
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4377.png",
+              "sha256": "cc91ce55e934eff0acd5ae15527a379cbf9e3e9c2238bedefa717ed146871159",
+              "xref": 4377,
+              "bbox_points": [
+                [
+                  208.55999755859375,
+                  554.4801025390625,
+                  213.83999633789062,
+                  556.1600952148438
+                ],
+                [
+                  206.39999389648438,
+                  650.7200317382812,
+                  211.67999267578125,
+                  652.4000244140625
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4379.png",
+              "sha256": "ad4e5f089345c29e16e3e79262d493c026037c287951211e92ae1c340fc0eb75",
+              "xref": 4379,
+              "bbox_points": [
+                [
+                  214.8000030517578,
+                  548.9600219726562,
+                  243.1199951171875,
+                  561.9200439453125
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4381.png",
+              "sha256": "250f8beb3f74726791d3189b4cab3a83be1bb8d8ab018df0e257037042ac03fd",
+              "xref": 4381,
+              "bbox_points": [
+                [
+                  246.9600067138672,
+                  649.760009765625,
+                  251.760009765625,
+                  653.1199951171875
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4383.png",
+              "sha256": "70571ef3726db8a98b8331bc7fa813c5e0b3e199f089cb463d683cab99716ca9",
+              "xref": 4383,
+              "bbox_points": [
+                [
+                  252.0,
+                  650.0001220703125,
+                  252.9600067138672,
+                  653.360107421875
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4385.png",
+              "sha256": "546428b16d7cb7d3ba556ca9f113acc54494b1eb1459ec8c743c54e8456388dd",
+              "xref": 4385,
+              "bbox_points": [
+                [
+                  253.44000244140625,
+                  649.7599487304688,
+                  269.2799987792969,
+                  653.5999755859375
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4387.png",
+              "sha256": "fb6cd6b448b85d422d12bf3abe2a05bfd67a106be82320886748276b3ada62e3",
+              "xref": 4387,
+              "bbox_points": [
+                [
+                  269.5199890136719,
+                  649.7599487304688,
+                  336.0,
+                  653.8399658203125
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4389.png",
+              "sha256": "0f30fcb17479a92162400c8c3f06fa443fe225116386dfabfe18cb9941a3c8ea",
+              "xref": 4389,
+              "bbox_points": [
+                [
+                  247.9199981689453,
+                  559.0399780273438,
+                  250.3199920654297,
+                  561.6799926757812
+                ],
+                [
+                  246.9600067138672,
+                  655.0399780273438,
+                  249.36000061035156,
+                  657.6799926757812
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4391.png",
+              "sha256": "c6f53f2b0ac998fbc55d9e5a00f6bdfc9ae69a284baa64149300d823294cfe7f",
+              "xref": 4391,
+              "bbox_points": [
+                [
+                  251.52000427246094,
+                  654.5599975585938,
+                  333.3599853515625,
+                  658.6400146484375
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4393.png",
+              "sha256": "9aca0e7558130f59100145e6a1b9f1dc2bf3d2fffcb05bf58cffb7d7a93d9126",
+              "xref": 4393,
+              "bbox_points": [
+                [
+                  334.0799865722656,
+                  654.5599975585938,
+                  387.8399963378906,
+                  658.4000244140625
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4395.png",
+              "sha256": "f76da5b3de5aec72170453b1c240956874f6e4e452395eb2a88c8525936c5d12",
+              "xref": 4395,
+              "bbox_points": [
+                [
+                  157.1999969482422,
+                  646.1599731445312,
+                  160.8000030517578,
+                  651.4400024414062
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4397.png",
+              "sha256": "02668dc42415f7f31941b011292d64442590bfd736e2ab8c700a1fde05e38798",
+              "xref": 4397,
+              "bbox_points": [
+                [
+                  161.0399932861328,
+                  646.1599731445312,
+                  172.55999755859375,
+                  651.4400024414062
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4399.png",
+              "sha256": "b751a78b5efe1f93214b2c9dfd18896e7b6ab2cf891efc2fd1d3c429a7a41c65",
+              "xref": 4399,
+              "bbox_points": [
+                [
+                  157.44000244140625,
+                  652.8800048828125,
+                  161.760009765625,
+                  657.9199829101562
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4401.png",
+              "sha256": "59f385e6b64022f4783c269f262963f763673de2ec603e6ff28a772241689433",
+              "xref": 4401,
+              "bbox_points": [
+                [
+                  168.47999572753906,
+                  652.8800048828125,
+                  172.55999755859375,
+                  657.9199829101562
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4403.png",
+              "sha256": "8df844eacdb49238ddc0289e11e1ec65856ade1c699dd42373851716e487938b",
+              "xref": 4403,
+              "bbox_points": [
+                [
+                  179.75999450683594,
+                  645.2000122070312,
+                  183.36000061035156,
+                  657.9199829101562
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4405.png",
+              "sha256": "2128a9eb38d174840488622e73f17325ba39ab68467d2964ef59842706ea811e",
+              "xref": 4405,
+              "bbox_points": [
+                [
+                  184.8000030517578,
+                  645.4400634765625,
+                  205.44000244140625,
+                  658.1600341796875
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4407.png",
+              "sha256": "cc91ce55e934eff0acd5ae15527a379cbf9e3e9c2238bedefa717ed146871159",
+              "xref": 4407,
+              "bbox_points": [
+                [
+                  208.55999755859375,
+                  554.4801025390625,
+                  213.83999633789062,
+                  556.1600952148438
+                ],
+                [
+                  206.39999389648438,
+                  650.7200317382812,
+                  211.67999267578125,
+                  652.4000244140625
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4409.png",
+              "sha256": "f7dac03f90cdcf09e7a57c1e2b88dd8b3c0dd848ec17eb3aaa76bd321f6b3dcc",
+              "xref": 4409,
+              "bbox_points": [
+                [
+                  212.39999389648438,
+                  645.2000122070312,
+                  240.0,
+                  658.1600341796875
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p35-xref4411.png",
+              "sha256": "abcbcadb1dd55eec1b4ff961e9f83ede1e3fbf745e66fb1ab31bf5ac9a4bd27c",
+              "xref": 4411,
+              "bbox_points": [
+                [
+                  407.760009765625,
+                  164.95997619628906,
+                  452.6400146484375,
+                  176.47998046875
+                ]
+              ]
+            }
+          ],
+          "coordinate_system": "PyMuPDF top-left points; original PDF retains vector figures",
+          "reviewed": true
+        },
+        {
+          "pdf_page": 36,
+          "printed_page": null,
+          "page_size_points": [
+            0.0,
+            0.0,
+            595.0,
+            842.0
+          ],
+          "rotation": 0,
+          "embedded_figures": [
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p36-xref4413.png",
+              "sha256": "9522e47c8ac4cdf200ab8b2ccec996e5ad181ee536cb9436a9267a2d2dcd321c",
+              "xref": 4413,
+              "bbox_points": [
+                [
+                  372.4800109863281,
+                  594.5599975585938,
+                  465.84002685546875,
+                  600.3200073242188
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p36-xref4415.png",
+              "sha256": "98d65489a89e92920b32540bf6bcda0d95e5bbc645aa75f892c305935926ba6e",
+              "xref": 4415,
+              "bbox_points": [
+                [
+                  368.6400146484375,
+                  602.239990234375,
+                  469.44000244140625,
+                  607.52001953125
+                ]
+              ]
+            },
+            {
+              "path": "docs/assets/user-real-photos/private/cuckoo-fwgh-family-p36-xref4417.png",
+              "sha256": "a54c6ab93dbdfac201ec72a873e3be5134c2b58ded7845a6cef135d81caf103b",
+              "xref": 4417,
+              "bbox_points": [
+                [
+                  403.9200134277344,
+                  682.6400756835938,
+                  476.8799133300781,
+                  690.080078125
+                ]
+              ]
+            }
+          ],
+          "coordinate_system": "PyMuPDF top-left points; original PDF retains vector figures",
+          "reviewed": true
+        }
+      ],
+      "downloaded": true,
+      "backend_registered": false,
+      "guide_approved": false
+    },
+    {
+      "document_id": "sk-b600-html",
+      "path": "docs/assets/user-real-photos/private/skmanual.html",
+      "sha256": "6911787890f7141a45e086fa0321eb0095bc4c96266a5eafc8e97ab0bd5063fd",
+      "source_url": "https://qr.skmagic.com/2019/model/WPU/WPUB610FREWH/Manual.htm",
+      "format": "HTML",
+      "version": null,
+      "pdf_page": null,
+      "section": "contents-4-1 / WPU-B600F",
+      "exact_model_evidence": "Official data.js maps WPUB600FREWH; Manual.htm has separate WPU-B600F heading and img_04_01_02.png",
+      "figure": {
+        "path": "docs/assets/user-real-photos/private/sk-b600-exterior.png",
+        "sha256": "60555e0579525e983c128707de5605ba076495c9772f9990226cea0081f6e2eb",
+        "source_url": "https://qr.skmagic.com/2019/model/WPU/WPUB610FREWH/images/img_04_01_02.png",
+        "crop": null,
+        "original_preserved": true
+      },
+      "backend_registered": false,
+      "guide_approved": false
+    }
+  ]
+}

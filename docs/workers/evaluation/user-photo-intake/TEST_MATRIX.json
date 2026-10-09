@@ -1,0 +1,136 @@
+{
+  "tests": [
+    {
+      "test_id": "p01-independent",
+      "input_ids": [
+        "p01"
+      ],
+      "prompt": "사진에서 직접 확인되는 제품 종류와 브랜드 또는 모델명을 알려 주세요. 정확한 모델을 확인할 수 없으면 필요한 추가 정보를 알려 주세요. 조작 방법은 안내하지 마세요.",
+      "other_images_allowed": false,
+      "prior_label_context_allowed": false,
+      "expected_exact_model": "RF60A91C3AP",
+      "expected_behavior": "모델 및 615L 표기가 읽힘; Rev.05는 라벨 인쇄 표기이며 매뉴얼 판본/HW revision으로 전용하지 않음",
+      "execution_status": "not_run",
+      "accuracy": null
+    },
+    {
+      "test_id": "p02-independent",
+      "input_ids": [
+        "p02"
+      ],
+      "prompt": "사진에서 직접 확인되는 제품 종류와 브랜드 또는 모델명을 알려 주세요. 정확한 모델을 확인할 수 없으면 필요한 추가 정보를 알려 주세요. 조작 방법은 안내하지 마세요.",
+      "other_images_allowed": false,
+      "prior_label_context_allowed": false,
+      "expected_exact_model": "WPU-B600F",
+      "expected_behavior": "모델 표기가 읽힘; 인증 문자열 WPU-B610F와 모델명 필드를 혼동하지 않음",
+      "execution_status": "not_run",
+      "accuracy": null
+    },
+    {
+      "test_id": "p03-independent",
+      "input_ids": [
+        "p03"
+      ],
+      "prompt": "사진에서 직접 확인되는 제품 종류와 브랜드 또는 모델명을 알려 주세요. 정확한 모델을 확인할 수 없으면 필요한 추가 정보를 알려 주세요. 조작 방법은 안내하지 마세요.",
+      "other_images_allowed": false,
+      "prior_label_context_allowed": false,
+      "expected_exact_model": null,
+      "expected_behavior": "Nespresso 브랜드·복수 추출구·컵과 버튼이 보임; 정확 모델 라벨 없음",
+      "execution_status": "not_run",
+      "accuracy": null
+    },
+    {
+      "test_id": "p04-independent",
+      "input_ids": [
+        "p04"
+      ],
+      "prompt": "사진에서 직접 확인되는 제품 종류와 브랜드 또는 모델명을 알려 주세요. 정확한 모델을 확인할 수 없으면 필요한 추가 정보를 알려 주세요. 조작 방법은 안내하지 마세요.",
+      "other_images_allowed": false,
+      "prior_label_context_allowed": false,
+      "expected_exact_model": null,
+      "expected_behavior": "4도어 냉장고 외관; 전체 사진만으로 정확 모델 확정하지 않음",
+      "execution_status": "not_run",
+      "accuracy": null
+    },
+    {
+      "test_id": "p05-independent",
+      "input_ids": [
+        "p05"
+      ],
+      "prompt": "사진에서 직접 확인되는 제품 종류와 브랜드 또는 모델명을 알려 주세요. 정확한 모델을 확인할 수 없으면 필요한 추가 정보를 알려 주세요. 조작 방법은 안내하지 마세요.",
+      "other_images_allowed": false,
+      "prior_label_context_allowed": false,
+      "expected_exact_model": "AC-35U20FWS",
+      "expected_behavior": "모델 AC-35U20FWS 및 공기청정기 표기가 읽힘",
+      "execution_status": "not_run",
+      "accuracy": null
+    },
+    {
+      "test_id": "p06-independent",
+      "input_ids": [
+        "p06"
+      ],
+      "prompt": "사진에서 직접 확인되는 제품 종류와 브랜드 또는 모델명을 알려 주세요. 정확한 모델을 확인할 수 없으면 필요한 추가 정보를 알려 주세요. 조작 방법은 안내하지 마세요.",
+      "other_images_allowed": false,
+      "prior_label_context_allowed": false,
+      "expected_exact_model": "RF60A91C3AP",
+      "expected_behavior": "넓은 라벨 문맥 사진; 전체 외관 시험 입력으로 쓰면 정답 누출",
+      "execution_status": "not_run",
+      "accuracy": null
+    },
+    {
+      "test_id": "p07-independent",
+      "input_ids": [
+        "p07"
+      ],
+      "prompt": "사진에서 직접 확인되는 제품 종류와 브랜드 또는 모델명을 알려 주세요. 정확한 모델을 확인할 수 없으면 필요한 추가 정보를 알려 주세요. 조작 방법은 안내하지 마세요.",
+      "other_images_allowed": false,
+      "prior_label_context_allowed": false,
+      "expected_exact_model": null,
+      "expected_behavior": "CUCKOO 로고·원통형 공기청정기·청색 계열 조명; 공기질/필터 상태 확정 불가",
+      "execution_status": "not_run",
+      "accuracy": null
+    },
+    {
+      "test_id": "p08-independent",
+      "input_ids": [
+        "p08"
+      ],
+      "prompt": "사진에서 직접 확인되는 제품 종류와 브랜드 또는 모델명을 알려 주세요. 정확한 모델을 확인할 수 없으면 필요한 추가 정보를 알려 주세요. 조작 방법은 안내하지 마세요.",
+      "other_images_allowed": false,
+      "prior_label_context_allowed": false,
+      "expected_exact_model": "AC-35U20FWS",
+      "expected_behavior": "모델명 읽힘; 전자파 등록 모델 AC-34U20을 제품명과 혼동하지 않음",
+      "execution_status": "not_run",
+      "accuracy": null
+    },
+    {
+      "test_id": "p09-independent",
+      "input_ids": [
+        "p09"
+      ],
+      "prompt": "사진에서 직접 확인되는 제품 종류와 브랜드 또는 모델명을 알려 주세요. 정확한 모델을 확인할 수 없으면 필요한 추가 정보를 알려 주세요. 조작 방법은 안내하지 마세요.",
+      "other_images_allowed": false,
+      "prior_label_context_allowed": false,
+      "expected_exact_model": null,
+      "expected_behavior": "스탠드형 정수기·두 출수부·표시등; 사진만으로 온도/수질/정상 여부 확인 불가",
+      "execution_status": "not_run",
+      "accuracy": null
+    }
+  ],
+  "whole_first_order": [
+    "p03",
+    "p04",
+    "p07",
+    "p09"
+  ],
+  "label_separate_sessions": [
+    "p01",
+    "p02",
+    "p05",
+    "p06",
+    "p08"
+  ],
+  "prompt_leak_guard": "No inventory, model-specific manual, answer labels, previous conversation or group mappings in whole-object identification inputs",
+  "pair_tests": "Optional after independent scoring; pairings provisional, report separately, never independent sample count"
+}
