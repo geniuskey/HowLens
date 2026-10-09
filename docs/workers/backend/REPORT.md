@@ -1,3 +1,41 @@
+# W2 backend delivery
+
+[DONE] Implemented a real gated OpenAI Responses multimodal REST adapter, exact allowlisted manual-registration boundary, conservative prerequisite review, observation-only before/after comparison, explicit local dotenv configuration and prepared public Visual integration boundary. All existing 38 tests remain passing, with 54 total offline tests plus configured-server health smoke, editable installation, wheel build and pip dependency checks passing. No paid call or live model/manual/visual success is claimed; first grounded analysis remains blocked by key/model/API-budget readiness and independently acquired/reviewed manual excerpts, and guides require independent physical approval.
+
+- Preserved W1 base: `d035a285861d96025db4be728dc5255a344e44eb`.
+- W2 code SHA: `28b1e387a47c7055db5704da51e46d9e6b60ae63`.
+- Branch: `ljyonefineday/feat-backend-foundation`; no main merge/ff bootstrap/credential change.
+- Current lifecycle: task `task_69c26e09a2dc`, dispatch `ctx_4fc700a02b03`.
+- Final docs/remote SHA is reported in the current worker_done; code SHA above identifies validated implementation.
+
+## W2 actual evidence
+
+`git ls-remote --heads origin` identified Visual `feat-visual-foundation` at `ed04a43f87d542622527efcbf383151c702d796e`; `git fetch origin feat-visual-foundation` succeeded. Read only the specifically authorized published `backend/visual/service.py` and `splitter.py` with `git show`; did not merge, copy or edit Visual files. Initial `git show ed04a43` failed because object was not local, then fetch resolved it.
+
+Official OpenAI vision/structured-output/migration docs were browsed/opened before API implementation. The very large general Responses reference could not be fetched (web content-size limit); the fetched guides establish the actual wire format used. Runtime uses bounded async httpx REST, no SDK/tool/autoretry fallback, explicit configurable model, store:false and strict typed response schema; unsupported model/schema/auth/rate failures remain honest 503 until a budget-authorized live test is run.
+
+`backend/.venv/bin/pip install -e 'backend[test]'` succeeded, adding python-dotenv 1.2.4; `backend/.venv/bin/python -m pytest backend/tests -q`: **54 passed, 1 warning in 0.51s**. `backend/.venv/bin/pip check`: no broken requirements; `git diff --check`: clean. `backend/.venv/bin/pip wheel --no-deps --wheel-dir /tmp/howlens-backend-w2-wheel ./backend` built howlens_backend-0.1.0 successfully. Python subprocess launched `uvicorn howlens.config:configured_app --factory --host 0.0.0.0 --port <ephemeral port> --no-access-log`, with paid flag explicitly blank; actual localhost health JSON matched status=ok/mode=live, PASS, process stopped.
+
+New tests use only synthetic offline HTTP/transport doubles: strict request shape/image input/untrusted-context placement, key-without-budget zero calls, incomplete/refusal/HTTP/malformed/oversized response rejection, timeout mapping, device/mode mismatch, physical prerequisite unknown conversion and blocked guide, original/after comparison and stored step/evidence restriction, exact allowlisted source/quote validation, local dotenv secret-free diagnostics, and Visual budget/approval/semantic-review gates. These tests do not prove model resistance to all prompt injection or live semantic correctness; independent server gates prevent procedure approval even if the model ignores its prompt.
+
+Local `backend/.env` prepared with blank fields only if absent, ignored and chmod 0600; existing content preserved. `backend/.env.example` blank template is intentionally ignored per Task. Orca editor opened backend/.env without printing its content. Latest sanitized configuration check: key_present=false, model_configured=false, paid_calls_enabled=false, manuals=0, independent physical reviewer=false, visual integration=false. No secret is in diagnostics/logs/commits, and no key is shared across PCs. Configuration and exact LAN serve instructions were sent to Coordinator and are in RUNBOOK; observed address 10.102.72.28, external LAN reachability untested.
+
+## W2 blockers and next integration
+
+1. Human must enter local API key and explicit compatible model; Coordinator must confirm API balance/budget/key readiness before paid switch is enabled. Codex credits were not treated as API credits; no paid request made.
+2. No actual original manufacturer PDF has been acquired/reviewed. Registry defaults empty; claimed evidence is rejected unless exact device/document/version/page/quote/source/actions match trusted catalog. The catalog allows independently reviewed registration, never model/client URL registration.
+3. Required physical conditions are forced unknown by the live adapter, and independent reviewer returns no approval. Thus live guide cannot be promoted solely by model satisfaction claims; independent device/conditions/hazard/action review needs a later trusted source.
+4. Visual library not merged. Prepared public wrapper checks stored approval and budget plus semantic reviewer; HTTP completion/assets remain intentionally unavailable, with failed jobs preserving analysis text. Semantic review cannot be replaced by splitting/decoding.
+5. W1 known thread-decode cancellation/global concurrency and test-client deprecation limits still apply. Observational provider language is constrained by policy and typed DTO/limitations, but live language/semantic quality remains untested.
+
+## W2 changed files
+
+`backend/.gitignore`, `backend/pyproject.toml`, `backend/howlens/safety.py`, new `backend/howlens/openai_provider.py`, `manual_catalog.py`, `config.py`, `visual_boundary.py`, new `backend/tests/test_openai_provider.py`, and own RUNBOOK/REPORT. Ignored local `.env` and `.env.example` are not staged. No app/evaluation/common contract or backend/visual edits.
+
+Coordinator follow-up verified owner-account write access restored and explicitly authorized pushing preserved W1/W2 at the clean checkpoint. No repeated 403 retry or alternate credentials will be used; remote outcome is recorded after the authorized push.
+
+---
+
 # W1-BACKEND completion
 
 [BLOCKER] Required branch push failed with owner-account HTTP 403; validated implementation is complete locally. Preserved the existing API checkpoint and completed upload/provider-output bounds, storage accounting and verification edge validation. All 38 synthetic offline TestClient tests pass, editable package installation and wheel build succeed, and an actual Uvicorn HTTP health smoke test passes. Live provider/manual acquisition and Visual integration remain subsequent tasks; the unconfigured runtime returns 503 and never fabricates a guide or evidence.
