@@ -1,52 +1,40 @@
-HOWLENS | 2026-10-09 13:56 KST | SUBMIT 17:00 | LEFT ~3h04m
+HOWLENS | 2026-10-09 14:10 KST | DEADLINE17:00 | HUMAN TEST OPEN
 
-OVERALL RELEASE READINESS [############--------] ~60%
-Coordinator estimate, NOT measured code completion. No increase before device E2E.
+CURRENT ROUND R2 [####################] 3/3 INSTALLED + LAUNCHED
+APK source319eda7 SHA3a34683ced34174d576f38d7137c8d15d641cb2b14de3d5cdfd7ed7ec5f1cbd1
+Kim Euiyun  [INSTALL OK][LAUNCH OK] Galaxy
+Lee Junyoung[INSTALL OK][LAUNCH OK] Fold4
+Lee Yunjae  [INSTALL OK][LAUNCH OK] S25 Ultra
+---------------------------------------------------------------
+Humans own phones now. Coordinator does not perform automated taps.
+Feedback HERE -> scopedfix -> oneAPK -> synchronized3phone update.
+No repeating passed baseline suites; new/changed behavior checks only.
 
-M1 Foundations/API    [####################] DONE main
-M2 Reference UI       [##################--] SAME APK INSTALLED on all3; real auth pending
-M3 Real device E2E    [########------------] camera baseline; new real auth pending
-M4 Submission        [--------------------] package/demo rehearsal pending
+OVERALL RELEASE READINESS [############--------] ~60% estimate
+M1 foundations      DONE
+M2 reference UI     R2 DEPLOYED: bluehero/nav/centralcamera, URLpreset autoLIVE
+M3 real device E2E  HUMAN TRIAL NOW; no realguide/imagequalityPASS yet
+M4 submission      pending; target16:00 package,17:00submit
 
-TARGETS: 14:00 new UI hands-on ->14:30 feature freeze ->15:30 regression
-         ->16:00 package ready ->17:00 submission (1h buffer)
+LIVE SERVER: c462a29 upstreamPID89580; noauthgatewayPID99195; tunnel46758.
+URL:https://premium-proceed-hartford-published.trycloudflare.com
+Rootverified publichealth200/live and noauth emptyPOSTanalyses/discoveries422.
+Token input REMOVED by latest explicituser; OpenAIkey SERVER ONLY.
+Actualanalysis model:gpt-4.1-mini. Sharedproviderledger6/20 atlastmeasurement.
+Latestreal CUCKOOlabel:8.49s HTTP200 needs_more_information/source_provenance.
+This is NOT productidentificationPASS.
 
-PRIORITY: USER real capture -> server -> actual response -> feedback -> fixes.
-+----------------------+---------------+------------------------------------------+
-| WORK                 | STATUS        | EVIDENCE / NEXT                          |
-+----------------------+---------------+------------------------------------------+
-| Reference HTML/native| PUSHED        | c503985; JVM36/build/lint pass            |
-| Discovery fix        | PUSHED        | c462a29;192tests+14subtests pass          |
-| Backend live rollout | PREPARING     | c462a29; short QA API hold requested      |
-| Galaxy new UI        | HOME VISIBLE  | 13:52:08; auth setup pending         |
-| Fold4 new UI         | HOME VISIBLE  | new reference APK install-r success                  |
-| S25 Ultra new UI     | CAMERA READY  | real preview verified; auth pending |
-| Image comparison     | SIX GENERATED | HTTP200;12.990-19.526s; quality unreviewed |
-| HTML independent QA  | RECHECK       | ctx_f7b466eb0711; prior4P1 worker-fixed   |
-| Real photos/manuals  | RECEIVED      |9privatephotos;5PDF main; runtime pending |
-+----------------------+---------------+------------------------------------------+
+NEXT SERVER (AstraHigh KimTaewan ctx0621): autonomous visualhypothesisresearch,
+actualsource revalidation, bounded registeredmanualreanalysis, SERVER-onlyrouting:
+triage GPT6Luna -> main/research GPT6.1Sol -> difficultonly GPT6Astra.
+OfficialAPI IDs + currentaccount model-list200 confirmed; newinference unverified.
+Max4providerattempts;27sec enrichment/30sectotal, safety/STOPgates maintained.
 
-MAIN: c462a29 pushed. HTML: docs/mockups/reference-ui/index.html
-APK: android/app/build/outputs/apk/reference-ui/howlens-reference-ui-20261009.apk
-SHA256:3e8e61c0949c753b9d751c69b94d45549876093307ccd340c337c43b29958f4a
+IMAGES:6pairedSunburstlow/medium generations HTTP20012.990-19.526s.
+Quality humanreview pending, actualbillingunknown; no winner claimed.
+Productionimage defaultgpt-image1.5 not upgraded yet.
 
-HUMAN TEST: each assigned local QA conversation gives one action at a time.
-Camera capture/preview can proceed; paid submits await short rollout hold release.
-Real-mode settings: Profile -> Settings -> Demo OFF -> API root + masked demo token.
-No OpenAI key in app. Never log/share credentials. Exact auth setup not yet confirmed.
-Unknown household product: Product finder route; do not force it into Dell guide.
-Current camera is preview + deliberate still capture; NO continuous video AI.
-
-PUBLIC:https://premium-proceed-hartford-published.trycloudflare.com
-Upstream67997 / gateway46220 / tunnel46758 (rollout may replace upstream).
-Temporary APK-only server8765 CLOSED after all3 verified download receipts.
-All3 API idle ACK; c462a29 restart/replay GRANTED13:54. Preserve public runtime.
-
-ACTIVE: Backend ctx_e6f3dcf25970; Galaxy ctx_225d53638eeb;
-Fold4 ctx_15c1e6bdf26a; Visual/S25 ctx_216abb00c5de; audit ctx_f7b466eb0711.
-Settled/released-retained: referenceUI ctx_d2f3cc4ed9e4, debugger ctx_f8f2e2e33505.
-Astra only Kim Taewan; Kim Euiyun Luna6 TEST ONLY. Root owns main Git.
-
-USER POLICY13:55: no repeated passed tests; only changed-feature/bug checks.
-ONE Coordinator controls future3-device installs, humans own testing rounds.
-Hands-on real server target14:00-14:05; connection setup still pending.
+ACTIVE IMPLEMENTATION: serverAstra ctx0621; appdirect-user dashboardonly.
+DEVICE AI WORKERS: Windows/Fold4 settled; Galaxyhandoffpending, no further taps.
+Root plainCLI channels recorded DEVICE_ROUND.json; no perphoneAIloop.
+R2 temporarydownloadserver CLOSED afterverified3downloads.

@@ -110,3 +110,11 @@ Gateway preserves upstream response/status and limits requests including multipa
 overhead; the upstream still enforces the10MiB photo contract. The existing shared
 persistent attempt cap remains in force. Health200 proves transport, not AI inference.
 Temporary tunnel URL and process ownership are recorded in the deployment report.
+
+## User override — temporary no-auth demo, 2026-10-09 14:05
+
+User explicitly requested removing demo login/token friction. Temporary public demo gateway may run with HOWLENS_DEMO_AUTH_DISABLED=true; API routes then pass through without bearer authentication. Route allowlist, payload limits, provider budgets, cancellation and physical safety/verified-guide gates remain. OpenAI keys remain server-only. R2 Android receives only HOWLENS_API_BASE_URL at build time and starts live; no demo token entry. This supersedes the earlier mandatory demo bearer paragraph for the temporary hackathon deployment only.
+
+## Approved additive uncertain research (implementation pending)
+
+ProductDiscovery may include optional research, default null. Shape: {category:string, observations:string[], summary:string, sources:DiscoverySource[]} with max3sources. Unreadable-label research remains status needs_more_information and candidates empty; observations/summary explicitly express uncertainty, never exact model claims or operational steps. Existing source provenance/public URL rules apply. Autonomous research/reanalysis is server-owned; app submits one request and does not choose models.
