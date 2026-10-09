@@ -1,0 +1,4 @@
+case_id,model_requested,low_run_id,medium_run_id,prompt_sha256,asset_basis,reviewer,preferred_quality,instruction_adherence,panel_step_correspondence,geometry_consistency,legibility,reference_fidelity,notes,reviewed_at_utc
+TEST-server,gpt-image-2.5-sunburst-2026-09-08,07c087ce99409d599686,ec12c7372de5d3a5e233,dced5d6590eb9b96a8bbb73e32b6d6c426d78d6d2c23b6eed1b23c05e164a513,synthetic,,,,,,,,,
+TEST-cobot,gpt-image-2.5-sunburst-2026-09-08,daa92cb2532f06a8648c,d560a8e90af22d4ad4a3,11f09ad4845ce6c75f84984039bf38b78c8d582a697b2fc81c1d410ba3dfe9fd,synthetic,,,,,,,,,
+TEST-ups,gpt-image-2.5-sunburst-2026-09-08,7887fd00ce1ec99ead1b,4c8f10e9b590bcfb7d4f,3b68c2a1e2f9d2819defb347ac346864a2dae5c98d164fe33aff15dc0bfe2d34,synthetic,,,,,,,,,

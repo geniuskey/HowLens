@@ -10,6 +10,7 @@ from io import BytesIO
 
 import httpx
 from PIL import Image
+from .benchmark_config import MODEL_QUALITIES, request_parameters
 
 PILOT_MODELS = ("gpt-image-1.5", "gpt-image-1-mini")
 ENDPOINT = "https://api.openai.com/v1/images/generations"
@@ -18,21 +19,26 @@ MAX_PNG_BYTES = 10 * 1024 * 1024
 
 
 class BenchmarkFailure(RuntimeError):
-    def __init__(self, code, *, request_id=None, http_status=None, usage=None):
+    def __init__(self, code, *, request_id=None, http_status=None, usage=None, model_returned=None, response_parameters=None):
         super().__init__(code)
         self.code, self.request_id, self.http_status = code, request_id, http_status
         self.usage = usage
+        self.model_returned = model_returned
+        self.response_parameters = response_parameters
 
 
 class BenchmarkCancellation(asyncio.CancelledError):
     """Cancellation carrying only already-observed sanitized attempt metadata."""
-    def __init__(self, *, request_id=None, http_status=None, usage=None):
+    def __init__(self, *, request_id=None, http_status=None, usage=None, model_returned=None, response_parameters=None):
         super().__init__("cancelled")
         self.request_id, self.http_status, self.usage = request_id, http_status, usage
+        self.model_returned = model_returned
+        self.response_parameters = response_parameters
 
 
 def safe_request_id(value):
-    return value if isinstance(value, str) and re.fullmatch(r"[A-Za-z0-9_-]{1,200}", value) else None
+    return value if (isinstance(value, str) and not value.startswith("sk-")
+                     and re.fullmatch(r"[A-Za-z0-9_-]{1,200}", value)) else None
 
 
 def numeric_usage(value):
@@ -78,12 +84,14 @@ class SandboxImageClient:
         self._api_key = api_key.strip()
         self.timeout_seconds, self._transport = timeout_seconds, transport
 
-    async def generate(self, *, model, prompt):
-        if model not in PILOT_MODELS or not isinstance(prompt, str) or not 1 <= len(prompt) <= 32000:
+    async def generate(self, *, model, prompt, quality="low", reasoning_effort=None):
+        parameters = request_parameters(model, quality, reasoning_effort)
+        if not isinstance(prompt, str) or not 1 <= len(prompt) <= 32000:
             raise ValueError("Only bounded pilot model/prompts are supported")
-        metadata = {"request_id": None, "http_status": None, "usage": None}
+        metadata = {"request_id": None, "http_status": None, "usage": None, "model_returned": None,
+                    "response_parameters": None}
         try:
-            return await asyncio.wait_for(self._request(model, prompt, metadata), self.timeout_seconds)
+            return await asyncio.wait_for(self._request(parameters, prompt, metadata), self.timeout_seconds)
         except asyncio.CancelledError:
             raise BenchmarkCancellation(**metadata) from None
         except (asyncio.TimeoutError, httpx.TimeoutException):
@@ -93,17 +101,20 @@ class SandboxImageClient:
         except BenchmarkFailure as exc:
             exc.request_id, exc.http_status = metadata["request_id"], metadata["http_status"]
             exc.usage = metadata["usage"]
+            exc.model_returned = metadata["model_returned"]
+            exc.response_parameters = metadata["response_parameters"]
             raise exc from None
 
-    async def _request(self, model, prompt, metadata):
-        body = {"model": model, "prompt": prompt, "n": 1, "size": "1024x1024",
-                "quality": "low", "output_format": "png", "background": "opaque", "moderation": "auto"}
+    async def _request(self, parameters, prompt, metadata):
+        body = {**parameters, "prompt": prompt}
         async with httpx.AsyncClient(timeout=self.timeout_seconds, transport=self._transport,
                                      trust_env=False, follow_redirects=False) as client:
             async with client.stream("POST", ENDPOINT,
                     headers={"Authorization": "Bearer " + self._api_key}, json=body) as response:
                 metadata.update(request_id=safe_request_id(response.headers.get("x-request-id")),
                                 http_status=response.status_code)
+                if metadata["request_id"] == self._api_key:
+                    metadata["request_id"] = None
                 if response.status_code != 200:
                     raise BenchmarkFailure("http_error")
                 chunks, count = [], 0
@@ -115,6 +126,15 @@ class SandboxImageClient:
         try:
             payload = json.loads(b"".join(chunks))
             metadata["usage"] = numeric_usage(payload.get("usage")) if isinstance(payload, dict) else None
+            # Image API generally omits model. Never infer returned model from request.
+            returned = payload.get("model") if isinstance(payload, dict) else None
+            metadata["model_returned"] = returned if isinstance(returned, str) and returned in MODEL_QUALITIES else None
+            if isinstance(payload, dict):
+                allowed = {"quality": {"low", "medium", "high", "xhigh", "max", "auto"},
+                           "size": {"1024x1024"}, "output_format": {"png"},
+                           "background": {"opaque", "transparent", "auto"}}
+                metadata["response_parameters"] = {k: payload[k] for k, values in allowed.items()
+                    if isinstance(payload.get(k), str) and payload[k] in values} or None
             data = payload["data"]
             if not isinstance(data, list) or len(data) != 1:
                 raise ValueError()
@@ -126,4 +146,6 @@ class SandboxImageClient:
             raise BenchmarkFailure("invalid_response") from None
         validate_raw_png(raw)
         return {"raw_png": raw, "request_id": metadata["request_id"],
-                "http_status": metadata["http_status"], "usage": metadata["usage"]}
+                "http_status": metadata["http_status"], "usage": metadata["usage"],
+                "model_returned": metadata["model_returned"],
+                "response_parameters": metadata["response_parameters"]}
