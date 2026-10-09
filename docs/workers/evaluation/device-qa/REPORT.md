@@ -2,7 +2,7 @@
 
 ## Result
 
-**Status: PARTIAL; baseline-only.** The authorized Android 16 phone ran the immutable baseline APK. Core install/launch, Settings return, keyboard, font scaling, and background recovery passed; rotation, gallery selection, and example controls have issues or remain unverified. This is the old W2 single-screen UI, so no new blue/two-tab feature coverage is claimed.
+**Status: PARTIAL; baseline plus W3 camera-permission and photo-selection delta.** The assigned Android 16 phone ran the immutable baseline and new blue/two-tab APKs. Baseline install/launch, Settings return, keyboard, font scaling, and background recovery passed; baseline rotation and gallery selection remain unresolved, and example controls showed no visible state change. On W3, the user confirmed camera permission denial and Settings return, then selected a valid synthetic PNG and saw it in the app; analysis was not run.
 
 ## Build and device
 
@@ -29,17 +29,27 @@
 | Background and recovery | PASS | Home/background then relaunch returned to `MainActivity`; force-stop and cold relaunch also succeeded. |
 | Gallery with synthetic PNG | FAIL / incomplete | Added only `qa_synthetic_1x1.png` (68-byte synthetic image) to Downloads. DocumentsUI opened; selecting its exact entry presented Android `ResolverActivity` instead of returning the image to HowLens. Back canceled to `MainActivity`; no photo was uploaded. The picker also exposed a recent-items list; no other item was opened or selected. Synthetic file was removed afterward. |
 | Offline mock / non-guide | PARTIAL | Offline MOCK was visibly enabled. Empty submit showed “question must be 1–2,000 characters”; with synthetic question and no attached photo it showed “Select a JPEG or PNG photo.” No API call occurred. The “추가 정보 예시” and “중단 예시” controls showed no visible state change when tapped, so guide/non-guide result views remain unverified. |
-| New blue/two-tab app | NOT TESTED | New build SHA not supplied in this dispatch. |
+| New blue/two-tab app | PARTIAL | W3 SHA verified and installed; initial screen confirmed. User confirmed camera permission prompt, denial return, rationale, and Settings return. A valid synthetic PNG appeared selected in HowLens; analysis was not run. |
+
+## W3 delta (new blue/two-tab APK)
+
+- APK SHA-256: `2b39251176178975fd0a9228da55a88903d879e7d2cc9fd4dcdb695d128abb25` (15,034,933 bytes); downloaded once and hash verified.
+- Installed with `adb install -r` on the assigned device; package remains `kr.howlens.app` version `0.1`.
+- First screen displays the blue HowLens header and `사진 분석` / `카메라` tabs. The `사진 분석` tab is initially selected; screen also shows Demo and settings controls.
+- Screenshot: [W3 initial screen](../../../assets/device-qa/w3-57405bb-home.png).
+- The user denied CAMERA permission, saw the denial explanation and Settings button, opened permission settings, and returned to HowLens. Device verification found `android.permission.CAMERA: granted=false` and app-op mode `ignore`. No camera preview or capture was performed.
+- Photo selection: the first test fixture was a malformed PNG (invalid IDAT CRC), which produced “손상된 사진입니다”. It was replaced with a valid 70-byte 1x1 RGBA PNG under the same synthetic filename; the user selected it and confirmed it appeared in HowLens. Analysis was not run.
 
 ## Screenshots
 
 - [Baseline W2 home](../../../assets/device-qa/baseline-w2-home.png)
 - [Baseline at font scale 1.4](../../../assets/device-qa/baseline-font-scale-1.4.png)
+- [W3 blue/two-tab initial screen](../../../assets/device-qa/w3-57405bb-home.png)
 
 ## Cleanup and remaining work
 
 - Restored device settings to their recorded baseline: font scale `1.15`, accelerometer rotation `1`, user rotation `0`.
 - Removed `/sdcard/Download/qa_synthetic_1x1.png`; no gallery photo or camera capture was uploaded or retained.
-- Stopped the temporary ADB server after device checks. No global PATH/SDK changes were made. Baseline APK remains installed for coordinator-directed same-device follow-up.
+- Stopped the temporary ADB server after device checks. No global PATH/SDK changes were made. W3 APK remains installed for coordinator-directed same-device follow-up; baseline and W3 APK files are retained in the task temp directory.
 - ADB temp files and verified APK remain under `%TEMP%\HowLens-W5-device-qa`.
-- Re-run only the delta against the exact new blue/two-tab APK SHA if supplied; current results cover baseline UI only.
+- W3 camera-permission/settings and synthetic photo-selection results above are the new-build delta tested. Analysis remains pending.
