@@ -1,0 +1,37 @@
+name: Deploy HowLens presentation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/presentation/**'
+      - '.github/workflows/presentation-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: howlens-presentation-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out presentation
+        uses: actions/checkout@v6
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload presentation only
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs/presentation
+      - name: Deploy to Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

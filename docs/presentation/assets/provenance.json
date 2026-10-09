@@ -1,0 +1,74 @@
+{
+  "captured_at": "2026-10-09",
+  "source": "User-provided saved HTML plus existing final UR5e response exported from the open web chat; images downloaded with GET only.",
+  "source_html": "howlens-ur5e-presentation-source.html",
+  "question_edit": "User explicitly requested the visible question: 어떻게 인스톨해?",
+  "response_use": "Slide summary is editorial; all 9 scene titles/descriptions and image bytes are retained. No new AI generation.",
+  "scope": {
+    "task_title": "UR5e의 현재 구성과 설치 확인 범위 설명",
+    "scope": "사용자 사진의 장착 상태와 매뉴얼 12쪽 Figure 2.1의 부품 위치 설명. 실제 설치·분해·배선·운전 절차는 포함하지 않음.",
+    "section_completeness": "partial",
+    "missing_references": [
+      "기계 설치 절차 본문",
+      "장착 그리퍼 자료",
+      "현장 고정 및 안전 검증 기록"
+    ],
+    "sequence_basis": "explanatory"
+  },
+  "manual_sources": [
+    {
+      "title": "UR5e 공식 매뉴얼",
+      "url": "https://s3-eu-west-1.amazonaws.com/ur-support-site/225353/710-965-00_UR5e_User_Manual_en_Global.pdf"
+    }
+  ],
+  "assets": [
+    {
+      "file": "ur5e-grid.png",
+      "sha256": "4aeadf543eedaa9eca0837c8cbd62047df6bd146d0a6eca3bdbab769f2602f17"
+    },
+    {
+      "file": "ur5e-input.jpg",
+      "sha256": "9ca3130e36533ac3538e71526433c12bc498ea922295fce244b1c4420b943ade"
+    },
+    {
+      "file": "ur5e-manual-figure.png",
+      "sha256": "028958d9efe12ca89be7f91f80f633654bddf3f4cec2360bd1a6e62e8f782973"
+    },
+    {
+      "file": "ur5e-scene-1.png",
+      "sha256": "5bc0a11762ff3c017513ef2798c116c1119f46a1e21bb65e3a00645aecb54af9"
+    },
+    {
+      "file": "ur5e-scene-2.png",
+      "sha256": "57d489fe73162972eab7a4675de6a9cc5bd011c8180ea65555eca517be5b6458"
+    },
+    {
+      "file": "ur5e-scene-3.png",
+      "sha256": "0070c3d4b001374fe578c27bbe9ff6db203b7d9699eea90c9f8a5fae750efa0e"
+    },
+    {
+      "file": "ur5e-scene-4.png",
+      "sha256": "ab40cfb97363d6c7aa41eb957b28091b5ff96f58cc9b67eacbef0bbe408dc384"
+    },
+    {
+      "file": "ur5e-scene-5.png",
+      "sha256": "321ebbe2df5951a49d51f91ea52839e9d88a736e421e9e3cd2ee1a98235e6b84"
+    },
+    {
+      "file": "ur5e-scene-6.png",
+      "sha256": "1752a496b7dcc15d4f0ae9c41061196a5a8f90a9ef2555bad9d683d0a1d516c7"
+    },
+    {
+      "file": "ur5e-scene-7.png",
+      "sha256": "ca3cc4c39c0994bbf68a5363fadcd7eb11c878aa519fc14bf8fa674171472268"
+    },
+    {
+      "file": "ur5e-scene-8.png",
+      "sha256": "ecd39ebb5a4b8653c826145db9a931b6d3585b6b3dd529700de4b0c9b4d7a556"
+    },
+    {
+      "file": "ur5e-scene-9.png",
+      "sha256": "ae0ea2c103b4ff5b4095d72a9a2832f532a5325dbd80e4ed0e56df434763f988"
+    }
+  ]
+}
