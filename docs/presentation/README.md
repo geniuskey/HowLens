@@ -2,6 +2,8 @@
 
 발표: https://geniuskey.github.io/HowLens/
 
+[PDF 다운로드](HowLens-3min.pdf) · 6페이지 · 16:9 · UR5e 데모는 9장면 전체 이미지로 수록.
+
 `index.html`을 브라우저로 직접 열 수 있습니다. 사진·생성 이미지·스크립트·스타일을 모두 포함하므로 서버나 AI 호출 없이 발표할 수 있습니다. 폴더 전체를 함께 이동하세요. 발표자 창은 브라우저에서 팝업을 허용해야 합니다.
 
 로컬 서버가 필요하면 저장소 루트에서 실행합니다.
@@ -52,6 +54,8 @@ Playwright Chromium에서 실제 파일을 열어 확인했습니다.
 - 로컬 `file://`에서 기본 발표·이미지 로드 확인.
 - JS 구문 검사 통과, 브라우저 JS 오류 0, 외부 네트워크 요청 0.
 - 6장 스크린샷 직접 확인. 마지막 슬라이드의 사진은 의도적으로 캔버스 밖으로 이어지며 슬라이드에서 잘립니다.
+- PDF 6페이지를 PNG로 렌더링해 한글·이미지·레이아웃 확인. 텍스트 추출로 질문 편집과 발표자 노트 제외 확인.
+- 모바일 화면에서 PDF 다운로드 버튼과 다운로드 파일명 확인.
 
 검증 스크립트·결과·스크린샷은 로컬 `HowLens-session-artifacts/20261009-presentation/`에 보존합니다. 웹 UI 검증은 실제 로봇 작업 검증과 구분합니다.
 
@@ -60,3 +64,7 @@ Playwright Chromium에서 실제 파일을 열어 확인했습니다.
 `.github/workflows/presentation-pages.yml`은 `docs/presentation/`만 GitHub Pages에 업로드합니다. `main`에 이 폴더 또는 워크플로가 변경되면 다시 배포합니다.
 
 템플릿 기반: html-ppt `presenter-mode-reveal`. 런타임·기본 CSS의 원저작자와 라이선스는 `THIRD_PARTY_NOTICES.md`를 참고하세요.
+
+## PDF 다시 만들기
+
+`export-pdf.cjs`는 Playwright Chromium으로 웹 슬라이드를 인쇄용 PDF로 만듭니다. Playwright를 사용할 수 있는 환경에서 `node docs/presentation/export-pdf.cjs`를 실행하세요. 기존 Chromium 경로는 `HOWLENS_CHROMIUM_PATH` 환경변수로 지정할 수 있습니다. 발표자 노트와 조작 도구는 PDF에 포함하지 않습니다.

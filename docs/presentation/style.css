@@ -20,3 +20,5 @@
 @media print{@page{size:1600px 900px;margin:0}html,body{width:auto;height:auto;overflow:visible;background:var(--white)}.deck{position:static;transform:none;width:1600px;height:auto;overflow:visible}.slide{visibility:visible!important;position:relative;width:1600px;height:900px;break-after:page;opacity:1!important;transform:none!important}.presentation-controls,.progress-bar,.overview,.notes-overlay,dialog{display:none!important}}
 
 .notes-overlay{visibility:hidden;pointer-events:none}.notes-overlay.open{visibility:visible;pointer-events:auto}
+
+.pdf-download{color:var(--on-dark);padding:8px 10px;border-radius:6px;font-size:12px;white-space:nowrap}.pdf-download:hover{background:var(--navy);color:var(--white);text-decoration:none}@media(max-width:650px){.pdf-download{padding:8px 5px;font-size:11px}}
