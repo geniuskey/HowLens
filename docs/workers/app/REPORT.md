@@ -250,3 +250,18 @@ token, run instrumented/visual navigation and permission checks on the assigned 
 and distinguish a real provider response from health-only/mock evidence. Device
 installation may need to account for the new host's debug signing identity; this lane
 has not uninstalled or modified any device app. No human step is reported as passed.
+
+
+## Routed real-photo intake (read-only, 13:29 KST)
+
+Coordinator `relay_802b65d2d97d` explicitly routed nine originals under
+`/Users/runixs/HowLens/docs/*.jpg`. All nine decoded locally with Pillow, all had EXIF
+orientation 1, and all meet the existing input bounds: maximum 12,000,000 pixels and
+7,025,339 bytes (limits 20MP and 10MiB). The portrait CUCKOO photo and wide model-label
+photo were visually inspected. `PhotoFrame` uses `ContentScale.Fit` within its bounded
+frame, retaining uncropped original bytes for an explicit submit. This is local
+image/code inspection, not an Android gallery-selection or rendered-preview PASS.
+
+The photos are discovery inputs and must not be mapped to server/cobot/ups. Originals
+were not changed or copied into this branch; no image was uploaded or sent to an API.
+Actual device gallery/preview fit and real discovery responses remain with delegated QA.
