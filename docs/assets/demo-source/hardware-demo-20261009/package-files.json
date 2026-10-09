@@ -25,6 +25,11 @@
     "sha256": "4b11162b2266e40407e5d67816694c86a635588053b7039d53ff8a2fef95d0e7"
   },
   {
+    "path": "generated-actions/STM32-IMAGEGEN-PROMPTS.md",
+    "bytes": 7493,
+    "sha256": "2c2f89155330b9865ca12c778c40d9bb9e87fcd6c69fa9d0d6f6345c80f0bcad"
+  },
+  {
     "path": "generated-actions/manifest.json",
     "bytes": 1904,
     "sha256": "16e493be5b91b531075bda7f00e828ceaba032c5137b9b368520cd173b26576f"
@@ -63,6 +68,11 @@
     "path": "generated-actions/references/03-stm32/cn2.png",
     "bytes": 458519,
     "sha256": "09d4ef72a3e0d91abbcce1ab856831cfb674382419d2afb4c9bc743c4dad4e5e"
+  },
+  {
+    "path": "generated-actions/references/03-stm32/initial-generated-draft.png",
+    "bytes": 2061792,
+    "sha256": "719181f183d77fe2c27508e4245537ce5d6dfe9c8925f4d93597422affcbfcad"
   },
   {
     "path": "generated-actions/references/03-stm32/manual-step-source.json",
