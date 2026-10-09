@@ -1,0 +1,89 @@
+{
+  "reviewed_commit": "0e2aa94a93db5f2ab2cfc8f7e1a834b4e69eb6e1",
+  "review_date": "2026-10-09",
+  "verification": "SOURCE_REVIEW_ONLY",
+  "executed_product_tests": 0,
+  "unit_test_declarations": 11,
+  "instrumentation_test_declarations": 6,
+  "files": [
+    {
+      "path": "android/app/src/main/java/kr/howlens/app/data/Models.kt",
+      "sha256": "a5fc13b83fc92cf226c158bc6020dcdf7ded26ea21cd5b622b3ed0faf5a2b05d",
+      "test_names": []
+    },
+    {
+      "path": "android/app/src/main/java/kr/howlens/app/data/PhotoLoader.kt",
+      "sha256": "c168b5bcc9e7702905c4fc12dbea4577c285aadb38fc0b4397d07c5f9c1001ba",
+      "test_names": []
+    },
+    {
+      "path": "android/app/src/main/java/kr/howlens/app/data/Repository.kt",
+      "sha256": "f4cd342731c65e0348e116dece90068299bf3af2fb006a14d3c5712e992ddd15",
+      "test_names": []
+    },
+    {
+      "path": "android/app/src/main/java/kr/howlens/app/ui/AnalysisViewModel.kt",
+      "sha256": "4025ab168fc18a005b231b1a54df0564c97bfc2150fcbf9362abbb27596a3a20",
+      "test_names": []
+    },
+    {
+      "path": "android/app/src/main/java/kr/howlens/app/MainActivity.kt",
+      "sha256": "2ad197d8fc156f0a1fdf18b3f471a8a1915bbecf747f9d5e2d9f85b9c441fde1",
+      "test_names": []
+    },
+    {
+      "path": "android/app/src/test/java/kr/howlens/app/FoundationTest.kt",
+      "sha256": "87bc961f6cf31c3743da025a25dd72bc381b9a7720217447540b9f9b06c7b565",
+      "test_names": [
+        "nonGuideAndMockNeverExposeStepsOrImagesEvenWithInjectedSteps",
+        "inputBoundaries",
+        "bothErrorShapesAndFallback",
+        "sharePreviewUsesOnlyAllowlistedEvidenceAndFixedLimitations",
+        "multipartAndSnakeCaseRoundTrip",
+        "fakeScreensLoadingResultAndInputReset",
+        "liveGuideVisualRequestLoadsNineOrderedPanelsAndSameServerAssets",
+        "verificationUploadsAfterPhotoAndLimitsEvidenceToOriginalGuide",
+        "visualFailureKeepsTextAndAllowsOnlyOneUserRetry",
+        "malformedPanelsAreRejectedAndVisualCancellationPreservesGuide",
+        "cancellingHttpVisualCallCancelsOkHttpAndRetainsOriginalText"
+      ]
+    },
+    {
+      "path": "android/app/src/androidTest/java/kr/howlens/app/OfflineScreenTest.kt",
+      "sha256": "013a780ce832d8457b93dc9d64b3cf630a31f18f3be43b060c0455c203c535fd",
+      "test_names": [
+        "offlineMoreInformationAndStopBlockStepsOnScreen",
+        "emptyInputShowsValidation",
+        "sourceVersionPagesAndQuoteRemainVisibleInBlockedResult",
+        "livePanelsRenderInContractOrderAndKeepStepReferences",
+        "sharePreviewShowsExactAllowlistAndOmitsFreeTextBeforeChooser",
+        "decoderAcceptsPngAndRejectsCorruptContent"
+      ]
+    },
+    {
+      "path": "android/app/build.gradle.kts",
+      "sha256": "25d74952b117c0db2abf19ebc5c186a48747d5c6bcc6244ef110b4d49be5effe",
+      "test_names": []
+    },
+    {
+      "path": "android/build.gradle.kts",
+      "sha256": "5d29e05314ca7658c9cefae848317d52331bcd7e6e2bf8909f5aa55ff6627ffa",
+      "test_names": []
+    },
+    {
+      "path": "android/settings.gradle.kts",
+      "sha256": "a126d3b8eef627eae80f5830578434ad50393f1dcf8dd7ab9b5f13f9d7e150ba",
+      "test_names": []
+    },
+    {
+      "path": "android/gradle.properties",
+      "sha256": "fa078c27c9e4bde28a029d673875b028884505efa436b68cf60e1ac0be5b679b",
+      "test_names": []
+    },
+    {
+      "path": "android/gradle/wrapper/gradle-wrapper.properties",
+      "sha256": "40ad196c886842d44adb88e1c64445c55720cf0855fa0c5585f35449e7fc2385",
+      "test_names": []
+    }
+  ]
+}
