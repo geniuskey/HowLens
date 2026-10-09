@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "checked_date_kst": "2026-10-09",
+  "purpose": "Research provenance only; not production evidence or safety approval",
+  "pdf_page_indexing": "1-based physical PDF page",
+  "validation_method": "HTTPS download, SHA-256, macOS PDFKit extraction and rendered-page visual review",
+  "equipment_and_photos": "pending; unavailable",
+  "documents": [
+    {
+      "document_id": "dell-r750-ism-a11",
+      "model": "Dell PowerEdge R750; E70S/E70S001",
+      "document_version": "December 2024 Rev A11",
+      "landing_url": null,
+      "source_url": "https://dl.dell.com/content/manual15837466-dell-emc-poweredge-r750-installation-and-service-manual.pdf",
+      "resolved_download_url": "https://dl.dell.com/content/manual15837466-dell-emc-poweredge-r750-installation-and-service-manual.pdf",
+      "downloaded": true,
+      "bytes": 55547654,
+      "sha256": "1bdf0df910860207f11a27d9fb7ce6effcb70c0a324ed06e3579d1da6fe6b879",
+      "pdf_page_count": 255,
+      "retrieved_date_kst": "2026-10-09",
+      "language": "en",
+      "rendered_and_visually_checked_pages": [
+        1,
+        11,
+        245
+      ],
+      "sections": [
+        {
+          "pdf_page": 11,
+          "printed_page": "11",
+          "section": "Left control panel view",
+          "quote": "Left control panel view"
+        },
+        {
+          "pdf_page": 245,
+          "printed_page": "245",
+          "section": "Table 87; System health and system ID indicator codes",
+          "quote": "The system health and system ID indicator is located on the left control panel of the system."
+        }
+      ],
+      "stored_in_repository": false,
+      "field_equipment_and_firmware_match": "pending"
+    },
+    {
+      "document_id": "ur5e-710-965-00-10.5.152",
+      "model": "UR5e e-Series",
+      "document_version": "PolyScope 5.17; Document Version 10.5.152; 710-965-00",
+      "landing_url": "https://www.universal-robots.com/download/manuals-e-seriesur-series/user/ur5e/517/user-manual-ur5e-e-series-sw-517-english-international-en/",
+      "source_url": "https://s3-eu-west-1.amazonaws.com/ur-support-site/225353/710-965-00_UR5e_User_Manual_en_Global.pdf",
+      "resolved_download_url": "https://s3-eu-west-1.amazonaws.com/ur-support-site/225353/710-965-00_UR5e_User_Manual_en_Global.pdf",
+      "downloaded": true,
+      "bytes": 22934094,
+      "sha256": "2bff4708278fa9928f03505ba245c19268818f57dfe6f806680156f9c9e28cae",
+      "pdf_page_count": 362,
+      "retrieved_date_kst": "2026-10-09",
+      "language": "en",
+      "rendered_and_visually_checked_pages": [
+        329,
+        362
+      ],
+      "sections": [
+        {
+          "pdf_page": 329,
+          "printed_page": "329",
+          "section": "25.1. About",
+          "quote": "25.1. About"
+        }
+      ],
+      "stored_in_repository": false,
+      "field_equipment_and_firmware_match": "pending",
+      "version_note": "PDF page 362 image shows 10.5.152, missing from extracted text; landing last modified 2024-07-04"
+    },
+    {
+      "document_id": "SPD_UM_SU-990-6411_EN",
+      "model": "SMT Tower family; candidate SMT1500I 1500VA 230V, exact field applicability pending",
+      "document_version": "EN 990-6411A / Rev A; PDF 04/2022",
+      "landing_url": "https://www.se.com/us/en/download/document/SPD_UM_SU-990-6411_EN/",
+      "source_url": "https://download.schneider-electric.com/files?p_Doc_Ref=SPD_UM_SU-990-6411_EN&p_enDocType=User+guide&p_File_Name=SU_UM_990-6411A_EN.pdf",
+      "resolved_download_url": "https://download.se.com/files?p_Doc_Ref=SPD_UM_SU-990-6411_EN&p_enDocType=User+guide&p_File_Name=SU_UM_990-6411A_EN.pdf",
+      "downloaded": true,
+      "bytes": 614727,
+      "sha256": "681778248bc8eae8883d00ad626719512e969a54d5600043b691ec91c11194bf",
+      "pdf_page_count": 20,
+      "retrieved_date_kst": "2026-10-09",
+      "language": "en",
+      "rendered_and_visually_checked_pages": [
+        10,
+        20
+      ],
+      "sections": [
+        {
+          "pdf_page": 10,
+          "printed_page": "8",
+          "section": "Display Panel",
+          "quote": "Online LED"
+        },
+        {
+          "pdf_page": 10,
+          "printed_page": "8",
+          "section": "Standard menus / About",
+          "quote": "UPS Model"
+        }
+      ],
+      "stored_in_repository": false,
+      "field_equipment_and_firmware_match": "pending",
+      "version_note": "PDF page 20 date 04/2022 differs from landing date 2022-09-17; family manual applicability to actual SKU remains pending"
+    }
+  ],
+  "official_web_sources": [
+    {
+      "id": "share",
+      "url": "https://developer.android.com/develop/ui/compose/sharing/send",
+      "opened": true,
+      "checked_date": "2026-10-09",
+      "finding": "ACTION_SEND text/plain; rich previews API 29+"
+    },
+    {
+      "id": "images",
+      "url": "https://developer.android.com/develop/ui/compose/graphics/images/customize",
+      "opened": true,
+      "checked_date": "2026-10-09",
+      "finding": "ContentScale.Fit"
+    },
+    {
+      "id": "tts",
+      "url": "https://developer.android.com/reference/android/speech/tts/TextToSpeech",
+      "opened": true,
+      "checked_date": "2026-10-09",
+      "finding": "Initialization; shutdown; Android 11 target manifest queries"
+    },
+    {
+      "id": "voice",
+      "url": "https://developer.android.com/reference/android/speech/tts/Voice",
+      "opened": true,
+      "checked_date": "2026-10-09",
+      "finding": "isNetworkConnectionRequired API 21+; last updated 2026-08-03 UTC"
+    },
+    {
+      "id": "apc-sku",
+      "url": "https://www.se.com/sa/en/product/SMT1500I/apc-smartups-line-interactive-1500va-tower-230v-8x-iec-c13-outlets-smartslot-avr-lcd/",
+      "opened": true,
+      "checked_date": "2026-10-09",
+      "finding": "SMT1500I 1500VA tower 230V"
+    }
+  ]
+}
