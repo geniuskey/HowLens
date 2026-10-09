@@ -96,13 +96,13 @@ Coordinator updates file and prints ASCII changes in chat on material messages.
 Timestamped snapshot, not an autonomous live process. Heartbeat != progress.
 Detailed authority/receipts: STATUS.md and HANDOFF.md.
 
-12:35 PARALLEL WAVE (7 assigned active Tasks; not all executing device tests yet)
+12:35 PARALLEL WAVE (6 active Tasks + mockup completed; not all executing device tests yet)
 App UI/camera       ctx_1b2d7e0b3529  existing primary, exclusive Galaxy
 App data fixes     ctx_c80e9bd04607  LunaHigh; isolated0e2base, Repo/Models only
 APK delivery       ctx_7f80f9bb1516  LunaHigh; immutable baseline ready
 Windows device QA  ctx_a3b6477cd484  LunaHigh; Android16 authorized
 Backend device QA  ctx_15c1e6bdf26a  Sol; thirdphone RSA pending
-Mockup files       ctx_3c6203dc9d97  LunaHigh; HTML/PNG/ZIP ready, validating
+Mockup files       ctx_3c6203dc9d97  DONE3e52de9; HTML/PNG/ZIP checked/pushed
 Runner review      ctx_374b3b068958  SolHighFast; main read-only, no product edits
 
 Mockup viewer (local):

@@ -305,3 +305,5 @@ toWindows/BackendQA. Correctedlive servicePID98131 (old95944stopped), owned
 byAPKhelper, onlyAPK/manifest, stopafter2completeGETs or20min. No publicpublishing.
 Mockup HTML/ZIP/3unchangedPNGs ready in eval-foundation/docs/assets/design-review;
 worker finishingchecks/push. Clearly markedconceptnotactualAPK.
+
+12:35 Mockuppack succeeded3e52de985040005c8e230122605e2d15d0a0c8c5, clean. Root ZIP integrity passed; workerHTML/imagehashchecks passed. ctx3c6203dc9d97 releasedretained/noaction; deliveryaeb4d345ea5e acked, inboxempty. BackendAPKdownloadhashverified; Windowsreceiptpending.
