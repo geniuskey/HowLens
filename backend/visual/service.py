@@ -66,10 +66,19 @@ def _approved_steps(analysis: dict) -> list[dict]:
     return approved
 
 
-def build_storyboard_prompt(analysis: dict) -> str:
+def _scene_steps(analysis: dict) -> list[dict]:
     steps = _approved_steps(analysis)
     # Repeat approved scenes to fill a grid, never manufacture extra operations.
-    scenes = [steps[min(index * len(steps) // 9, len(steps) - 1)] for index in range(9)]
+    return [steps[index * len(steps) // 9] for index in range(9)]
+
+
+def scene_step_ids(analysis: dict) -> list[str]:
+    """Nine row-major intended step IDs; not semantic approval of image cells."""
+    return [step["step_id"] for step in _scene_steps(analysis)]
+
+
+def build_storyboard_prompt(analysis: dict) -> str:
+    scenes = _scene_steps(analysis)
     return (
         "Create one PNG illustration with a uniform borderless 3x3 grid, row-major order. "
         "Use identical cell sizes and image dimensions divisible by 3, at least 96 pixels per side. "

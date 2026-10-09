@@ -38,3 +38,76 @@ Implementation reference: [official Pillow Image documentation](https://pillow.r
 (`open` is lazy; `verify` checks integrity and reopening plus `load` decodes pixels;
 `crop` uses pixel bounds). Tests use synthetic colors and offline provider doubles.
 No real generation or semantic image QA has occurred.
+
+## W2 OpenAI provider integration
+
+Install visual `requirements.txt` into the Backend server environment (parent
+dependency files remain Backend-owned). The adapter uses `httpx` directly, with
+no OpenAI SDK requirement. At startup, after the Coordinator confirms API key and
+budget readiness on the Backend PC:
+
+```python
+from backend.visual.openai_provider import OpenAIStoryboardProvider
+from backend.visual.service import configure_provider, generate_storyboard, scene_step_ids
+from backend.visual.splitter import split_storyboard
+
+configure_provider(OpenAIStoryboardProvider.from_env())  # No HTTP call at startup.
+# analysis must be the backend-validated stored live guide, never new client data.
+grid_png = await generate_storyboard(analysis)
+panels_png = split_storyboard(grid_png)
+step_ids = scene_step_ids(analysis)
+# zip(range(9), step_ids, panels_png) for intended panel mappings.
+# Semantic acceptance must be decided separately before marking a job completed.
+```
+
+Public additive boundary: `scene_step_ids(analysis: dict) -> list[str]` returns
+exactly nine row-major IDs, matching the prompt for all 1-9 approved-step counts.
+It checks the same guide/live eligibility; mapping alone does not verify imagery.
+
+Server environment:
+
+| Variable | Default / validation |
+| --- | --- |
+| `OPENAI_API_KEY` | Required, server only; missing/blank raises `ProviderNotConfiguredError` |
+| `HOWLENS_IMAGE_MODEL` | `gpt-image-1.5`; allowlist also includes `gpt-image-1-mini`, `gpt-image-2`, `gpt-image-2.5-sunburst`, `gpt-image-2.5-flare` |
+| `HOWLENS_IMAGE_SIZE` | `1024x1024`; also `1536x1024`, `1024x1536` |
+| `HOWLENS_IMAGE_QUALITY` | `low`; also `medium`, `high` |
+| `HOWLENS_IMAGE_TIMEOUT_SECONDS` | `120`; finite 1-300 seconds |
+
+Configuration is independent of readiness/budget authorization: constructing the
+adapter makes no request, but generating does. Backend must keep live generation
+disabled until explicitly authorized. No key was copied to the Visual PC and no
+paid generation ran during W2. `gpt-image-1.5` is a supported compatibility default,
+not a claim that it is the newest model. Model access remains account-dependent.
+
+Request: fixed HTTPS `POST https://api.openai.com/v1/images/generations`, `n=1`,
+`output_format=png`, `background=opaque`, `moderation=auto`. GPT Image returns
+`data[0].b64_json`; the unsupported legacy `response_format` is omitted. Only
+base64 is accepted; external URLs are never fetched. No retries or redirects;
+environment proxy discovery is disabled. Overall async request and network phases
+are bounded by the timeout; cancellation is propagated. Timeout does not prove
+the upstream request was not charged, so Backend must not auto-retry it.
+
+Response cap: 15 MiB streamed decoded HTTP body; decoded PNG cap: 10 MiB; image
+cap: 20MP, single-frame PNG, exact requested source dimensions. To satisfy equal
+3x3 panel geometry, the adapter resizes the **whole** validated PNG down to the
+nearest divisible-by-three sides using Lanczos (1024x1024 -> 1023x1023, panels
+341x341); it does not crop off an edge. This slight resampling is explicit and
+does not establish panel boundary placement or semantic content correctness.
+
+`ImageProviderTimeout` subclasses `TimeoutError`; `ImageProviderError` is a
+sanitized upstream/network/response error. `InvalidStoryboardError` rejects
+invalid PNG/dimensions. Backend maps these into failed jobs while preserving
+text; never expose provider response bodies, secrets, or raw network exceptions.
+
+Official documentation opened on 2026-10-09:
+[Create image API reference](https://developers.openai.com/api/reference/resources/images/methods/generate),
+[Image generation guide](https://developers.openai.com/api/docs/guides/image-generation).
+Live output and semantic image acceptance remain pending.
+
+Quick synthetic presentation preview (no live provider):
+
+```powershell
+$env:PYTHONPATH = (Resolve-Path backend).Path
+backend/visual/.venv/Scripts/python.exe docs/workers/visual/mockups/make_panel_mockup.py
+```

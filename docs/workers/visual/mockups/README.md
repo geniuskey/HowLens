@@ -7,3 +7,6 @@ and label them explicitly. Mockups do not establish semantic image quality.
 
 - `20261009_1112_storyboard_split_preview.png`: synthetic numbered color grid
   and its nine split panels, in row-major order; no real image generation.
+- `20261009_1145_panel_step_source_labels.png`: W2 synthetic three-step mapping
+  with panel index, stored-step and demo evidence/document/page labels. All
+  illustrations and evidence are placeholders; no real equipment claims.
