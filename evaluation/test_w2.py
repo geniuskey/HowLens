@@ -37,8 +37,10 @@ class W2Tests(unittest.TestCase):
         self.assertEqual(result[-1]['status'], 'pending')
 
     def test_guide_is_not_used_by_smoke(self):
-        with running(scenario='guide') as base:
+        with running(scenario='guide') as base, patch.object(smoke, 'request', wraps=smoke.request) as request:
             result = smoke.smoke(base)
+        paths = [call.args[1] for call in request.call_args_list]
+        self.assertFalse(any(path.startswith('/analyses/TEST-analysis-') for path in paths))
         self.assertEqual(result[-1]['status'], 'pending')
         self.assertEqual(result[-1]['case'], 'non_guide_409')
 
