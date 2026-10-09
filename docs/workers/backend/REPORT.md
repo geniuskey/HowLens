@@ -1,45 +1,40 @@
-# W1-BACKEND checkpoint
+# W1-BACKEND completion
 
-[BLOCKER] Coordinator requested permission-mode restart at the first implementation/test checkpoint; this session remains workspace-write/on-request. Implementation is preserved and must resume in a fresh Dispatch; this is not final task completion.
+[DONE] Preserved the existing API checkpoint and completed upload/provider-output bounds, storage accounting and verification edge validation. All 38 synthetic offline TestClient tests pass, editable package installation and wheel build succeed, and an actual Uvicorn HTTP health smoke test passes. Live provider/manual acquisition and Visual integration remain subsequent tasks; the unconfigured runtime returns 503 and never fabricates a guide or evidence.
 
-Implemented FastAPI v0.1 health/analyses/visual-jobs/verification endpoints, strict DTOs, JPEG/PNG decoding and 10 MiB/20MP limits, server-generated analysis IDs, private original-photo bounded memory store, provider timeout/error mapping, independent manual registry/reviewer approval boundaries and unsafe step sanitization. Initial offline TestClient suite passes 21 tests; missing provider is 503, missing visual integration is an explicit failed job with one user retry, and no real guide/evidence is fabricated. Remaining work is package/install validation, additional edge-case coverage and implementation review, docs finalization, commit/push verification and final completion reporting under a new Dispatch.
-
-## Branch / base
+## Branch and provenance
 
 - Branch: `ljyonefineday/feat-backend-foundation`.
-- Base confirmed: `75c8eac docs: define role-scoped orchestration and API foundation`.
-- Checkpoint commit SHA: use `git log -1 --format=%H` after checkpoint commit (this report is included in that commit).
-- No main merge and no edits outside backend ownership.
+- Base documentation `75c8eac` verified as ancestor (exit 0).
+- Preserved checkpoint: `b784455`; completed code: `07d8e8712f67a7cd5d32db4d8025694fc18098e8`.
+- Final documentation commit is a descendant of that code SHA; exact final pushed SHA is included in worker_done and obtainable with `git rev-parse HEAD`.
+- Current Dispatch: task `task_2f454c0c4e2c`, dispatch `ctx_eaec09bca2f2`.
+- `git fetch origin main` succeeded and fetched origin/main `717514d`; `git merge --ff-only origin/main` failed because the checkpoint branch diverged. Working tree was clean, existing commits were preserved, and Coordinator explicitly approved continuation without merge/reset/rebase/history rewrite through the live `ask` reply. No main merge occurred.
 
-## Actual commands and results
+## Implementation
 
-1. `git status --short --branch`: clean worker branch.
-2. `git fetch origin main`: initial sandbox error opening shared FETCH_HEAD; escalated retry succeeded.
-3. `git merge --ff-only origin/main`: Already up to date.
-4. `git merge-base --is-ancestor 75c8eac HEAD`: exit 0; HEAD was 75c8eac.
-5. `python3 -m venv backend/.venv`: succeeded.
-6. `backend/.venv/bin/pip install fastapi uvicorn python-multipart pillow httpx pytest`: sandbox attempt had DNS failure; escalated retry installed dependencies successfully.
-7. First `backend/.venv/bin/python -m pytest backend/tests -q`: collection failed because `howlens` package did not exist yet, confirming missing implementation (not a completed behavioral red run).
-8. `PYTHONPATH=backend backend/.venv/bin/python -m pytest backend/tests -q`: **21 passed, 1 warning in 1.13s**.
-9. Orca inbox/heartbeat commands succeeded after runtime_access_denied required escalation; inbox delivered coordinator restart instruction, which triggered this checkpoint.
+FastAPI v0.1 health, multipart analyses, visual job create/query and verification endpoints; strict contract DTOs; private original-photo storage; bounded uploads/JPEG/PNG decoding; bounded memory records; timeout and generic retryable upstream errors; trusted manual registry and independent reviewer boundaries; fail-closed unsafe-step sanitization. Guide admission requires trusted matching device/manual/action evidence, unique IDs, supported steps, independent hazard and precondition approval, live mode and 1–9 steps. Non-guide steps are always empty, invalid evidence is removed, unknown IDs return 404 and non-guide visual/verification return 409.
 
-All provider/manual fixtures are synthetic offline test doubles; no live multimodal call or manufacturer PDF was tested. No real public manual was acquired, registered or claimed complete. Test coverage includes health, unconfigured/error/timeout provider, invalid bytes/MIME/file size/pixel size, question/device validation, untrusted/fabricated/unsafe guide suppression, non-guide 409, unknown ID 404, absent visual failure/retry limit, original photo retention, visual-only verification limitation and store eviction.
+Continuation adds DTO string/list/UTF-8 byte limits and instance revalidation, counts serialized analysis bytes in storage capacity, validates output again after sanitization/verification limitations, bounds decoding response time, imposes upload receive deadline, and applies question length after whitespace trimming. Missing Visual remains an explicit failed job with a maximum of two attempts and stored text survives; no backend/visual files were read or edited.
 
-## Changed files
+## Actual commands/results
 
-- `backend/.gitignore`, `backend/pyproject.toml`
-- `backend/howlens/__init__.py`, `models.py`, `provider.py`, `safety.py`, `store.py`, `main.py`
-- `backend/tests/test_api.py`
-- `docs/workers/backend/RUNBOOK.md`, `docs/workers/backend/REPORT.md`
+- `backend/.venv/bin/pip install -e 'backend[test]'`: succeeded, package built and installed.
+- Initial preserved suite: `backend/.venv/bin/python -m pytest backend/tests -q`: 21 passed, 1 warning in 0.34s.
+- New negative tests before output-bound fix: 4 failed, 30 passed in 0.46s; oversized string/array/aggregate analysis and verification responses incorrectly returned 200. Fixed and reran: 34 passed in 0.40s.
+- Final root suite after boundary tests: `backend/.venv/bin/python -m pytest backend/tests -q`: 38 passed, 1 warning in 0.41s; after upload deadline change, root `python -m pytest -q`: 38 passed in 0.39s.
+- Final project-directory `.venv/bin/python -m pytest -q`: 38 passed, 1 warning in 0.37s.
+- `backend/.venv/bin/pip check`: No broken requirements found.
+- `backend/.venv/bin/pip wheel --no-deps --wheel-dir /tmp/howlens-backend-w1-wheel ./backend`: built howlens_backend-0.1.0 wheel successfully. An earlier command incorrectly used bare `backend` and built an unrelated PyPI package; that result is excluded from validation and no unrelated package was installed into the runtime.
+- Python subprocess smoke launching `backend/.venv/bin/uvicorn howlens.main:app --host 127.0.0.1 --port <dynamically selected port> --no-access-log`, fetching `/health` with urllib and terminating server: PASS, exact status/mode asserted.
+- `git diff --check`: passed. Dependency and official framework reference checks completed.
 
-## Resume-critical review
+Coverage: health, unconfigured/error/timeout providers, invalid image/MIME/file/pixel limits, maximum file accepted, trimmed question and confirmation bounds, malformed/oversized/mutated provider outputs, private upstream error suppression, unknown IDs, fabricated/unreviewed evidence/actions/preconditions, unsafe/non-live/non-guide suppression, verification foreign evidence/identity/mode/error/timeout, absent Visual/retry/text retention, private exact original bytes, FIFO eviction/jobs and serialized-output storage capacity, streaming body overflow and receive timeout. All provider/manual fixtures are synthetic; no real multimodal inference, manual verification, equipment safety or storyboard was tested.
 
-- No `backend/visual/` files exist or were edited. Visual endpoint deliberately remains failed even if library later appears, pending integration/semantic review; follow-up should use contract signature only.
-- Need test streaming multipart limit and timeout; exceptions raised inside ASGI receive may be transformed by parser. Verify proper 413/504 responses and request body/storage bounds.
-- Need tests for verification errors, foreign evidence IDs, confirmation length and provider malformed DTOs.
-- DTO list/string output bounds and memory accounting beyond photo bytes should be reviewed; current provider output sizes are not bounded.
-- `read_photo` uses thread decoding; provider work has timeout and two concurrent slots. Review decode timeout/concurrency handling and safe cancellation.
-- Registry entries must be independently acquired/verified, including exact quote/version/page, rights, source URL and action correspondence. Empty default registry and reviewer deny guides.
-- Verification currently appends visual-only limitation but trusts provider observations; review safety/normal-operation guarantee wording before live adapter integration.
-- Runtime dependency versions are pinned; lockfile, editable build and uvicorn launch are not yet verified. Starlette emits httpx TestClient deprecation warning.
-- Push has not occurred; coordinator explicitly requested checkpoint before full task completion.
+## Files changed
+
+Checkpoint introduced `backend/.gitignore`, `backend/pyproject.toml`, `backend/howlens/{__init__,models,provider,safety,store,main}.py`, `backend/tests/test_api.py`, and the backend RUNBOOK/REPORT. This Dispatch modified `backend/howlens/main.py`, `models.py`, `store.py`, `backend/tests/test_api.py`, `docs/workers/backend/RUNBOOK.md` and this report. No app/evaluation/visual/shared-contract edits.
+
+## Remaining dependencies and limits
+
+No public manufacturer PDF/source was acquired or registered; no live adapter/reviewer configured; actual equipment/task evidence must be verified before guides. Visual library/semantic panel review/asset storage need their own integration task and use only the public signatures. Threaded Pillow cancellation is cooperative: response timeout cannot terminate an active decode thread; production hard isolation and global concurrency controls are not established. Memory limit counts photo + serialized analysis, with bounded job/object overhead separately. Verification adds explicit limitations but a future adapter still needs conservative observation-language review. Starlette's httpx TestClient deprecation warning remains; no tests are skipped or suppressed. No token/key/private image content was logged or committed.
