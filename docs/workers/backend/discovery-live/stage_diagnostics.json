@@ -1,0 +1,44 @@
+{
+  "source": "Actual two HTTP results plus uniquely attributable committed control-flow branch; no invented internal model or citation",
+  "records": [
+    {
+      "filename": "4015b4013bb71d9f.jpg",
+      "http_status": 200,
+      "status": "needs_more_information",
+      "mode": "live",
+      "returned_product_models": [],
+      "returned_citations": [],
+      "provider_attempts": 2,
+      "completed_provider_responses": 2,
+      "search_attempts": 1,
+      "observed_failure_stage": "post-search candidate/source acceptance gate",
+      "exact_public_missing_information": [
+        "Search did not provide a source that supports the complete printed model.",
+        "Upload a sharp close-up of the manufacturer and complete model label, plus an overall product photo."
+      ],
+      "internal_identification_output_available": false,
+      "internal_search_envelope_available": false,
+      "trace_limitation": "Current committed adapter/cache retains only public filtered DTO and numeric usage; per-stage DTO/envelope was discarded and cannot be recovered without a new call",
+      "subreason": "At least one search candidate failed exact manufacturer/model, descriptive-summary, actual-source-membership or source title/path/hostname support checks; exact failed predicate not retained"
+    },
+    {
+      "filename": "98ca76178e51d1f5.jpg",
+      "http_status": 200,
+      "status": "needs_more_information",
+      "mode": "live",
+      "returned_product_models": [],
+      "returned_citations": [],
+      "provider_attempts": 1,
+      "completed_provider_responses": 1,
+      "search_attempts": 0,
+      "observed_failure_stage": "photo-label identity gate before search",
+      "exact_public_missing_information": [
+        "Upload a sharp close-up of the manufacturer and complete model label, plus an overall product photo."
+      ],
+      "internal_identification_output_available": false,
+      "internal_search_envelope_available": false,
+      "trace_limitation": "Current committed adapter/cache retains only public filtered DTO and numeric usage; per-stage DTO/envelope was discarded and cannot be recovered without a new call",
+      "subreason": "Ambiguous or invalid/unreadable literal manufacturer/model/label match; exact failed predicate not retained"
+    }
+  ]
+}

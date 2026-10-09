@@ -1,0 +1,12 @@
+{"event": "reserved_before_call", "run_id": "07c087ce99409d599686", "reservation_usd": 1.0, "reserved_total_usd": 1.0, "attempt_number": 1}
+{"event": "attempt_finished", "run_id": "07c087ce99409d599686", "status": "success", "failure": null, "request_id": "req_447868120fa54288b5f917c49881863b", "http_status": 200, "reservation_usd": 1.0, "actual_receipt_cost_usd": null}
+{"event": "reserved_before_call", "run_id": "ec12c7372de5d3a5e233", "reservation_usd": 1.0, "reserved_total_usd": 2.0, "attempt_number": 2}
+{"event": "attempt_finished", "run_id": "ec12c7372de5d3a5e233", "status": "success", "failure": null, "request_id": "req_f7bc87c377ec478f979940061daa5743", "http_status": 200, "reservation_usd": 1.0, "actual_receipt_cost_usd": null}
+{"event": "reserved_before_call", "run_id": "daa92cb2532f06a8648c", "reservation_usd": 1.0, "reserved_total_usd": 3.0, "attempt_number": 3}
+{"event": "attempt_finished", "run_id": "daa92cb2532f06a8648c", "status": "success", "failure": null, "request_id": "req_51b0c2e10b8b4d2292fb868b7ab72bd6", "http_status": 200, "reservation_usd": 1.0, "actual_receipt_cost_usd": null}
+{"event": "reserved_before_call", "run_id": "d560a8e90af22d4ad4a3", "reservation_usd": 1.0, "reserved_total_usd": 4.0, "attempt_number": 4}
+{"event": "attempt_finished", "run_id": "d560a8e90af22d4ad4a3", "status": "success", "failure": null, "request_id": "req_503b1811e09f4e8b8a2a83719542faf8", "http_status": 200, "reservation_usd": 1.0, "actual_receipt_cost_usd": null}
+{"event": "reserved_before_call", "run_id": "7887fd00ce1ec99ead1b", "reservation_usd": 1.0, "reserved_total_usd": 5.0, "attempt_number": 5}
+{"event": "attempt_finished", "run_id": "7887fd00ce1ec99ead1b", "status": "success", "failure": null, "request_id": "req_92f2c9393f0f41caaa1ab2acd3e5ab72", "http_status": 200, "reservation_usd": 1.0, "actual_receipt_cost_usd": null}
+{"event": "reserved_before_call", "run_id": "4c8f10e9b590bcfb7d4f", "reservation_usd": 1.0, "reserved_total_usd": 6.0, "attempt_number": 6}
+{"event": "attempt_finished", "run_id": "4c8f10e9b590bcfb7d4f", "status": "success", "failure": null, "request_id": "req_f8eed83397554a57bfb972ec882c4b04", "http_status": 200, "reservation_usd": 1.0, "actual_receipt_cost_usd": null}

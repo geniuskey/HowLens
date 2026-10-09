@@ -1,0 +1,60 @@
+{
+  "source": "actual user originals; live requests, not synthetic QA",
+  "results": [
+    {
+      "filename": "4015b4013bb71d9f.jpg",
+      "at": "2026-10-09T04:39:43.828123+00:00",
+      "http_status": 200,
+      "latency_seconds": 7.336,
+      "usage_delta": {
+        "attempts": 2,
+        "completed": 2,
+        "input_tokens": 11106,
+        "output_tokens": 451,
+        "total_tokens": 11557,
+        "web_search_attempts": 1
+      },
+      "requested_provider_model": "gpt-4.1-mini",
+      "same_generic_question": true,
+      "model_hint_empty": true,
+      "request_count": 1,
+      "automatic_retries": 0,
+      "discovery_id": "d726d058-66d3-46be-8fc3-b19427298218",
+      "status": "needs_more_information",
+      "mode": "live",
+      "candidates": [],
+      "missing_information": [
+        "Search did not provide a source that supports the complete printed model.",
+        "Upload a sharp close-up of the manufacturer and complete model label, plus an overall product photo."
+      ],
+      "conservative_usage_plus_reserved_search_usd": 0.018364
+    },
+    {
+      "filename": "98ca76178e51d1f5.jpg",
+      "at": "2026-10-09T04:39:52.458999+00:00",
+      "http_status": 200,
+      "latency_seconds": 8.63,
+      "usage_delta": {
+        "attempts": 1,
+        "completed": 1,
+        "input_tokens": 2575,
+        "output_tokens": 22,
+        "total_tokens": 2597,
+        "web_search_attempts": 0
+      },
+      "requested_provider_model": "gpt-4.1-mini",
+      "same_generic_question": true,
+      "model_hint_empty": true,
+      "request_count": 1,
+      "automatic_retries": 0,
+      "discovery_id": "c1d81dc7-3ca4-4e88-81a5-0ebe862d0d99",
+      "status": "needs_more_information",
+      "mode": "live",
+      "candidates": [],
+      "missing_information": [
+        "Upload a sharp close-up of the manufacturer and complete model label, plus an overall product photo."
+      ],
+      "conservative_usage_plus_reserved_search_usd": 0.0010652
+    }
+  ]
+}

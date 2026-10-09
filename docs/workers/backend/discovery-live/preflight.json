@@ -1,0 +1,48 @@
+{
+  "at": "2026-10-09T04:33:52.198955+00:00",
+  "runtime_commit": "d00384a81f7a0846b96cadfc9d825e648e1926ee",
+  "photos": [
+    {
+      "filename": "4015b4013bb71d9f.jpg",
+      "bytes": 806584,
+      "width": 1548,
+      "height": 783,
+      "pixels": 1212084,
+      "sha256": "6e835d76cc825c9f8af372b45db24eecc003ff05134311dfd308fb259b2d3a37",
+      "manifest_match": true,
+      "unchanged_original": true,
+      "within_20mp": true,
+      "within_10mib": true
+    },
+    {
+      "filename": "98ca76178e51d1f5.jpg",
+      "bytes": 7025339,
+      "width": 3000,
+      "height": 4000,
+      "pixels": 12000000,
+      "sha256": "72cb51f8107543dfdeaeac37c87a13833ae178fbf6d2c3ac4e2e33eb90d48003",
+      "manifest_match": true,
+      "unchanged_original": true,
+      "within_20mp": true,
+      "within_10mib": true
+    }
+  ],
+  "ledger_before": {
+    "model": "gpt-4.1-mini",
+    "attempts": 1,
+    "completed": 1,
+    "input_tokens": 944,
+    "output_tokens": 318,
+    "total_tokens": 1262,
+    "web_search_attempts": null
+  },
+  "limits": {
+    "discovery_requests": 2,
+    "provider_attempts_per_request": 2,
+    "automatic_retries": 0,
+    "incremental_usd_cap": 1.0,
+    "conservative_planned_upper_usd": 0.23824
+  },
+  "question": "사진에 보이는 제품을 식별하고 제조사와 모델에 대한 제품 정보를 찾아주세요.",
+  "model_hint": ""
+}

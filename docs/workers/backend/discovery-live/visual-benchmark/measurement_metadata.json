@@ -1,0 +1,449 @@
+{
+  "visual_commit": "2021958a10421584d1b935191d3de5b045be0e72",
+  "protocol_commit": "0234159c2a5b4cc9443e79de30e90ef5586661d2",
+  "preset": "paired-sunburst",
+  "source": "live owner-account synthetic benchmark; no user-photo input",
+  "attempted_calls": 6,
+  "reserved_usd": 6.0,
+  "actual_billed_usd": null,
+  "concurrency": 1,
+  "retries": 0,
+  "timeout_seconds": 120,
+  "winner": null,
+  "p95_latency_ms": null,
+  "private_output_directory": "/tmp/howlens-visual-paired-20261009/measured",
+  "rows": [
+    {
+      "run_id": "07c087ce99409d599686",
+      "case_id": "TEST-server",
+      "model": "gpt-image-2.5-sunburst-2026-09-08",
+      "settings": {
+        "size": "1024x1024",
+        "quality": "low",
+        "format": "png",
+        "concurrency": 1,
+        "retries": 0
+      },
+      "status": "success",
+      "attempt": 1,
+      "measurement_source": "live",
+      "provider": "openai",
+      "model_snapshot": null,
+      "latency_ms": 12990.23141699945,
+      "actual_cost_usd": null,
+      "usage": {
+        "input_tokens": 136,
+        "output_tokens": 196,
+        "total_tokens": 332,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 136
+        },
+        "output_tokens_details": {
+          "image_tokens": 196,
+          "text_tokens": 0
+        }
+      },
+      "http_status": 200,
+      "error_code": null,
+      "request_id": "req_447868120fa54288b5f917c49881863b",
+      "started_at_utc": "2026-10-09T04:46:14.020976+00:00",
+      "raw_dimensions": [
+        1024,
+        1024
+      ],
+      "normalized_dimensions": [
+        1023,
+        1023
+      ],
+      "normalization": "whole-image Lanczos resize 1024x1024 to 1023x1023; no crop",
+      "product_safety_approval": false,
+      "model_returned": null,
+      "model_returned_reason": "provider_omitted_or_unrecognized_model",
+      "quality_returned": "low",
+      "quality_returned_reason": "provider_reported",
+      "cost": {
+        "estimated_output_cost_usd": 0.00588,
+        "estimated_total_cost_usd": 0.00656,
+        "actual_receipt_cost_usd": null,
+        "billing_receipt": null,
+        "pricing_checked": "2026-10-09",
+        "pricing_source": "https://developers.openai.com/api/docs/pricing",
+        "cached_discount_applied": false,
+        "estimate_reason": "numeric usage at standard uncached list rates; billing receipt unavailable",
+        "model_basis": "gpt-image-2.5-sunburst-2026-09-08",
+        "quality_basis": "low",
+        "model_basis_source": "requested_unverified",
+        "quality_basis_source": "returned"
+      },
+      "raw_sha256": "16ac99ee17c13f4b95b3e774d16a7021dd831d08251a2d7c69b5ead0262b96e7",
+      "normalized_sha256": "7186a713db8578c852812f937a6a7b0e00173800ba739883a3661d0bcde5d62e",
+      "prompt_utf8_sha256": "cc49c5547261db35fcefbc778bda3dc101576afa017ad7a2e883489b12e80dc8",
+      "reference_sha256": [],
+      "reasoning_effort": null,
+      "reasoning_effort_reason": "Images generations API has no reasoning_effort parameter; use quality instead",
+      "human_quality": null,
+      "reference_fidelity": null
+    },
+    {
+      "run_id": "ec12c7372de5d3a5e233",
+      "case_id": "TEST-server",
+      "model": "gpt-image-2.5-sunburst-2026-09-08",
+      "settings": {
+        "size": "1024x1024",
+        "quality": "medium",
+        "format": "png",
+        "concurrency": 1,
+        "retries": 0
+      },
+      "status": "success",
+      "attempt": 1,
+      "measurement_source": "live",
+      "provider": "openai",
+      "model_snapshot": null,
+      "latency_ms": 15936.266792003153,
+      "actual_cost_usd": null,
+      "usage": {
+        "input_tokens": 136,
+        "output_tokens": 439,
+        "total_tokens": 575,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 136
+        },
+        "output_tokens_details": {
+          "image_tokens": 439,
+          "text_tokens": 0
+        }
+      },
+      "http_status": 200,
+      "error_code": null,
+      "request_id": "req_f7bc87c377ec478f979940061daa5743",
+      "started_at_utc": "2026-10-09T04:46:27.096362+00:00",
+      "raw_dimensions": [
+        1024,
+        1024
+      ],
+      "normalized_dimensions": [
+        1023,
+        1023
+      ],
+      "normalization": "whole-image Lanczos resize 1024x1024 to 1023x1023; no crop",
+      "product_safety_approval": false,
+      "model_returned": null,
+      "model_returned_reason": "provider_omitted_or_unrecognized_model",
+      "quality_returned": "medium",
+      "quality_returned_reason": "provider_reported",
+      "cost": {
+        "estimated_output_cost_usd": 0.01317,
+        "estimated_total_cost_usd": 0.01385,
+        "actual_receipt_cost_usd": null,
+        "billing_receipt": null,
+        "pricing_checked": "2026-10-09",
+        "pricing_source": "https://developers.openai.com/api/docs/pricing",
+        "cached_discount_applied": false,
+        "estimate_reason": "numeric usage at standard uncached list rates; billing receipt unavailable",
+        "model_basis": "gpt-image-2.5-sunburst-2026-09-08",
+        "quality_basis": "medium",
+        "model_basis_source": "requested_unverified",
+        "quality_basis_source": "returned"
+      },
+      "raw_sha256": "20120c09110ff38b6b0581b26e798a8dd758e81c23110248b7c3d5c728c48214",
+      "normalized_sha256": "f75dbd6643aab4c625c49c5f7c4155301521ad1e509d7a297509e3d311685a36",
+      "prompt_utf8_sha256": "cc49c5547261db35fcefbc778bda3dc101576afa017ad7a2e883489b12e80dc8",
+      "reference_sha256": [],
+      "reasoning_effort": null,
+      "reasoning_effort_reason": "Images generations API has no reasoning_effort parameter; use quality instead",
+      "human_quality": null,
+      "reference_fidelity": null
+    },
+    {
+      "run_id": "daa92cb2532f06a8648c",
+      "case_id": "TEST-cobot",
+      "model": "gpt-image-2.5-sunburst-2026-09-08",
+      "settings": {
+        "size": "1024x1024",
+        "quality": "low",
+        "format": "png",
+        "concurrency": 1,
+        "retries": 0
+      },
+      "status": "success",
+      "attempt": 1,
+      "measurement_source": "live",
+      "provider": "openai",
+      "model_snapshot": null,
+      "latency_ms": 13611.923000000388,
+      "actual_cost_usd": null,
+      "usage": {
+        "input_tokens": 151,
+        "output_tokens": 196,
+        "total_tokens": 347,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 151
+        },
+        "output_tokens_details": {
+          "image_tokens": 196,
+          "text_tokens": 0
+        }
+      },
+      "http_status": 200,
+      "error_code": null,
+      "request_id": "req_51b0c2e10b8b4d2292fb868b7ab72bd6",
+      "started_at_utc": "2026-10-09T04:46:43.113107+00:00",
+      "raw_dimensions": [
+        1024,
+        1024
+      ],
+      "normalized_dimensions": [
+        1023,
+        1023
+      ],
+      "normalization": "whole-image Lanczos resize 1024x1024 to 1023x1023; no crop",
+      "product_safety_approval": false,
+      "model_returned": null,
+      "model_returned_reason": "provider_omitted_or_unrecognized_model",
+      "quality_returned": "low",
+      "quality_returned_reason": "provider_reported",
+      "cost": {
+        "estimated_output_cost_usd": 0.00588,
+        "estimated_total_cost_usd": 0.006635,
+        "actual_receipt_cost_usd": null,
+        "billing_receipt": null,
+        "pricing_checked": "2026-10-09",
+        "pricing_source": "https://developers.openai.com/api/docs/pricing",
+        "cached_discount_applied": false,
+        "estimate_reason": "numeric usage at standard uncached list rates; billing receipt unavailable",
+        "model_basis": "gpt-image-2.5-sunburst-2026-09-08",
+        "quality_basis": "low",
+        "model_basis_source": "requested_unverified",
+        "quality_basis_source": "returned"
+      },
+      "raw_sha256": "11301790716bf9a015aa41a4be2ececf360faaf6d843c74bc02a668c68b5ed7f",
+      "normalized_sha256": "c516ab61a4eb2777b6964997a292578623ed3ad2f660faede40884cb43c1c8eb",
+      "prompt_utf8_sha256": "d6643cc36b8c2de6fedfcbf08187e0d2c0d7563004eaca9e42328c1721649314",
+      "reference_sha256": [],
+      "reasoning_effort": null,
+      "reasoning_effort_reason": "Images generations API has no reasoning_effort parameter; use quality instead",
+      "human_quality": null,
+      "reference_fidelity": null
+    },
+    {
+      "run_id": "d560a8e90af22d4ad4a3",
+      "case_id": "TEST-cobot",
+      "model": "gpt-image-2.5-sunburst-2026-09-08",
+      "settings": {
+        "size": "1024x1024",
+        "quality": "medium",
+        "format": "png",
+        "concurrency": 1,
+        "retries": 0
+      },
+      "status": "success",
+      "attempt": 1,
+      "measurement_source": "live",
+      "provider": "openai",
+      "model_snapshot": null,
+      "latency_ms": 19525.53162500044,
+      "actual_cost_usd": null,
+      "usage": {
+        "input_tokens": 151,
+        "output_tokens": 439,
+        "total_tokens": 590,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 151
+        },
+        "output_tokens_details": {
+          "image_tokens": 439,
+          "text_tokens": 0
+        }
+      },
+      "http_status": 200,
+      "error_code": null,
+      "request_id": "req_503b1811e09f4e8b8a2a83719542faf8",
+      "started_at_utc": "2026-10-09T04:46:56.813322+00:00",
+      "raw_dimensions": [
+        1024,
+        1024
+      ],
+      "normalized_dimensions": [
+        1023,
+        1023
+      ],
+      "normalization": "whole-image Lanczos resize 1024x1024 to 1023x1023; no crop",
+      "product_safety_approval": false,
+      "model_returned": null,
+      "model_returned_reason": "provider_omitted_or_unrecognized_model",
+      "quality_returned": "medium",
+      "quality_returned_reason": "provider_reported",
+      "cost": {
+        "estimated_output_cost_usd": 0.01317,
+        "estimated_total_cost_usd": 0.013925,
+        "actual_receipt_cost_usd": null,
+        "billing_receipt": null,
+        "pricing_checked": "2026-10-09",
+        "pricing_source": "https://developers.openai.com/api/docs/pricing",
+        "cached_discount_applied": false,
+        "estimate_reason": "numeric usage at standard uncached list rates; billing receipt unavailable",
+        "model_basis": "gpt-image-2.5-sunburst-2026-09-08",
+        "quality_basis": "medium",
+        "model_basis_source": "requested_unverified",
+        "quality_basis_source": "returned"
+      },
+      "raw_sha256": "377b8489b635349c699ed72205559ed36d38c3540e4223a1847478e82cfb878e",
+      "normalized_sha256": "376ecb1d330fa47170da842ed6330a304068a562661b601c0ee225a4a1e961b5",
+      "prompt_utf8_sha256": "d6643cc36b8c2de6fedfcbf08187e0d2c0d7563004eaca9e42328c1721649314",
+      "reference_sha256": [],
+      "reasoning_effort": null,
+      "reasoning_effort_reason": "Images generations API has no reasoning_effort parameter; use quality instead",
+      "human_quality": null,
+      "reference_fidelity": null
+    },
+    {
+      "run_id": "7887fd00ce1ec99ead1b",
+      "case_id": "TEST-ups",
+      "model": "gpt-image-2.5-sunburst-2026-09-08",
+      "settings": {
+        "size": "1024x1024",
+        "quality": "low",
+        "format": "png",
+        "concurrency": 1,
+        "retries": 0
+      },
+      "status": "success",
+      "attempt": 1,
+      "measurement_source": "live",
+      "provider": "openai",
+      "model_snapshot": null,
+      "latency_ms": 15196.09579200187,
+      "actual_cost_usd": null,
+      "usage": {
+        "input_tokens": 133,
+        "output_tokens": 196,
+        "total_tokens": 329,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 133
+        },
+        "output_tokens_details": {
+          "image_tokens": 196,
+          "text_tokens": 0
+        }
+      },
+      "http_status": 200,
+      "error_code": null,
+      "request_id": "req_92f2c9393f0f41caaa1ab2acd3e5ab72",
+      "started_at_utc": "2026-10-09T04:47:16.425078+00:00",
+      "raw_dimensions": [
+        1024,
+        1024
+      ],
+      "normalized_dimensions": [
+        1023,
+        1023
+      ],
+      "normalization": "whole-image Lanczos resize 1024x1024 to 1023x1023; no crop",
+      "product_safety_approval": false,
+      "model_returned": null,
+      "model_returned_reason": "provider_omitted_or_unrecognized_model",
+      "quality_returned": "low",
+      "quality_returned_reason": "provider_reported",
+      "cost": {
+        "estimated_output_cost_usd": 0.00588,
+        "estimated_total_cost_usd": 0.006545,
+        "actual_receipt_cost_usd": null,
+        "billing_receipt": null,
+        "pricing_checked": "2026-10-09",
+        "pricing_source": "https://developers.openai.com/api/docs/pricing",
+        "cached_discount_applied": false,
+        "estimate_reason": "numeric usage at standard uncached list rates; billing receipt unavailable",
+        "model_basis": "gpt-image-2.5-sunburst-2026-09-08",
+        "quality_basis": "low",
+        "model_basis_source": "requested_unverified",
+        "quality_basis_source": "returned"
+      },
+      "raw_sha256": "9169345b23aef4262a55a0b2064929c63d366c3e120169f6d0be4571e446720b",
+      "normalized_sha256": "7b7dc6d1ac2dcaa53f3c82ce8e68eef35867cc97fabffdf36ac3c036600e0ec6",
+      "prompt_utf8_sha256": "5d6ed4c3dbd11c21a384e8293e85b631f8a3dcb90e9234dc33a9ee26d3e94424",
+      "reference_sha256": [],
+      "reasoning_effort": null,
+      "reasoning_effort_reason": "Images generations API has no reasoning_effort parameter; use quality instead",
+      "human_quality": null,
+      "reference_fidelity": null
+    },
+    {
+      "run_id": "4c8f10e9b590bcfb7d4f",
+      "case_id": "TEST-ups",
+      "model": "gpt-image-2.5-sunburst-2026-09-08",
+      "settings": {
+        "size": "1024x1024",
+        "quality": "medium",
+        "format": "png",
+        "concurrency": 1,
+        "retries": 0
+      },
+      "status": "success",
+      "attempt": 1,
+      "measurement_source": "live",
+      "provider": "openai",
+      "model_snapshot": null,
+      "latency_ms": 16107.12204200172,
+      "actual_cost_usd": null,
+      "usage": {
+        "input_tokens": 133,
+        "output_tokens": 439,
+        "total_tokens": 572,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 133
+        },
+        "output_tokens_details": {
+          "image_tokens": 439,
+          "text_tokens": 0
+        }
+      },
+      "http_status": 200,
+      "error_code": null,
+      "request_id": "req_f8eed83397554a57bfb972ec882c4b04",
+      "started_at_utc": "2026-10-09T04:47:31.706175+00:00",
+      "raw_dimensions": [
+        1024,
+        1024
+      ],
+      "normalized_dimensions": [
+        1023,
+        1023
+      ],
+      "normalization": "whole-image Lanczos resize 1024x1024 to 1023x1023; no crop",
+      "product_safety_approval": false,
+      "model_returned": null,
+      "model_returned_reason": "provider_omitted_or_unrecognized_model",
+      "quality_returned": "medium",
+      "quality_returned_reason": "provider_reported",
+      "cost": {
+        "estimated_output_cost_usd": 0.01317,
+        "estimated_total_cost_usd": 0.013835,
+        "actual_receipt_cost_usd": null,
+        "billing_receipt": null,
+        "pricing_checked": "2026-10-09",
+        "pricing_source": "https://developers.openai.com/api/docs/pricing",
+        "cached_discount_applied": false,
+        "estimate_reason": "numeric usage at standard uncached list rates; billing receipt unavailable",
+        "model_basis": "gpt-image-2.5-sunburst-2026-09-08",
+        "quality_basis": "medium",
+        "model_basis_source": "requested_unverified",
+        "quality_basis_source": "returned"
+      },
+      "raw_sha256": "b9764ab58b74c44d5f7d6c235d655f9f0f97232b0177185ae333e9723668cca5",
+      "normalized_sha256": "e44bbd01da0ae476324600373d2ec9f2ba52d1a42b25b0442e4849244d665771",
+      "prompt_utf8_sha256": "5d6ed4c3dbd11c21a384e8293e85b631f8a3dcb90e9234dc33a9ee26d3e94424",
+      "reference_sha256": [],
+      "reasoning_effort": null,
+      "reasoning_effort_reason": "Images generations API has no reasoning_effort parameter; use quality instead",
+      "human_quality": null,
+      "reference_fidelity": null
+    }
+  ]
+}
