@@ -64,3 +64,8 @@
 임팩트의 중심은 '사진 또는 카메라에서 바로 시작 → 읽을 문장 최소화 → 근거가 있는 다음 행동 → 설명 이미지 → 전후 변화 확인'의 연결 완성도다. 장식 기능이나 미지원 메뉴보다 이 흐름의 속도·반응·복구를 우선한다. 실제guide 승인/실장비 근거가 없으면 완료로 꾸미지 않는다. 사진 탭과 카메라 탭은 모두 단일사진 요청이며 연속 영상 분석은 범위 밖이다.
 
 독립 소유 경로/테스트 슬롯을 가진 준비된 작업은 가능한 만큼 병렬 배포한다. 동시 워커 수를 늘리기 위한 중복 구현·중복 조사·기기 동시 조작은 하지 않는다. 완료한 워커는 즉시 재사용하거나release하고 [BOARD.txt](BOARD.txt)에 상태를 갱신한다.
+
+### 13:17 user override
+Astra exclusively 김태완 PC/account. 김의윤 PC uses GPT-6-Luna for tests only.
+App integration: 김태완 Astra High; HomeEntry: 김태완 Sol6.1 High.
+Do not launch Astra/Sol implementation on 김의윤 even if UI lists those models.

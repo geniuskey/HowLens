@@ -434,3 +434,41 @@ screenshot helper failed missingPIL before restore; now uses existingvenv.
 Official source https://developers.cloudflare.com/tunnel/get-started/quick-tunnels/
 read: temporaryURL, no account/domain, lifetime tied to process; email interactive
 auth unsuitable for nativeclient. Use installedCLIhelp andHTTP2 forUDP-blocked tether.
+
+13:15 Root SSH jymbook@10.102.72.28 succeeded with existing knownhost/BatchMode.
+Read-only localhealth2000.000741s; OpenAI no-keyTLS4010.253163s; CF API4050.127651s.
+Default route en0 gateway10.102.72.240; serverPID74518 listening*:8000.
+Root downloaded official cloudflared2026.10.0 darwinarm64 to
+/tmp/howlens-coordinator-tools/cloudflared and verified release SHA256
+a2f79ff7b9420aa537d74af239f376da170bbabeb529aec416002adac6a72e70.
+Worker notified, still sole gateway/tunnel process owner; no duplicate service.
+Gateway chosen127.0.0.1:18080 upstream127.0.0.1:8000.
+User asks urgent UI dispatch: HomeEntryPane Task993f9b1994fc/ctxf879f546f26e
+started/turnobserved on existing App helper terminal4db635c5, ownnewfile only.
+PrimaryAppAstra owns integration/settings/data, Home helper reservedfile excluded.
+Source corpus6614596 delivered/released:5actualphotos+1crop,23hashchecks,
+localprivate originals; registration/evaluation not yet done.
+
+## 13:20 public HTTPS verified and UI placement corrected
+
+Public https://premium-proceed-hartford-published.trycloudflare.com now live.
+Rootverifiedhealth2000.508544s; unauthPOST4010.339256s; owner-hosttoken-file-only
+authenticatedEMPTYPOST4221.382s (no photo/provider). GatewayPID46220 loopback18080,
+term7e05c37c; cloudflaredPID46758 HTTP2 termd4770fd0; oldbackend74518 retained.
+User-authorized SSH diagnostic found OpenAI outboundTLS401 and CFAPI405 reachable,
+not an internetoutage. QA actualAPK once afterUSBrestore showed live-mode
+needsmoreinformation screen9330ms inclUI overhead, HTTP/rawJSONunexposed.
+
+AppAstra on김의윤 hit Usage limit, and HomeSol retryalso hitlimit beforeedits.
+OfficialstopApp returnedstop_unknown/externalterminal/processnone; abandoned
+ctx09c2cb6549f7 andctxf879f546f26e, then exactterminalsclosedptyKilledtrue after
+userexplicitTESTONLY correction. User: allAstra 김태완 only, 김의윤 freeLuna6TESTONLY.
+SameTaskretry Appctx333f324ee733 now localapp-integration (newWorkerworktree
+required to preserve/source-isolate oldApp), terminale4888e3b AstraHighFastYOLO.
+Homectx6e3ae7370112 localexistingeval-foundation, terminal021512c5 SolHighFastYOLO.
+Bothplacementasksanswered, messagesACKed; App reportsauthimplready+Gradlebuild,
+Homeimplemented+isolatedcompile. Existingguide/summary/dataSHAsintegratedApp.
+KnownlocalJAVA_HOME /opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home;
+SDK ~/Library/Android/sdk had34-ext11, primaryownsanymissingplatforminstall.
+NewLunaTESTterminala2af53bc-c006-454a-9387-8c65b43bed98 on김의윤, Tasklaunch
+receipt pending; ownGalaxy only, publichealthnow/newAPK later, no productedits.

@@ -1,4 +1,4 @@
-HOWLENS | 2026-10-09 13:12 KST | SUBMIT 17:00 | LEFT ~3h48m
+HOWLENS | 2026-10-09 13:20 KST | SUBMIT 17:00 | LEFT ~3h40m
 
 OVERALL RELEASE READINESS
 [###########---------] ~55% (Coordinator estimate, not measured code completion)
@@ -11,7 +11,7 @@ M2 UI + input/guide      [################----] Components ready; integrating
 M3 Integrated/device QA [########------------] Three phones; live POST pending
 M4 Release/submission   [--------------------] Main review and package pending
 
-13:12 NOW -> 14:00 connected candidate -> 14:30 FEATURE FREEZE
+13:20 NOW -> 14:00 connected candidate -> 14:30 FEATURE FREEZE
 14:30-15:30 fixes + three-device regression
 15:30-16:00 package + demo -> 16:00 READY -> 17:00 DEADLINE
 Final1h buffer; timing is a target, not a completion claim.
@@ -19,13 +19,14 @@ Final1h buffer; timing is a target, not a completion claim.
 +------------------------+------------+---------------------------------------+
 | WORK                   | STATE      | EVIDENCE / NEXT                       |
 +------------------------+------------+---------------------------------------+
-| App integration        | ASTRA HIGH | ctx_09c2cb6549f7; data/summary/journey |
+| App integration        | ASTRA HIGH | ctx_333f324ee733; data/summary/journey |
+| Home entry UI          | RUNNING    | ctx_6e3ae7370112; isolated component |
 | Summary sheet          | DELIVERED  | 9fe2b0b;18 JVM tests + assemble PASS   |
 | Guide journey          | DELIVERED  | bb6eeb0;8 scoped tests + assemble PASS|
 | Backend discovery      | DELIVERED  | eb838e3;118 offline PASS; not live   |
-| Public HTTPS tunnel    | DEPLOYING  | User approved; guarded gateway      |
+| Public HTTPS tunnel    | LIVE       | external200 / unauth401 / auth422   |
 | Windows phone QA       | DELIVERED  | 3b9031f; denial/settings/gallery PASS|
-| Fold4 live QA          | RUNNING    | USB health200 live; APK POST pending |
+| Fold4 live QA          | POST DONE  | needs-more-info UI; ~9.33s observed  |
 | Real photos + manuals  | RUNNING    | ctx_950b0c4b6142; source corpus       |
 | Image model comparison | RUNNING    | ctx_2f6d44a5ad63; quality/cost/time   |
 | Backend uploaded PDFs  | FOUND 5    | manuals/evaluation; intake assigned |
@@ -60,3 +61,7 @@ MOCKUP (concept, not APK screenshot):
 
 Snapshot updated on material evidence; heartbeat never increases progress.
 Authority and historical receipts: STATUS.md / HANDOFF.md.
+
+CURRENT: Astra only 김태완; 김의윤 Luna6 TEST ONLY.
+PUBLIC: https://premium-proceed-hartford-published.trycloudflare.com/health
+HTTPS server verified; auth-enabled APK build and physical HTTPS flow pending.
