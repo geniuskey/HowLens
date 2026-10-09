@@ -408,3 +408,12 @@ User reports Backend PDF upload; both expected backend subfolders empty per
 Worker. User says agreed location; expanded read-only PDF path search across
 Backend main and exact worktree requested, no key reading or home-wide search.
 Deliveriesd0b1d63db07a/a1ed91ed23bf/9390b0a90bf1 processed and ACKed.
+
+13:08 User temporarily disconnects 이윤재 phone to photograph nearby products.
+Windows QA ctxa3b6477cd484 already settled/released, no active phone editor.
+Wait for explicit reconnect report before next Windows device task.
+Visual comparison Task96c1d2506226/ctx2f6d44a5ad63 accepted on existing idle
+Sol6.1 terminal218aeb03. Worker controls benchmark code only, no device.
+Corpus first status842b701263d0: real R750 front/rear and AX55(CA)Ver1.0
+label downloaded/inspected; TPLinkPDF122pages REV1.0.0 verified; region-match
+pending, not runtime registered.

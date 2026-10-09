@@ -1,4 +1,4 @@
-HOWLENS | 2026-10-09 13:07 KST | SUBMIT 17:00 | LEFT ~3h53m
+HOWLENS | 2026-10-09 13:08 KST | SUBMIT 17:00 | LEFT ~3h52m
 
 OVERALL RELEASE READINESS
 [###########---------] ~55% (Coordinator estimate, not measured code completion)
@@ -11,7 +11,7 @@ M2 UI + input/guide      [################----] Components ready; integrating
 M3 Integrated/device QA [########------------] Three phones; live POST pending
 M4 Release/submission   [--------------------] Main review and package pending
 
-13:07 NOW -> 14:00 connected candidate -> 14:30 FEATURE FREEZE
+13:08 NOW -> 14:00 connected candidate -> 14:30 FEATURE FREEZE
 14:30-15:30 fixes + three-device regression
 15:30-16:00 package + demo -> 16:00 READY -> 17:00 DEADLINE
 Final1h buffer; timing is a target, not a completion claim.
@@ -26,7 +26,7 @@ Final1h buffer; timing is a target, not a completion claim.
 | Windows phone QA       | DELIVERED  | 3b9031f; denial/settings/gallery PASS|
 | Fold4 live QA          | RUNNING    | USB health200 live; APK POST pending |
 | Real photos + manuals  | RUNNING    | ctx_950b0c4b6142; source corpus       |
-| Image model comparison | STARTING   | configurable quality/cost/time       |
+| Image model comparison | RUNNING    | ctx_2f6d44a5ad63; quality/cost/time   |
 | Backend uploaded PDFs  | LOCATING   | two intake subfolders empty; recheck |
 | Runtime manual ingest  | PENDING    | asset architecture ready027ec4e      |
 | Main product merge     | WAITING    | concrete review + user approval     |
@@ -34,7 +34,9 @@ Final1h buffer; timing is a target, not a completion claim.
 
 PHYSICAL TESTING: available NOW in each local TEST worker conversation.
 Galaxy App: R5KL20H60TN; baseline57405bb camera/retake verified, integration next.
-Windows: R3CY70W172M; baseline57405bb permission/settings/gallery verified.
+Windows: R3CY70W172M; baseline permission/settings/gallery verified.
+USER temporarily disconnecting Windows phone for real product photography.
+Do not schedule device control until user reports reconnection.
 Backend Fold4: R3CT80CZ2MW; baseline57405bb; USB backend HTTP200 verified.
 APK57405bb SHA256 2b39251176178975fd0a9228da55a88903d879e7d2cc9fd4dcdb695d128abb25.
 Human answers go directly to each assigned test worker, technical results to root.
@@ -48,7 +50,9 @@ separate evidence types. Corpus preparation is not backend registration/approval
 SERVICES: Backend PID74518 retained, 10.102.72.28:8000.
 Hub transport term_3d2273ec; old Coordinator closed. No duplicate editor.
 ACTIVE: Appctx09c2cb6549f7; Backenddiscoveryctx34b6d97bd407;
-Fold4ctx15c1e6bdf26a; Sourcecorpusctx950b0c4b6142; Visual launch pending receipt.
+Fold4ctx15c1e6bdf26a; Sourcecorpusctx950b0c4b6142; Visualctx2f6d44a5ad63.
+First real corpus evidence: Worker downloaded/inspected R750 front/rear and
+AX55(CA) Ver1.0 label; PDF122pages REV1.0.0 verified. Region matching pending.
 
 MOCKUP (concept, not APK screenshot):
 /Users/runixs/orca/workspaces/HowLens/eval-foundation/docs/assets/design-review/index.html
