@@ -29,12 +29,17 @@ interface AnalysisRepository {
 }
 class ApiFailure(val code: String, override val message: String, val retryable: Boolean) : IOException(message)
 
+/** Decoder seam for local JVM tests; Android builds use the real bounded BitmapFactory path. */
+internal fun interface PngAssetDecoder {
+    fun requireDecodable(bytes: ByteArray)
+}
+
 /** Validates downloaded panels with Android's decoder while bounding native bitmap memory. */
-internal object PngAssetValidator {
+internal object PngAssetValidator : PngAssetDecoder {
     private const val MAX_PIXELS = 20_000_000L
     private const val MAX_DECODE_PIXELS = 4_000_000L
 
-    fun requireDecodable(bytes: ByteArray) {
+    override fun requireDecodable(bytes: ByteArray) {
         val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
         BitmapFactory.decodeByteArray(bytes, 0, bytes.size, bounds)
         val width = bounds.outWidth
@@ -86,10 +91,23 @@ object ApiErrors {
     }
 }
 
-class HttpAnalysisRepository(baseUrl: String, private val client: OkHttpClient = OkHttpClient.Builder()
-    .connectTimeout(10, TimeUnit.SECONDS).readTimeout(45, TimeUnit.SECONDS)
-    .writeTimeout(30, TimeUnit.SECONDS).callTimeout(60, TimeUnit.SECONDS)
-    .retryOnConnectionFailure(false).followRedirects(false).followSslRedirects(false).build()) : AnalysisRepository {
+class HttpAnalysisRepository private constructor(
+    baseUrl: String,
+    private val client: OkHttpClient,
+    private val pngDecoder: PngAssetDecoder
+) : AnalysisRepository {
+    constructor(baseUrl: String, client: OkHttpClient = OkHttpClient.Builder()
+        .connectTimeout(10, TimeUnit.SECONDS).readTimeout(45, TimeUnit.SECONDS)
+        .writeTimeout(30, TimeUnit.SECONDS).callTimeout(60, TimeUnit.SECONDS)
+        .retryOnConnectionFailure(false).followRedirects(false).followSslRedirects(false).build()) :
+        this(baseUrl, client, PngAssetValidator)
+
+    internal constructor(baseUrl: String, pngDecoder: PngAssetDecoder) :
+        this(baseUrl, OkHttpClient.Builder()
+            .connectTimeout(10, TimeUnit.SECONDS).readTimeout(45, TimeUnit.SECONDS)
+            .writeTimeout(30, TimeUnit.SECONDS).callTimeout(60, TimeUnit.SECONDS)
+            .retryOnConnectionFailure(false).followRedirects(false).followSslRedirects(false).build(), pngDecoder)
+
     private val base = baseUrl.toHttpUrl().also {
         require(it.encodedPath == "/" && it.query == null && it.fragment == null && it.username.isEmpty() && it.password.isEmpty()) {
             "API 주소는 인증정보·쿼리 없는 서버 루트여야 합니다."
@@ -196,7 +214,7 @@ class HttpAnalysisRepository(baseUrl: String, private val client: OkHttpClient =
                     if (bytes.size < pngSignature.size || !pngSignature.indices.all { index -> bytes[index] == pngSignature[index] }) {
                         throw ApiFailure("invalid_image", "서버 패널 응답이 유효한 PNG가 아닙니다. 텍스트 안내는 유지됩니다.", false)
                     }
-                    PngAssetValidator.requireDecodable(bytes)
+                    pngDecoder.requireDecodable(bytes)
                     if (continuation.isActive) continuation.resumeWith(Result.success(bytes))
                 } } catch (e: Exception) { if (continuation.isActive) continuation.resumeWithException(e) }
             }
