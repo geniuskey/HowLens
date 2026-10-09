@@ -307,3 +307,18 @@ Mockup HTML/ZIP/3unchangedPNGs ready in eval-foundation/docs/assets/design-revie
 worker finishingchecks/push. Clearly markedconceptnotactualAPK.
 
 12:35 Mockuppack succeeded3e52de985040005c8e230122605e2d15d0a0c8c5, clean. Root ZIP integrity passed; workerHTML/imagehashchecks passed. ctx3c6203dc9d97 releasedretained/noaction; deliveryaeb4d345ea5e acked, inboxempty. BackendAPKdownloadhashverified; Windowsreceiptpending.
+
+## 12:38 mistaken-main-session user instructions synchronized
+
+Hub main session term_eebe9bcd-146c-4ab0-a37e-5d4f1a2af40f supplied complete
+visible direct-user inventory: (1) utilize this PC/account Codex fordevelopment;
+(2) create repo-local four-person PDF collection directories. Nootheruserrequests
+visible, no task/run/subagent creation, no product/contracts/index/branch edits.
+Five untracked docs/assets/manuals files retained inHubmain. Coordinator copies
+exact reportedREADME/.gitkeep into localmain under usersync/path instruction
+and distributes as docs-only change, no product integration implied.
+Readonlyreview task8b18d6653c43/ctx374b3b068958 succeeded, released. TwoP2
+benchmarkfindings routedVisualfollowup; paidbenchmark remains unrun.
+Datahelper2b01cb4 delivered butfullJVMtimeout, integrationheld/followupassigned.
+Its Gradle devicefilter unexpectedly executed2tests onGalaxy aswellasAVD;
+primaryAppnotified to verify/restorebuild; helper prohibited alldeviceruns.
