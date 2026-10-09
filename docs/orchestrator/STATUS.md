@@ -1,6 +1,6 @@
 # Orchestration status
 
-2026-10-09 11:48 KST. Run `run_6351cb7363de`; Coordinator 김태완 main clone.
+2026-10-09 11:57 KST. Run `run_6351cb7363de`; Coordinator 김태완 main clone.
 17:00 submission; product main integration still awaits concrete review and approval.
 
 ## Current routing and permissions
@@ -27,7 +27,7 @@ No credentials were transferred and no main product merge performed.
 | Task | PC / Dispatch | Scope |
 |---|---|---|
 | W2-APP `task_2b8f83fdee01` | 김의윤 / `ctx_9435010172c1` | Live Visual + verification UI, bounded/cancellable HTTP; Galaxy baseline NOW |
-| W2-BACKEND `task_69c26e09a2dc` | 이준영 / `ctx_4fc700a02b03` | Responses adapter, strict evidence validation, config and Visual boundary |
+| W2-BACKEND `task_69c26e09a2dc` | 이준영 / `ctx_4fc700a02b03` succeeded | aba3e9e pushed;58offline tests;1paid synthetic non-guide smoke; LAN server retained |
 | W2-VISUAL `task_77bd347ac7ee` | 이윤재 / `ctx_3e01d615f3f3` succeeded | 63dd0f8 pushed;17offline tests, provider+mapping+mockup; paid/semantic QA pending |
 | W2-E2E `task_15215775f6e9` | 김태완 / `ctx_98c4e2d3cca5` succeeded | d263f77 pushed; Coordinator independently reran20 tests PASS; physical pending |
 | W2-RESEARCH `task_cd34651020f8` | 김태완 / `ctx_c1c5ea214ffa` succeeded | 5c0b830 pushed;3 official manuals/pages/hashes; Sharesheet spec |
@@ -150,3 +150,41 @@ Guide readiness is still blocked by absent physical review and zero approved act
 Backend proposed optional observation_session_id + scoped operator-reviewed TTL record;
 no contract field approved/added yet. Do not label grounded non-guide analysis as completed
 guide/Visual/verification end-to-end validation.
+
+## Latest scope and evidence — 11:57
+
+User supplied team-lead HowLens reference image and explicitly requested applying it.
+Blue primary #0052FF, white/coolgray #F3F4F6 replaces provisional teal world. Designer
+preserved original at docs/assets/design/reference/team-lead-howlens-original.png in
+research worktree. User still requires minimal visible text, intuitive small screen.
+User subsequently requested BOTH photo-analysis and in-app camera tabs. Each sends one
+captured image when requested; no continuous video transport/AI analysis authorized.
+App initially estimated CameraX integration+validation3–5h; root split module and UI
+work for a45min prototype gate, not a guarantee of completion. Main App retains shared
+UI/data/build/manifest; Camera worker exclusively new camera/** and its tests/docs.
+
+| New work | Exact assignment | Ownership / limits |
+|---|---|---|
+| W3-CAMERA `task_ed523c126c60` / `ctx_35a5357fb502` | 김의윤 PC, `/Users/edwin/orca/workspaces/HowLens/camera-preview`, branch `geniuskey/camera-preview`, basef4f0ab6, terminal `term_4d8d5398-b46d-4d39-a7d4-56ab9ae80c88` | App camera module only, no shared Gradle/manifest/MainActivity edits; temporary verification harness allowed; no device control until slot granted |
+| W4-IMAGE-EVAL-PREP `task_f32a50e36c01` / `ctx_76e57cbb55c7` | 김태완 eval-foundation, existing `term_293d84b7-0728-4a15-9c6c-935014c3903b`, Astra default | evaluation/image_models/, own image-model docs/assets; official price/model shortlist+offline benchmark preparation, no paid calls; team-lead criteria pending |
+
+Camera public API: CameraCapturePane(isActive, onPhotoCaptured:(Uri)->Unit,
+onError:(String)->Unit, onChooseFromGallery:()->Unit, modifier). CameraX1.4.2 matching
+camera2/lifecycle/view dependencies and CAMERA permission proposed; actual compile
+compatibility pending disposable build. Gallery fallback, lifecycle disposal, stale
+capture suppression and bounded image resolution are required.
+
+Backend actual service stays running in dedicated `term_bde18df8-bc41-4a7f-bd14-2742207763a7`,
+PID74518, 0.0.0.0:8000; Backend/Coordinator owns stop after matching process identity.
+Root GET http://10.102.72.28:8000/health returned ok/live. App PC GET also200.
+Galaxy on5G initially ERR_NETWORK_CHANGED. App-owned localhost127.0.0.1:18000 TCP relay
+and adb reverse reached Backend successfully from Galaxy Chrome. Root authorized one
+synthetic analysis through actual APK within existing20attempt budget; result pending.
+Primary App has exclusive physical-device slot until W2 checkpoint; Camera must wait.
+
+Backend aba3e9e passed unchanged W3 probe independently at root in disposable snapshot
+`/var/folders/69/r13269yn5wn5ydgqj5c6r0qh0000gn/T/howlens-w3-fixed-review-ki2fi5ar`:
+exit0, decode_cancel_peak2, mock guide Visual/verification409; no external network/paid
+calls. Worker58tests and packaging pass remain Worker-reported; old54tests were separately
+verified by Evaluation. Accepted Backend release retained external_terminal/no process
+action; dedicated server is separate and remains intentionally running.
