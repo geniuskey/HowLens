@@ -5,7 +5,9 @@ import json
 import httpx
 import pytest
 from pydantic import ValidationError
-from howlens.discovery import DiscoveryProvider, DiscoveryService, validate_public_url
+from howlens.discovery import (CLOSEUP, DiscoveryProvider, DiscoveryService, actual_sources,
+                              supports_identity, validate_public_url)
+from howlens.discovery_models import DiscoverySource
 from howlens.discovery_models import ProductDiscovery
 from howlens.openai_provider import OpenAIResponsesProvider
 from howlens.safety import ManualRegistry
@@ -81,7 +83,7 @@ def test_unknown_ambiguous_and_injected_labels_request_closeup_without_search(ob
     p, calls = staged(label_value=observation)
     result = asyncio.run(DiscoveryProvider(p).discover(photo(), model_hint='Dell PowerEdge R750'))
     assert result.status == 'needs_more_information' and result.candidates == []
-    assert 'close-up' in result.missing_information[0] and len(calls) == 1
+    assert result.missing_information[0] == CLOSEUP and len(calls) == 1
 
 
 def test_complete_search_without_matches_is_not_found():
@@ -274,3 +276,75 @@ def test_result_bounds_and_no_guide_extension():
         ProductDiscovery.model_validate(result.model_dump() | {'steps': ['unsafe']})
     with pytest.raises(ValidationError):
         ProductDiscovery.model_validate(result.model_dump() | {'status': 'candidate'})
+
+
+# Synthetic metadata using the user-photo identity, NOT captured live OCR/search.
+CUCKOO_URL = 'https://www.cuckoo.co.kr/mall/productView?productNo=5241'
+
+
+@pytest.mark.parametrize('manufacturer,model', [
+    ('쿠쿠홈시스(주)', 'AC-35U20FWS'), ('CUCKOO', 'AC35U20FWS'),
+    ('쿠쿠', 'AC 35U20FWS'), ('쿠쿠홈시스㈜', 'AC–35U20FWS'),
+])
+def test_printed_korean_legal_name_matches_bounded_brand_and_model_typography(manufacturer, model):
+    observation = label(manufacturer='쿠쿠홈시스(주)', model='AC-35U20FWS',
+                        label_text='모델명 AC–35U20FWS 제조자 쿠쿠홈시스㈜')
+    candidate = search(manufacturer=manufacturer, model=model, summary='공기청정기 제품 정보입니다.',
+                       source_urls=[CUCKOO_URL])
+    p, calls = staged(label_value=observation, search_value=candidate, url=CUCKOO_URL,
+                      title='CUCKOO AC35U20FWS 공기청정기')
+    result = asyncio.run(DiscoveryProvider(p).discover(photo()))
+    assert result.status == 'candidate'
+    assert result.candidates[0].manufacturer == observation['manufacturer']
+    assert result.candidates[0].model == observation['model']
+    assert result.candidates[0].sources[0].url == CUCKOO_URL
+    assert len(calls) == 2 and p.ledger['web_search_attempts'] == 1
+
+
+@pytest.mark.parametrize('variant', ['AC-35U20FCG', 'AC-34U20FWS', 'AC-35U20FWS2',
+                                    'AC-35U20FWS(S)', 'AC-35U20FWS-2', 'AC-35U20FWS/S',
+                                    'AC-35U20FWS (S)'])
+@pytest.mark.parametrize('location', ['candidate', 'title', 'path', 'label'])
+def test_confusable_cuckoo_variants_are_never_normalized_to_printed_model(variant, location):
+    model = 'AC-35U20FWS'
+    url = CUCKOO_URL if location != 'path' else 'https://www.cuckoo.co.kr/products/' + variant.replace(' ', '%20')
+    observation = label(manufacturer='쿠쿠홈시스(주)', model=model,
+                        label_text='쿠쿠홈시스(주) ' + (variant if location == 'label' else model))
+    candidate = search(manufacturer='쿠쿠홈시스(주)', model=variant if location == 'candidate' else model,
+                       summary='공기청정기 제품 정보입니다.', source_urls=[url])
+    title = 'CUCKOO ' + (variant if location == 'title' else '' if location == 'path' else model)
+    p, calls = staged(label_value=observation, search_value=candidate, url=url, title=title)
+    result = asyncio.run(DiscoveryProvider(p).discover(photo()))
+    assert result.status == 'needs_more_information' and not result.candidates
+    assert len(calls) == (1 if location == 'label' else 2)
+
+
+@pytest.mark.parametrize('url,title', [
+    ('https://www.cuckoo.co.kr/search?q=AC-35U20FWS', 'CUCKOO'),
+    ('https://cuckoo.evil.com/products/AC-35U20FWS', '공기청정기'),
+    ('https://www.notcuckoo.co.kr/products/AC-35U20FWS', '공기청정기'),
+    ('https://www.cuckoo.co.kr/mall/productView?productNo=5241', 'CUCKOO'),
+])
+def test_query_echo_generic_title_and_lookalike_host_are_not_identity_evidence(url, title):
+    source = DiscoverySource(url=url, title=title, retrieved_at=datetime.now(timezone.utc))
+    assert not supports_identity(source, '쿠쿠홈시스(주)', 'AC-35U20FWS')
+
+
+@pytest.mark.parametrize('reverse', [False, True])
+def test_duplicate_actual_metadata_preserves_supporting_citation_in_either_order(reverse):
+    value = envelope(search(), web=True, url=CUCKOO_URL, title='CUCKOO AC-35U20FWS')
+    value['output'][0]['action']['sources'] = [{'type': 'url', 'url': CUCKOO_URL}]
+    if reverse:
+        value['output'].reverse()
+    sources = actual_sources(value, datetime.now(timezone.utc), '쿠쿠홈시스(주)', 'AC-35U20FWS')
+    assert sources[CUCKOO_URL].title == 'CUCKOO AC-35U20FWS'
+    assert supports_identity(sources[CUCKOO_URL], '쿠쿠홈시스(주)', 'AC-35U20FWS')
+
+
+def test_gate_diagnostics_are_fixed_codes_without_sensitive_inputs(caplog):
+    p, _ = staged(search_value=search(model='PowerEdge R750xa'))
+    with caplog.at_level('INFO', logger='howlens.discovery'):
+        result = asyncio.run(DiscoveryProvider(p).discover(photo(), 'private-question', 'private-hint'))
+    assert result.discovery_id in caplog.text and 'reason=candidate_model' in caplog.text
+    assert all(value not in caplog.text for value in ['Dell', 'R750', URL, 'private-question',
+                                                    'private-hint', 'offline-test-secret'])
