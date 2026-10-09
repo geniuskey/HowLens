@@ -25,9 +25,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -56,6 +58,7 @@ fun CameraCapturePane(
     onPhotoCaptured: (Uri) -> Unit,
     onError: (String) -> Unit,
     onChooseFromGallery: () -> Unit,
+    onOpenPhotoAnalysis: () -> Unit = onChooseFromGallery,
     modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
@@ -111,6 +114,15 @@ fun CameraCapturePane(
         }
     }
 
+    LaunchedEffect(isActive, permissionUiState, hasRequestedPermission) {
+        if (isActive && !permissionUiState.granted && !permissionUiState.denied &&
+            !permissionUiState.permanentlyDenied && !hasRequestedPermission
+        ) {
+            hasRequestedPermission = true
+            cameraPermissionLauncher.launch(Manifest.permission.CAMERA)
+        }
+    }
+
     val cameraGranted = permissionUiState.granted
 
     var previewView by remember { mutableStateOf<PreviewView?>(null) }
@@ -122,7 +134,7 @@ fun CameraCapturePane(
             modifier = Modifier.weight(1f).fillMaxWidth(),
             factory = { viewContext ->
                 PreviewView(viewContext).apply {
-                    scaleType = PreviewView.ScaleType.FILL_CENTER
+                    scaleType = PreviewView.ScaleType.FIT_CENTER
                     implementationMode = PreviewView.ImplementationMode.COMPATIBLE
                     previewView = this
                 }
@@ -218,10 +230,24 @@ fun CameraCapturePane(
             ) { Text("설정 열기") }
         }
 
-        if (isActive && !cameraGranted && !permissionUiState.permanentlyDenied) {
+        if (isActive && (!cameraGranted && permissionUiState.denied || cameraError != null)) {
             Button(
+                modifier = Modifier.fillMaxWidth(), colors = buttonColors,
+                onClick = onOpenPhotoAnalysis,
+            ) { Text("사진으로 확인") }
+        }
+
+        if (isActive && !cameraGranted && !permissionUiState.permanentlyDenied && permissionUiState.denied) {
+            OutlinedButton(
                 modifier = Modifier.fillMaxWidth(),
-                colors = buttonColors,
+                onClick = {
+                    hasRequestedPermission = true
+                    cameraPermissionLauncher.launch(Manifest.permission.CAMERA)
+                },
+            ) { Text("권한 다시 요청") }
+        } else if (isActive && !cameraGranted && !permissionUiState.permanentlyDenied && !hasRequestedPermission) {
+            OutlinedButton(
+                modifier = Modifier.fillMaxWidth(),
                 onClick = {
                     hasRequestedPermission = true
                     cameraPermissionLauncher.launch(Manifest.permission.CAMERA)
@@ -281,9 +307,8 @@ fun CameraCapturePane(
             ) { Text(if (capturePending) "촬영 중…" else "사진 촬영") }
         }
 
-        Button(
+        OutlinedButton(
             modifier = Modifier.fillMaxWidth(),
-            colors = buttonColors,
             onClick = { currentOnChooseFromGallery() },
         ) { Text("사진 선택") }
     }

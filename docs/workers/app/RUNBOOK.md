@@ -56,6 +56,25 @@ Verification keeps the original selected photo as the before photo and opens a s
 
 The optional share preview is assembled from an allowlist: fixed device label, decision, mode, public evidence document ID/version/PDF+printed page, public HTTPS source URL without credentials or secret query keys, and fixed limitations. It excludes free-form observations/questions/quotes/steps, photos, analysis IDs, and device identifiers. The user reviews the preview and then chooses a recipient in Android Sharesheet; tests inspect the text only and never send it. Android's official guidance uses `ACTION_SEND`, `text/plain`, `EXTRA_TEXT`, and `Intent.createChooser`: https://developer.android.com/develop/ui/compose/sharing/send
 
+## W3 blue redesign and CameraX input
+
+The home screen has two tabs: **사진 분석** for selecting a still image and **카메라** for a live local preview. CameraX 1.4.2 is mounted only while the camera tab needs it. **사진 촬영** creates one JPEG in app cache; the app reads that file through the existing `PhotoLoader` and deletes the cache file after the read completes. It shows a frozen still with a question field and explicit **확인하기** action; switching tabs, canceling the picker, or retaking does not send an analysis request. There is no video stream or automatic upload.
+
+The CameraX component requests camera permission when opened, releases its provider when it leaves composition, and reports permission/initialization failure in the camera tab with a path back to photo selection. Existing callers must not open a file until `PhotoLoader` finishes. The media picker is `OpenDocument`; physical Galaxy manual QA opened and canceled it without opening personal items. The physical camera permission was already granted on the test device, so first-grant and denied-permission/settings-return states were not physically exercised in W3.
+
+The HowLens theme uses the approved light palette on dark-system devices too: primary `#0052FF`, white surfaces, and cool-gray backgrounds. The two tabs and sticky primary action were visually checked on API 34 emulator at 320dp and 412dp widths. Other-device large-font/landscape coverage is tracked separately by the coordinator's parallel QA lane.
+
+The feature APK for W3 is `android/app/build/outputs/apk/debug/app-debug.apk`. Build and test command:
+
+```sh
+cd android
+JAVA_HOME='/Applications/Android Studio.app/Contents/jbr/Contents/Home' \
+ANDROID_HOME='/Users/edwin/Library/Android/sdk' \
+./gradlew assembleDebug assembleDebugAndroidTest testDebugUnitTest lintDebug --console=plain
+```
+
+The W3 Compose fixtures and JVM doubles use synthetic photos/results only. The physical Galaxy capture was a local UI test and was not submitted to the backend. Before sharing device screenshots, avoid retaining any user-entered question or photo; the committed W3 Galaxy screenshots show only the empty input and live preview.
+
 ### W2 build and API doubles
 
 ```sh

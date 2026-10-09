@@ -112,3 +112,54 @@ Task `task_667825f4524d` / Dispatch `ctx_6459221af0a9`의 W1 구현 범위를 �
 - Task branch is `geniuskey/feat-ui-foundation`, based on preserved W1 HEAD `f4f0ab6`. No main merge or other-role product code changes.
 - Actual backend analysis/visual/verification endpoints remain uncalled by this app task. The synthetic test PNG was selected in the Gallery picker and shown by the app but was not submitted. Physical camera capture was not verified; Galaxy instrumentation is blocked by the Android 17 Espresso reflection incompatibility. Mock results are synthetic and not evidence of actual guide generation.
 - Current camera path remains system camera intent; CameraX Preview + still ImageCapture feasibility was reported separately as 3–5 hours with no video streaming/API change. No `android/app/src/main/java/kr/howlens/app/camera/` path exists in this checkout.
+
+# W3-APP design integration — 2026-10-09
+
+Implemented the approved Runixs/Team Lead blue photo-first direction across the input and result surfaces, integrated the reviewed CameraX still-capture module, and kept W2 guide/panel/verification/share behavior. The W3 screen uses two input tabs, settings, a single blue primary action, frozen review before analysis, same-server visual assets, ordered contract steps, nine separate visual panels, and observation-only before/after photo comparison. Photo/camera input and draft state remain local until the user presses **확인하기**; no live API or paid request was made in this task.
+
+## Design and integration source
+
+- Read design handoff `Runixs/hackathon-research` commit `ab527d2` (`PRODUCT.md`, `DESIGN.md`, `SCREENS.md`, `CHECKLIST.md`) and viewed both HowLens input/result concepts plus `docs/assets/design/reference/team-lead-howlens-original.png`. Used the original team-lead reference as the visual authority: blue `#0052FF`, white/cool-gray surfaces, camera/photo first, and compact Korean labels.
+- Integrated camera worker reviewed upstream commit `449cd552d5bc936565f7db12d24560f7473affe5` (includes `26837d6`) as local commits `11c25db` and `42a2357`. CameraX 1.4.2 preview/capture is local only, permission-denial/failure has a photo fallback, and a captured cache file is removed after `PhotoLoader` reads it.
+- Protected W5-owned `data/Repository.kt`, `data/Models.kt`, `RepositoryRegressionTest.kt`, and `ShareRegressionTest.kt` from edits.
+
+## Verification evidence
+
+| Check | Result | Evidence and limits |
+|---|---|---|
+| `assembleDebug assembleDebugAndroidTest testDebugUnitTest lintDebug` | PASS | Build successful; lint completed. JVM: `FoundationTest` 12/12 and `PhotoLimitsTest` 4/4, total 16 passing, 0 failures/errors. |
+| API 34 Compose instrumentation | PASS | `OfflineScreenTest`: 7/7. Covers input/settings draft preservation, empty input, mock/non-guide action blocking, evidence details, all nine panel refs, evidence-only share preview, and synthetic PNG decode/corrupt rejection. |
+| Galaxy Android 17 instrumentation | PASS | Serial `R5KL20H60TN`, model `SM_S948N`, API 37: one smoke test `emptyInputShowsValidation`, 1/1. Espresso 3.7.0 resolved and removed the earlier reflection failure on this check. |
+| Galaxy manual camera | PASS, app UI only | CameraX preview opened; explicit still capture showed frozen review; **다시 촬영** returned to live preview; a synthetic draft and photo remained after switching photo/camera tabs; the OpenDocument picker opened and was canceled. No photo or analysis was submitted. Permission was already granted on this phone, so first-grant/denial/settings-return was not checked. |
+| 320dp and 412dp viewports | PASS | API 34 emulator screenshots saved below; no clipping in the empty input screen. Other-device large-font/lifecycle QA remains with the coordinator's parallel lane. |
+| Physical gallery item selection | NOT RUN in W3 | The W3 Galaxy picker was opened and canceled without viewing personal content. W2's older APK selected only a known synthetic 1×1 PNG; W3 selection uses the Android decoder double, not a fresh personal-device item. |
+| Live backend/paid API | NOT RUN | All result/API fixtures are synthetic; no mock-to-live bypass was exercised. |
+
+### Device and screenshot details
+
+- Galaxy ADB serial `R5KL20H60TN`, model `SM_S948N`, API 37; connected as direct USB transport. Camera permission was already granted. No device account/system settings were changed, and no USB relay was started, so there was no relay process or reverse mapping to clean up.
+- Actual W3 screenshots: [Galaxy input](screenshots/w3-galaxy-input.png), [Galaxy CameraX preview](screenshots/w3-galaxy-camera-preview.png), [API 34 emulator 320dp](screenshots/w3-emulator-320-input.png), and [API 34 emulator 412dp](screenshots/w3-emulator-412-input.png). The Galaxy capture/review was tested live but its screen image was not retained because it contained a prior on-device question; the committed phone screenshots exclude it.
+- The emulator's temporary size/font/rotation overrides were restored: size override reset, font scale 1.0, user rotation free. A first retake tap sequence left the app at the launcher; reinstalling the APK and repeating capture/retake succeeded. This was not repeatable in the final manual pass.
+
+## APK, ownership, and pending work
+
+- APK: `android/app/build/outputs/apk/debug/app-debug.apk`; package `kr.howlens.app`, version `0.1`; 15,034,933 bytes; SHA-256 `2b39251176178975fd0a9228da55a88903d879e7d2cc9fd4dcdb695d128abb25`.
+- W3 branch: `geniuskey/feat-ui-foundation`, preserving W1 and W2 commits; no main merge, no backend/common-contract edits. Camera files are within current App ownership.
+- Pending: separate QA lane for large font, landscape/IME, and backend/network errors; physical first-grant/denial/settings-return; selection of a known synthetic image on W3 Galaxy; real backend integration. The W2 Galaxy Android 17 framework failure is historical; the new one-test smoke passed after Espresso 3.7.0. Do not treat mocked panels or mock results as generated/approved instructions.
+
+### W3 changed paths
+
+- `android/app/build.gradle.kts`
+- `android/app/src/main/AndroidManifest.xml`
+- `android/app/src/main/java/kr/howlens/app/MainActivity.kt`
+- `android/app/src/main/java/kr/howlens/app/camera/CameraCapturePane.kt`
+- `android/app/src/main/java/kr/howlens/app/ui/AnalysisViewModel.kt`
+- `android/app/src/main/java/kr/howlens/app/ui/HowLensTheme.kt`
+- `android/app/src/test/java/kr/howlens/app/FoundationTest.kt`
+- `android/app/src/androidTest/java/kr/howlens/app/OfflineScreenTest.kt`
+- `docs/workers/app/RUNBOOK.md`
+- `docs/workers/app/REPORT.md`
+- `docs/workers/app/screenshots/w3-emulator-320-input.png`
+- `docs/workers/app/screenshots/w3-emulator-412-input.png`
+- `docs/workers/app/screenshots/w3-galaxy-camera-preview.png`
+- `docs/workers/app/screenshots/w3-galaxy-input.png`

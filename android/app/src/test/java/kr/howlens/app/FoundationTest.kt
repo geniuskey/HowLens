@@ -229,6 +229,35 @@ class FoundationTest {
             assertTrue(vm.state.value.visualError!!.contains("취소"))
         } finally { server.shutdown(); Dispatchers.resetMain() }
     }
+    @Test fun delayedPriorVisualCannotOverwriteNewAnalysis() = runBlocking {
+        Dispatchers.setMain(Dispatchers.Unconfined)
+        val server = MockWebServer().apply { start() }
+        val moreInfo = guide().copy(analysisId = "analysis-b", decision = Decision.NEEDS_MORE_INFORMATION,
+            steps = emptyList(), missingInformation = listOf("Synthetic new result"))
+        try {
+            server.enqueue(MockResponse().setBody(Json.encodeToString(VisualJob.serializer(), VisualJob(
+                "visual-old", "test-analysis", VisualStatus.QUEUED, null, emptyList(), null, Mode.LIVE))).setResponseCode(202))
+            server.enqueue(MockResponse().setHeadersDelay(2, TimeUnit.SECONDS)
+                .setBody(Json.encodeToString(VisualJob.serializer(), VisualJob(
+                    "visual-old", "test-analysis", VisualStatus.COMPLETED, null,
+                    (0..8).map { Panel(it, "s1", "/visual-assets/old-$it.png") }, null, Mode.LIVE))))
+            server.enqueue(MockResponse().setBody(Json.encodeToString(Analysis.serializer(), moreInfo)))
+            val vm = AnalysisViewModel(AnalysisUiState(
+                deviceId = "server", question = "same photo", photo = photo, offline = false,
+                baseUrl = server.url("/").toString(), phase = Phase.RESULT, analysis = guide()))
+            vm.requestVisual()
+            withTimeout(5000) { while (server.requestCount < 2) delay(10) }
+            vm.showInput()
+            vm.analyze()
+            awaitState(vm) { it.analysis?.analysisId == "analysis-b" }
+            delay(2200)
+            assertEquals("analysis-b", vm.state.value.analysis?.analysisId)
+            assertFalse(vm.state.value.visualLoading)
+            assertTrue(vm.state.value.visualPanels.isEmpty())
+            assertTrue(vm.state.value.visualImages.isEmpty())
+            assertNull(vm.state.value.visualError)
+        } finally { server.shutdown(); Dispatchers.resetMain() }
+    }
     private suspend fun awaitState(vm: AnalysisViewModel, predicate: (AnalysisUiState) -> Boolean) {
         withTimeout(5000) { while (!predicate(vm.state.value)) delay(10) }
     }
