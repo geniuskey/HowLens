@@ -130,22 +130,30 @@ Implemented the approved Runixs/Team Lead blue photo-first direction across the 
 | `assembleDebug assembleDebugAndroidTest testDebugUnitTest lintDebug` | PASS | Build successful; lint completed. JVM: `FoundationTest` 12/12 and `PhotoLimitsTest` 4/4, total 16 passing, 0 failures/errors. |
 | API 34 Compose instrumentation | PASS | `OfflineScreenTest`: 7/7. Covers input/settings draft preservation, empty input, mock/non-guide action blocking, evidence details, all nine panel refs, evidence-only share preview, and synthetic PNG decode/corrupt rejection. |
 | Galaxy Android 17 instrumentation | PASS | Serial `R5KL20H60TN`, model `SM_S948N`, API 37: one smoke test `emptyInputShowsValidation`, 1/1. Espresso 3.7.0 resolved and removed the earlier reflection failure on this check. |
-| Galaxy manual camera | PASS, app UI only | CameraX preview opened; explicit still capture showed frozen review; **다시 촬영** returned to live preview; a synthetic draft and photo remained after switching photo/camera tabs; the OpenDocument picker opened and was canceled. No photo or analysis was submitted. Permission was already granted on this phone, so first-grant/denial/settings-return was not checked. |
+| Galaxy manual camera and permission prompt | PARTIAL | CameraX preview opened; explicit still capture showed frozen review; **다시 촬영** returned to live preview; a synthetic draft and photo remained after switching photo/camera tabs. Revoking only HowLens CAMERA permission exposed Android's first-grant prompt; permission later reported granted and preview resumed, but the human action was not confirmed. A denial actionrequest was sent to the coordinator; denial and settings-return remain unverified. |
 | 320dp and 412dp viewports | PASS | API 34 emulator screenshots saved below; no clipping in the empty input screen. Other-device large-font/lifecycle QA remains with the coordinator's parallel lane. |
-| Physical gallery item selection | NOT RUN in W3 | The W3 Galaxy picker was opened and canceled without viewing personal content. W2's older APK selected only a known synthetic 1×1 PNG; W3 selection uses the Android decoder double, not a fresh personal-device item. |
+| Physical gallery item selection | PASS, local synthetic input | Added only `HowLens-SYNTHETIC-NETWORK-APPLIANCE.png` (640×480, 10,691 bytes) to the public Pictures folder, searched by its HowLens filename, and selected it into the W3 review screen. Screenshot: [Galaxy synthetic device review](screenshots/w3-galaxy-synthetic-device-gallery.png). No personal image was opened, no analysis request was sent, and this illustration is synthetic rather than a photograph of real equipment. |
 | Live backend/paid API | NOT RUN | All result/API fixtures are synthetic; no mock-to-live bypass was exercised. |
 
 ### Device and screenshot details
 
-- Galaxy ADB serial `R5KL20H60TN`, model `SM_S948N`, API 37; connected as direct USB transport. Camera permission was already granted. No device account/system settings were changed, and no USB relay was started, so there was no relay process or reverse mapping to clean up.
-- Actual W3 screenshots: [Galaxy input](screenshots/w3-galaxy-input.png), [Galaxy CameraX preview](screenshots/w3-galaxy-camera-preview.png), [API 34 emulator 320dp](screenshots/w3-emulator-320-input.png), and [API 34 emulator 412dp](screenshots/w3-emulator-412-input.png). The Galaxy capture/review was tested live but its screen image was not retained because it contained a prior on-device question; the committed phone screenshots exclude it.
+- Galaxy ADB serial `R5KL20H60TN`, model `SM_S948N`, API 37; connected as direct USB transport. Camera permission currently reports granted. The only permission mutation was revoke for the app's CAMERA permission to expose the prompt; no device account/system setting was changed. No USB relay was started, so there was no relay process or reverse mapping to clean up.
+- Actual W3 screenshots: [Galaxy input](screenshots/w3-galaxy-input.png), [Galaxy CameraX preview](screenshots/w3-galaxy-camera-preview.png), [Galaxy synthetic gallery review](screenshots/w3-galaxy-synthetic-device-gallery.png), [API 34 emulator 320dp](screenshots/w3-emulator-320-input.png), and [API 34 emulator 412dp](screenshots/w3-emulator-412-input.png). Permission-prompt captures are local evidence; the first-grant screenshot shows preview after permission was granted, not the prompt itself.
 - The emulator's temporary size/font/rotation overrides were restored: size override reset, font scale 1.0, user rotation free. A first retake tap sequence left the app at the launcher; reinstalling the APK and repeating capture/retake succeeded. This was not repeatable in the final manual pass.
 
 ## APK, ownership, and pending work
 
 - APK: `android/app/build/outputs/apk/debug/app-debug.apk`; package `kr.howlens.app`, version `0.1`; 15,034,933 bytes; SHA-256 `2b39251176178975fd0a9228da55a88903d879e7d2cc9fd4dcdb695d128abb25`.
 - W3 branch: `geniuskey/feat-ui-foundation`, preserving W1 and W2 commits; no main merge, no backend/common-contract edits. Camera files are within current App ownership.
-- Pending: separate QA lane for large font, landscape/IME, and backend/network errors; physical first-grant/denial/settings-return; selection of a known synthetic image on W3 Galaxy; real backend integration. The W2 Galaxy Android 17 framework failure is historical; the new one-test smoke passed after Espresso 3.7.0. Do not treat mocked panels or mock results as generated/approved instructions.
+- Pending: separate QA lane for large font, landscape/IME, and backend/network errors; physical denial/settings-return action (coordinator request remains unconfirmed); real backend integration. The W2 Galaxy Android 17 framework failure is historical; the new one-test smoke passed after Espresso 3.7.0. Do not treat mocked panels or mock results as generated/approved instructions.
+
+### Follow-up checkpoint (2026-10-09)
+
+- The exact W3 APK remains installed on Galaxy serial `R5KL20H60TN` and API 34 emulator `emulator-5554`; APK SHA-256 is `2b39251176178975fd0a9228da55a88903d879e7d2cc9fd4dcdb695d128abb25`. The 3-device delivery helper has the same accepted artifact hash; this worker directly observed the Galaxy and emulator, not the third device.
+- Added a local 640×480 synthetic network appliance illustration at `test-assets/synthetic-network-appliance.png` and selected its copy from the Galaxy public Pictures folder into HowLens review. The fixture is labeled in `test-assets/README.md`; it must only be used for local UI/decoder testing, never presented as a real product photo or sent to an API.
+- The Gallery search result was filtered to HowLens test filenames before selection. No personal photo was opened; no analysis/live API or paid request was made.
+- A prior W3 picker pass also selected the 68-byte synthetic decoder fixture; its review screen is retained at `screenshots/w3-galaxy-synthetic-gallery.png`.
+- Physical permission: CAMERA was granted before testing. App-level revoke exposed the first-grant Android prompt; afterward permission reported granted and CameraX preview was visible, but no human action confirmation was received. Denial/settings-return remain pending; the coordinator was asked to have Kim Euiyun tap **허용 안함** once on the Galaxy, with the expected result of CAMERA remaining denied and the app showing its photo fallback. This is not claimed as a human PASS.
 
 ### W3 changed paths
 
@@ -163,3 +171,9 @@ Implemented the approved Runixs/Team Lead blue photo-first direction across the 
 - `docs/workers/app/screenshots/w3-emulator-412-input.png`
 - `docs/workers/app/screenshots/w3-galaxy-camera-preview.png`
 - `docs/workers/app/screenshots/w3-galaxy-input.png`
+- `docs/workers/app/screenshots/w3-galaxy-synthetic-device-gallery.png`
+- `docs/workers/app/screenshots/w3-galaxy-synthetic-gallery.png`
+- `docs/workers/app/screenshots/w3-galaxy-permission-first-grant.png`
+- `docs/workers/app/screenshots/w3-galaxy-permission-deny-prompt.png`
+- `docs/workers/app/test-assets/README.md`
+- `docs/workers/app/test-assets/synthetic-network-appliance.png`
