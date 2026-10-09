@@ -1,0 +1,49 @@
+# W1-APP 실행 방법
+
+프로젝트 루트는 `android/`이며 저장소 루트 Gradle 설정에 의존하지 않는다. Android SDK 34/build-tools 34.0.0, JDK 17, Gradle 8.9, AGP 8.7.3, Kotlin/Compose compiler 2.0.21을 사용한다. 이 작업 PC에서는 시스템 Java가 없으므로 Android Studio 내장 JBR 17을 사용했다.
+
+```sh
+cd android
+export JAVA_HOME='/Applications/Android Studio.app/Contents/jbr/Contents/Home'
+export ANDROID_HOME='/Users/edwin/Library/Android/sdk'
+./gradlew assembleDebug testDebugUnitTest lintDebug --console=plain
+```
+
+다른 PC에서는 JDK/SDK 경로를 조정한다. Android Studio에서 `android/`를 프로젝트로 열 수도 있다. `local.properties`, build 결과, Gradle 캐시는 Git에 넣지 않는다. APK는 `android/app/build/outputs/apk/debug/app-debug.apk`이다.
+
+## 화면 확인
+
+1. 앱 실행 시 기본값은 **오프라인 MOCK · 합성 UI 테스트**이다. 네트워크/AI 호출 없이 합성 결과만 반환하며 실제 사진·질문은 분석하지 않는다.
+2. 장비를 선택하고 갤러리에서 JPEG/PNG를 선택하거나 카메라 앱으로 촬영한다. Android Activity Result `OpenDocument`/`TakePicture`와 FileProvider를 사용한다. CameraX 미리보기·카메라 제어는 이번 구현에 포함하지 않았다.
+3. 공백 제거 후 1–2,000자 질문을 입력한다. 파일은 10 MiB 이하/20MP 이하이며 MIME 헤더와 샘플 디코딩을 확인한다. 손상·형식·크기 오류는 입력 단계에서 차단된다.
+4. **추가 정보 예시** 또는 **중단 예시**를 선택하고 **MOCK 화면 확인**을 누른다. 로딩 후 관찰/경고/필수 조건/추가 정보가 나타나며 실행 단계와 이미지가 차단된다.
+5. 서버 연결을 시험하려면 오프라인 스위치를 끄고 API 서버 루트 주소를 입력한다. 에뮬레이터 개발 기본값은 `http://10.0.2.2:8000/`이다. 실기기 주소는 네트워크에 맞게 설정한다. HTTP는 debug manifest에서만 허용하며 release는 Android 기본 HTTPS 정책을 유지한다. API 주소에 인증정보/쿼리/경로를 넣지 않는다.
+6. API 오류는 구조화 detail 객체와 FastAPI detail 배열을 모두 표시한다. 재시도 가능한 오류에는 **다시 시도** 버튼을 제공한다. 자동 재시도는 없다. 취소 또는 입력 변경은 이전 분석을 버린다.
+
+live guide만 실행 단계 후보가 될 수 있다. 비-guide/mock 결과, 충족되지 않은 필수 조건, 비어 있거나 10개 이상인 단계, 잘못된 근거 참조는 단계 표시 및 이미지 요청을 차단한다. 서버 결정을 승격하지 않는다. 근거 카드에는 ID/문서/버전/PDF 페이지/인쇄 페이지/절/발췌/출처가 표시된다.
+
+## 자동 검증
+
+```sh
+# 연결된 Android 에뮬레이터 또는 기기가 필요하다.
+./gradlew connectedDebugAndroidTest --console=plain
+```
+
+이 작업에서 사용한 에뮬레이터는 `Pixel_3a_API_34_extension_level_7_arm64-v8a`이다. JVM 결과는 `android/app/build/reports/tests/testDebugUnitTest/`, 계측 결과는 `android/app/build/reports/androidTests/connected/`, lint 결과는 `android/app/build/reports/lint-results-debug.html`에서 확인한다. 생성된 보고서는 Git 제외이며 실행 결과 요약은 역할 REPORT에 기록한다.
+
+JVM 테스트는 악성 비-guide 단계/잘못된 근거/미충족 조건, 입력 경계, 두 오류 형식, MockWebServer multipart 전송, synthetic ViewModel 상태/취소를 확인한다. 계측 테스트는 실제 Compose 렌더링에서 두 MOCK 상태/차단 문구/입력 오류/출처 표시와 Android PNG 디코딩/손상 입력 차단을 확인한다. MockWebServer 응답 및 문서·이미지는 합성 테스트 자료이며 실제 분석·안전 검증 증거가 아니다.
+
+## 네트워크 및 다음 통합
+
+`AnalysisRepository`/immutable `AnalysisUiState`/ViewModel/Compose 경계를 사용한다. OkHttp는 연결 10초/읽기 45초/쓰기 30초/총 요청 60초 제한 및 리다이렉트/자동 재시도 비활성화를 적용한다. 질문은 trim 후 `device_id`, `question`, `photo` multipart로 전송한다. OpenAI SDK·키·앱 토큰 주입은 없다.
+
+Health/Analysis/VisualJob/Verification의 snake_case DTO와 API client 메서드가 있다. Visual/Verification은 승인 live guide gate를 거쳐야 호출 가능하다. W1 화면은 이미지 생성·폴링·패널/전후 검증 API를 호출하지 않는다. 다음 통합에서 visual 실패/재시도 1회/텍스트 유지 및 서버 재시작 404 흐름을 실제 backend와 확인해야 한다.
+
+사진은 메모리에 유지하고 카메라 임시 JPEG 한 개는 앱 cache에 저장한다. 사진 로딩은 ViewModel에서 수행하여 화면 회전 중에도 이어진다. 프로세스 종료 후 입력/사진 영속 복구는 구현하지 않았다. 사진만으로 정상 동작/안전을 보증하지 않는다.
+
+## 도구 선택 출처
+
+- [AGP 8.7 공식 호환성 표](https://developer.android.com/build/releases/agp-8-7-0-release-notes): Gradle 8.9/JDK 17/build-tools 34.0.0.
+- [Compose compiler Gradle plugin 설정](https://developer.android.com/develop/ui/compose/setup-compose-dependencies-and-compiler): Kotlin 2의 Compose plugin 구성.
+- [Activity Result API](https://developer.android.com/training/basics/intents/result), [TakePicture 계약](https://developer.android.com/reference/androidx/activity/result/contract/ActivityResultContracts.TakePicture): 초기 카메라 intent 연결 근거.
+- Wrapper JAR/스크립트: 공식 [Gradle v8.9.0 저장소](https://github.com/gradle/gradle/tree/v8.9.0/gradle/wrapper). JAR SHA-256 `498495120a03b9a6ab5d155f5de3c8f0d986a449153702fb80fc80e134484f17`를 [공식 checksum](https://services.gradle.org/distributions/gradle-8.9-wrapper.jar.sha256)과 대조했다. 배포 ZIP도 wrapper properties의 공식 SHA-256으로 검증한다.
