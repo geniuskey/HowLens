@@ -1,5 +1,50 @@
 # Coordinator ownership handoff
 
+## Accepted receipt — 2026-10-09 11:18 KST
+
+김태완 PC의 새 Coordinator가 인계를 수신했다. 실행 화면은 GPT-6-Astra medium fast,
+YOLO이며 Standard는 요청 기록이다. main 시작 SHA는 `717514da67555142ceb07299aebac87035d55700`.
+아래 기존 checkpoint보다 이 receipt와 최신 STATUS가 우선한다.
+
+- 새 terminal: `term_791d526a-a753-41d0-a516-6f3c36aef749`.
+- 로컬 runtime: `ce69d1d4-6ed6-4e17-948c-d1c5a20af744`, Orca 1.4.220.
+- 이 PC의 실제 environment 이름은 `김의윤님`, `이준영님`, `이윤재님`이다.
+  Hub에서 Worker placement할 때는 Hub의 `이준영`, `이윤재`, `김태완`을 사용한다.
+- Hub remote `run-use --from <new-terminal>`은 `stable_pane_required`로 실패
+  (request `9989a45e-9253-4d94-b938-7505e47ddc42`).
+- 로컬 `run-use`는 기존 federated Run 레코드에 새 handle을 바인딩했지만,
+  Hub `run-show`의 coordinator handle/generation은 기존 handle/1 그대로다.
+  **이 로컬 성공은 Hub inbox routing 성공이 아니다.**
+- 새 handle로 Hub `check`도 `stable_pane_required`
+  (request `48283010-1326-484d-8954-3ec825a1bd56`). remote `run-use`에서
+  `--from` 생략 시 `no_active_sender_terminal`. guide/reference/agent-context/help에
+  current Run의 cross-runtime rebind 또는 attachment 명령은 발견되지 않았다.
+- 기존 Hub handle을 사용자 승인 transport로 사용한 consuming check와 인계 기록
+  `msg_3eb1eec7417e` enqueue는 성공했다. 새 독립 consumer는 미검증이다.
+- 사용자는 모든 수신이 새 Coordinator로 독립 routing된 증거 확인 후 기존
+  `term_be75fa04-a11b-405a-afce-de3b5623829a` 종료를 명시 승인했다.
+  그 선행조건이 미충족이므로 아직 닫지 않았다. 원 agent 자동 wake 해결도 미완료다.
+  Run reset/생성, legacy takeover, authority DB 조작은 하지 않았다.
+- Backend question `relay_eed8e6aab220`은 기존 branch/commit 보존, main merge 없이
+  계약 검증·완료·push하도록 답변했다 (`msg_a75ee77da09c`).
+  `delivery_f5d4e335fa41` 및 후속 heartbeat `delivery_16fc6262c4dd` ack 완료.
+
+### Live work correction
+
+- Backend는 기존 terminal의 final turn/idle을 확인하고 같은 worktree의 명시 YOLO
+  새 terminal `term_0e1b8115-3b94-49b5-a6e5-2162805a7f01`에서
+  retry Dispatch `ctx_eaec09bca2f2`를 시작했다. 이전 terminal은 보존했다.
+- Evaluation 이전 attempt는 execution-host fleet/read 모두 exited였고 로컬 terminal은
+  orphaned/`exitCause=operator_close`였다. active라는 이전 checkpoint는 더 이상
+  실제 상태와 맞지 않는다. `worker-abandon` receipt는 processAction=none.
+  동일 worktree/Task의 retry `ctx_ad5a225389d3`, 명시 YOLO terminal
+  `term_293d84b7-0728-4a15-9c6c-935014c3903b`에서 실제 작업 중이다.
+- Visual은 해당 PC 사용자의 identity/auth 응답 후 user-owned continuation으로
+  commit/push 완료했다. 구현 `bb92b7518a94e02c9bf64fa222b3d76306cb1977`,
+  목업 포함 HEAD `ed04a43f87d542622527efcbf383151c702d796e`를 fetch 확인했다.
+  과거 failed Dispatch를 성공으로 재작성하지 않는다. identity 질문 재요청 불필요.
+  사용자 추가 요구: 매 visual 작업에 경량 목업과 `일시_목업내용` 제목.
+
 사용자 승인: 김태완 Pro x20, GPT-6 Astra, 기존 Medium, YOLO. Coordinator는 `/Users/runixs/HowLens` main clone에서 작업한다. 기존 김의윤 Coordinator는 인계 프롬프트 accepted 뒤 구현/감독을 중단한다. 제품 코드는 Workers만 수정한다.
 
 ## Authority
