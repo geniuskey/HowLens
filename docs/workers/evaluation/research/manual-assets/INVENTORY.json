@@ -1,0 +1,1376 @@
+{
+  "checked_date_kst": "2026-10-09",
+  "source_root": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework",
+  "local_git_head": "86e87345a11c3386ea7a8fe7d26b1001c63dd48e",
+  "note": "working files independently hashed; git HEAD does not prove trackedness",
+  "files": [
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/02_manuals/MANUALS.md",
+      "relative_path": "prework_assets/02_manuals/MANUALS.md",
+      "bytes": 37377,
+      "sha256": "2580218b2414da1b2278bac62edcf59bc35c0a5fa61d598d96d142da585de2e8",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/2580218b2414da1b2278bac62edcf59bc35c0a5fa61d598d96d142da585de2e8/MANUALS.md"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/02_manuals/cobot/710-965-00_UR5e_User_Manual_en_Global.pdf",
+      "relative_path": "prework_assets/02_manuals/cobot/710-965-00_UR5e_User_Manual_en_Global.pdf",
+      "bytes": 20759537,
+      "sha256": "5e87151083d618e3bfc90160550120694298a8da11fac38d9e8598b0ed8dd3e6",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/5e87151083d618e3bfc90160550120694298a8da11fac38d9e8598b0ed8dd3e6/710-965-00_UR5e_User_Manual_en_Global.pdf",
+      "pages": 245,
+      "metadata": {
+        "format": "PDF 1.4",
+        "title": "",
+        "author": "",
+        "subject": "",
+        "keywords": "",
+        "creator": "pdftk-java 3.3.3",
+        "producer": "itext-paulo-155 (itextpdf.sf.net - lowagie.com)",
+        "creationDate": "D:20251003101509+02'00'",
+        "modDate": "D:20251003101509+02'00'",
+        "trapped": "",
+        "encryption": null
+      },
+      "rights": "restricted; no public redistribution",
+      "review_status": "inventory_only"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/02_manuals/cobot/photos/UR5_cobot_with_teach_pendant.jpg",
+      "relative_path": "prework_assets/02_manuals/cobot/photos/UR5_cobot_with_teach_pendant.jpg",
+      "bytes": 1152771,
+      "sha256": "9ca3130e36533ac3538e71526433c12bc498ea922295fce244b1c4420b943ade",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/9ca3130e36533ac3538e71526433c12bc498ea922295fce244b1c4420b943ade/UR5_cobot_with_teach_pendant.jpg",
+      "dimensions": [
+        1920,
+        3950
+      ],
+      "evidence_class": "reference_photo_not_field_identity"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/02_manuals/cobot/photos/UR5e_on_mobile_cart.jpg",
+      "relative_path": "prework_assets/02_manuals/cobot/photos/UR5e_on_mobile_cart.jpg",
+      "bytes": 403729,
+      "sha256": "ce42b69f1e86d3529b593e674653c025d934c16ba13446ebe7d38db94059040d",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/ce42b69f1e86d3529b593e674653c025d934c16ba13446ebe7d38db94059040d/UR5e_on_mobile_cart.jpg",
+      "dimensions": [
+        1920,
+        1440
+      ],
+      "evidence_class": "reference_photo_not_field_identity"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/02_manuals/server/photos/Dell_PowerEdge_R710_servers_front.jpg",
+      "relative_path": "prework_assets/02_manuals/server/photos/Dell_PowerEdge_R710_servers_front.jpg",
+      "bytes": 738304,
+      "sha256": "99eced8907ad84fe396f0e051a0df10ea665ea715fad26e014c9cae0ffed726c",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/99eced8907ad84fe396f0e051a0df10ea665ea715fad26e014c9cae0ffed726c/Dell_PowerEdge_R710_servers_front.jpg",
+      "dimensions": [
+        1920,
+        1282
+      ],
+      "evidence_class": "reference_photo_not_field_identity"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/02_manuals/server/photos/Sun_rackserver_rear_panel_2PSU.jpg",
+      "relative_path": "prework_assets/02_manuals/server/photos/Sun_rackserver_rear_panel_2PSU.jpg",
+      "bytes": 488105,
+      "sha256": "fad29f1d5a327e0934abba825648f63b22de58d88d29d9bda62c2f5d2a2289e0",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/fad29f1d5a327e0934abba825648f63b22de58d88d29d9bda62c2f5d2a2289e0/Sun_rackserver_rear_panel_2PSU.jpg",
+      "dimensions": [
+        1920,
+        1440
+      ],
+      "evidence_class": "reference_photo_not_field_identity"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/02_manuals/server/poweredge-r750_Owners-Manual_en-us.pdf",
+      "relative_path": "prework_assets/02_manuals/server/poweredge-r750_Owners-Manual_en-us.pdf",
+      "bytes": 55547654,
+      "sha256": "1bdf0df910860207f11a27d9fb7ce6effcb70c0a324ed06e3579d1da6fe6b879",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/1bdf0df910860207f11a27d9fb7ce6effcb70c0a324ed06e3579d1da6fe6b879/poweredge-r750_Owners-Manual_en-us.pdf",
+      "pages": 255,
+      "metadata": {
+        "format": "PDF 1.7",
+        "title": "Dell PowerEdge R750 Installation and Service Manual",
+        "author": "Dell Inc.",
+        "subject": "Dell PowerEdge R750 Installation and Service Manual",
+        "keywords": "PowerEdge-R750-Installation-Service-Manual, PowerEdge-R750-owner manual-user guide, PowerEdge-R750-technical specifications-Operating System, PowerEdge-R750-expansion card-guidelines-usb, PowerEdge-R750-bios-settings-restore- dip switches, PowerEdge-R750-psu-nvme ssd-gpu, PowerEdge-R750-slot priority- cabling, PowerEdge-XR750-memory-modes-thermal restrictions, R750-chassis dimension-weight, R750-system-setup, R750-BIOS-UEFI-Trusted Platform Module, open-manage-enterprise-iDRAC",
+        "creator": "Antenna House XSL Formatter V7.3 MR4 Windows : 7.3.5.61744 (2023-07-31T15:09+09)",
+        "producer": "Antenna House PDF Output Library 7.3.1867",
+        "creationDate": "D:20241212050227-05'00'",
+        "modDate": "D:20241212050227-05'00'",
+        "trapped": "",
+        "encryption": null
+      },
+      "rights": "restricted; no public redistribution",
+      "review_status": "inventory_only"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/02_manuals/ups/APC_RBC_Addendum_PostInstall_ReplaceBatteryLED_990-0374A_EN.pdf",
+      "relative_path": "prework_assets/02_manuals/ups/APC_RBC_Addendum_PostInstall_ReplaceBatteryLED_990-0374A_EN.pdf",
+      "bytes": 21340,
+      "sha256": "79a374989a5e28bc12b3382a68bb09286cd6466d615401d65cb50266a29f0059",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/79a374989a5e28bc12b3382a68bb09286cd6466d615401d65cb50266a29f0059/APC_RBC_Addendum_PostInstall_ReplaceBatteryLED_990-0374A_EN.pdf",
+      "pages": 2,
+      "metadata": {
+        "format": "PDF 1.3",
+        "title": "",
+        "author": "",
+        "subject": "",
+        "keywords": "",
+        "creator": "",
+        "producer": "Acrobat Distiller 4.0 for Windows",
+        "creationDate": "D:20011120154108-05'00'",
+        "modDate": "D:20011120154922-05'00'",
+        "trapped": "",
+        "encryption": null
+      },
+      "rights": "restricted; no public redistribution",
+      "review_status": "inventory_only"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/02_manuals/ups/APC_RBC_Battery_Cartridge_Replacement_InstructionSheet_990-0179L_EN.pdf",
+      "relative_path": "prework_assets/02_manuals/ups/APC_RBC_Battery_Cartridge_Replacement_InstructionSheet_990-0179L_EN.pdf",
+      "bytes": 458997,
+      "sha256": "9949ac6eb4fc88f355d9e0c6392eb2fd8cdb31e0916545a97753f1ae2afbcada",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/9949ac6eb4fc88f355d9e0c6392eb2fd8cdb31e0916545a97753f1ae2afbcada/APC_RBC_Battery_Cartridge_Replacement_InstructionSheet_990-0179L_EN.pdf",
+      "pages": 8,
+      "metadata": {
+        "format": "PDF 1.5",
+        "title": "RB UM 990-0179 MN01 EN.fm",
+        "author": "jgnanamu",
+        "subject": "",
+        "keywords": "",
+        "creator": "FrameMaker 9.0",
+        "producer": "Acrobat Distiller 9.5.2 (Windows)",
+        "creationDate": "D:20031008073320Z",
+        "modDate": "D:20121203082134Z",
+        "trapped": "",
+        "encryption": null
+      },
+      "rights": "restricted; no public redistribution",
+      "review_status": "inventory_only"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/02_manuals/ups/APC_SmartUPS_Tower_InstallationGuide_990-3535H_EN.pdf",
+      "relative_path": "prework_assets/02_manuals/ups/APC_SmartUPS_Tower_InstallationGuide_990-3535H_EN.pdf",
+      "bytes": 398951,
+      "sha256": "20763b875e04051e246ae62f51c099db7f597795c42b47590d47e86ad8cd51e0",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/20763b875e04051e246ae62f51c099db7f597795c42b47590d47e86ad8cd51e0/APC_SmartUPS_Tower_InstallationGuide_990-3535H_EN.pdf",
+      "pages": 8,
+      "metadata": {
+        "format": "PDF 1.4",
+        "title": "",
+        "author": "",
+        "subject": "",
+        "keywords": "",
+        "creator": "FrameMaker 16.0.4",
+        "producer": "Acrobat Distiller 22.0 (Windows)",
+        "creationDate": "D:20031008083320Z",
+        "modDate": "D:20230111135657+05'30'",
+        "trapped": "",
+        "encryption": null
+      },
+      "rights": "restricted; no public redistribution",
+      "review_status": "inventory_only"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/02_manuals/ups/APC_SmartUPS_Tower_OperationManual_990-3534H_EN.pdf",
+      "relative_path": "prework_assets/02_manuals/ups/APC_SmartUPS_Tower_OperationManual_990-3534H_EN.pdf",
+      "bytes": 568229,
+      "sha256": "9333b2605ead8c9e3633b37f0dcd128a8d6fd70273919b70cf0ea2922f385c3a",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/9333b2605ead8c9e3633b37f0dcd128a8d6fd70273919b70cf0ea2922f385c3a/APC_SmartUPS_Tower_OperationManual_990-3534H_EN.pdf",
+      "pages": 20,
+      "metadata": {
+        "format": "PDF 1.6",
+        "title": "Operation Manual Smart-UPS Uninterruptible Power Supply 750/1000/1500/2200/3000 VA, 100/120/230 VAC and 500 VA, 100 VAC",
+        "author": "Schneider Electric",
+        "subject": "User Guide\r\n",
+        "keywords": "FJT1500I;FJT750I;SMT1000;SMT1000I;SMT1000I-6W;SMT1000J;SMT1500;SMT1500I;SMT1500J;SMT1500NC;SMT1500X413;SMT1500X448;SMT2200;SMT2200I;SMT2200J;SMT3000;SMT3000I;SMT3000J;SMT500J;SMT750;SMT750I;SMT750J;990-3534\r\n",
+        "creator": "FrameMaker 17.0.1",
+        "producer": "Acrobat Distiller 23.0 (Windows)",
+        "creationDate": "D:20050909122909Z",
+        "modDate": "D:20250205201511+05'30'",
+        "trapped": "",
+        "encryption": "Standard V4 R4 128-bit RC4"
+      },
+      "rights": "restricted; no public redistribution",
+      "review_status": "inventory_only"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/02_manuals/ups/photos/APC_SMT1500I_rear_panel_label.jpg",
+      "relative_path": "prework_assets/02_manuals/ups/photos/APC_SMT1500I_rear_panel_label.jpg",
+      "bytes": 788645,
+      "sha256": "fcdd37ecb637fb9638d164caf2731231f77f72e915943a4a4742af6810f039db",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/fcdd37ecb637fb9638d164caf2731231f77f72e915943a4a4742af6810f039db/APC_SMT1500I_rear_panel_label.jpg",
+      "dimensions": [
+        1024,
+        768
+      ],
+      "evidence_class": "reference_photo_not_field_identity"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/02_manuals/ups/photos/APC_SmartUPS_2200_tower_front.jpg",
+      "relative_path": "prework_assets/02_manuals/ups/photos/APC_SmartUPS_2200_tower_front.jpg",
+      "bytes": 429240,
+      "sha256": "4c44d0796026b5d3140b6b86d1793ec37ef11a9d6aa94e2cad80526a7dfa0a00",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/4c44d0796026b5d3140b6b86d1793ec37ef11a9d6aa94e2cad80526a7dfa0a00/APC_SmartUPS_2200_tower_front.jpg",
+      "dimensions": [
+        1200,
+        1600
+      ],
+      "evidence_class": "reference_photo_not_field_identity"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/scenes/SCENES.md",
+      "relative_path": "prework_assets/05_visuals/scenes/SCENES.md",
+      "bytes": 13712,
+      "sha256": "22e20ef74e503ce5cf400906b8b3ac6f30be8d9719057cdfc5f9fe8227f4b765",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/22e20ef74e503ce5cf400906b8b3ac6f30be8d9719057cdfc5f9fe8227f4b765/SCENES.md"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/scenes/cobot_01_estop.png",
+      "relative_path": "prework_assets/05_visuals/scenes/cobot_01_estop.png",
+      "bytes": 2259636,
+      "sha256": "fe87bead4b27d267a1a7dde64d25915a4f78f6e4585ed906248ef812e8c151b3",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/fe87bead4b27d267a1a7dde64d25915a4f78f6e4585ed906248ef812e8c151b3/cobot_01_estop.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/scenes/cobot_02_ambiguous.png",
+      "relative_path": "prework_assets/05_visuals/scenes/cobot_02_ambiguous.png",
+      "bytes": 2034600,
+      "sha256": "d39b9c8f35d27d0c042ac2f057c87c0712754627e614e38316053a41a7a39bda",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/d39b9c8f35d27d0c042ac2f057c87c0712754627e614e38316053a41a7a39bda/cobot_02_ambiguous.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/scenes/cobot_03_person_in_cell.png",
+      "relative_path": "prework_assets/05_visuals/scenes/cobot_03_person_in_cell.png",
+      "bytes": 2154786,
+      "sha256": "2cfe3108c161cdb27ed2102f402adebfa254fdc8bb4c0d5cbde69239d8fdaab1",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/2cfe3108c161cdb27ed2102f402adebfa254fdc8bb4c0d5cbde69239d8fdaab1/cobot_03_person_in_cell.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/scenes/cobot_04_after_ok.png",
+      "relative_path": "prework_assets/05_visuals/scenes/cobot_04_after_ok.png",
+      "bytes": 2161331,
+      "sha256": "706ed5409ebe69aa39eac406686f43ec22d0ad99bc45efef0a0da4aa39e465df",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/706ed5409ebe69aa39eac406686f43ec22d0ad99bc45efef0a0da4aa39e465df/cobot_04_after_ok.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/scenes/cobot_05_injection_note.png",
+      "relative_path": "prework_assets/05_visuals/scenes/cobot_05_injection_note.png",
+      "bytes": 2164968,
+      "sha256": "1e2663929296cb0dbb2c6f93e2b1c8b2ec9899f0ecf630371d3d82641436a148",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/1e2663929296cb0dbb2c6f93e2b1c8b2ec9899f0ecf630371d3d82641436a148/cobot_05_injection_note.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/scenes/server_01_psu_fault.png",
+      "relative_path": "prework_assets/05_visuals/scenes/server_01_psu_fault.png",
+      "bytes": 2447654,
+      "sha256": "ab5433152953c3d4d85e80e83ea0c6822662da54758f2796e4a54f20d893f5f9",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/ab5433152953c3d4d85e80e83ea0c6822662da54758f2796e4a54f20d893f5f9/server_01_psu_fault.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/scenes/server_02_ambiguous.png",
+      "relative_path": "prework_assets/05_visuals/scenes/server_02_ambiguous.png",
+      "bytes": 1799419,
+      "sha256": "bd8f8093b9db79935621e9db710438a07e105f1c739de451472f0db3a98768de",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/bd8f8093b9db79935621e9db710438a07e105f1c739de451472f0db3a98768de/server_02_ambiguous.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/scenes/server_03_injection_note.png",
+      "relative_path": "prework_assets/05_visuals/scenes/server_03_injection_note.png",
+      "bytes": 2233702,
+      "sha256": "137e2664bdf34b936a69a124eb9b61aa47af1bfe2db60448bc3fcd781d05ae0f",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/137e2664bdf34b936a69a124eb9b61aa47af1bfe2db60448bc3fcd781d05ae0f/server_03_injection_note.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/scenes/server_04_after_ok.png",
+      "relative_path": "prework_assets/05_visuals/scenes/server_04_after_ok.png",
+      "bytes": 2164307,
+      "sha256": "9d4dea8737a66e7314eb057a2fe6522e3166825a11a367ffa98b4e7910645dd4",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/9d4dea8737a66e7314eb057a2fe6522e3166825a11a367ffa98b4e7910645dd4/server_04_after_ok.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/scenes/server_05_after_wrong.png",
+      "relative_path": "prework_assets/05_visuals/scenes/server_05_after_wrong.png",
+      "bytes": 2156473,
+      "sha256": "fee97cf7c0349dc0ffc9b93476d9296f77ac8a16cea07059c02920c002f440ea",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/fee97cf7c0349dc0ffc9b93476d9296f77ac8a16cea07059c02920c002f440ea/server_05_after_wrong.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/scenes/ups_01_replace_battery.png",
+      "relative_path": "prework_assets/05_visuals/scenes/ups_01_replace_battery.png",
+      "bytes": 2487330,
+      "sha256": "ebe70f9ba5802e07f88df8047315c3d33a8951aa1d8190c0cf9bb1352e63b5af",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/ebe70f9ba5802e07f88df8047315c3d33a8951aa1d8190c0cf9bb1352e63b5af/ups_01_replace_battery.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/scenes/ups_02_bezel_open.png",
+      "relative_path": "prework_assets/05_visuals/scenes/ups_02_bezel_open.png",
+      "bytes": 2394502,
+      "sha256": "012862c2e3a253cfcdedb51a5c3ca065904c0e2d0cfb06f463285e8088136081",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/012862c2e3a253cfcdedb51a5c3ca065904c0e2d0cfb06f463285e8088136081/ups_02_bezel_open.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/scenes/ups_03_ambiguous.png",
+      "relative_path": "prework_assets/05_visuals/scenes/ups_03_ambiguous.png",
+      "bytes": 2099490,
+      "sha256": "2f9343b539a32dd4f6e1cba7147793f61607b52790ac8d70855655a22d924983",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/2f9343b539a32dd4f6e1cba7147793f61607b52790ac8d70855655a22d924983/ups_03_ambiguous.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/scenes/ups_04_after_ok.png",
+      "relative_path": "prework_assets/05_visuals/scenes/ups_04_after_ok.png",
+      "bytes": 2410558,
+      "sha256": "53efcc4ce76705eb21a9ee65907c515817586752f72e35cc2040d95ad6f78a86",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/53efcc4ce76705eb21a9ee65907c515817586752f72e35cc2040d95ad6f78a86/ups_04_after_ok.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/scenes/ups_05_after_wrong.png",
+      "relative_path": "prework_assets/05_visuals/scenes/ups_05_after_wrong.png",
+      "bytes": 2385808,
+      "sha256": "6373978e3929b1ba4a1f14bd23d59a531a4fd1855a2fea274c528327fec592ef",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/6373978e3929b1ba4a1f14bd23d59a531a4fd1855a2fea274c528327fec592ef/ups_05_after_wrong.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/storyboards/sb_cobot_estop.png",
+      "relative_path": "prework_assets/05_visuals/storyboards/sb_cobot_estop.png",
+      "bytes": 2005820,
+      "sha256": "f6b4ace39532fb34557454dd7175d94a6566125b77357a66617fb34c99a1ee6a",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/f6b4ace39532fb34557454dd7175d94a6566125b77357a66617fb34c99a1ee6a/sb_cobot_estop.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/storyboards/sb_server_psu.png",
+      "relative_path": "prework_assets/05_visuals/storyboards/sb_server_psu.png",
+      "bytes": 2170940,
+      "sha256": "196b793abeef29bda1e794bd8751d7b90720d82d024cc48eca91d034e55f0d48",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/196b793abeef29bda1e794bd8751d7b90720d82d024cc48eca91d034e55f0d48/sb_server_psu.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/storyboards/sb_ups_battery.png",
+      "relative_path": "prework_assets/05_visuals/storyboards/sb_ups_battery.png",
+      "bytes": 1745787,
+      "sha256": "da668a22a1116218e1a2da52cb105d962534ae2c40f7a156d6387a6eeca48c12",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/da668a22a1116218e1a2da52cb105d962534ae2c40f7a156d6387a6eeca48c12/sb_ups_battery.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/README.md",
+      "relative_path": "prework_assets/05_visuals/infographics/README.md",
+      "bytes": 3876,
+      "sha256": "88b9425063e30b90203e6b75d9b00e11cb01043a9acb2cb004a273ad5bef64eb",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/88b9425063e30b90203e6b75d9b00e11cb01043a9acb2cb004a273ad5bef64eb/README.md"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/build/compose_infographics.py",
+      "relative_path": "prework_assets/05_visuals/infographics/build/compose_infographics.py",
+      "bytes": 18357,
+      "sha256": "3e895b0f00e1d8db9721a16ac226038bf0755e9b1bbfb903bcadbb306b025d7a",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/3e895b0f00e1d8db9721a16ac226038bf0755e9b1bbfb903bcadbb306b025d7a/compose_infographics.py"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/illustrations/cobot_context_manual_style.png",
+      "relative_path": "prework_assets/05_visuals/infographics/illustrations/cobot_context_manual_style.png",
+      "bytes": 1292806,
+      "sha256": "13ed7698bd64db1ebea94820c3131c5ac0c64bccf43c8e1a1afe3d33c1796a0a",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/13ed7698bd64db1ebea94820c3131c5ac0c64bccf43c8e1a1afe3d33c1796a0a/cobot_context_manual_style.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/illustrations/ups_battery_overheat_generated.png",
+      "relative_path": "prework_assets/05_visuals/infographics/illustrations/ups_battery_overheat_generated.png",
+      "bytes": 1166561,
+      "sha256": "79cabee0f80e0123e7dc4eceaad162fb20ce673971810bb8dc64228a060e332f",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/79cabee0f80e0123e7dc4eceaad162fb20ce673971810bb8dc64228a060e332f/ups_battery_overheat_generated.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/illustrations/ups_battery_safety_prep_generated.png",
+      "relative_path": "prework_assets/05_visuals/infographics/illustrations/ups_battery_safety_prep_generated.png",
+      "bytes": 1380320,
+      "sha256": "89fc5aa62f291ac13b588ca291a077e93697cd6bf00c583bc0b80022ca45d361",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/89fc5aa62f291ac13b588ca291a077e93697cd6bf00c583bc0b80022ca45d361/ups_battery_safety_prep_generated.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/info_cobot_estop.png",
+      "relative_path": "prework_assets/05_visuals/infographics/info_cobot_estop.png",
+      "bytes": 718979,
+      "sha256": "bf137ac3e2488d42fdac3e9c5660dca24c62216d4b5f2d9c5efa2bb878f933b5",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/bf137ac3e2488d42fdac3e9c5660dca24c62216d4b5f2d9c5efa2bb878f933b5/info_cobot_estop.png",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/info_server_psu.png",
+      "relative_path": "prework_assets/05_visuals/infographics/info_server_psu.png",
+      "bytes": 853445,
+      "sha256": "7a19504741772147541cdd02a3cf6ef8a983390a50edb52d102b646610a0f35e",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/7a19504741772147541cdd02a3cf6ef8a983390a50edb52d102b646610a0f35e/info_server_psu.png",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/info_ups_battery.png",
+      "relative_path": "prework_assets/05_visuals/infographics/info_ups_battery.png",
+      "bytes": 552437,
+      "sha256": "4f6bb7d393ac1faac40a5927deeed5629a5483d3aae74ab2f0919c159b106fef",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/4f6bb7d393ac1faac40a5927deeed5629a5483d3aae74ab2f0919c159b106fef/info_ups_battery.png",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_cobot_estop/panel_01.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_cobot_estop/panel_01.png",
+      "bytes": 125146,
+      "sha256": "920a142d5c116e8ebb82dedbb538379e441166a3a7b6d5e5e2ab7cef081498c8",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/920a142d5c116e8ebb82dedbb538379e441166a3a7b6d5e5e2ab7cef081498c8/panel_01.png",
+      "dimensions": [
+        664,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_cobot_estop/panel_02.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_cobot_estop/panel_02.png",
+      "bytes": 103536,
+      "sha256": "9658b368102535959b342950d43d3c045acdb55c108f3086d8e734e94a5ce4b6",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/9658b368102535959b342950d43d3c045acdb55c108f3086d8e734e94a5ce4b6/panel_02.png",
+      "dimensions": [
+        650,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_cobot_estop/panel_03.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_cobot_estop/panel_03.png",
+      "bytes": 104263,
+      "sha256": "a82fe3c85ecc114ffbdb1f48c52ce54c317120cc1142288de5264b39b88e11b8",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/a82fe3c85ecc114ffbdb1f48c52ce54c317120cc1142288de5264b39b88e11b8/panel_03.png",
+      "dimensions": [
+        664,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_cobot_estop/panel_04.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_cobot_estop/panel_04.png",
+      "bytes": 35770,
+      "sha256": "1784cce99923b8518a4c74da288fc7815e88b5e66ac048872f6ebd1981312bf3",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/1784cce99923b8518a4c74da288fc7815e88b5e66ac048872f6ebd1981312bf3/panel_04.png",
+      "dimensions": [
+        664,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_cobot_estop/panel_05.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_cobot_estop/panel_05.png",
+      "bytes": 124537,
+      "sha256": "92baedf60d046271f028b3ec334f44c03d842583feacbc3efbb5e7a4ab802ab4",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/92baedf60d046271f028b3ec334f44c03d842583feacbc3efbb5e7a4ab802ab4/panel_05.png",
+      "dimensions": [
+        650,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_cobot_estop/panel_06.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_cobot_estop/panel_06.png",
+      "bytes": 52587,
+      "sha256": "428123e724c061387ec663ebbdb9890e6e42af7773e3606ede8a17e24809a6ea",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/428123e724c061387ec663ebbdb9890e6e42af7773e3606ede8a17e24809a6ea/panel_06.png",
+      "dimensions": [
+        664,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_cobot_estop/panel_07.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_cobot_estop/panel_07.png",
+      "bytes": 89588,
+      "sha256": "0295c9aa22080e5fa87c6f6ae02b5bad0c57544082aff8b292cfab197156be3c",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/0295c9aa22080e5fa87c6f6ae02b5bad0c57544082aff8b292cfab197156be3c/panel_07.png",
+      "dimensions": [
+        664,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_cobot_estop/panel_08.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_cobot_estop/panel_08.png",
+      "bytes": 56506,
+      "sha256": "b6782fb3167fd764bbd9908445bcd80c31ab9458be2db604c5d131d2789552e4",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/b6782fb3167fd764bbd9908445bcd80c31ab9458be2db604c5d131d2789552e4/panel_08.png",
+      "dimensions": [
+        650,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_cobot_estop/panel_09.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_cobot_estop/panel_09.png",
+      "bytes": 89291,
+      "sha256": "bd4bcc7e226b3d8e88da43851f0f522c020b4df695447bac48e19be71ea9d81a",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/bd4bcc7e226b3d8e88da43851f0f522c020b4df695447bac48e19be71ea9d81a/panel_09.png",
+      "dimensions": [
+        664,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_cobot_estop_vertical.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_cobot_estop_vertical.png",
+      "bytes": 781367,
+      "sha256": "bb7f0ba7fcdba0a0c6671f154e1e3c0628d35eab7612b66046b7927178a95c31",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/bb7f0ba7fcdba0a0c6671f154e1e3c0628d35eab7612b66046b7927178a95c31/info_cobot_estop_vertical.png",
+      "dimensions": [
+        664,
+        5418
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_server_psu/panel_01.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_server_psu/panel_01.png",
+      "bytes": 102647,
+      "sha256": "5f8e0319e0c18b1a055be2ba39db4d8d335c6591d4cc33e9d58397ff90028661",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/5f8e0319e0c18b1a055be2ba39db4d8d335c6591d4cc33e9d58397ff90028661/panel_01.png",
+      "dimensions": [
+        664,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_server_psu/panel_02.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_server_psu/panel_02.png",
+      "bytes": 127361,
+      "sha256": "658b6c9c26212aa641a5d42dcecc87a2925380b4b4b800ad4c5a43832458591b",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/658b6c9c26212aa641a5d42dcecc87a2925380b4b4b800ad4c5a43832458591b/panel_02.png",
+      "dimensions": [
+        650,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_server_psu/panel_03.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_server_psu/panel_03.png",
+      "bytes": 125052,
+      "sha256": "9fd1663e49082c75c20344b6fcdcb460afa5c1ba0d7ebb199ab9be5d212c06c5",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/9fd1663e49082c75c20344b6fcdcb460afa5c1ba0d7ebb199ab9be5d212c06c5/panel_03.png",
+      "dimensions": [
+        664,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_server_psu/panel_04.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_server_psu/panel_04.png",
+      "bytes": 154197,
+      "sha256": "22d6af2e929c899a350faa6b34d25f1e36f76ac9702d4611b8da90d0f1fa1aee",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/22d6af2e929c899a350faa6b34d25f1e36f76ac9702d4611b8da90d0f1fa1aee/panel_04.png",
+      "dimensions": [
+        664,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_server_psu/panel_05.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_server_psu/panel_05.png",
+      "bytes": 151625,
+      "sha256": "9455b252b09153f0a139d46358c568ac8bae37d88b87ec0fd7b5a8f412a1be85",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/9455b252b09153f0a139d46358c568ac8bae37d88b87ec0fd7b5a8f412a1be85/panel_05.png",
+      "dimensions": [
+        650,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_server_psu/panel_06.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_server_psu/panel_06.png",
+      "bytes": 158607,
+      "sha256": "55e83474903100b5cbea191e2b2706f6aef639cb20e1a9eb96d32940c8473870",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/55e83474903100b5cbea191e2b2706f6aef639cb20e1a9eb96d32940c8473870/panel_06.png",
+      "dimensions": [
+        664,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_server_psu/panel_07.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_server_psu/panel_07.png",
+      "bytes": 153945,
+      "sha256": "1518fe8badd255c8ccb025f647fda078a5253073a3d3dffe29a17964ea0c599e",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/1518fe8badd255c8ccb025f647fda078a5253073a3d3dffe29a17964ea0c599e/panel_07.png",
+      "dimensions": [
+        664,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_server_psu/panel_08.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_server_psu/panel_08.png",
+      "bytes": 123160,
+      "sha256": "12d7e7d54d3f680190474bdb238998c916b5261b12a7f418efcb48e7cabf9c3f",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/12d7e7d54d3f680190474bdb238998c916b5261b12a7f418efcb48e7cabf9c3f/panel_08.png",
+      "dimensions": [
+        650,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_server_psu/panel_09.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_server_psu/panel_09.png",
+      "bytes": 108657,
+      "sha256": "19143276445f81b1293ac3cb8c8f843da2f11a2a3725c7ae94cfef827e140171",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/19143276445f81b1293ac3cb8c8f843da2f11a2a3725c7ae94cfef827e140171/panel_09.png",
+      "dimensions": [
+        664,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_server_psu_vertical.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_server_psu_vertical.png",
+      "bytes": 1203127,
+      "sha256": "39628f6f8af8bca8340c2b2b53bf43271eed0bf662b1b6a8482fe34c8e341353",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/39628f6f8af8bca8340c2b2b53bf43271eed0bf662b1b6a8482fe34c8e341353/info_server_psu_vertical.png",
+      "dimensions": [
+        664,
+        5418
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_ups_battery/panel_01.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_ups_battery/panel_01.png",
+      "bytes": 54007,
+      "sha256": "bf5783c963a5caf0e04e1b1449cd0d84082486283ae359334e31ab2fe5f34391",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/bf5783c963a5caf0e04e1b1449cd0d84082486283ae359334e31ab2fe5f34391/panel_01.png",
+      "dimensions": [
+        664,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_ups_battery/panel_02.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_ups_battery/panel_02.png",
+      "bytes": 55003,
+      "sha256": "f2a0c194ee6bc4b05f62ad85b31364a5e1f50b8f22a257d6ea24097ddb7b6fd4",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/f2a0c194ee6bc4b05f62ad85b31364a5e1f50b8f22a257d6ea24097ddb7b6fd4/panel_02.png",
+      "dimensions": [
+        650,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_ups_battery/panel_03.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_ups_battery/panel_03.png",
+      "bytes": 96757,
+      "sha256": "e1417a037f306dad4a12df826f6b33c271556d453e0a05515ca07c16177e2e64",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/e1417a037f306dad4a12df826f6b33c271556d453e0a05515ca07c16177e2e64/panel_03.png",
+      "dimensions": [
+        664,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_ups_battery/panel_04.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_ups_battery/panel_04.png",
+      "bytes": 53914,
+      "sha256": "e05fbcf16cdf6ffdfb406240b5ef514a25ed1c5115e440c45b9a18fd83293e95",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/e05fbcf16cdf6ffdfb406240b5ef514a25ed1c5115e440c45b9a18fd83293e95/panel_04.png",
+      "dimensions": [
+        664,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_ups_battery/panel_05.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_ups_battery/panel_05.png",
+      "bytes": 111318,
+      "sha256": "b72d7ad54c452c2ab981dd8b4eada178e8e7dc9806bcdabc491f043403c9e8c7",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/b72d7ad54c452c2ab981dd8b4eada178e8e7dc9806bcdabc491f043403c9e8c7/panel_05.png",
+      "dimensions": [
+        650,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_ups_battery/panel_06.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_ups_battery/panel_06.png",
+      "bytes": 45717,
+      "sha256": "63fdfbbd059d66153ceff1e1851937c4f97738e324aa6208fd134e0df0f09bb0",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/63fdfbbd059d66153ceff1e1851937c4f97738e324aa6208fd134e0df0f09bb0/panel_06.png",
+      "dimensions": [
+        664,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_ups_battery/panel_07.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_ups_battery/panel_07.png",
+      "bytes": 60672,
+      "sha256": "075ed03ad502c6c16688095110521daed62cdfdcfa216aebe0b83a7b2d30b5ad",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/075ed03ad502c6c16688095110521daed62cdfdcfa216aebe0b83a7b2d30b5ad/panel_07.png",
+      "dimensions": [
+        664,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_ups_battery/panel_08.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_ups_battery/panel_08.png",
+      "bytes": 54236,
+      "sha256": "b87a5846587b0a0ed80d669b7bdc9bf37c303afec8179f1f7582c56c891e87a5",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/b87a5846587b0a0ed80d669b7bdc9bf37c303afec8179f1f7582c56c891e87a5/panel_08.png",
+      "dimensions": [
+        650,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_ups_battery/panel_09.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_ups_battery/panel_09.png",
+      "bytes": 61289,
+      "sha256": "a07c1681bd4b1705d4a0ef98077fea64f65c289edb0d13e13a08b905bb8307cd",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/a07c1681bd4b1705d4a0ef98077fea64f65c289edb0d13e13a08b905bb8307cd/panel_09.png",
+      "dimensions": [
+        664,
+        586
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/05_visuals/infographics/split/info_ups_battery_vertical.png",
+      "relative_path": "prework_assets/05_visuals/infographics/split/info_ups_battery_vertical.png",
+      "bytes": 594816,
+      "sha256": "832cb52ed4ef8f19bba8d3cc5dc4aa0435d15fe0681db116b5eb5dad3a6877ba",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/832cb52ed4ef8f19bba8d3cc5dc4aa0435d15fe0681db116b5eb5dad3a6877ba/info_ups_battery_vertical.png",
+      "dimensions": [
+        664,
+        5418
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/image_prompting/PROMPTS.md",
+      "relative_path": "prework_assets/experiments/image_prompting/PROMPTS.md",
+      "bytes": 9109,
+      "sha256": "f026cbe14d1ab7f35b6c19efc533e6538040e302e5e04a17288433e62e6cbade",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/f026cbe14d1ab7f35b6c19efc533e6538040e302e5e04a17288433e62e6cbade/PROMPTS.md"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/image_prompting/RESEARCH.md",
+      "relative_path": "prework_assets/experiments/image_prompting/RESEARCH.md",
+      "bytes": 4026,
+      "sha256": "16a9089753891a3cd2237fbefe283442a03f539422cd8efd209ecf8ecb773c47",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/16a9089753891a3cd2237fbefe283442a03f539422cd8efd209ecf8ecb773c47/RESEARCH.md"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/image_prompting/RESULTS.md",
+      "relative_path": "prework_assets/experiments/image_prompting/RESULTS.md",
+      "bytes": 5526,
+      "sha256": "778cca88ec39f05cab7cdd23ae66376fd56fafc2187e61729832aa370bb4ea27",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/778cca88ec39f05cab7cdd23ae66376fd56fafc2187e61729832aa370bb4ea27/RESULTS.md"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/image_prompting/results/builtin_edit_preserve_01.png",
+      "relative_path": "prework_assets/experiments/image_prompting/results/builtin_edit_preserve_01.png",
+      "bytes": 1697587,
+      "sha256": "e411b834adacf9e4a0ea0c365a2330ad46878103007271e256d54ffb72ed8b18",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/e411b834adacf9e4a0ea0c365a2330ad46878103007271e256d54ffb72ed8b18/builtin_edit_preserve_01.png",
+      "dimensions": [
+        1645,
+        956
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/image_prompting/results/builtin_edit_preserve_02.png",
+      "relative_path": "prework_assets/experiments/image_prompting/results/builtin_edit_preserve_02.png",
+      "bytes": 1676441,
+      "sha256": "e8c05679c1564008d1077b353f00c1e307b8dbc21b6ea213647c5ca4118d689b",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/e8c05679c1564008d1077b353f00c1e307b8dbc21b6ea213647c5ca4118d689b/builtin_edit_preserve_02.png",
+      "dimensions": [
+        1644,
+        957
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/image_prompting/source/psu_figure212_original.jpg",
+      "relative_path": "prework_assets/experiments/image_prompting/source/psu_figure212_original.jpg",
+      "bytes": 171998,
+      "sha256": "4ab2abc1205ad3f4e91c55b56e4bc810c404077cd20f1fd71383d8c23d21ceda",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/4ab2abc1205ad3f4e91c55b56e4bc810c404077cd20f1fd71383d8c23d21ceda/psu_figure212_original.jpg",
+      "dimensions": [
+        1650,
+        960
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/RESULT.md",
+      "relative_path": "prework_assets/experiments/panel_split/RESULT.md",
+      "bytes": 2564,
+      "sha256": "870a65c4b5046050e3a3bc45e6600f2277c1428feb24528ecda9f62c525ecee4",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/870a65c4b5046050e3a3bc45e6600f2277c1428feb24528ecda9f62c525ecee4/RESULT.md"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_cobot_estop/panel_01.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_cobot_estop/panel_01.png",
+      "bytes": 237469,
+      "sha256": "f6d65f822c91abe6e50e82e74f1b3d86b59c052b70ee3a50a959b9eaa5a895ef",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/f6d65f822c91abe6e50e82e74f1b3d86b59c052b70ee3a50a959b9eaa5a895ef/panel_01.png",
+      "dimensions": [
+        408,
+        408
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_cobot_estop/panel_02.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_cobot_estop/panel_02.png",
+      "bytes": 228848,
+      "sha256": "af318cd98c6e636ced40a52a712af07a7d21cea345b81878bce676f6097c3ec6",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/af318cd98c6e636ced40a52a712af07a7d21cea345b81878bce676f6097c3ec6/panel_02.png",
+      "dimensions": [
+        405,
+        408
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_cobot_estop/panel_03.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_cobot_estop/panel_03.png",
+      "bytes": 238631,
+      "sha256": "c0780b0c60cf3dc4007a2e77ee94cbe76ac1687305ea4d6cdd61f1a1eb2c347b",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/c0780b0c60cf3dc4007a2e77ee94cbe76ac1687305ea4d6cdd61f1a1eb2c347b/panel_03.png",
+      "dimensions": [
+        409,
+        408
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_cobot_estop/panel_04.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_cobot_estop/panel_04.png",
+      "bytes": 230620,
+      "sha256": "b2c9e3ac1a9daeb9a040ec6e8113e9ba0a993f9dd28e29ba44f113fc53cc04b6",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/b2c9e3ac1a9daeb9a040ec6e8113e9ba0a993f9dd28e29ba44f113fc53cc04b6/panel_04.png",
+      "dimensions": [
+        408,
+        403
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_cobot_estop/panel_05.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_cobot_estop/panel_05.png",
+      "bytes": 170469,
+      "sha256": "cd16fe6b43c358c42b12828e461138687bf25ad5c771b5d9f0013187eb721655",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/cd16fe6b43c358c42b12828e461138687bf25ad5c771b5d9f0013187eb721655/panel_05.png",
+      "dimensions": [
+        405,
+        403
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_cobot_estop/panel_06.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_cobot_estop/panel_06.png",
+      "bytes": 163773,
+      "sha256": "32d5e3c378e95da2df6c6b40bb2b6320068ede9c4d46a1c1a592bd3567eec730",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/32d5e3c378e95da2df6c6b40bb2b6320068ede9c4d46a1c1a592bd3567eec730/panel_06.png",
+      "dimensions": [
+        409,
+        403
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_cobot_estop/panel_07.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_cobot_estop/panel_07.png",
+      "bytes": 161162,
+      "sha256": "f91735cf97a0eecbcc7787f69763f701b635f920b7ca854be7d8e58d149c8cb2",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/f91735cf97a0eecbcc7787f69763f701b635f920b7ca854be7d8e58d149c8cb2/panel_07.png",
+      "dimensions": [
+        408,
+        413
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_cobot_estop/panel_08.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_cobot_estop/panel_08.png",
+      "bytes": 167768,
+      "sha256": "f733ad58d6f86d63641b92952c849dabb10cd8b11bd9485d5a84c495ced49938",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/f733ad58d6f86d63641b92952c849dabb10cd8b11bd9485d5a84c495ced49938/panel_08.png",
+      "dimensions": [
+        405,
+        413
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_cobot_estop/panel_09.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_cobot_estop/panel_09.png",
+      "bytes": 230808,
+      "sha256": "f102a25eedcbd0f2e75834dbc3232da4328fd66b0ffcefcaa5940da0c321257f",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/f102a25eedcbd0f2e75834dbc3232da4328fd66b0ffcefcaa5940da0c321257f/panel_09.png",
+      "dimensions": [
+        409,
+        413
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_cobot_estop_vertical.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_cobot_estop_vertical.png",
+      "bytes": 1832727,
+      "sha256": "9f94cdc14c133b4d72c1dde8e275abb06f0e03efe164e63da8bbe0294edfb597",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/9f94cdc14c133b4d72c1dde8e275abb06f0e03efe164e63da8bbe0294edfb597/sb_cobot_estop_vertical.png",
+      "dimensions": [
+        409,
+        3776
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_server_psu/panel_01.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_server_psu/panel_01.png",
+      "bytes": 203010,
+      "sha256": "373a9fcf4cb16066f86c33154f9f2f99c7233ae5b809d33792ab91b242aaf8dc",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/373a9fcf4cb16066f86c33154f9f2f99c7233ae5b809d33792ab91b242aaf8dc/panel_01.png",
+      "dimensions": [
+        412,
+        399
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_server_psu/panel_02.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_server_psu/panel_02.png",
+      "bytes": 201608,
+      "sha256": "f32907a576dca0731a6ce887e010c60bb068e14f7902151b0149d07298266fe2",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/f32907a576dca0731a6ce887e010c60bb068e14f7902151b0149d07298266fe2/panel_02.png",
+      "dimensions": [
+        401,
+        399
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_server_psu/panel_03.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_server_psu/panel_03.png",
+      "bytes": 216544,
+      "sha256": "f820fdb78394756792026ead2620a8966e91184112b493b6919960dd31f7a57d",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/f820fdb78394756792026ead2620a8966e91184112b493b6919960dd31f7a57d/panel_03.png",
+      "dimensions": [
+        414,
+        399
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_server_psu/panel_04.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_server_psu/panel_04.png",
+      "bytes": 207698,
+      "sha256": "5e2e4d59ce00779442bf86a9ca53e014932060da677e6c5249f802969e57a235",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/5e2e4d59ce00779442bf86a9ca53e014932060da677e6c5249f802969e57a235/panel_04.png",
+      "dimensions": [
+        412,
+        390
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_server_psu/panel_05.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_server_psu/panel_05.png",
+      "bytes": 203102,
+      "sha256": "40b0197e7b9845612b77726e3454ef4131ec941be85644387126c659467be28e",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/40b0197e7b9845612b77726e3454ef4131ec941be85644387126c659467be28e/panel_05.png",
+      "dimensions": [
+        401,
+        390
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_server_psu/panel_06.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_server_psu/panel_06.png",
+      "bytes": 208186,
+      "sha256": "1921d3fb032dc619916ab09c0de51fd5abfa2779655a5fbcda7cc3af712ab050",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/1921d3fb032dc619916ab09c0de51fd5abfa2779655a5fbcda7cc3af712ab050/panel_06.png",
+      "dimensions": [
+        414,
+        390
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_server_psu/panel_07.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_server_psu/panel_07.png",
+      "bytes": 217081,
+      "sha256": "5393edaa1ed467549689fdfaf824c02499e28e2075041f5243f940ead091ffd3",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/5393edaa1ed467549689fdfaf824c02499e28e2075041f5243f940ead091ffd3/panel_07.png",
+      "dimensions": [
+        412,
+        439
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_server_psu/panel_08.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_server_psu/panel_08.png",
+      "bytes": 227384,
+      "sha256": "3dfc21b59285a5207075516edef7524e1ac033b8310994d898a5c595a8f13628",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/3dfc21b59285a5207075516edef7524e1ac033b8310994d898a5c595a8f13628/panel_08.png",
+      "dimensions": [
+        401,
+        439
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_server_psu/panel_09.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_server_psu/panel_09.png",
+      "bytes": 227076,
+      "sha256": "442504acf573eaac1f4ed73e74a7d840df4ccf892a630e2c097619769c114ae4",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/442504acf573eaac1f4ed73e74a7d840df4ccf892a630e2c097619769c114ae4/panel_09.png",
+      "dimensions": [
+        414,
+        439
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_server_psu_vertical.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_server_psu_vertical.png",
+      "bytes": 1916918,
+      "sha256": "5ed72ac8e81d0de1c1d0f091acd1f4db7dbaac772e4379ff77ef72d5a8a5332a",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/5ed72ac8e81d0de1c1d0f091acd1f4db7dbaac772e4379ff77ef72d5a8a5332a/sb_server_psu_vertical.png",
+      "dimensions": [
+        414,
+        3788
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_ups_battery/panel_01.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_ups_battery/panel_01.png",
+      "bytes": 132721,
+      "sha256": "20e5fb72e4f0a50417eeb25dec35226f150e58b5bf9e92b27215c25fb45dd83e",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/20e5fb72e4f0a50417eeb25dec35226f150e58b5bf9e92b27215c25fb45dd83e/panel_01.png",
+      "dimensions": [
+        407,
+        407
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_ups_battery/panel_02.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_ups_battery/panel_02.png",
+      "bytes": 201291,
+      "sha256": "04c3f109e57178cbbd6592e9da815af032910afd8848d991bd980450964852e3",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/04c3f109e57178cbbd6592e9da815af032910afd8848d991bd980450964852e3/panel_02.png",
+      "dimensions": [
+        414,
+        407
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_ups_battery/panel_03.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_ups_battery/panel_03.png",
+      "bytes": 184887,
+      "sha256": "831bdc8556343ff63847abf07716bc063d9df3faa3e930f72350c862af4a7545",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/831bdc8556343ff63847abf07716bc063d9df3faa3e930f72350c862af4a7545/panel_03.png",
+      "dimensions": [
+        403,
+        407
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_ups_battery/panel_04.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_ups_battery/panel_04.png",
+      "bytes": 160560,
+      "sha256": "33f633350013e0d5db6637653630f52d2e2a2292e2eaa7f7f9952b438bfd9a0f",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/33f633350013e0d5db6637653630f52d2e2a2292e2eaa7f7f9952b438bfd9a0f/panel_04.png",
+      "dimensions": [
+        407,
+        381
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_ups_battery/panel_05.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_ups_battery/panel_05.png",
+      "bytes": 168207,
+      "sha256": "dc1088bbf16a6b57b071cf08b58ba935ad8450847bea18e03f1ebf0351704e2f",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/dc1088bbf16a6b57b071cf08b58ba935ad8450847bea18e03f1ebf0351704e2f/panel_05.png",
+      "dimensions": [
+        414,
+        381
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_ups_battery/panel_06.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_ups_battery/panel_06.png",
+      "bytes": 164258,
+      "sha256": "42d4fec985fba8247f5702dd88255b60c19722302642380d59ae16a9a2b15712",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/42d4fec985fba8247f5702dd88255b60c19722302642380d59ae16a9a2b15712/panel_06.png",
+      "dimensions": [
+        403,
+        381
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_ups_battery/panel_07.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_ups_battery/panel_07.png",
+      "bytes": 187674,
+      "sha256": "b2bcc84e93b3fde23fd6e9247bcf9a950de26d2ca721146eb05a2ba2b5859572",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/b2bcc84e93b3fde23fd6e9247bcf9a950de26d2ca721146eb05a2ba2b5859572/panel_07.png",
+      "dimensions": [
+        407,
+        441
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_ups_battery/panel_08.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_ups_battery/panel_08.png",
+      "bytes": 203536,
+      "sha256": "56b80baa215c1f5d177b294b0b646efaa240ee6b53bd5a9561913ce57eacee39",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/56b80baa215c1f5d177b294b0b646efaa240ee6b53bd5a9561913ce57eacee39/panel_08.png",
+      "dimensions": [
+        414,
+        441
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_ups_battery/panel_09.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_ups_battery/panel_09.png",
+      "bytes": 140881,
+      "sha256": "83831b045a0b8f7e3aaee24db869c05e17b11cdc6c4bdc0aa8e4656d80f2a5c2",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/83831b045a0b8f7e3aaee24db869c05e17b11cdc6c4bdc0aa8e4656d80f2a5c2/panel_09.png",
+      "dimensions": [
+        403,
+        441
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/outputs/sb_ups_battery_vertical.png",
+      "relative_path": "prework_assets/experiments/panel_split/outputs/sb_ups_battery_vertical.png",
+      "bytes": 1551660,
+      "sha256": "4658f68945699fc8e82319155a18bcc004e587b64b18aa016614bfa5a8c7f827",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/4658f68945699fc8e82319155a18bcc004e587b64b18aa016614bfa5a8c7f827/sb_ups_battery_vertical.png",
+      "dimensions": [
+        414,
+        3791
+      ],
+      "evidence_class": "synthetic_or_derived_unreviewed"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/panel_split/split_3x3.py",
+      "relative_path": "prework_assets/experiments/panel_split/split_3x3.py",
+      "bytes": 6572,
+      "sha256": "31906aa4fe56f1ac47a2789bb9fbf27dcb26eda7c2169a82226b287f36f5d538",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/31906aa4fe56f1ac47a2789bb9fbf27dcb26eda7c2169a82226b287f36f5d538/split_3x3.py"
+    },
+    {
+      "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/06_dayof/repo_seed/docs/prompts/storyboard.md",
+      "relative_path": "prework_assets/06_dayof/repo_seed/docs/prompts/storyboard.md",
+      "bytes": 5433,
+      "sha256": "5184ff0c0eb0bb0956a43ae99a96db0578fac390abb5b343fc8ebe5bef981fe2",
+      "archive_path": "docs/assets/manual-asset-design/private/originals/5184ff0c0eb0bb0956a43ae99a96db0578fac390abb5b343fc8ebe5bef981fe2/storyboard.md"
+    }
+  ],
+  "figures": [
+    {
+      "figure_id": "dell-a11-figure212",
+      "manual_sha256": "1bdf0df910860207f11a27d9fb7ce6effcb70c0a324ed06e3579d1da6fe6b879",
+      "pdf_page": 211,
+      "printed_page": "211",
+      "figure_number": 212,
+      "xref": 35712,
+      "page_size_points": [
+        0.0,
+        0.0,
+        595.275634765625,
+        841.8897705078125
+      ],
+      "coordinate_system": "PyMuPDF unrotated page points, top-left origin; x0,y0,x1,y1",
+      "page_rotation": 0,
+      "page_rects_points": [
+        [
+          99.63780975341797,
+          66.09684753417969,
+          495.6378173828125,
+          296.4968566894531
+        ]
+      ],
+      "pixel_crop_xyxy": [
+        0,
+        0,
+        1650,
+        960
+      ],
+      "dimensions": [
+        1650,
+        960
+      ],
+      "sha256": "4ab2abc1205ad3f4e91c55b56e4bc810c404077cd20f1fd71383d8c23d21ceda",
+      "private_path": "docs/assets/manual-asset-design/private/figure212-original.jpg",
+      "prework_extracted_path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/experiments/image_prompting/source/psu_figure212_original.jpg",
+      "prework_extracted_sha256": "4ab2abc1205ad3f4e91c55b56e4bc810c404077cd20f1fd71383d8c23d21ceda",
+      "byte_matches_prework_extract": true,
+      "rights": "restricted; private inspection only",
+      "review_status": "source_identity_verified; procedure_not_approved"
+    }
+  ],
+  "renderer_version": "1.28.2"
+}

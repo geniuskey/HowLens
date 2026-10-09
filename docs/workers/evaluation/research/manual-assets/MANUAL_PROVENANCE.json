@@ -1,0 +1,144 @@
+[
+  {
+    "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/02_manuals/server/poweredge-r750_Owners-Manual_en-us.pdf",
+    "archive_path": "docs/assets/manual-asset-design/private/originals/1bdf0df910860207f11a27d9fb7ce6effcb70c0a324ed06e3579d1da6fe6b879/poweredge-r750_Owners-Manual_en-us.pdf",
+    "sha256": "1bdf0df910860207f11a27d9fb7ce6effcb70c0a324ed06e3579d1da6fe6b879",
+    "bytes": 55547654,
+    "pdf_page_count": 255,
+    "title": "Dell PowerEdge R750 Installation and Service Manual",
+    "document_version": "December 2024 Rev A11",
+    "source_url": "https://dl.dell.com/topicspdf/poweredge-r750_Owners-Manual_en-us.pdf",
+    "source_url_provenance": "prework MANUALS.md; official URL, web-open result in SOURCES.md",
+    "page_identities": [
+      {
+        "pdf_page": 1,
+        "printed_page": null,
+        "purpose": "version"
+      },
+      {
+        "pdf_page": 211,
+        "printed_page": "211",
+        "purpose": "Figure 212 specimen"
+      }
+    ],
+    "rights_status": "restricted/no redistribution license established",
+    "review_status": "source identity only; actions not approved",
+    "field_device_match": "pending",
+    "verified_date": "2026-10-09"
+  },
+  {
+    "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/02_manuals/cobot/710-965-00_UR5e_User_Manual_en_Global.pdf",
+    "archive_path": "docs/assets/manual-asset-design/private/originals/5e87151083d618e3bfc90160550120694298a8da11fac38d9e8598b0ed8dd3e6/710-965-00_UR5e_User_Manual_en_Global.pdf",
+    "sha256": "5e87151083d618e3bfc90160550120694298a8da11fac38d9e8598b0ed8dd3e6",
+    "bytes": 20759537,
+    "pdf_page_count": 245,
+    "title": "UR5e User Manual",
+    "document_version": "PolyScope5.23; Document10.13.387;710-965-00",
+    "source_url": "https://s3-eu-west-1.amazonaws.com/ur-support-site/260652/710-965-00_UR5e_User_Manual_en_Global.pdf",
+    "source_url_provenance": "prework MANUALS.md; official URL, web-open result in SOURCES.md",
+    "page_identities": [
+      {
+        "pdf_page": 244,
+        "printed_page": null,
+        "purpose": "version"
+      },
+      {
+        "pdf_page": 194,
+        "printed_page": "197",
+        "purpose": "stop section, no approval"
+      }
+    ],
+    "rights_status": "restricted/no redistribution license established",
+    "review_status": "source identity only; actions not approved",
+    "field_device_match": "pending",
+    "verified_date": "2026-10-09"
+  },
+  {
+    "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/02_manuals/ups/APC_SmartUPS_Tower_OperationManual_990-3534H_EN.pdf",
+    "archive_path": "docs/assets/manual-asset-design/private/originals/9333b2605ead8c9e3633b37f0dcd128a8d6fd70273919b70cf0ea2922f385c3a/APC_SmartUPS_Tower_OperationManual_990-3534H_EN.pdf",
+    "sha256": "9333b2605ead8c9e3633b37f0dcd128a8d6fd70273919b70cf0ea2922f385c3a",
+    "bytes": 568229,
+    "pdf_page_count": 20,
+    "title": "Smart-UPS Tower Operation Manual",
+    "document_version": "EN990-3534H;03/2023",
+    "source_url": "https://download.schneider-electric.com/files?p_Doc_Ref=SPD_SCON-7NBSEM_EN",
+    "source_url_provenance": "prework MANUALS.md; official URL, web-open result in SOURCES.md",
+    "page_identities": [
+      {
+        "pdf_page": 20,
+        "printed_page": null,
+        "purpose": "version"
+      }
+    ],
+    "rights_status": "restricted/no redistribution license established",
+    "review_status": "source identity only; actions not approved",
+    "field_device_match": "pending",
+    "verified_date": "2026-10-09"
+  },
+  {
+    "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/02_manuals/ups/APC_SmartUPS_Tower_InstallationGuide_990-3535H_EN.pdf",
+    "archive_path": "docs/assets/manual-asset-design/private/originals/20763b875e04051e246ae62f51c099db7f597795c42b47590d47e86ad8cd51e0/APC_SmartUPS_Tower_InstallationGuide_990-3535H_EN.pdf",
+    "sha256": "20763b875e04051e246ae62f51c099db7f597795c42b47590d47e86ad8cd51e0",
+    "bytes": 398951,
+    "pdf_page_count": 8,
+    "title": "Smart-UPS Tower Installation Guide",
+    "document_version": "EN990-3535H-001;05/2022",
+    "source_url": "https://download.schneider-electric.com/files?p_Doc_Ref=SPD_SCON-7QHM74_EN",
+    "source_url_provenance": "prework MANUALS.md; official URL, web-open result in SOURCES.md",
+    "page_identities": [
+      {
+        "pdf_page": 8,
+        "printed_page": null,
+        "purpose": "version"
+      }
+    ],
+    "rights_status": "restricted/no redistribution license established",
+    "review_status": "source identity only; actions not approved",
+    "field_device_match": "pending",
+    "verified_date": "2026-10-09"
+  },
+  {
+    "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/02_manuals/ups/APC_RBC_Battery_Cartridge_Replacement_InstructionSheet_990-0179L_EN.pdf",
+    "archive_path": "docs/assets/manual-asset-design/private/originals/9949ac6eb4fc88f355d9e0c6392eb2fd8cdb31e0916545a97753f1ae2afbcada/APC_RBC_Battery_Cartridge_Replacement_InstructionSheet_990-0179L_EN.pdf",
+    "sha256": "9949ac6eb4fc88f355d9e0c6392eb2fd8cdb31e0916545a97753f1ae2afbcada",
+    "bytes": 458997,
+    "pdf_page_count": 8,
+    "title": "Battery Cartridge Replacement",
+    "document_version": "990-0179L;9/2012",
+    "source_url": "https://download.schneider-electric.com/files?p_enDocType=Instruction+sheet&p_File_Name=EALN-7N3P8W_R1_EN.pdf&p_Doc_Ref=SPD_EALN-7N3P8W_EN",
+    "source_url_provenance": "prework MANUALS.md; official URL, web-open result in SOURCES.md",
+    "page_identities": [
+      {
+        "pdf_page": 8,
+        "printed_page": null,
+        "purpose": "version"
+      }
+    ],
+    "rights_status": "restricted/no redistribution license established",
+    "review_status": "source identity only; actions not approved",
+    "field_device_match": "pending",
+    "verified_date": "2026-10-09"
+  },
+  {
+    "path": "/Users/runixs/working/ai/dsdn-hub/HowLens-prework/prework_assets/02_manuals/ups/APC_RBC_Addendum_PostInstall_ReplaceBatteryLED_990-0374A_EN.pdf",
+    "archive_path": "docs/assets/manual-asset-design/private/originals/79a374989a5e28bc12b3382a68bb09286cd6466d615401d65cb50266a29f0059/APC_RBC_Addendum_PostInstall_ReplaceBatteryLED_990-0374A_EN.pdf",
+    "sha256": "79a374989a5e28bc12b3382a68bb09286cd6466d615401d65cb50266a29f0059",
+    "bytes": 21340,
+    "pdf_page_count": 2,
+    "title": "Replacement Battery Cartridge Addendum",
+    "document_version": "990-0374A revision2;11/01",
+    "source_url": "https://download.schneider-electric.com/files?p_enDocType=User+guide&p_File_Name=ASTE-6Z8LBP_R0_EN.pdf&p_Doc_Ref=SPD_ASTE-6Z8LBP_EN",
+    "source_url_provenance": "prework MANUALS.md; official URL, web-open result in SOURCES.md",
+    "page_identities": [
+      {
+        "pdf_page": 1,
+        "printed_page": null,
+        "purpose": "version"
+      }
+    ],
+    "rights_status": "restricted/no redistribution license established",
+    "review_status": "source identity only; actions not approved",
+    "field_device_match": "pending",
+    "verified_date": "2026-10-09"
+  }
+]
