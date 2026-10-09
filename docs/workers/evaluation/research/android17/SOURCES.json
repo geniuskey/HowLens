@@ -1,0 +1,90 @@
+{
+  "checked_date_kst": "2026-10-09",
+  "sources": [
+    {
+      "id": "test-release",
+      "url": "https://developer.android.com/jetpack/androidx/releases/test",
+      "opened": true,
+      "finding": "Espresso 3.7.0 stable 2025-07-30; InputManager fix alpha04 2025-06-13"
+    },
+    {
+      "id": "compose-release",
+      "url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.7.0",
+      "opened": true,
+      "finding": "Compose UI 1.7.0 2024-09-04; no whole-project upgrade recommended"
+    },
+    {
+      "id": "android17-queue",
+      "url": "https://developer.android.com/about/versions/17/changes/messagequeue",
+      "opened": true,
+      "finding": "2026-10-01 updated; target37 default; Espresso >=3.7.0"
+    },
+    {
+      "id": "android17-migration",
+      "url": "https://developer.android.com/about/versions/17/migration",
+      "opened": true,
+      "finding": "2026-10-01 updated; existing-target compatibility testing distinct from retargeting"
+    },
+    {
+      "id": "android17-all",
+      "url": "https://developer.android.com/about/versions/17/behavior-changes-all",
+      "opened": true,
+      "finding": "Opened; did not attribute InputManager issue to this page"
+    },
+    {
+      "id": "bom",
+      "url": "https://dl.google.com/dl/android/maven2/androidx/compose/compose-bom/2024.09.00/compose-bom-2024.09.00.pom",
+      "opened": true,
+      "finding": "ui/test/junit4/manifest 1.7.0"
+    },
+    {
+      "id": "ui-test",
+      "url": "https://dl.google.com/dl/android/maven2/androidx/compose/ui/ui-test-android/1.7.0/ui-test-android-1.7.0.pom",
+      "opened": true,
+      "finding": "Requests espresso-core and idling 3.5.0; not a resolved graph"
+    },
+    {
+      "id": "ui-test-junit4",
+      "url": "https://dl.google.com/dl/android/maven2/androidx/compose/ui/ui-test-junit4-android/1.7.0/ui-test-junit4-android-1.7.0.pom",
+      "opened": true,
+      "finding": "Current test dependency POM inspected"
+    },
+    {
+      "id": "espresso-pom",
+      "url": "https://dl.google.com/dl/android/maven2/androidx/test/espresso/espresso-core/3.7.0/espresso-core-3.7.0.pom",
+      "opened": true,
+      "finding": "Requests core1.7 monitor1.8 runner1.7 idling3.7 stdlib1.9.21"
+    },
+    {
+      "id": "espresso-aar",
+      "url": "https://dl.google.com/dl/android/maven2/androidx/test/espresso/espresso-core/3.7.0/espresso-core-3.7.0.aar",
+      "opened": true,
+      "finding": "No aar-metadata entry found; not proof of whole-graph compileSdk compatibility"
+    },
+    {
+      "id": "espresso-source",
+      "url": "https://dl.google.com/dl/android/maven2/androidx/test/espresso/espresso-core/3.7.0/espresso-core-3.7.0-sources.jar",
+      "opened": true,
+      "finding": "InputManager getSystemService on API>=23; TestLooperManagerCompat inspected"
+    },
+    {
+      "id": "core-pom",
+      "url": "https://dl.google.com/dl/android/maven2/androidx/test/core/1.7.0/core-1.7.0.pom",
+      "opened": true,
+      "finding": "stdlib1.9.21; coroutine-core-jvm1.8.1"
+    },
+    {
+      "id": "runner-pom",
+      "url": "https://dl.google.com/dl/android/maven2/androidx/test/runner/1.7.0/runner-1.7.0.pom",
+      "opened": true,
+      "finding": "monitor1.8.0"
+    },
+    {
+      "id": "junit-pom",
+      "url": "https://dl.google.com/dl/android/maven2/androidx/test/ext/junit/1.3.0/junit-1.3.0.pom",
+      "opened": true,
+      "finding": "core1.7 monitor1.8 stdlib1.9.21"
+    }
+  ],
+  "limitations": "Official POM/source inspection only; no Gradle resolution, build or device execution; App results relayed by coordinator."
+}
