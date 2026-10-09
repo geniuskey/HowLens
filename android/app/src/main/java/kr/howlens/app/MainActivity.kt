@@ -75,6 +75,12 @@ fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
     val busy = state.phase == Phase.LOADING || state.photoLoading
     val compactViewport = LocalConfiguration.current.screenHeightDp < 500
     val showingResult = state.phase == Phase.RESULT && state.analysis != null
+    val journey = rememberGuideJourneyState()
+    var guideOpen by rememberSaveable(state.analysis?.analysisId) { mutableStateOf(false) }
+    var summaryOpen by rememberSaveable(state.analysis?.analysisId) { mutableStateOf(false) }
+    LaunchedEffect(state.analysis?.analysisId) {
+        if (state.analysis != null) summaryOpen = true
+    }
 
     val gallery = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
         if (uri != null) vm.selectPhoto(context.contentResolver, uri)
@@ -86,6 +92,8 @@ fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
     BackHandler(enabled = settings || showingResult || (tab == InputTab.CAMERA && !settings)) {
         when {
             settings -> settings = false
+            showingResult && summaryOpen -> summaryOpen = false
+            showingResult && guideOpen -> guideOpen = false
             showingResult -> vm.showInput()
             tab == InputTab.CAMERA -> tabName = InputTab.PHOTO.name
         }
@@ -96,12 +104,30 @@ fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
         return
     }
     if (showingResult) {
-        ResultScreen(
-            state = state,
-            vm = vm,
-            onBack = vm::showInput,
-            onSelectVerificationPhoto = { verificationGallery.launch(arrayOf("image/jpeg", "image/png")) },
-        )
+        val analysis = requireNotNull(state.analysis)
+        if (guideOpen && analysis.canShowSteps) {
+            GuideJourneyPane(
+                analysis = analysis, state = journey.value, onStateChange = { journey.value = it },
+                onBack = { guideOpen = false }, onConfirmed = { guideOpen = false },
+                panels = state.visualPanels, images = state.visualImages,
+                visualLoading = state.visualLoading, visualError = state.visualError,
+                onRequestImages = if (!state.offline && analysis.canRequestVisual && state.visualAttempts < 2)
+                    vm::requestVisual else null,
+            )
+        } else {
+            ResultScreen(
+                state = state, vm = vm, onBack = vm::showInput,
+                onOpenGuide = { guideOpen = true }, onOpenSummary = { summaryOpen = true },
+                userConfirmed = journey.value.forAnalysis(analysis).userConfirmed,
+                onSelectVerificationPhoto = { verificationGallery.launch(arrayOf("image/jpeg", "image/png")) },
+            )
+        }
+        if (summaryOpen) {
+            AnalysisSummarySheet(analysis = analysis,
+                onDismissRequest = { summaryOpen = false },
+                onOpenGuide = { summaryOpen = false; guideOpen = true },
+                onRequestMoreInformation = { summaryOpen = false; vm.showInput() })
+        }
         return
     }
 
@@ -112,6 +138,7 @@ fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
                 TopAppBar(
                     title = { BrandWordmark() },
                     actions = {
+                        if (state.analysis != null) TextButton(onClick = vm::showResult) { Text("최근 결과") }
                         Text(if (state.offline) "데모" else "실제 분석", style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant)
                         IconButton(onClick = { settings = true }, enabled = !busy, modifier = Modifier.semantics { contentDescription = "설정" }) {
@@ -290,6 +317,12 @@ private fun SettingsScreen(state: AnalysisUiState, vm: AnalysisViewModel, onBack
             } else {
                 OutlinedTextField(value = state.baseUrl, onValueChange = vm::baseUrl,
                     label = { Text("API 서버 루트 주소") }, modifier = Modifier.fillMaxWidth(), singleLine = true)
+                OutlinedTextField(value = state.demoToken.value, onValueChange = vm::demoToken,
+                    label = { Text("데모 접속 토큰 (선택)") }, modifier = Modifier.fillMaxWidth(), singleLine = true,
+                    visualTransformation = androidx.compose.ui.text.input.PasswordVisualTransformation(),
+                    keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(
+                        keyboardType = androidx.compose.ui.text.input.KeyboardType.Password),
+                    supportingText = { Text("서버 주소를 먼저 입력하세요. 토큰은 앱을 닫으면 지워져요.") })
             }
             if (compactViewport) Button(onClick = onBack, modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp)) { Text("완료") }
         }
@@ -297,7 +330,9 @@ private fun SettingsScreen(state: AnalysisUiState, vm: AnalysisViewModel, onBack
 }
 
 @Composable
-private fun ResultScreen(state: AnalysisUiState, vm: AnalysisViewModel, onBack: () -> Unit, onSelectVerificationPhoto: () -> Unit) {
+private fun ResultScreen(state: AnalysisUiState, vm: AnalysisViewModel, onBack: () -> Unit,
+    onOpenGuide: () -> Unit, onOpenSummary: () -> Unit, userConfirmed: Boolean,
+    onSelectVerificationPhoto: () -> Unit) {
     val analysis = state.analysis ?: return
     var evidenceOpen by rememberSaveable(analysis.analysisId) { mutableStateOf(false) }
     var shareOpen by rememberSaveable(analysis.analysisId) { mutableStateOf(false) }
@@ -330,11 +365,14 @@ private fun ResultScreen(state: AnalysisUiState, vm: AnalysisViewModel, onBack: 
             }, style = MaterialTheme.typography.headlineLarge)
             if (analysis.mode == Mode.MOCK) WarningCard("합성 예시예요. 실제 작업에 사용하지 마세요.")
             if (state.photo != null) PhotoFrame(state.photo, "분석한 장비 사진", maxHeightFraction = 0.36f)
+            OutlinedButton(onClick = onOpenSummary, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)) { Text("분석 요약") }
+            if (userConfirmed) Text("단계 확인을 기록했어요. 안전이나 정상 동작을 보증하지 않아요.")
             analysis.missingInformation.forEach { WarningCard("추가 정보: $it", warning = true) }
             analysis.warnings.forEach { WarningCard(it, warning = true) }
             val unsatisfiedRequired = analysis.preconditions.filter { it.required && it.status != ConditionStatus.SATISFIED }
             unsatisfiedRequired.forEach { WarningCard("필수 조건 미확인: ${it.description}", warning = true) }
             if (analysis.decision == Decision.GUIDE && analysis.canShowSteps) {
+                Button(onClick = onOpenGuide, modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp)) { Text("단계별 안내 시작") }
                 Text("승인된 단계", style = MaterialTheme.typography.titleLarge)
                 analysis.visibleSteps.forEachIndexed { index, step ->
                     Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {

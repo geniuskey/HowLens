@@ -93,20 +93,34 @@ object ApiErrors {
 
 class HttpAnalysisRepository private constructor(
     baseUrl: String,
-    private val client: OkHttpClient,
-    private val pngDecoder: PngAssetDecoder
+    client: OkHttpClient,
+    private val pngDecoder: PngAssetDecoder,
+    demoToken: String
 ) : AnalysisRepository {
     constructor(baseUrl: String, client: OkHttpClient = OkHttpClient.Builder()
         .connectTimeout(10, TimeUnit.SECONDS).readTimeout(45, TimeUnit.SECONDS)
         .writeTimeout(30, TimeUnit.SECONDS).callTimeout(60, TimeUnit.SECONDS)
-        .retryOnConnectionFailure(false).followRedirects(false).followSslRedirects(false).build()) :
-        this(baseUrl, client, PngAssetValidator)
+        .retryOnConnectionFailure(false).followRedirects(false).followSslRedirects(false).build(), demoToken: String = "") :
+        this(baseUrl, client, PngAssetValidator, demoToken)
 
-    internal constructor(baseUrl: String, pngDecoder: PngAssetDecoder) :
+    internal constructor(baseUrl: String, pngDecoder: PngAssetDecoder, demoToken: String = "") :
         this(baseUrl, OkHttpClient.Builder()
             .connectTimeout(10, TimeUnit.SECONDS).readTimeout(45, TimeUnit.SECONDS)
             .writeTimeout(30, TimeUnit.SECONDS).callTimeout(60, TimeUnit.SECONDS)
-            .retryOnConnectionFailure(false).followRedirects(false).followSslRedirects(false).build(), pngDecoder)
+            .retryOnConnectionFailure(false).followRedirects(false).followSslRedirects(false).build(), pngDecoder, demoToken)
+
+    // Enforce this even when a caller supplies a client with redirects enabled.
+    private val client = client.newBuilder().followRedirects(false).followSslRedirects(false).build()
+    private val token = demoToken.trim().also {
+        require(it.all { character -> character.code in 33..126 }) { "데모 토큰 형식을 확인해 주세요." }
+    }
+    private fun requestBuilder(url: String): Request.Builder {
+        val target = url.toHttpUrl()
+        require(target.scheme == base.scheme && target.host == base.host && target.port == base.port)
+        return Request.Builder().url(target).apply {
+            if (token.isNotEmpty()) header("Authorization", "Bearer $token")
+        }
+    }
 
     private val base = baseUrl.toHttpUrl().also {
         require(it.encodedPath == "/" && it.query == null && it.fragment == null && it.username.isEmpty() && it.password.isEmpty()) {
@@ -117,7 +131,7 @@ class HttpAnalysisRepository private constructor(
     companion object { const val MAX_RESPONSE_BYTES = 2 * 1024 * 1024 }
 
     private suspend inline fun <reified T> request(path: String, body: RequestBody? = null): T = withContext(Dispatchers.IO) {
-        val builder = Request.Builder().url(base.newBuilder().encodedPath(path).build())
+        val builder = requestBuilder(base.newBuilder().encodedPath(path).build().toString())
         if (body != null) builder.post(body)
         try {
             val text = cancellableTextCall(client.newCall(builder.build()))
@@ -190,7 +204,7 @@ class HttpAnalysisRepository private constructor(
         val url = assetUrl(path)
         return withContext(Dispatchers.IO) {
             try {
-                val call = client.newCall(Request.Builder().url(url).build())
+                val call = client.newCall(requestBuilder(url).build())
                 val bytes = cancellableBytesCall(call)
                 bytes
             } catch (e: InterruptedIOException) {

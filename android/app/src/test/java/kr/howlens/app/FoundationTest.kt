@@ -136,9 +136,13 @@ class FoundationTest {
             server.enqueue(MockResponse().setBody(Json.encodeToString(VisualJob.serializer(), VisualJob(
                 "visual-1", "test-analysis", VisualStatus.COMPLETED, null,
                 (0..8).map { Panel(it, "s1", "/visual-assets/p$it.png") }, null, Mode.LIVE))))
-            val png = java.util.Base64.getDecoder().decode("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/l0cAAAAASUVORK5CYII=")
+            val png = java.util.Base64.getDecoder().decode("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=")
             repeat(9) { server.enqueue(MockResponse().setHeader("Content-Type", "image/png").setBody(okio.Buffer().write(png))) }
-            val vm = AnalysisViewModel()
+            val vm = AnalysisViewModel(repositoryFactory = { base, token ->
+                HttpAnalysisRepository(base, PngAssetDecoder { bytes ->
+                    check(javax.imageio.ImageIO.read(bytes.inputStream()) != null)
+                }, token)
+            })
             vm.offline(false); vm.baseUrl(server.url("/").toString()); vm.photo(photo); vm.question("test")
             vm.analyze(); awaitState(vm) { it.analysis != null }
             vm.requestVisual(); awaitState(vm) { !it.visualLoading && it.visualImages.size == 9 }

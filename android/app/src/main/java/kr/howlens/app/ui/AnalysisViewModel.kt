@@ -17,11 +17,16 @@ import kotlinx.coroutines.launch
 import java.io.File
 import kr.howlens.app.data.*
 
+class DemoToken(val value: String = "") {
+    override fun toString(): String = "[redacted]"
+}
+
 enum class Phase { INPUT, LOADING, RESULT, ERROR }
 data class AnalysisUiState(
     val deviceId: String = "server", val question: String = "", val photo: Photo? = null,
     val photoLoading: Boolean = false, val offline: Boolean = true,
     val scenario: FakeScenario = FakeScenario.MORE_INFORMATION,
+    val demoToken: DemoToken = DemoToken(),
     val baseUrl: String = "http://10.0.2.2:8000/", val phase: Phase = Phase.INPUT,
     val analysis: Analysis? = null, val error: String? = null, val retryable: Boolean = false,
     val visualLoading: Boolean = false, val visualAttempts: Int = 0,
@@ -31,7 +36,12 @@ data class AnalysisUiState(
     val verification: Verification? = null, val verificationError: String? = null,
     val confirmation: String = ""
 )
-class AnalysisViewModel(initialState: AnalysisUiState = AnalysisUiState()) : ViewModel() {
+class AnalysisViewModel(
+    initialState: AnalysisUiState = AnalysisUiState(),
+    private val repositoryFactory: (String, String) -> HttpAnalysisRepository = { base, token ->
+        HttpAnalysisRepository(base, demoToken = token)
+    },
+) : ViewModel() {
     private val mutable = MutableStateFlow(initialState)
     val state = mutable.asStateFlow()
     private var analysisJob: Job? = null
@@ -60,7 +70,8 @@ class AnalysisViewModel(initialState: AnalysisUiState = AnalysisUiState()) : Vie
     fun question(value: String) = edit { it.copy(question = value) }
     fun offline(value: Boolean) = edit { it.copy(offline = value) }
     fun scenario(value: FakeScenario) = edit { it.copy(scenario = value) }
-    fun baseUrl(value: String) = edit { it.copy(baseUrl = value) }
+    fun baseUrl(value: String) = edit { it.copy(baseUrl = value, demoToken = DemoToken()) }
+    fun demoToken(value: String) = edit { it.copy(demoToken = DemoToken(value)) }
     fun showInput() { mutable.update { if (it.analysis != null) it.copy(phase = Phase.INPUT) else it } }
     fun showResult() { mutable.update { if (it.analysis != null) it.copy(phase = Phase.RESULT) else it } }
     fun clearPhoto() = edit { it.copy(photo = null, photoLoading = false) }
@@ -116,7 +127,7 @@ class AnalysisViewModel(initialState: AnalysisUiState = AnalysisUiState()) : Vie
         analysisJob = viewModelScope.launch {
             try {
                 val repository: AnalysisRepository = if (input.offline) FakeAnalysisRepository(input.scenario)
-                    else HttpAnalysisRepository(input.baseUrl.trim())
+                    else repositoryFactory(input.baseUrl.trim(), input.demoToken.value)
                 val result = repository.analyze(input.deviceId, input.question, requireNotNull(input.photo))
                 if (generation == workGeneration) mutable.update { it.copy(phase = Phase.RESULT, analysis = result, visualAttempts = 0,
                     visualPanels = emptyList(), visualImages = emptyMap(), visualError = null,
@@ -142,7 +153,7 @@ class AnalysisViewModel(initialState: AnalysisUiState = AnalysisUiState()) : Vie
             updateVisual(work, request, analysisId) { it.copy(visualLoading = true, visualAttempts = attempt, visualError = null,
                 visualPanels = emptyList(), visualImages = emptyMap()) }
             try {
-                val repo = HttpAnalysisRepository(input.baseUrl.trim())
+                val repo = repositoryFactory(input.baseUrl.trim(), input.demoToken.value)
                 var visual = repo.createVisual(analysis)
                 require(visual.analysisId == analysis.analysisId && visual.mode == Mode.LIVE) {
                     "서버 이미지 작업이 요청 분석과 일치하지 않습니다. 텍스트 안내는 유지됩니다."
@@ -196,7 +207,7 @@ class AnalysisViewModel(initialState: AnalysisUiState = AnalysisUiState()) : Vie
         verificationTask = viewModelScope.launch {
             updateVerification(work, request, analysisId) { it.copy(verificationBusy = true, verificationError = null, verification = null) }
             try {
-                val result = HttpAnalysisRepository(input.baseUrl.trim()).verify(analysis, photo, input.confirmation)
+                val result = repositoryFactory(input.baseUrl.trim(), input.demoToken.value).verify(analysis, photo, input.confirmation)
                 require(result.mode == Mode.LIVE && result.analysisId == analysis.analysisId &&
                     result.evidenceIds.all { id -> analysis.evidence.any { it.evidenceId == id } }) {
                     "비교 응답을 원 분석 근거와 연결할 수 없습니다."
