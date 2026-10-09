@@ -94,8 +94,12 @@ fetch them. A source response timestamp is not a guarantee of the webpage's upda
 date. The existing ledger must be used by a single configured app/provider instance;
 integration must avoid concurrent independent live processes/helpers sharing it.
 
-Awaited coordinator's serialized index grant before staging or committing; final
-implementation SHA is delivered through the lifecycle completion and recorded below.
+Coordinator granted exclusive staging/commit/push through `relay_0786756b8d6a` after
+QA acknowledged no Git mutation in progress. Only the eleven discovery-owned files
+were staged and committed; QA's untracked documentation was preserved.
+Implementation SHA: `75de75bb4476e9ca5b8862c98dbbbf7bc911283b`.
+The subsequent report-metadata commit and verified pushed HEAD are delivered through
+the lifecycle completion, without rewriting either commit.
 
 ## Coordinator follow-up: PDF intake
 
