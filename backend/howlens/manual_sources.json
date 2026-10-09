@@ -1,0 +1,87 @@
+[
+  {
+    "device_id": "server",
+    "evidence": {
+      "evidence_id": "dell-r750-ism-a11-excerpt-1",
+      "document_id": "dell-r750-ism-a11",
+      "document_version": "December 2024 Rev A11",
+      "pdf_page": 11,
+      "printed_page": "11",
+      "section": "Left control panel view",
+      "quote": "Left control panel view",
+      "source_url": "https://dl.dell.com/content/manual15837466-dell-emc-poweredge-r750-installation-and-service-manual.pdf"
+    },
+    "pdf_sha256": "1bdf0df910860207f11a27d9fb7ce6effcb70c0a324ed06e3579d1da6fe6b879",
+    "reviewed_by": "Backend independent HTTPS SHA-256/byte/page/excerpt check 2026-10-09; research 5c0b830",
+    "usage_terms": "Manufacturer copyright retained; short attributed excerpts only; no full PDF redistribution; no reuse license claimed.",
+    "supported_actions": []
+  },
+  {
+    "device_id": "server",
+    "evidence": {
+      "evidence_id": "dell-r750-ism-a11-excerpt-2",
+      "document_id": "dell-r750-ism-a11",
+      "document_version": "December 2024 Rev A11",
+      "pdf_page": 245,
+      "printed_page": "245",
+      "section": "Table 87; System health and system ID indicator codes",
+      "quote": "The system health and system ID indicator is located on the left control panel of the system.",
+      "source_url": "https://dl.dell.com/content/manual15837466-dell-emc-poweredge-r750-installation-and-service-manual.pdf"
+    },
+    "pdf_sha256": "1bdf0df910860207f11a27d9fb7ce6effcb70c0a324ed06e3579d1da6fe6b879",
+    "reviewed_by": "Backend independent HTTPS SHA-256/byte/page/excerpt check 2026-10-09; research 5c0b830",
+    "usage_terms": "Manufacturer copyright retained; short attributed excerpts only; no full PDF redistribution; no reuse license claimed.",
+    "supported_actions": []
+  },
+  {
+    "device_id": "cobot",
+    "evidence": {
+      "evidence_id": "ur5e-710-965-00-10.5.152-excerpt-1",
+      "document_id": "ur5e-710-965-00-10.5.152",
+      "document_version": "PolyScope 5.17; Document Version 10.5.152; 710-965-00",
+      "pdf_page": 329,
+      "printed_page": "329",
+      "section": "25.1. About",
+      "quote": "25.1. About",
+      "source_url": "https://s3-eu-west-1.amazonaws.com/ur-support-site/225353/710-965-00_UR5e_User_Manual_en_Global.pdf"
+    },
+    "pdf_sha256": "2bff4708278fa9928f03505ba245c19268818f57dfe6f806680156f9c9e28cae",
+    "reviewed_by": "Backend independent HTTPS SHA-256/byte/page/excerpt check 2026-10-09; research 5c0b830",
+    "usage_terms": "Manufacturer copyright retained; short attributed excerpts only; no full PDF redistribution; no reuse license claimed.",
+    "supported_actions": []
+  },
+  {
+    "device_id": "ups",
+    "evidence": {
+      "evidence_id": "SPD_UM_SU-990-6411_EN-excerpt-1",
+      "document_id": "SPD_UM_SU-990-6411_EN",
+      "document_version": "EN 990-6411A / Rev A; PDF 04/2022",
+      "pdf_page": 10,
+      "printed_page": "8",
+      "section": "Display Panel",
+      "quote": "Online LED",
+      "source_url": "https://download.schneider-electric.com/files?p_Doc_Ref=SPD_UM_SU-990-6411_EN&p_enDocType=User+guide&p_File_Name=SU_UM_990-6411A_EN.pdf"
+    },
+    "pdf_sha256": "681778248bc8eae8883d00ad626719512e969a54d5600043b691ec91c11194bf",
+    "reviewed_by": "Backend independent HTTPS SHA-256/byte/page/excerpt check 2026-10-09; research 5c0b830",
+    "usage_terms": "Manufacturer copyright retained; short attributed excerpts only; no full PDF redistribution; no reuse license claimed.",
+    "supported_actions": []
+  },
+  {
+    "device_id": "ups",
+    "evidence": {
+      "evidence_id": "SPD_UM_SU-990-6411_EN-excerpt-2",
+      "document_id": "SPD_UM_SU-990-6411_EN",
+      "document_version": "EN 990-6411A / Rev A; PDF 04/2022",
+      "pdf_page": 10,
+      "printed_page": "8",
+      "section": "Standard menus / About",
+      "quote": "UPS Model",
+      "source_url": "https://download.schneider-electric.com/files?p_Doc_Ref=SPD_UM_SU-990-6411_EN&p_enDocType=User+guide&p_File_Name=SU_UM_990-6411A_EN.pdf"
+    },
+    "pdf_sha256": "681778248bc8eae8883d00ad626719512e969a54d5600043b691ec91c11194bf",
+    "reviewed_by": "Backend independent HTTPS SHA-256/byte/page/excerpt check 2026-10-09; research 5c0b830",
+    "usage_terms": "Manufacturer copyright retained; short attributed excerpts only; no full PDF redistribution; no reuse license claimed.",
+    "supported_actions": []
+  }
+]
