@@ -13,3 +13,5 @@ Read, in order:
 Orca 실행 전 버전 일치 스킬 `orca skills get orchestration`을 따른다. 연결 PC는 TEAM의 실제 환경 이름으로 지정한다.
 
 사용자 요청 현황판: `docs/orchestrator/BOARD.txt`. Worker 메시지를 처리하여 상태가 바뀌면 현황판의 시각·근거를 갱신하고 대화에도 ASCII 표를 출력한다. heartbeat만으로 진척/완료를 추정하지 않는다.
+
+모델/effort 및 시간 배정 시 `docs/orchestrator/MODEL_ROUTING.md`를 따른다. 최신 사용자 기준은 토큰보다 속도·완성도, Astra는 Coordinator 및 명시된 핵심 난제 예외, 기능 마감14:30/제출 준비16:00이다.

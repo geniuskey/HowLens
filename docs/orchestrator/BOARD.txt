@@ -1,49 +1,58 @@
-HOWLENS | 2026-10-09 12:08 KST | SUBMIT 17:00 | LEFT ~4h52m
-+--------------------+----------+-------------------------------------------+
-| WORK               | STATE    | EVIDENCE / NEXT                           |
-+--------------------+----------+-------------------------------------------+
-| App / Galaxy       | RUNNING  | APK test: synthetic photo picker delayed   |
-| Blue UX design     | READY    | ab527d2; 2 concepts + screen specification |
-| Camera module      | READY    | 449cd55; build/unit PASS; device pending   |
-| Two-tab integration| QUEUED   | Start after App W2 checkpoint              |
-| Backend            | READY    | aba3e9e; 58 tests; 1 live synthetic smoke   |
-| Visual provider    | READY    | 63dd0f8; 17 offline tests                  |
-| Combined API audit | RUNNING  | 75 tests PASS observed; report pending    |
-| Image model eval   | PREPARED | 0234159; 8 tests; live benchmark pending   |
-| Real equipment E2E | WAITING  | Actual equipment/operator evidence needed |
-| Product main merge | WAITING  | Concrete review + user approval required  |
-+--------------------+----------+-------------------------------------------+
-READY = branch delivered, NOT integrated or fully hardware-verified.
-PASS = scope stated above; generated designs are NOT APK screenshots.
+HOWLENS | 2026-10-09 12:20 KST | SUBMIT 17:00 | LEFT ~4h40m
++----------------------+-----------+-----------------------------------------+
+| CATEGORY / WORK      | STATE     | EVIDENCE / NEXT                         |
++----------------------+-----------+-----------------------------------------+
+| UX / App two tabs    | RUNNING   | Blue + camera wired; first compile PASS |
+| UX / App state fix   | FIXING    | Old result A can attach to analysis B   |
+| API / Backend wheel | READY     | d167c43; combined75 + wheel probe PASS  |
+| IMAGE / Eval runner | RUNNING   | Schema agreed; dry-run/live separation  |
+| QA / App audit      | READY     | d4cbc46; 4 findings routed to App       |
+| QA / Android17      | READY     | 979a109; Espresso3.7 candidate to test  |
+| OPS / App push      | RECOVERED | Exact0e2aa94 verified on origin         |
+| QA / Extra device   | PLANNED   | Visual PC device reported; inventory next|
+| GUIDE / Real E2E    | WAITING   | Actual equipment/operator evidence     |
+| RELEASE / main      | WAITING   | Concrete review + user approval        |
++----------------------+-----------+-----------------------------------------+
+READY = delivered branch/report, NOT full live/hardware approval.
+Test PASS scope is stated; generated concepts are NOT APK screenshots.
 
-SCHEDULE (targets, not completion guarantees)
-12:15 checkpoint -> 13:00 integration candidate -> 14:30 end-to-end
-15:30 feature freeze -> 16:30 packaging -> 17:00 submission
+LATEST DEADLINES (user expanded margin; supersedes previous15:30 freeze)
+13:00 first integrated APK -> 14:00 connected candidate -> 14:30 FEATURE FREEZE
+14:30-15:30 device/regression fixes -> 15:30-16:00 package/demo preparation
+16:00-17:00 submission/environment recovery buffer (1 hour)
 
-OWNERS / ACTIVE DISPATCHES
-App: 김의윤 PC / ctx_9435010172c1 / task_2b8f83fdee01
-Audit: 김태완 PC / ctx_077726cd4165 / task_72aa0bba4257
-Camera: ctx_f28fe73c9b8c succeeded/released; next ownership -> App
-Design: 김태완 Astra / ctx_a4e3fe9e0338 succeeded/released
-Image eval prep: 김태완 Astra / ctx_76e57cbb55c7 succeeded/released
-Backend: 이준영 PC / ctx_4fc700a02b03 succeeded/released
-Visual: 이윤재 PC / ctx_3e01d615f3f3 succeeded/released
+MODEL ROUTING
+ORCH: Astra Medium. Focused code/commands: Luna. Integration/debug: Sol.
+Astra worker exception only for complex core implementation/debug/critical UX.
+No token-saving quality cuts. Actual account availability must be verified.
+Detailed routing + sources: MODEL_ROUTING.md.
+
+ACTIVE / SETTLED
+App: ctx_1b2d7e0b3529 / task_b55a09a0661b / Luna High Fast (observed).
+Visual runner: ctx_337ee7164254 / task_8e829c3c96b5 / Sol (observed).
+Backend fix ctx_a78d1be91800 succeeded/released; dedicated server stays running.
+App audit ctx_0ad549b712d7 succeeded/released; no Android execution on review PC.
+Android17 research ctx_880ba619f987 succeeded/released; device fix unverified.
+Push recovery ctx_5685723e3abd succeeded/released; no persistent Git config change.
+Camera corrected449cd55 integrated into current App work (not yet finaldelivered).
+Blue design ab527d2 + reference board, image-eval prep0234159 delivered.
+Combined audit e558424:75offline pass; discovery/wheel gap fixed byBackendd167c43.
 
 DEVICE / SERVICES
-Galaxy SM_S948N: exclusive App test slot. No parallel adb control.
-Backend LAN service remains running in dedicated terminal; agent release does
-not close it. USB relay health passed; APK analysis result remains pending.
-Camera tab = local live preview -> intentional still capture -> one-photo API.
-No continuous video upload or automatic AI analysis implemented/claimed.
+Galaxy SM_S948N: exclusive App slot. Prior USB relay/reverse cleared afterW2.
+Backend service PID74518 dedicatedterm_bde18df8-bc41-4a7f-bd14-2742207763a7
+remains running. Phone health reached server; actual APK analysis POST untested.
+Camera tab = local preview -> intentional still capture -> one-photo API.
+No continuous video AI claimed. Paid image benchmark still not executed.
 
 NEXT
-1. Bound App picker test, preserve checkpoint, then launch blue/two-tab work.
-2. Verify first camera permission, Settings return, capture, tab/background.
-3. Finish combined audit. Prepare consolidated diff/test review for main.
-4. Add team-lead image-evaluation criteria; same cases compare cost/time/fit.
+1. App fixes generation/cancellation+poll bounds and verifies two-tab screenshots.
+2. Split isolated repository defects after App confirms file ownership clearance.
+3. Use second physical device on Visual PC when inventory/ADB authorization confirmed.
+4. Finish image benchmark runner; exact model fit remains unmeasured.
+5. Prepare main integration diff/test review; do not infer user merge approval.
 
 UPDATE POLICY
-Coordinator updates this file and prints the board in chat on material status
-changes after processing Worker messages. Heartbeats alone do not mean progress.
-This is a timestamped snapshot, not an autonomous live process.
+Coordinator updates file and prints ASCII changes in chat on material messages.
+Timestamped snapshot, not an autonomous live process. Heartbeat != progress.
 Detailed authority/receipts: STATUS.md and HANDOFF.md.

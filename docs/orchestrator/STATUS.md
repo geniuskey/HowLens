@@ -1,6 +1,6 @@
 # Orchestration status
 
-2026-10-09 12:04 KST. Run `run_6351cb7363de`; Coordinator 김태완 main clone.
+2026-10-09 12:20 KST. Run `run_6351cb7363de`; Coordinator 김태완 main clone.
 17:00 submission; product main integration still awaits concrete review and approval.
 
 ## Current routing and permissions
@@ -214,3 +214,46 @@ Deliveries bef7c198dd31, cfc86cac0802, ffc1e4a33f09 processed and acked.
 W2-App still actively operates Galaxy file picker for one authorized synthetic
 APK request; bounded5min follow-up requested if interaction remains blocked, then
 checkpoint/push/settlement before fresh design-integration Task.
+
+## 12:20 user routing/deadline and parallel wave
+
+User requests maximum useful parallelism, speed+quality over tokens, task-category
+routing based on official current Codex models. MODEL_ROUTING.md is the latest policy:
+Astra Coordinator plus complex core UX/debug exceptions; Luna bounded work, Sol
+integration. Previous500-credit reserve is not a current allocation limit.
+User asks larger margin:14:30featurefreeze,15:30regressionend,16:00packaging,17:00submit.
+
+AppW2 ctx9435010172c1 settledfailed delivery at local0e2aa94 with JVM11/11 and
+API34Compose4/4 Worker evidence; Galaxy Android17 fails setup InputManager.getInstance.
+Synthetic1x1photo selected only, no APK analysisPOST/paidcall. Relay/reversecleared.
+W4 recovery ctx5685723e3abd succeeded exact0e2aa94nonforcepush via per-command
+HTTP1.1+8MiBpostBuffer; originSHAverified. No persistentconfig/credentials changes.
+
+Current App task_b55a09a0661b / ctx_1b2d7e0b3529 reuses sameAppterminal/worktree,
+LunaHighFast; initialturnunobserved butactual12:18code/buildprogress confirmed.
+BlueUI+twoinputtabs+CameraX449cd55 integrated, firstcompile/JVM/AndroidTestbuildpass,
+lintoneerrorfixinprogress. Cameraownership transferred toApp afterhelperreleased.
+
+Combinedaudit e558424 passed75+14subtests, foundwheelVisualomission/discoverygap.
+Backend W3 task4f2c7aa6aa8c / ctx_a78d1be91800 fix d167c43 (code76fa597) succeeded
+and released: combined75 and noneditableinstalledwheelboundaryprobe passed; server
+PID74518 untouched. Productmainnotmerged.
+
+Android17research task5be97684c0e7 / ctx880ba619f987 succeeded979a109/released.
+OfficialEspresso3.7.0fix matchesreportedmissingmember; test-onlyminimalchange
+authorized toApp with dependencygraph/build/oneGalaxytest, notyetdevicePASS.
+
+Appaudit task575d19998d97 / ctx0ad549b712d7 succeeded d4cbc46/released: source-only
+F1oldVisual/verificationattachnewanalysis; F2unboundedpoll; F3signature-onlyPNG;
+F4conditionalshareURLfilter. F1/F2routedAppVM; RepositoryfixsplitawaitsAppownership
+clearance. Javaabsent onreviewPC, noAndroidexecutionclaimed.
+
+Visualbenchmark task8e829c3c96b5 / ctx337ee7164254 active onWindowsownworktree.
+Inputwaspastedbutunsubmitted; officialHubpreambleforwardedunchanged, boundedread
+confirmedtwopasteblocks/sameTask, separateEnter, actualWorkerquestionprovesstarted.
+QuestionEvaluationrepositoryresolved: geniuskey/HowLens branchRunixs/eval-foundation
+0234159 (notseparaterepo). CLI/schemaagreed, artifacts sidecar, no paidcalls yet.
+Windowsuser'sdirectterminalmessage reportsadditionalAndroiddevice andnewtestsession
+authorized; needactualinventorybeforereportingtestcapacity.
+
+BOARD.txt user-facingASCIIstatus is updated/printed on materialchanges.

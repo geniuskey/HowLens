@@ -40,3 +40,7 @@ Coordinator 현재 세션은 danger-full-access / approval never로 변경됨.
 ## Coordinator handoff
 
 사용자 지시로 김태완 PC의 main clone `/Users/runixs/HowLens`에 Coordinator를 이전한다. 별도 Coordinator worktree를 만들지 않는다. 기존 Evaluation worktree는 그대로 보존한다. Pro x20은 사용자 제공 플랜 정보이며 현재 잔액/리셋권은 미확인이다.
+
+## 12:18 최신 사용자 모델/일정 지시
+
+토큰 절약보다 속도·정확도·완성도를 우선하며 위500크레딧 보존 목표는 이번 해커톤의 배정 제한으로 사용하지 않는다. 일괄Sol 사용도 하지 않는다. Astra는 Coordinator 기본, 복잡한 핵심 구현·디버깅·사용성 난제에만 예외 적용한다. `docs/orchestrator/MODEL_ROUTING.md`의 공식 근거·라우팅·실제 계정 가용성을 따른다. 제품 API 예산과 개발 크레딧은 별개다. 기능 마감14:30, 검증15:30, 제출 준비16:00, 제출17:00으로 여유를 확대했다.
