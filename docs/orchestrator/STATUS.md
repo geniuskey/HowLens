@@ -379,3 +379,32 @@ originals, DellFigure212byteidentical. URI/manualversionsmismatchUR5.23vs5.17
 andAPC3534Hvs6411A mustnotmix. Recommendscuratedevidence+sourcecompositor
 first, nofinetuningtoday. IndependentApproval/action-figure/rightsgatesremain.
 Specimen/architecture delivered, productimplementationnotclaimed.
+
+## 13:07 critical integration and realistic image intake
+
+App old ctx_e7170acb2e7a settled failed with preserved3569db5 (pushHTTP400),
+released retained/external_terminal. Fresh actual AstraHighFastYOLO terminal
+6aa76485-2fda-4067-9d08-d3fa1ee2db5d started same Task retry ctx_09c2cb6549f7,
+turn observed. Ownership expands to datafix2b01cb4+e0f0d2, Summary9fe2b0b,
+Guide017160a+bb6eeb0, result resume and additive discovery integration. No main merge.
+Summary18 JVM/assemble and Guide8 scoped JVM/assemble Worker reports passed;
+helpers settled/released. Existing FoundationTest coroutine stderr remains routed.
+
+Astra transport report5bac63d: Fold4 standard reverse18000->8000 health200 live
+verified; probe CRLF suspicion withdrawn, stdinEOF was diagnostic problem.
+No server restart or cleartext policy change needed. Backend actual APK POST pending.
+Windows QA3b9031f permission denial/settings/gallery passed; no analysisPOST.
+Both completed diagnostic/Windows Dispatches released retained/external_terminal.
+Backend QA ACKed git-index hold relay663a8b02c2eb; exclusive commit slot granted
+to discovery ctx34b6d97bd407 after118 offline PASS, live paid test deferred.
+
+User wants realistic internet photos with exact model and official PDFs, no need
+to wait for user photography. Astra source corpus task7328dfe444fd/ctx950b0c4b6142
+started existing research workspace. Targets DellR750 plus ArcherAX55 unknown
+product; sources/identity/revision/hashes and extracted evidence manifest, no
+claim of runtime registration or guide approval. Synthetic ImageGen sample pair
+from App Guide helper remains a distinct demo lane.
+User reports Backend PDF upload; both expected backend subfolders empty per
+Worker. User says agreed location; expanded read-only PDF path search across
+Backend main and exact worktree requested, no key reading or home-wide search.
+Deliveriesd0b1d63db07a/a1ed91ed23bf/9390b0a90bf1 processed and ACKed.

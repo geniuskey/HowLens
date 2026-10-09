@@ -1,126 +1,57 @@
-HOWLENS | 2026-10-09 12:52 KST | SUBMIT 17:00 | LEFT ~4h08m
+HOWLENS | 2026-10-09 13:07 KST | SUBMIT 17:00 | LEFT ~3h53m
 
-OVERALL RELEASE READINESS (Coordinator estimate, not measured code completion)
-[###########---------] ~55%
+OVERALL RELEASE READINESS
+[###########---------] ~55% (Coordinator estimate, not measured code completion)
+Weights M1/M2/M3/M4 =20/30/25/25; estimates100/80/40/0; weighted54 rounded55.
+New components are delivered, but integrated live flow is not yet verified.
 
-Milestone                     Progress               State / target KST
-M1 Foundations & contracts    [####################] DONE: branch artifacts
-M2 Blue UI + photo/camera     [################----] DELIVERED57405bb; device checks continue
-M3 Integrated/device QA       [########------------] PARTIAL: candidate14:00
-M4 Release/demo/submission    [--------------------] PENDING: ready16:00
+MILESTONES
+M1 Foundations/contracts [####################] DELIVERED on branches
+M2 UI + input/guide      [################----] Components ready; integrating
+M3 Integrated/device QA [########------------] Three phones; live POST pending
+M4 Release/submission   [--------------------] Main review and package pending
 
-Estimate method: weights M1/M2/M3/M4 =20/30/25/25; phase estimates100/80/40/0.
-Weighted54 rounded to nearest5 =55. These are coarse evidence-based judgments,
-not passing-test ratios, elapsed-time ratios, or a guarantee of on-time delivery.
-M1 done does not mean product merged to main. New findings can lower readiness.
+13:07 NOW -> 14:00 connected candidate -> 14:30 FEATURE FREEZE
+14:30-15:30 fixes + three-device regression
+15:30-16:00 package + demo -> 16:00 READY -> 17:00 DEADLINE
+Final1h buffer; timing is a target, not a completion claim.
 
-MILESTONE TIMELINE
-12:30 NOW -> 13:00 first hands-on -> 14:00 connected candidate
-          -> 14:30 FEATURE FREEZE -> 15:30 regression complete
-          -> 16:00 submission package READY -> 17:00 DEADLINE
-14:30-17:00 =2h30 reserved for fixes, packaging and submission; final1h buffer.
++------------------------+------------+---------------------------------------+
+| WORK                   | STATE      | EVIDENCE / NEXT                       |
++------------------------+------------+---------------------------------------+
+| App integration        | ASTRA HIGH | ctx_09c2cb6549f7; data/summary/journey |
+| Summary sheet          | DELIVERED  | 9fe2b0b;18 JVM tests + assemble PASS   |
+| Guide journey          | DELIVERED  | bb6eeb0;8 scoped tests + assemble PASS|
+| Backend discovery      | COMMITTING | 118 offline PASS; index slot granted |
+| Windows phone QA       | DELIVERED  | 3b9031f; denial/settings/gallery PASS|
+| Fold4 live QA          | RUNNING    | USB health200 live; APK POST pending |
+| Real photos + manuals  | RUNNING    | ctx_950b0c4b6142; source corpus       |
+| Image model comparison | STARTING   | configurable quality/cost/time       |
+| Backend uploaded PDFs  | LOCATING   | two intake subfolders empty; recheck |
+| Runtime manual ingest  | PENDING    | asset architecture ready027ec4e      |
+| Main product merge     | WAITING    | concrete review + user approval     |
++------------------------+------------+---------------------------------------+
 
-WHEN CAN WE TEST ON REAL PHONES?
-NOW          Galaxy baseline installed/launched; user hands-on slot must be
-             coordinated with App worker currently using the same phone.
-13:00 TARGET Blue UI + photo/camera first hands-on (10-15min).
-             Try capture/retake, photo selection, question, keyboard, back,
-             permission denial/recovery and readability. APK delivery pending.
-13:00-14:00  App -> live server -> real analysis round trip target.
-             Previous phone health succeeded; actual APK analysis POST untested.
-14:30-15:30  Final two-device regression + demo rehearsal.
-Second phone Windows SM-S938N Android16/API36 authorized; APK sent for download.
-Third phone  Backend PC R3CT80CZ2MW; user reports RSA now approved.
-             Third-device network QA dispatched. Both receive same baseline SHA.
-Timing is a target, not confirmed availability. Actual equipment/operator evidence
-still required for validated guide E2E; synthetic tests do not satisfy that gate.
+PHYSICAL TESTING: available NOW in each local TEST worker conversation.
+Galaxy App: R5KL20H60TN; baseline57405bb camera/retake verified, integration next.
+Windows: R3CY70W172M; baseline57405bb permission/settings/gallery verified.
+Backend Fold4: R3CT80CZ2MW; baseline57405bb; USB backend HTTP200 verified.
+APK57405bb SHA256 2b39251176178975fd0a9228da55a88903d879e7d2cc9fd4dcdb695d128abb25.
+Human answers go directly to each assigned test worker, technical results to root.
 
-+----------------------+-----------+-----------------------------------------+
-| CATEGORY / WORK      | STATE     | EVIDENCE / NEXT                         |
-+----------------------+-----------+-----------------------------------------+
-| UX / App two tabs    | RUNNING   | 57405bb; JVM16/Compose7/Galaxy1 PASS |
-| UX / App state fix   | FIXING    | Old result A can attach to analysis B   |
-| API / Backend wheel | READY     | d167c43; combined75 + wheel probe PASS  |
-| IMAGE / Eval runner | READY     | 5dcf6f2; 26 tests; paid calls ZERO       |
-| QA / App audit      | READY     | d4cbc46; 4 findings routed to App       |
-| QA / Android17      | READY     | 979a109; Espresso3.7 candidate to test  |
-| OPS / App push      | RECOVERED | Exact0e2aa94 verified on origin         |
-| QA / Extra devices  | PREPARING | Windows authorized; Backend RSA pending |
-| GUIDE / Real E2E    | WAITING   | Actual equipment/operator evidence     |
-| RELEASE / main      | WAITING   | Concrete review + user approval        |
-+----------------------+-----------+-----------------------------------------+
-READY = delivered branch/report, NOT full live/hardware approval.
-Test PASS scope is stated; generated concepts are NOT APK screenshots.
+Current camera tab = preview -> deliberate still capture -> one-photo API.
+No continuous video AI claimed. Synthetic QA fixtures are NOT real photo validation.
+Image runner890abd4:30 offline PASS; paid quality comparison has not run.
+Internet photographs, official renders, manual figures and generated images are
+separate evidence types. Corpus preparation is not backend registration/approval.
 
-LATEST DEADLINES (user expanded margin; supersedes previous15:30 freeze)
-13:00 first integrated APK -> 14:00 connected candidate -> 14:30 FEATURE FREEZE
-14:30-15:30 device/regression fixes -> 15:30-16:00 package/demo preparation
-16:00-17:00 submission/environment recovery buffer (1 hour)
+SERVICES: Backend PID74518 retained, 10.102.72.28:8000.
+Hub transport term_3d2273ec; old Coordinator closed. No duplicate editor.
+ACTIVE: Appctx09c2cb6549f7; Backenddiscoveryctx34b6d97bd407;
+Fold4ctx15c1e6bdf26a; Sourcecorpusctx950b0c4b6142; Visual launch pending receipt.
 
-MODEL ROUTING
-ORCH: Astra Medium. Focused code/commands: Luna. Integration/debug: Sol.
-Astra worker exception only for complex core implementation/debug/critical UX.
-No token-saving quality cuts. Actual account availability must be verified.
-Detailed routing + sources: MODEL_ROUTING.md.
-
-ACTIVE / SETTLED
-App: ctx_1b2d7e0b3529 / task_b55a09a0661b / Luna High Fast (observed).
-Visual runner: ctx_337ee7164254 succeeded/released; 5dcf6f2,26tests Worker report.
-Packaging recheck: ctx_9d81ce90889a succeeded/released; c6b043f independently
-collected75 tests and verified installed wheel/mapper9panels/pip check.
-Second-device QA: ctx_a3b6477cd484 active LunaHigh, portable adb setup instructed.
-Backend fix ctx_a78d1be91800 succeeded/released; dedicated server stays running.
-App audit ctx_0ad549b712d7 succeeded/released; no Android execution on review PC.
-Android17 research ctx_880ba619f987 succeeded/released; device fix unverified.
-Push recovery ctx_5685723e3abd succeeded/released; no persistent Git config change.
-Camera corrected449cd55 integrated into current App work (not yet finaldelivered).
-Blue design ab527d2 + reference board, image-eval prep0234159 delivered.
-Combined audit e558424:75offline pass; discovery/wheel gap fixed byBackendd167c43.
-
-DEVICE / SERVICES
-Galaxy SM_S948N: exclusive App slot. Prior USB relay/reverse cleared afterW2.
-Backend service PID74518 dedicatedterm_bde18df8-bc41-4a7f-bd14-2742207763a7
-remains running. Phone health reached server; actual APK analysis POST untested.
-Camera tab = local preview -> intentional still capture -> one-photo API.
-No continuous video AI claimed. Paid image benchmark still not executed.
-
-NEXT
-1. App fixes generation/cancellation+poll bounds and verifies two-tab screenshots.
-2. Data fix helper ctx_c80e9bd04607 running in isolated app-data-hardening.
-3. Use second physical device on Visual PC when inventory/ADB authorization confirmed.
-4. Review delivered image benchmark runner; exact model fit remains unmeasured.
-5. Prepare main integration diff/test review; do not infer user merge approval.
-
-UPDATE POLICY
-Coordinator updates file and prints ASCII changes in chat on material messages.
-Timestamped snapshot, not an autonomous live process. Heartbeat != progress.
-Detailed authority/receipts: STATUS.md and HANDOFF.md.
-
-12:35 PARALLEL WAVE (6 active Tasks + mockup completed; not all executing device tests yet)
-App UI/camera       ctx_1b2d7e0b3529  existing primary, exclusive Galaxy
-App data fixes     ctx_c80e9bd04607  LunaHigh; isolated0e2base, Repo/Models only
-APK delivery       ctx_7f80f9bb1516  LunaHigh; immutable baseline ready
-Windows device QA  ctx_a3b6477cd484  LunaHigh; Android16 authorized
-Backend device QA  ctx_15c1e6bdf26a  Sol; thirdphone RSA pending
-Mockup files       ctx_3c6203dc9d97  DONE3e52de9; HTML/PNG/ZIP checked/pushed
-Runner review      ctx_374b3b068958  SolHighFast; main read-only, no product edits
-
-Mockup viewer (local):
+MOCKUP (concept, not APK screenshot):
 /Users/runixs/orca/workspaces/HowLens/eval-foundation/docs/assets/design-review/index.html
-Share ZIP same directory: howlens-design-review.zip. CONCEPT, not actual APK.
 
-LATEST12:47
-[READY] Blue two-tab APK57405bb delivered before13:00 target.
-[RUNNING] Astra manual/source-image asset architecture ctx_f430072fbe2e.
-[RUNNING] Unknown-product official web discovery ctx_34b6d97bd407.
-[RUNNING] Data decode JVM compatibility repair ctx_2ac3eb7fc0a3.
-[READY] Image runner fixes890abd4,30offlinepass; paidmodelcomparison stillpending.
-[QA] Human actions now directly in each local TEST session; Coordinator getsresults.
-User confirms Backend USB allowed, App CAMERA allowed+previewvisible.
-New features not counted as finished. Overall remains coarse~55 untilliveflowverified.
-
-LATEST12:52
-[READY] Astra asset architecture027ec4e;109assets/6PDF verified, product workpending.
-[RUNNING] UI_REQUIREMENTS nativegapreview ctx_51ab3f483b42; Apprequirementsrouted.
-[READY] NewAPK57405bb delivered+verified onbothadditionalPCs; private serverclosed.
-[QA] Windowsmailreplay fixed; actualnewAPKinstall ongoing. BackendFold4 authorized.
+Snapshot updated on material evidence; heartbeat never increases progress.
+Authority and historical receipts: STATUS.md / HANDOFF.md.
