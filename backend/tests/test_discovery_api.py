@@ -131,3 +131,42 @@ def test_asgi_client_disconnect_cancels_discovery_http_task():
             assert cancelled.is_set()
             assert responses[0]['status'] == 499
     asyncio.run(run())
+
+
+@pytest.mark.parametrize('deadline_owner', ['routed_label', 'discovery_service', 'httpx'])
+def test_real_discovery_deadline_returns_retryable_json_and_releases_work(deadline_owner):
+    """Actual nested timeout/HTTP boundary, not an immediately raised fake error.
+
+    Scale the live 8-second label deadline to 20ms with no network or paid calls.
+    TestClient suppresses server exceptions so escaped errors become visible 500s.
+    """
+    import httpx
+    from howlens.discovery import DiscoveryProvider
+    from howlens.provider_routing import StagePolicy
+    from tests.test_discovery import adapter
+    calls, cancelled = [], []
+    async def handler(request):
+        calls.append(True)
+        if deadline_owner == 'httpx':
+            raise httpx.ReadTimeout('Private upstream timeout details', request=request)
+        try:
+            await asyncio.Event().wait()
+        finally:
+            cancelled.append(True)
+    stage_timeout = 0.02 if deadline_owner == 'routed_label' else 1
+    provider = adapter(handler, stage_policies={
+        'label': StagePolicy('gpt-6-luna', 'low', stage_timeout, 1500)})
+    service = DiscoveryService(DiscoveryProvider(provider),
+                               timeout_seconds=0.02 if deadline_owner == 'discovery_service' else 2)
+    with TestClient(create_app(discovery_service=service), raise_server_exceptions=False) as client:
+        response = client.post('/product-discoveries',
+                               files={'photo': ('label.png', photo(), 'image/png')})
+    assert response.status_code == 504
+    assert response.headers['content-type'].startswith('application/json')
+    assert response.json() == {'detail': {'code': 'discovery_timeout',
+        'message': 'Product discovery timed out; retry later.', 'retryable': True}}
+    assert 'Private' not in response.text
+    assert len(calls) == provider.ledger['attempts'] == 1
+    assert provider.ledger.get('web_search_attempts', 0) == 0
+    assert cancelled == ([] if deadline_owner == 'httpx' else [True])
+    assert not service.cache and service.slots._value == 2
