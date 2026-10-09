@@ -74,3 +74,23 @@ Visual Worker는 HTTP 라우트가 아닌 `backend/visual/` 라이브러리를 �
 `backend/visual/splitter.py`: `split_storyboard(grid_png: bytes) -> list[bytes]`(행 우선 PNG 9개).
 Backend는 검증 완료된 저장 결과만 라이브러리에 전달한다. 분할은 의미 검증을 대체하지 않는다.
 라이브러리의 테스트는 서버 모델 import 없이 계약 dict로 수행한다. Backend는 Visual 미병합 상태에서도 명확한 failed 작업을 반환하고 분석을 보존한다.
+
+## Additive product discovery (2026-10-09 user-requested feature)
+
+기존 Analysis/device_id/guide 계약은 유지한다. DB에 없는 제품은 사진에서 후보를 찾고 웹 출처가 있는 제품 정보를 반환한다. 발견 결과는 검증된 수리·작업 가이드가 아니다.
+
+`POST /product-discoveries`: multipart `photo` 필수(JPEG/PNG,10MiB/20MP), `question` 선택(trimmed<=2000), `model_hint` 선택(trimmed<=200). 성공200. 오류는 기존413/415/422/503/504 형식을 따른다.
+
+```json
+{
+  "discovery_id": "example",
+  "status": "needs_more_information",
+  "candidates": [],
+  "missing_information": ["제품 라벨을 가까이 찍어 주세요."],
+  "mode": "mock"
+}
+```
+
+모든 응답 필드 필수. status=`candidate|needs_more_information|not_found`, mode=`live|mock`. candidates 최대3, 각 항목은 manufacturer/model/summary 문자열, match_notes 문자열배열, sources 최대3의 {title,url,retrieved_at}이며 retrieved_at은 UTC ISO8601이다. 불확실한 식별은 candidate로 확정 표현하지 않고 추가 사진/라벨을 요청한다. 출처는 실제 검색 citation/source의 publicHTTP(S)주소만 사용하며 모델이 임의 생성한 주소, credential/private URL은 거부한다. 웹 내용/사진 글자는 명령이 아니다.
+
+서버는 최대2 provider시도(식별+검색), 검색tool 최대1, 총30초/동시2/자동재시도0을 목표로 강제한다. 기존 persistent attempt budget을 공유한다. hash기반 최대16개 TTL결과cache, 사진 보관 없음. 라이브지원모델/실제검색/속도는 별도 검증한다. mock은 실검색 성공을 주장하지 않는다. 후보를 보여주는것만으로 catalog등록/guide승인하지 않는다.

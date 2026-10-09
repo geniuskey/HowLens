@@ -322,3 +322,37 @@ benchmarkfindings routedVisualfollowup; paidbenchmark remains unrun.
 Datahelper2b01cb4 delivered butfullJVMtimeout, integrationheld/followupassigned.
 Its Gradle devicefilter unexpectedly executed2tests onGalaxy aswellasAVD;
 primaryAppnotified to verify/restorebuild; helper prohibited alldeviceruns.
+
+## 12:47 source assets, unknown-product feature, direct human QA
+
+Prework found locally /Users/runixs/working/ai/dsdn-hub/HowLens-prework, not
+/Users/runixs/HowLens-prework. Sixmanufacturer PDFs and MANUALS page/hashsheet;
+PROMPTS.md5/26/40/44 and storyboard.md43 requireoriginalfigurecrop preservation,
+deterministic text/mark overlays, generationonlymissingfigures. Existingpanel
+experiment is3x3=9panels. Githubpreworkmainonly2Markdownfiles, localhasactualassets.
+UserexplicitAstraarchitect task09dcfe5913cc/ctxf430072fbe2e on existing
+research terminal9402afd0, ownsresearch/manual-assets andassets/manual-asset-design.
+No productedits; sourceinventory/architecture andsmallgroundedverticalslice.
+
+Useradds unknownDBproduct photo->internetproductlookup. Backend freshSolHigh
+YOLO terminal37c61d32-c363-4869-8a1e-e340f87e043f, task_e6aa78618e38/ctx34b6d97bd407
+inexistingBackendworktree (QAownsdocs/device-qaonly), ownsbackendexceptvisual.
+Additive /product-discoveries proposal pendingconcretecontract: candidates/official
+sources/ambiguity/latencybounds, no unknownproductrepairguide or enum mutation.
+Official web_search docs read https://developers.openai.com/api/docs/guides/tools-web-search .
+
+W3App57405bb4811f67bb49ea779d883fd2937c98fd7d delivered:WorkerJVM16/API34Compose7/
+GalaxyAndroid17smoke1 passed; buildlintpassed; manualcamera/retakepassed.
+W7App taskc80e616c1b32/ctxe7170acb2e7a startunobserved thenactualAPKstatus proves
+working; sameAppterminal. W3APK15034933bytes, SHA256
+2b39251176178975fd0a9228da55a88903d879e7d2cc9fd4dcdb695d128abb25.
+Deliveryhelper freshTasklaunchpendingreceipt forsameAPKcopyprivateLAN.
+Visual benchmark890abd4b5505d83873a13ab480d0e4b65e8fb72f fixes2P2,30offlinepass,
+released. Datarepair taskf2510c6eb260/ctx2ac3eb7fc0a3 remainsactive; FoundationTest
+invalidCRC+JVMBitmapStub identified, instance-scopedinjection + fixturepatch routed.
+FoundationTestprimaryAppowned, helpernotauthorizededitthatfileyet; no deviceruns.
+
+User12:47 explicitly changes humanQAcommunications: directlocaltestsession
+questions/replies, results/technicalscope centrallyreported. HUMAN_TEST_LOOP.md
+records latestpolicy. Userconfirms BackendRSAapproved afterreplug and Appcamera
+permissionallowed/previewvisible. Instructions sentall3Dispatches.
