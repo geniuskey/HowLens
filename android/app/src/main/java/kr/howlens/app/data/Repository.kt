@@ -3,6 +3,8 @@ package kr.howlens.app.data
 import java.io.IOException
 import java.io.InterruptedIOException
 import java.io.ByteArrayOutputStream
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -26,6 +28,44 @@ interface AnalysisRepository {
     suspend fun analyze(deviceId: String, question: String, photo: Photo): Analysis
 }
 class ApiFailure(val code: String, override val message: String, val retryable: Boolean) : IOException(message)
+
+/** Validates downloaded panels with Android's decoder while bounding native bitmap memory. */
+internal object PngAssetValidator {
+    private const val MAX_PIXELS = 20_000_000L
+    private const val MAX_DECODE_PIXELS = 4_000_000L
+
+    fun requireDecodable(bytes: ByteArray) {
+        val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
+        BitmapFactory.decodeByteArray(bytes, 0, bytes.size, bounds)
+        val width = bounds.outWidth
+        val height = bounds.outHeight
+        if (width <= 0 || height <= 0 || width.toLong() * height.toLong() > MAX_PIXELS) {
+            throw invalidImage()
+        }
+
+        var sampleSize = 1
+        fun sampledPixels(sample: Int): Long {
+            val divisor = sample.toLong()
+            val sampledWidth = (width.toLong() + divisor - 1) / divisor
+            val sampledHeight = (height.toLong() + divisor - 1) / divisor
+            return sampledWidth * sampledHeight
+        }
+        while (sampledPixels(sampleSize) > MAX_DECODE_PIXELS) {
+            sampleSize *= 2
+        }
+        val options = BitmapFactory.Options().apply {
+            inJustDecodeBounds = false
+            inSampleSize = sampleSize
+            inPreferredConfig = Bitmap.Config.RGB_565
+        }
+        val bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size, options) ?: throw invalidImage()
+        bitmap.recycle()
+    }
+
+    private fun invalidImage() = ApiFailure(
+        "invalid_image", "서버 패널 응답이 유효한 PNG가 아닙니다. 텍스트 안내는 유지됩니다.", false
+    )
+}
 
 object ApiErrors {
     fun parse(status: Int, body: String): ApiFailure {
@@ -156,6 +196,7 @@ class HttpAnalysisRepository(baseUrl: String, private val client: OkHttpClient =
                     if (bytes.size < pngSignature.size || !pngSignature.indices.all { index -> bytes[index] == pngSignature[index] }) {
                         throw ApiFailure("invalid_image", "서버 패널 응답이 유효한 PNG가 아닙니다. 텍스트 안내는 유지됩니다.", false)
                     }
+                    PngAssetValidator.requireDecodable(bytes)
                     if (continuation.isActive) continuation.resumeWith(Result.success(bytes))
                 } } catch (e: Exception) { if (continuation.isActive) continuation.resumeWithException(e) }
             }
