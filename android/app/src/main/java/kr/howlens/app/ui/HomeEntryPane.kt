@@ -2,288 +2,168 @@ package kr.howlens.app.ui
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import kr.howlens.app.R
 
-/**
- * Callback-only home content. The host owns navigation, permissions, selected photos and results.
- * Pass discovery only when a real destination exists, and resume only for a retained result.
- * Place inside the host's Scaffold content insets; existing photo/camera tabs remain host-owned.
- * [heroImage] is supplied by the host: this pane performs no decoding or network requests.
- */
+internal val LensBlue = Color(0xFF0052FF)
+internal val LensPale = Color(0xFFEDF3FF)
+
 @Composable
 fun HomeEntryPane(
     onOpenCamera: () -> Unit,
     onChoosePhoto: () -> Unit,
+    onOpenGuides: (String) -> Unit,
+    onOpenGuide: (String) -> Unit,
+    onOpenProfile: () -> Unit,
+    onOpenNotifications: () -> Unit,
     modifier: Modifier = Modifier,
-    onDiscoverProducts: (() -> Unit)? = null,
     onResumeLastResult: (() -> Unit)? = null,
-    lastResultTitle: String? = null,
-    heroImage: Painter? = null,
-    heroImageDescription: String? = null,
     enabled: Boolean = true,
 ) {
-    val colors = MaterialTheme.colorScheme
-    val typography = MaterialTheme.typography
-    Surface(modifier = modifier, color = colors.background) {
-        Box(Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
-            Column(
-                Modifier.widthIn(max = 560.dp).fillMaxWidth()
-                    .verticalScroll(rememberScrollState()).padding(20.dp),
-                verticalArrangement = Arrangement.spacedBy(20.dp),
-            ) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    HomeGlyph(HomeSymbol.CAMERA, colors.primary, Modifier.size(28.dp))
-                    Spacer(Modifier.width(8.dp))
-                    Text("How", style = typography.titleLarge, fontWeight = FontWeight.Bold)
-                    Text("Lens", color = colors.primary, style = typography.titleLarge,
-                        fontWeight = FontWeight.Bold)
-                }
-
-                Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                    Text("보면, 할 수 있어요.", style = typography.headlineSmall,
-                        fontWeight = FontWeight.Bold, modifier = Modifier.semantics { heading() })
-                    Text("문제가 있는 장비를 사진으로 보여 주세요.",
-                        style = typography.bodySmall, color = colors.onSurfaceVariant)
-                }
-
-                Surface(
-                    shape = RoundedCornerShape(24.dp),
-                    color = colors.primary.copy(alpha = 0.07f),
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
-                    Column(
-                        Modifier.padding(20.dp),
-                        verticalArrangement = Arrangement.spacedBy(16.dp),
-                    ) {
-                        if (heroImage != null) {
-                            Surface(shape = RoundedCornerShape(16.dp), color = colors.surface) {
-                                Image(
-                                    painter = heroImage,
-                                    contentDescription = heroImageDescription?.takeIf { it.isNotBlank() }
-                                        ?: "촬영할 장비 예시",
-                                    modifier = Modifier.fillMaxWidth().height(128.dp),
-                                    contentScale = ContentScale.Fit,
-                                )
-                            }
-                        } else {
-                            HomeCameraIllustration(Modifier.fillMaxWidth().height(112.dp))
-                        }
-                        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                            Text("사진 한 장으로 시작", style = typography.titleMedium,
-                                fontWeight = FontWeight.Bold)
-                            Text("부품과 모델명이 잘 보이게 촬영해 주세요.",
-                                style = typography.bodySmall, color = colors.onSurfaceVariant)
-                        }
-                        Button(
-                            onClick = onOpenCamera,
-                            enabled = enabled,
-                            shape = RoundedCornerShape(14.dp),
-                            modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp)
-                                .semantics { contentDescription = "카메라를 열어 장비 촬영하기" },
-                        ) {
-                            HomeGlyph(HomeSymbol.CAMERA, if (enabled) colors.onPrimary
-                                else colors.onSurface.copy(alpha = 0.38f), Modifier.size(22.dp))
-                            Spacer(Modifier.width(10.dp))
-                            Text("지금 촬영하기", style = typography.labelLarge)
-                        }
+    Column(modifier.fillMaxSize().background(Color.White).verticalScroll(rememberScrollState())
+        .padding(horizontal = 18.dp), verticalArrangement = Arrangement.spacedBy(20.dp)) {
+        Row(Modifier.fillMaxWidth().heightIn(min = 64.dp), verticalAlignment = Alignment.CenterVertically) {
+            Surface(color = LensBlue, shape = RoundedCornerShape(8.dp)) {
+                LensIcon("scan", Color.White, Modifier.padding(7.dp).size(22.dp))
+            }
+            Spacer(Modifier.width(7.dp))
+            Row(Modifier.weight(1f)) {
+                Text("How", fontSize = 20.sp, fontWeight = FontWeight.ExtraBold)
+                Text("Lens", color = LensBlue, fontSize = 20.sp, fontWeight = FontWeight.ExtraBold)
+            }
+            HeaderAction("search", "검색", enabled) { onOpenGuides("전체") }
+            HeaderAction("bell", "알림", enabled, onOpenNotifications)
+            HeaderAction("user", "내 정보", enabled, onOpenProfile)
+        }
+        Surface(shape = RoundedCornerShape(16.dp), color = LensBlue) {
+            Box(Modifier.fillMaxWidth().heightIn(min = 250.dp)) {
+                Image(painterResource(R.drawable.reference_pc), "그래픽카드가 장착된 PC 내부 참고 사진",
+                    Modifier.matchParentSize(), contentScale = ContentScale.Crop, alignment = Alignment.CenterEnd)
+                Column(Modifier.fillMaxWidth(.62f).background(LensBlue).padding(horizontal = 16.dp, vertical = 24.dp),
+                    verticalArrangement = Arrangement.spacedBy(14.dp)) {
+                    Text("PC 문제,\n보면 바로\n알 수 있어요.", color = Color.White,
+                        fontSize = 23.sp, lineHeight = 31.sp, fontWeight = FontWeight.Bold,
+                        modifier = Modifier.semantics { heading() })
+                    Text("사진으로 확인하고\n차근차근 따라가세요.", color = Color.White,
+                        fontSize = 13.sp, lineHeight = 20.sp)
+                    Button(onClick = onOpenCamera, enabled = enabled,
+                        colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = LensBlue),
+                        contentPadding = PaddingValues(horizontal = 12.dp),
+                        modifier = Modifier.heightIn(min = 48.dp)) {
+                        Text("지금 촬영하기", fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                        Spacer(Modifier.width(6.dp)); LensIcon("arrow", LensBlue, Modifier.size(16.dp))
                     }
                 }
+            }
+        }
+        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+            listOf("조립하기", "부품 교체", "문제 해결", "업그레이드").forEachIndexed { index, label ->
+                Column(Modifier.weight(1f).clip(RoundedCornerShape(12.dp))
+                    .clickable(enabled = enabled) { onOpenGuides(label) }.padding(vertical = 4.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(7.dp)) {
+                    Surface(color = LensPale, shape = CircleShape) {
+                        LensIcon(listOf("tool", "chip", "scan", "up")[index], LensBlue, Modifier.padding(14.dp).size(23.dp))
+                    }
+                    Text(label, fontSize = 12.sp, fontWeight = FontWeight.Medium)
+                }
+            }
+        }
+        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                Text("추천 가이드", fontSize = 19.sp, fontWeight = FontWeight.Bold, modifier = Modifier.weight(1f))
+                TextButton(onClick = { onOpenGuides("전체") }, enabled = enabled) { Text("전체보기 ›", fontSize = 12.sp) }
+            }
+            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                ReferenceGuides.take(2).forEach { guide ->
+                    ReferenceGuideCard(guide, { onOpenGuide(guide.id) }, Modifier.weight(1f), enabled)
+                }
+            }
+        }
+        if (onResumeLastResult != null) OutlinedButton(onClick = onResumeLastResult,
+            modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)) { Text("최근 분석 이어서 보기") }
+        TextButton(onClick = onChoosePhoto, enabled = enabled, modifier = Modifier.fillMaxWidth()) { Text("갤러리에서 사진 선택") }
+        Spacer(Modifier.height(8.dp))
+    }
+}
 
-                OutlinedButton(
-                    onClick = onChoosePhoto,
-                    enabled = enabled,
-                    shape = RoundedCornerShape(14.dp),
-                    modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp)
-                        .semantics { contentDescription = "갤러리에서 기존 장비 사진 선택하기" },
-                ) {
-                    HomeGlyph(HomeSymbol.PHOTO, if (enabled) colors.primary
-                        else colors.onSurface.copy(alpha = 0.38f), Modifier.size(22.dp))
-                    Spacer(Modifier.width(10.dp))
-                    Text("사진 선택", style = typography.labelLarge)
-                }
+@Composable
+private fun HeaderAction(icon: String, label: String, enabled: Boolean, onClick: () -> Unit) {
+    IconButton(onClick = onClick, enabled = enabled, modifier = Modifier.size(48.dp).semantics { contentDescription = label }) {
+        LensIcon(icon, MaterialTheme.colorScheme.onSurface, Modifier.size(21.dp))
+    }
+}
 
-                if (onResumeLastResult != null && !lastResultTitle.isNullOrBlank()) {
-                    HomeDestination(
-                        eyebrow = "마지막 결과",
-                        title = lastResultTitle,
-                        action = "이어서 보기",
-                        symbol = HomeSymbol.RESULT,
-                        enabled = enabled,
-                        onClick = onResumeLastResult,
-                    )
+@Composable
+fun LensBottomBar(selected: String, enabled: Boolean, onSelect: (String) -> Unit) {
+    Surface(color = Color.White, shadowElevation = 4.dp) {
+        Row(Modifier.fillMaxWidth().navigationBarsPadding().padding(horizontal = 6.dp, vertical = 8.dp),
+            verticalAlignment = Alignment.Bottom) {
+            listOf(Triple("HOME", "홈", "home"), Triple("GUIDES", "가이드", "book"),
+                Triple("CAMERA", "촬영하기", "camera"), Triple("HELP", "AI 도움", "chat"),
+                Triple("PROFILE", "내 정보", "user")).forEach { (id, title, icon) ->
+                val color = if (selected == id || id == "CAMERA") LensBlue else Color(0xFF64748B)
+                Column(Modifier.weight(1f).clip(RoundedCornerShape(12.dp))
+                    .clickable(enabled = enabled) { onSelect(id) }.heightIn(min = 56.dp).padding(vertical = 3.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                    if (id == "CAMERA") Surface(shape = CircleShape, color = LensBlue) {
+                        LensIcon(icon, Color.White, Modifier.padding(16.dp).size(25.dp))
+                    } else LensIcon(icon, color, Modifier.padding(top = 5.dp).size(23.dp))
+                    Text(title, color = color, fontSize = 11.sp, lineHeight = 16.sp)
                 }
-                if (onDiscoverProducts != null) {
-                    HomeDestination(
-                        eyebrow = "지원 장비",
-                        title = "어떤 장비를 확인할까요?",
-                        action = "장비 둘러보기",
-                        symbol = HomeSymbol.PRODUCT,
-                        enabled = enabled,
-                        onClick = onDiscoverProducts,
-                    )
-                }
-                Spacer(Modifier.height(4.dp))
             }
         }
     }
 }
 
+/** Consistent native line icons; photographs are bundled assets, never canvas illustrations. */
 @Composable
-private fun HomeDestination(
-    eyebrow: String,
-    title: String,
-    action: String,
-    symbol: HomeSymbol,
-    enabled: Boolean,
-    onClick: () -> Unit,
-) {
-    val colors = MaterialTheme.colorScheme
-    Surface(shape = RoundedCornerShape(18.dp), color = colors.surface) {
-        Column(Modifier.fillMaxWidth().padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                HomeGlyph(symbol, colors.primary, Modifier.size(28.dp))
-                Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                    Text(eyebrow, style = MaterialTheme.typography.bodySmall, color = colors.onSurfaceVariant)
-                    Text(title, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Medium)
-                }
-            }
-            OutlinedButton(
-                onClick = onClick, enabled = enabled,
-                modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp),
-                shape = RoundedCornerShape(12.dp),
-                colors = ButtonDefaults.outlinedButtonColors(contentColor = colors.primary),
-            ) { Text(action, style = MaterialTheme.typography.labelLarge) }
-        }
-    }
-}
-
-private enum class HomeSymbol { CAMERA, PHOTO, PRODUCT, RESULT }
-
-/** Small native strokes keep camera and gallery shapes distinct without adding an icon package. */
-@Composable
-private fun HomeGlyph(symbol: HomeSymbol, color: Color, modifier: Modifier = Modifier) {
+fun LensIcon(name: String, color: Color, modifier: Modifier = Modifier) {
     Canvas(modifier) {
-        val unit = size.minDimension
-        val stroke = Stroke(unit * 0.065f, cap = StrokeCap.Round)
-        fun point(x: Float, y: Float) = Offset(unit * x, unit * y)
-        when (symbol) {
-            HomeSymbol.CAMERA -> {
-                val body = Path().apply {
-                    moveTo(unit * .13f, unit * .32f)
-                    lineTo(unit * .32f, unit * .32f)
-                    lineTo(unit * .39f, unit * .20f)
-                    lineTo(unit * .61f, unit * .20f)
-                    lineTo(unit * .68f, unit * .32f)
-                    lineTo(unit * .87f, unit * .32f)
-                    lineTo(unit * .87f, unit * .79f)
-                    lineTo(unit * .13f, unit * .79f)
-                    close()
-                }
-                drawPath(body, color, style = stroke)
-                drawCircle(color, unit * .15f, point(.5f, .55f), style = stroke)
-            }
-            HomeSymbol.PHOTO -> {
-                drawRoundRect(color, point(.13f, .13f), Size(unit * .74f, unit * .74f),
-                    CornerRadius(unit * .08f), style = stroke)
-                drawCircle(color, unit * .055f, point(.35f, .34f))
-                drawPath(Path().apply {
-                    moveTo(unit * .2f, unit * .73f)
-                    lineTo(unit * .43f, unit * .50f)
-                    lineTo(unit * .56f, unit * .63f)
-                    lineTo(unit * .69f, unit * .46f)
-                    lineTo(unit * .81f, unit * .63f)
-                }, color, style = stroke)
-            }
-            HomeSymbol.PRODUCT -> {
-                drawRoundRect(color, point(.12f, .18f), Size(unit * .76f, unit * .53f),
-                    CornerRadius(unit * .05f), style = stroke)
-                drawLine(color, point(.5f, .71f), point(.5f, .86f), stroke.width)
-                drawLine(color, point(.32f, .86f), point(.68f, .86f), stroke.width, StrokeCap.Round)
-            }
-            HomeSymbol.RESULT -> {
-                drawRoundRect(color, point(.22f, .12f), Size(unit * .56f, unit * .76f),
-                    CornerRadius(unit * .06f), style = stroke)
-                listOf(.35f, .5f, .65f).forEach { y ->
-                    drawLine(color, point(.35f, y), point(.65f, y), stroke.width, StrokeCap.Round)
-                }
-            }
+        val u = size.minDimension / 24f
+        val stroke = Stroke(1.8f * u, cap = StrokeCap.Round)
+        fun line(a: Float, b: Float, c: Float, d: Float) = drawLine(color, Offset(a*u,b*u), Offset(c*u,d*u), stroke.width, StrokeCap.Round)
+        fun circle(x: Float,y:Float,r:Float) = drawCircle(color,r*u,Offset(x*u,y*u),style=stroke)
+        fun path(vararg p: Pair<Float,Float>) { drawPath(Path().apply { p.forEachIndexed { i,v -> if(i==0)moveTo(v.first*u,v.second*u)else lineTo(v.first*u,v.second*u) } },color,style=stroke) }
+        when(name) {
+            "camera" -> { path(3f to 7f,7f to 7f,9f to 4f,15f to 4f,17f to 7f,21f to 7f,21f to 20f,3f to 20f,3f to 7f);circle(12f,13f,4f) }
+            "home" -> { path(3f to 10f,12f to 3f,21f to 10f,21f to 21f,15f to 21f,15f to 14f,9f to 14f,9f to 21f,3f to 21f,3f to 10f) }
+            "user" -> { circle(12f,7f,4f);drawArc(color,180f,180f,false,Offset(4*u,13*u),Size(16*u,16*u),style=stroke) }
+            "search" -> { circle(10f,10f,7f);line(15f,15f,22f,22f) }
+            "bell" -> { path(5f to 17f,5f to 9f,8f to 3f,16f to 3f,19f to 9f,19f to 17f,21f to 19f,3f to 19f,5f to 17f);line(10f,22f,14f,22f) }
+            "book" -> { path(3f to 4f,10f to 4f,12f to 6f,14f to 4f,21f to 4f,21f to 20f,14f to 20f,12f to 22f,10f to 20f,3f to 20f,3f to 4f);line(12f,6f,12f,22f) }
+            "chat" -> { circle(12f,10f,8f);path(5f to 16f,3f to 22f,10f to 18f);listOf(8f,12f,16f).forEach { circle(it,10f,.4f) } }
+            "arrow" -> { line(3f,12f,21f,12f);path(15f to 6f,21f to 12f,15f to 18f) }
+            "up" -> { path(5f to 12f,12f to 5f,19f to 12f);line(12f,5f,12f,22f) }
+            "tool" -> { path(14f to 5f,18f to 2f,22f to 6f,19f to 10f,15f to 10f,6f to 22f,2f to 18f,14f to 7f) }
+            "chip" -> { drawRect(color,Offset(6*u,6*u),Size(12*u,12*u),style=stroke);listOf(9f,15f).forEach { line(it,2f,it,6f);line(it,18f,it,22f);line(2f,it,6f,it);line(18f,it,22f,it) } }
+            else -> { path(8f to 3f,3f to 3f,3f to 8f);path(16f to 3f,21f to 3f,21f to 8f);path(3f to 16f,3f to 21f,8f to 21f);path(16f to 21f,21f to 21f,21f to 16f) }
         }
     }
-}
-
-@Composable
-private fun HomeCameraIllustration(modifier: Modifier) {
-    val colors = MaterialTheme.colorScheme
-    Box(modifier, contentAlignment = Alignment.Center) {
-        Surface(shape = RoundedCornerShape(22.dp), color = colors.surface, shadowElevation = 1.dp) {
-            Box(Modifier.size(88.dp), contentAlignment = Alignment.Center) {
-                HomeGlyph(HomeSymbol.CAMERA, colors.primary, Modifier.size(52.dp))
-            }
-        }
-        Canvas(Modifier.size(112.dp)) {
-            val length = 16.dp.toPx()
-            val stroke = 2.dp.toPx()
-            val inset = 2.dp.toPx()
-            listOf(Offset(inset, inset), Offset(size.width - inset, inset),
-                Offset(inset, size.height - inset), Offset(size.width - inset, size.height - inset))
-                .forEach { corner ->
-                    val horizontal = if (corner.x < size.width / 2) length else -length
-                    val vertical = if (corner.y < size.height / 2) length else -length
-                    drawLine(colors.primary, corner, corner + Offset(horizontal, 0f), stroke, StrokeCap.Round)
-                    drawLine(colors.primary, corner, corner + Offset(0f, vertical), stroke, StrokeCap.Round)
-                }
-        }
-    }
-}
-
-@Preview(name = "Home 320dp", widthDp = 320, heightDp = 720, showBackground = true)
-@Preview(name = "Home 412dp", widthDp = 412, heightDp = 820, showBackground = true)
-@Composable
-private fun HomeEntryPreview() {
-    HowLensTheme { HomeEntryPane(onOpenCamera = {}, onChoosePhoto = {}) }
-}
-
-@Preview(name = "Home 320dp large text", widthDp = 320, heightDp = 720, fontScale = 1.5f, showBackground = true)
-@Composable
-private fun HomeEntryLargeTextPreview() {
-    HowLensTheme { HomeEntryPane(onOpenCamera = {}, onChoosePhoto = {}) }
 }

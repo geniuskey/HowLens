@@ -35,6 +35,41 @@ class OfflineScreenTest {
         emptyList(), listOf(Step("approved-s1", "Synthetic approved step fixture", listOf("public-e1"), "fixture")),
         emptyList(), emptyList(), Mode.LIVE)
 
+    @Test fun referenceHomeKeepsFiveDestinationsAndGuideSafetyBoundary() {
+        val vm = AnalysisViewModel()
+        compose.setContent { HowLensTheme { HowLensScreen(vm) } }
+        compose.onNodeWithText("홈", useUnmergedTree = true).assertExists()
+        compose.onNodeWithText("가이드", useUnmergedTree = true).assertExists()
+        compose.onNodeWithText("촬영하기", useUnmergedTree = true).assertExists()
+        compose.onNodeWithText("AI 도움", useUnmergedTree = true).assertExists()
+        compose.onNodeWithText("내 정보", useUnmergedTree = true).assertExists()
+        compose.onNodeWithContentDescription("그래픽카드가 장착된 PC 내부 참고 사진").assertExists()
+        compose.onNodeWithText("가이드", useUnmergedTree = true).performClick()
+        compose.onNodeWithText("가이드 검색").performTextInput("SSD")
+        compose.onNodeWithText("SSD 교체하기").performScrollTo().performClick()
+        compose.onNodeWithText("학습용 예시 · 작업 승인 아님").assertExists()
+        compose.onNodeWithText("승인된 단계").assertDoesNotExist()
+        compose.onNodeWithText("AI 도움", useUnmergedTree = true).performClick()
+        compose.onNodeWithText("로컬 도움말 · 실시간 AI 채팅 아님").assertExists()
+        compose.onNodeWithText("궁금한 점").performTextInput("화면이 나오지 않아요")
+        compose.runOnUiThread { vm.photo(photo()) }
+        compose.onNodeWithText("이 질문으로 사진 분석").performScrollTo().performClick()
+        compose.onNodeWithText("화면이 나오지 않아요").assertExists()
+        assertEquals("화면이 나오지 않아요", vm.state.value.question)
+    }
+
+    @Test fun centralCameraOpensPreviewWithoutIntermediateForm() {
+        val vm = AnalysisViewModel()
+        compose.setContent { HowLensTheme { HowLensScreen(vm) } }
+        compose.onNodeWithText("촬영하기", useUnmergedTree = true).performClick()
+        compose.onNodeWithContentDescription("CameraX 미리보기").assertExists()
+        compose.onNodeWithText("사진 선택").assertExists()
+        compose.onNodeWithText("질문").assertDoesNotExist()
+        compose.onNodeWithContentDescription("설정").assertDoesNotExist()
+        assertNull(vm.state.value.photo)
+        assertFalse(vm.state.value.phase == Phase.LOADING)
+    }
+
     @Test fun photoFirstInputShowsTabsAndSettingsPreserveDraft() {
         val vm = AnalysisViewModel()
         compose.runOnUiThread { vm.photo(photo()); vm.question("합성 초안") }

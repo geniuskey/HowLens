@@ -62,7 +62,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-private enum class InputTab { HOME, PHOTO, CAMERA }
+private enum class InputTab { HOME, PHOTO, CAMERA, GUIDES, HELP, PROFILE, NOTIFICATIONS }
 
 @Composable
 fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
@@ -76,6 +76,9 @@ fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
     val compactViewport = LocalConfiguration.current.screenHeightDp < 500
     val showingResult = state.phase == Phase.RESULT && (state.analysis != null || state.discovery != null)
     val homeVisible = tab == InputTab.HOME
+    val shellVisible = tab !in listOf(InputTab.PHOTO, InputTab.CAMERA)
+    var guideCategory by rememberSaveable { mutableStateOf("전체") }
+    var selectedReferenceGuide by rememberSaveable { mutableStateOf<String?>(null) }
     val submit: () -> Unit = if (state.discoveryMode) vm::discoverProducts else vm::analyze
     val journey = rememberGuideJourneyState()
     var guideOpen by rememberSaveable(state.analysis?.analysisId) { mutableStateOf(false) }
@@ -97,6 +100,7 @@ fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
             showingResult && summaryOpen -> summaryOpen = false
             showingResult && guideOpen -> guideOpen = false
             showingResult -> vm.showInput()
+            tab == InputTab.GUIDES && selectedReferenceGuide != null -> selectedReferenceGuide = null
             tab != InputTab.HOME -> tabName = InputTab.HOME.name
         }
     }
@@ -138,9 +142,29 @@ fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
     }
 
     val noPhotoCamera = tab == InputTab.CAMERA && state.photo == null && !state.photoLoading
+    val openCamera: () -> Unit = { vm.discoveryMode(false); vm.clearPhoto(); tabName = InputTab.CAMERA.name }
+    if (noPhotoCamera) {
+        Surface(color = Color(0xFF080E1A), contentColor = Color.White) {
+            Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()) {
+                Row(Modifier.fillMaxWidth().padding(horizontal = 12.dp), verticalAlignment = Alignment.CenterVertically) {
+                    TextButton(onClick = { tabName = InputTab.HOME.name }) { Text("닫기", color = Color.White) }
+                    Text("사진 촬영", color = Color.White, modifier = Modifier.weight(1f), textAlign = androidx.compose.ui.text.style.TextAlign.Center)
+                    Text("1×", color = Color.White, modifier = Modifier.padding(16.dp))
+                }
+                state.error?.let { InlineError(it) }
+                CameraCapturePane(isActive = true,
+                    onPhotoCaptured = { uri -> vm.selectPhoto(context.contentResolver, uri, deleteFileAfterRead = true) },
+                    onError = vm::inputError,
+                    onChooseFromGallery = { gallery.launch(arrayOf("image/jpeg", "image/png")) },
+                    onOpenPhotoAnalysis = { tabName = InputTab.PHOTO.name },
+                    modifier = Modifier.weight(1f).fillMaxWidth())
+            }
+        }
+        return
+    }
     Scaffold(
         topBar = {
-            Column {
+            if (!shellVisible) Column {
                 TopAppBar(
                     title = { if (!homeVisible) BrandWordmark() },
                     navigationIcon = { if (!homeVisible) TextButton(onClick = { tabName = InputTab.HOME.name }, enabled = !busy) { Text("홈") } },
@@ -162,7 +186,12 @@ fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
             }
         },
         bottomBar = {
-            if (!noPhotoCamera && !compactViewport && !homeVisible) {
+            if (shellVisible) {
+                LensBottomBar(selected = tab.name, enabled = !busy, onSelect = { destination ->
+                    if (destination == "CAMERA") openCamera()
+                    else { selectedReferenceGuide = null; tabName = destination }
+                })
+            } else if (!compactViewport) {
                 InputActionBar(
                     state = state,
                     tab = tab,
@@ -177,29 +206,26 @@ fun HowLensScreen(vm: AnalysisViewModel = viewModel()) {
             Column(Modifier.fillMaxSize().padding(inset)) {
                 state.error?.let { InlineError(it) }
                 HomeEntryPane(
-                    onOpenCamera = { vm.discoveryMode(false); vm.clearPhoto(); tabName = InputTab.CAMERA.name },
+                    onOpenCamera = openCamera,
                     onChoosePhoto = { vm.discoveryMode(false); tabName = InputTab.PHOTO.name; gallery.launch(arrayOf("image/jpeg", "image/png")) },
-                    onDiscoverProducts = { vm.discoveryMode(true); tabName = InputTab.PHOTO.name },
+                    onOpenGuides = { category -> guideCategory = category; selectedReferenceGuide = null; tabName = InputTab.GUIDES.name },
+                    onOpenGuide = { id -> selectedReferenceGuide = id; tabName = InputTab.GUIDES.name },
+                    onOpenProfile = { tabName = InputTab.PROFILE.name },
+                    onOpenNotifications = { tabName = InputTab.NOTIFICATIONS.name },
                     onResumeLastResult = if (state.analysis != null || state.discovery != null) vm::showResult else null,
-                    lastResultTitle = if (state.discovery != null) "제품 정보" else state.analysis?.let { "분석 결과" },
                     enabled = !busy,
                 )
             }
-        } else if (noPhotoCamera) {
-            Column(Modifier.fillMaxSize().padding(inset)) {
-                Spacer(Modifier.height(12.dp))
-                if (state.discoveryMode) Text("제품 찾기", style = MaterialTheme.typography.titleLarge, modifier = Modifier.padding(horizontal = 16.dp))
-                else DeviceRow(state.deviceId, enabled = !busy, onClick = { deviceSheet = true }, modifier = Modifier.padding(horizontal = 16.dp))
-                state.error?.let { InlineError(it) }
-                Spacer(Modifier.height(8.dp))
-                CameraCapturePane(
-                    isActive = true,
-                    onPhotoCaptured = { uri -> vm.selectPhoto(context.contentResolver, uri, deleteFileAfterRead = true) },
-                    onError = vm::inputError,
-                    onChooseFromGallery = { gallery.launch(arrayOf("image/jpeg", "image/png")) },
-                    onOpenPhotoAnalysis = { tabName = InputTab.PHOTO.name },
-                    modifier = Modifier.weight(1f).fillMaxWidth(),
-                )
+        } else if (shellVisible) {
+            Box(Modifier.fillMaxSize().padding(inset)) {
+                ReferenceDestination(destination = tab.name, category = guideCategory,
+                    selectedGuide = selectedReferenceGuide,
+                    onGuideSelected = { id -> selectedReferenceGuide = id; if (id != null) tabName = InputTab.GUIDES.name },
+                    onCategory = { guideCategory = it }, onCamera = openCamera,
+                    onSettings = { settings = true },
+                    onDiscover = { vm.discoveryMode(true); tabName = InputTab.PHOTO.name },
+                    onRecentResult = if (state.analysis != null || state.discovery != null) vm::showResult else null,
+                    onUseQuestion = { question -> vm.question(question); vm.discoveryMode(false); tabName = InputTab.PHOTO.name })
             }
         } else {
             Column(

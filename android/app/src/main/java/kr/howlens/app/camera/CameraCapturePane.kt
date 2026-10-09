@@ -18,6 +18,16 @@ import androidx.camera.core.Preview
 import androidx.camera.core.resolutionselector.ResolutionSelector
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.layout.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -127,11 +137,12 @@ fun CameraCapturePane(
 
     var previewView by remember { mutableStateOf<PreviewView?>(null) }
     Column(
-        modifier = modifier.fillMaxSize().padding(16.dp),
+        modifier = modifier.fillMaxSize().background(Color(0xFF080E1A)).padding(horizontal = 16.dp, vertical = 8.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
+        Box(Modifier.weight(1f).fillMaxWidth().semantics { contentDescription = "CameraX 미리보기" }) {
         AndroidView(
-            modifier = Modifier.weight(1f).fillMaxWidth(),
+            modifier = Modifier.fillMaxSize(),
             factory = { viewContext ->
                 PreviewView(viewContext).apply {
                     scaleType = PreviewView.ScaleType.FIT_CENTER
@@ -141,6 +152,21 @@ fun CameraCapturePane(
             },
             update = { previewView = it },
         )
+
+        Canvas(Modifier.fillMaxSize().padding(28.dp)) {
+            val length = 28.dp.toPx()
+            val corners = listOf(Offset(0f, size.height * .18f), Offset(size.width, size.height * .18f),
+                Offset(0f, size.height * .82f), Offset(size.width, size.height * .82f))
+            corners.forEach { point ->
+                val dx = if (point.x == 0f) length else -length
+                val dy = if (point.y < size.height / 2f) length else -length
+                drawLine(Color(0xFF367CFF), point, point + Offset(dx, 0f), 3.dp.toPx(), StrokeCap.Round)
+                drawLine(Color(0xFF367CFF), point, point + Offset(0f, dy), 3.dp.toPx(), StrokeCap.Round)
+            }
+        }
+        }
+        Text("부품 전체가 보이게 촬영해 주세요.", color = Color.White,
+            modifier = Modifier.align(Alignment.CenterHorizontally))
 
         DisposableEffect(isActive, cameraGranted, lifecycleOwner, previewView) {
             val view = previewView
@@ -257,8 +283,12 @@ fun CameraCapturePane(
 
         if (isActive && cameraGranted) {
             Button(
-                modifier = Modifier.fillMaxWidth(),
-                colors = buttonColors,
+                modifier = Modifier.align(Alignment.CenterHorizontally).size(76.dp)
+                    .border(3.dp, Color.White, CircleShape).padding(6.dp)
+                    .semantics { contentDescription = "사진 촬영" },
+                shape = CircleShape,
+                contentPadding = PaddingValues(0.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = Color(0xFF0052FF)),
                 enabled = imageCapture != null && !capturePending,
                 onClick = {
                     val capture = imageCapture ?: return@Button
@@ -304,11 +334,12 @@ fun CameraCapturePane(
                         }
                     })
                 },
-            ) { Text(if (capturePending) "촬영 중…" else "사진 촬영") }
+            ) { if (capturePending) Text("촬영 중", color = Color(0xFF0052FF)) }
         }
 
         OutlinedButton(
             modifier = Modifier.fillMaxWidth(),
+            colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.White),
             onClick = { currentOnChooseFromGallery() },
         ) { Text("사진 선택") }
     }
